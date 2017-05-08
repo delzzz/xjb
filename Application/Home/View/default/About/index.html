@@ -1,0 +1,183 @@
+<extend name="Base/common"/>
+
+<block name="head_script">
+    <link rel="stylesheet" href="__CSS__/about.css">
+</block>
+
+<block name="body">
+    <div class="about">
+        <div class="about_text">
+            <!--公司简介 富文本-->
+            <div class="jianjie">
+                {$aboutUs.content}
+            </div>
+            <div class="fintus">
+                <div class="fintus_tit">
+                    联系我们
+                </div>
+                <div class="fintus_tit1 mtop20">
+                    {:C('CONTACT_US_AD')}
+                </div>
+                <div class="lian" style="">
+                    <div class="lian_left" style="">
+                        <div class="lian_tit mtop40" style="">{:C('COMPANNY_NAME')}</div>
+                        <div class="mtop5 ft16">
+                            <span class="cl4">地址：</span>
+                            <span class="">{:C('COMPANNY_ADDRESS')}</span>
+                        </div>
+                        <div class="lian_tit mtop20" style="">品牌与战略合作</div>
+                        <div class="mtop5 ft16">
+                            <span class="cl4">联系人：</span>
+                            <span class="">{:C('PARTNER_PERSON')}</span>
+                        </div>
+                        <div class="mtop5 ft16">
+                            <span class="cl4">手机：</span>
+                            <span class="">{:C('PARTNER_PERSON_MOBILE')}</span>
+                        </div>
+
+                        <div class="lian_tit mtop20" style="">产品与销售合作</div>
+                        <div class="mtop5 ft16">
+                            <span class="cl4">联系人：</span>
+                            <span class="">{:C('PRODUCT_PERSON')}</span>
+                        </div>
+                        <div class="mtop5 ft16">
+                            <span class="cl4">手机：</span>
+                            <span class="">{:C('PRODUCT_PERSON_MOBILE')}</span>
+                        </div>
+
+                    </div>
+                    <form class="lian_right" style="">
+                        <div class="lian_tit mtop20 " style="">
+                            <span class="cl4">/留言咨询</span><span class="ft14">(为保证咨询质量，请认真填写，稍后我们将会有专人和您联系)</span>
+                        </div>
+                        <div class="liuyan_list ft16 mtop5">
+                            <span class="cl4">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
+                            <input type="text" name="name" class="input" placeholder="某先生">
+                        </div>
+                        <div class="liuyan_list ft16 mtop5">
+                            <span class="cl4">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span>
+                            <input type="radio" name="sex" value="1" class="radio mleft30"/><span class="mleft8">先生</span>
+                            <input type="radio" name="sex" value="0" checked="checked" class="radio mleft30"/><span class="mleft8">女士</span>
+                        </div>
+                        <div class="liuyan_list ft16 mtop5">
+                            <span class="cl4">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</span>
+                            <input type="text" name="phone" class="input" placeholder="">
+                        </div>
+                        <div class="liuyan_list ft16 mtop5">
+                            <span class="cl4">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</span>
+                            <input type="text" name="city" class="input2" placeholder=""><span
+                                class="mleft8">省</span>
+                            <input type="text" name="smcity" class="input2 mleft8" placeholder=""><span
+                                class="mleft8">市</span>
+                        </div>
+
+                        <div class="liuyan_list h100 ft16 mtop20">
+                            <div class="cl4">留言咨询：</div>
+                             <textarea name="message" class="text_box"></textarea>
+                        </div>
+                        <div class="liuyan_list ft16 mtop20">
+                            <button type="button" class="about_btn">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    </div>
+</block>
+
+<block name="script">
+    <script src="__JS__/unslider.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".about_btn").click(function () {
+                $(this).attr('disabled',true);
+                var phoneObj=$("input[name='phone']");
+                var nameObj=$("input[name='name']");
+                var textboxObj=$(".text_box");
+                if(nameObj.val()==''||nameObj==null){
+                    nameObj.val('姓名不能为空').css("color","red");
+                    nameObj.focus(function(){
+                        test(nameObj)
+                    });
+                    return false;
+                }
+                if(phoneObj.val()==''||phoneObj.val()==null)
+                {
+                    phoneObj.val('手机号不能为空').css("color","red");
+                    phoneObj.focus(function(){
+                        test(phoneObj)
+                    });
+                    return false;
+                }
+                if(textboxObj.val()==''||textboxObj.val()==null){
+                    textboxObj.val('资讯信息不能为空').css("color","red");
+                    textboxObj.focus(function(){
+                        test(textboxObj)
+                    });
+                    return false;
+                }
+                var param = $('.lian_right').serialize();
+                $.ajax({
+                    type:'POST',
+                    url:'{:U('write')}',
+                    dataType:'json',
+                    data:param,
+                    success:function (data) {
+                        console.log(data);
+                        if(data.status){
+                            alert("留言成功");
+                            location.href="{:U();}";
+                        }else {
+                            alert("留言失败");
+                        }
+                    }
+                });
+            });
+            var unslider04 = $('#bannerall').unslider({
+                        dots: true
+                    }),
+                    data04 = unslider04.data('unslider');
+            $('.unslider-arrow04').click(function () {
+                var fn = this.className.split(' ')[1];
+                data04[fn]();
+            });
+        });
+        function test(a){
+            $(a).val('').css("color","#333333").one();
+        }
+        function input(){
+            var phoneObj=$("input[name='phone']");
+            var nameObj=$("input[name='name']");
+            var textboxObj=$(".text_box");
+            if(nameObj.val()==''||nameObj==null){
+                nameObj.val('姓名不能为空').css("color","red");
+                nameObj.focus(function(){
+                    test(nameObj)
+                });
+                return false;
+            }
+            if(phoneObj.val()==''||phoneObj.val()==null)
+            {
+                phoneObj.val('手机号不能为空').css("color","red");
+                phoneObj.focus(function(){
+                    test(phoneObj)
+                });
+                return false;
+            }
+            if(textboxObj.val()==''||textboxObj.val()==null){
+                textboxObj.val('资讯信息不能为空').css("color","red");
+                textboxObj.focus(function(){
+                    test(textboxObj)
+                });
+                return false;
+            }
+
+        }
+    </script>
+
+</block>
+

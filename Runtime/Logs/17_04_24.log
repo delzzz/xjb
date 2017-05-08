@@ -1,0 +1,14 @@
+[ 2017-04-24T11:32:26+08:00 ] 192.168.19.1 /Admin/Public/login.html
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000050s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000085s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.017241s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017289s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001152s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001176s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.001793s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001820s ]
+

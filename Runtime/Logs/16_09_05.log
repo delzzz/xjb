@@ -1,0 +1,572 @@
+[ 2016-09-05T10:18:04+08:00 ] 192.168.209.1 /Home/Index/index
+SQL: SHOW COLUMNS FROM `cishoo_front_picture` [ RunTime:0.001576s ]
+SQL: SELECT * FROM `cishoo_front_picture` WHERE ( `type` = 'banner' ) AND ( `deleted` = 0 )  [ RunTime:0.001171s ]
+SQL: SHOW COLUMNS FROM `cishoo_category` [ RunTime:0.002228s ]
+SQL: SELECT `id` FROM `cishoo_category` WHERE ( `name` = 'index_product' ) LIMIT 1   [ RunTime:0.001159s ]
+SQL: SHOW COLUMNS FROM `cishoo_document` [ RunTime:0.002165s ]
+SQL: SELECT * FROM `cishoo_document` WHERE ( `category_id` = 2 ) AND ( `status` = 1 ) ORDER BY level LIMIT 2   [ RunTime:0.002519s ]
+SQL: SHOW COLUMNS FROM `cishoo_document_article` [ RunTime:0.001671s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.001159s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001175s ]
+SQL: SELECT `id` FROM `cishoo_category` WHERE ( `name` = 'index_prodecut_descript' ) LIMIT 1   [ RunTime:0.001153s ]
+SQL: SELECT * FROM `cishoo_document` WHERE ( `category_id` = 39 ) AND ( `status` = 1 ) ORDER BY level LIMIT 2   [ RunTime:0.002258s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 3 ) LIMIT 1   [ RunTime:0.001276s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 4 ) LIMIT 1   [ RunTime:0.001272s ]
+SQL: SHOW COLUMNS FROM `cishoo_front_picture` [ RunTime:0.001758s ]
+SQL: SELECT `picture_id` FROM `cishoo_front_picture` WHERE ( `type` = 'video' ) ORDER BY id desc LIMIT 1   [ RunTime:0.001087s ]
+SQL: SHOW COLUMNS FROM `cishoo_file` [ RunTime:0.001776s ]
+SQL: SELECT * FROM `cishoo_file` WHERE ( `id` = 32 )  [ RunTime:0.001185s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000216s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000265s ]
+SQL: SHOW COLUMNS FROM `cishoo_picture` [ RunTime:0.002505s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 7 ) LIMIT 1   [ RunTime:0.001340s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 7 ) LIMIT 1   [ RunTime:0.001284s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 22 ) LIMIT 1   [ RunTime:0.001512s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 21 ) LIMIT 1   [ RunTime:0.001167s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 6 ) LIMIT 1   [ RunTime:0.001117s ]
+NOTIC: [8] Undefined index: conver_id /opt/ubuntu/webvr/Runtime/Cache/Home/769e70f2e46f34ceb60619bbda5e4691.php 第 105 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.059016s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.059051s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.001830s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001893s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.002236s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002272s ]
+
+[ 2016-09-05T10:18:05+08:00 ] 192.168.209.1 /Home/Index/index
+SQL: SHOW COLUMNS FROM `cishoo_front_picture` [ RunTime:0.001645s ]
+SQL: SELECT * FROM `cishoo_front_picture` WHERE ( `type` = 'banner' ) AND ( `deleted` = 0 )  [ RunTime:0.001105s ]
+SQL: SHOW COLUMNS FROM `cishoo_category` [ RunTime:0.002004s ]
+SQL: SELECT `id` FROM `cishoo_category` WHERE ( `name` = 'index_product' ) LIMIT 1   [ RunTime:0.001145s ]
+SQL: SHOW COLUMNS FROM `cishoo_document` [ RunTime:0.001908s ]
+SQL: SELECT * FROM `cishoo_document` WHERE ( `category_id` = 2 ) AND ( `status` = 1 ) ORDER BY level LIMIT 2   [ RunTime:0.002251s ]
+SQL: SHOW COLUMNS FROM `cishoo_document_article` [ RunTime:0.001711s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.001013s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001162s ]
+SQL: SELECT `id` FROM `cishoo_category` WHERE ( `name` = 'index_prodecut_descript' ) LIMIT 1   [ RunTime:0.001149s ]
+SQL: SELECT * FROM `cishoo_document` WHERE ( `category_id` = 39 ) AND ( `status` = 1 ) ORDER BY level LIMIT 2   [ RunTime:0.001915s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 3 ) LIMIT 1   [ RunTime:0.001112s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 4 ) LIMIT 1   [ RunTime:0.001166s ]
+SQL: SHOW COLUMNS FROM `cishoo_front_picture` [ RunTime:0.001160s ]
+SQL: SELECT `picture_id` FROM `cishoo_front_picture` WHERE ( `type` = 'video' ) ORDER BY id desc LIMIT 1   [ RunTime:0.001127s ]
+SQL: SHOW COLUMNS FROM `cishoo_file` [ RunTime:0.001204s ]
+SQL: SELECT * FROM `cishoo_file` WHERE ( `id` = 32 )  [ RunTime:0.001140s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000377s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000421s ]
+SQL: SHOW COLUMNS FROM `cishoo_picture` [ RunTime:0.002067s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 7 ) LIMIT 1   [ RunTime:0.001930s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 7 ) LIMIT 1   [ RunTime:0.002452s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 22 ) LIMIT 1   [ RunTime:0.001989s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 21 ) LIMIT 1   [ RunTime:0.003749s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 6 ) LIMIT 1   [ RunTime:0.001245s ]
+NOTIC: [8] Undefined index: conver_id /opt/ubuntu/webvr/Runtime/Cache/Home/769e70f2e46f34ceb60619bbda5e4691.php 第 105 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.024218s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024242s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000123s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000154s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000121s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000175s ]
+
+[ 2016-09-05T10:18:09+08:00 ] 192.168.209.1 /Admin/Public/login.html
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000091s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000152s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.014826s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014931s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000346s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000375s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000305s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000335s ]
+
+[ 2016-09-05T10:18:21+08:00 ] 192.168.209.1 /Admin/Public/login.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.000318s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000665s ]
+SQL: SHOW COLUMNS FROM `cishoo_ucenter_member` [ RunTime:0.001851s ]
+SQL: SELECT * FROM `cishoo_ucenter_member` WHERE ( `username` = 'admin' ) LIMIT 1   [ RunTime:0.001210s ]
+
+[ 2016-09-05T10:18:29+08:00 ] 192.168.209.1 /Admin/Public/login.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.000245s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000515s ]
+SQL: SHOW COLUMNS FROM `cishoo_ucenter_member` [ RunTime:0.001630s ]
+SQL: SELECT * FROM `cishoo_ucenter_member` WHERE ( `username` = 'admin' ) LIMIT 1   [ RunTime:0.001252s ]
+SQL: UPDATE `cishoo_ucenter_member` SET `last_login_time`=1473041909,`last_login_ip`='3232289025' WHERE ( `id` = 1 ) [ RunTime:0.001507s ]
+SQL: SHOW COLUMNS FROM `cishoo_member` [ RunTime:0.001984s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `cishoo_member` WHERE ( `uid` = 1 ) LIMIT 1   [ RunTime:0.001378s ]
+SQL: SHOW COLUMNS FROM `cishoo_action` [ RunTime:0.001925s ]
+SQL: SELECT * FROM `cishoo_action` WHERE ( `name` = 'user_login' ) LIMIT 1   [ RunTime:0.001219s ]
+SQL: SHOW COLUMNS FROM `cishoo_action_log` [ RunTime:0.001956s ]
+SQL: INSERT INTO `cishoo_action_log` (`action_id`,`user_id`,`action_ip`,`model`,`record_id`,`create_time`,`remark`) VALUES (1,1,3232289025,'member',1,1473041909,'admin在2016-09-05 10:18登录了后台') [ RunTime:0.001539s ]
+SQL: SELECT * FROM `cishoo_action` WHERE ( `name` = 'user_login' ) LIMIT 1   [ RunTime:0.001239s ]
+NOTIC: [8] Undefined offset: 1 /opt/ubuntu/webvr/Application/Common/Common/function.php 第 703 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given /opt/ubuntu/webvr/Application/Common/Common/function.php 第 703 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `cishoo_action_log` WHERE ( `action_id` = 1 ) AND ( `user_id` = 1 ) AND ( `create_time` > 1472955509 ) LIMIT 1   [ RunTime:0.001112s ]
+SQL: SHOW COLUMNS FROM `cishoo_member` [ RunTime:0.001456s ]
+SQL: UPDATE `cishoo_member` SET `score`=score+10 WHERE ( uid=1 AND status>-1 ) [ RunTime:0.001257s ]
+SQL: UPDATE `cishoo_member` SET `login`=`login`+1,`last_login_time`=1473041909,`last_login_ip`='3232289025' WHERE ( `uid` = 1 ) [ RunTime:0.001224s ]
+
+[ 2016-09-05T10:18:31+08:00 ] 192.168.209.1 /Admin/Index/index.html
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001416s ]
+SQL: SELECT * FROM `cishoo_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001144s ]
+SQL: SELECT `id` FROM `cishoo_menu` WHERE ( url like '%Index/index%' ) LIMIT 1   [ RunTime:0.001173s ]
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001399s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.001429s ]
+SQL: SELECT DISTINCT  `group` FROM `cishoo_menu` WHERE ( pid = 1 )  [ RunTime:0.000933s ]
+SQL: SELECT `id`,`url` FROM `cishoo_menu` WHERE ( `pid` = 1 ) AND ( `hide` = 0 )  [ RunTime:0.001182s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000106s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000140s ]
+INFO: [ AdminIndex ] --START--
+SQL: SHOW COLUMNS FROM `cishoo_addons` [ RunTime:0.001454s ]
+SQL: SELECT `config` FROM `cishoo_addons` WHERE ( `name` = 'SiteStat' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.001245s ]
+SQL: SHOW COLUMNS FROM `cishoo_member` [ RunTime:0.001493s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cishoo_member` LIMIT 1   [ RunTime:0.001293s ]
+SQL: SHOW COLUMNS FROM `cishoo_action_log` [ RunTime:0.001300s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cishoo_action_log` LIMIT 1   [ RunTime:0.001214s ]
+SQL: SHOW COLUMNS FROM `cishoo_document` [ RunTime:0.001532s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cishoo_document` LIMIT 1   [ RunTime:0.001203s ]
+SQL: SHOW COLUMNS FROM `cishoo_category` [ RunTime:0.001689s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cishoo_category` LIMIT 1   [ RunTime:0.001210s ]
+SQL: SHOW COLUMNS FROM `cishoo_model` [ RunTime:0.001483s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cishoo_model` LIMIT 1   [ RunTime:0.001204s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000019s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.033269s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.003305s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003329s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000187s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000202s ]
+INFO: Run SiteStat [ RunTime:0.032523s ]
+SQL: SELECT `config` FROM `cishoo_addons` WHERE ( `name` = 'SystemInfo' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.001054s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000039s ]
+INFO: [ template_filter ] --END-- [ RunTime:-2.588412s ]
+SQL: select version() as v; [ RunTime:0.001587s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.008961s ]
+INFO: [ view_parse ] --END-- [ RunTime:-2.550500s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000009s ]
+INFO: [ view_filter ] --END-- [ RunTime:-2.559311s ]
+INFO: Run SystemInfo [ RunTime:2.559339s ]
+SQL: SELECT `config` FROM `cishoo_addons` WHERE ( `name` = 'DevTeam' ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.001512s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000040s ]
+INFO: [ template_filter ] --END-- [ RunTime:-2.612193s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.005723s ]
+INFO: [ view_parse ] --END-- [ RunTime:-2.574871s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000011s ]
+INFO: [ view_filter ] --END-- [ RunTime:-2.580467s ]
+INFO: Run DevTeam [ RunTime:0.021148s ]
+INFO: [ AdminIndex ] --END-- [ RunTime:2.613050s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.005880s ]
+INFO: [ view_parse ] --END-- [ RunTime:-2.574871s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000004s ]
+INFO: [ view_filter ] --END-- [ RunTime:-2.580585s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000810s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000886s ]
+
+[ 2016-09-05T10:18:33+08:00 ] 192.168.209.1 /Admin/User/index.html
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001874s ]
+SQL: SELECT * FROM `cishoo_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001265s ]
+SQL: SELECT `id` FROM `cishoo_menu` WHERE ( url like '%User/index%' ) LIMIT 1   [ RunTime:0.001181s ]
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001595s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.001159s ]
+SQL: SELECT DISTINCT  `group` FROM `cishoo_menu` WHERE ( pid = 16 )  [ RunTime:0.001173s ]
+SQL: SELECT `id`,`url` FROM `cishoo_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.001156s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001159s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001415s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001159s ]
+SQL: SHOW COLUMNS FROM `cishoo_member` [ RunTime:0.001638s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cishoo_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) LIMIT 1   [ RunTime:0.001128s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `cishoo_member` WHERE ( `status` >= 0 ) AND ( `nickname` LIKE '%%' ) ORDER BY uid desc LIMIT 0,10   [ RunTime:0.001543s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000132s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000161s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009895s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009922s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000207s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000224s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000187s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000220s ]
+
+[ 2016-09-05T10:18:37+08:00 ] 192.168.209.1 /Admin/AuthManager/index.html
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.002079s ]
+SQL: SELECT * FROM `cishoo_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001436s ]
+SQL: SELECT `id` FROM `cishoo_menu` WHERE ( url like '%AuthManager/index%' ) LIMIT 1   [ RunTime:0.001096s ]
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001790s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=27 ) LIMIT 1   [ RunTime:0.001107s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.001187s ]
+SQL: SELECT DISTINCT  `group` FROM `cishoo_menu` WHERE ( pid = 16 )  [ RunTime:0.001093s ]
+SQL: SELECT `id`,`url` FROM `cishoo_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.001151s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001101s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001106s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001115s ]
+SQL: SHOW COLUMNS FROM `cishoo_auth_group` [ RunTime:0.001718s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cishoo_auth_group` WHERE ( `status` >= 0 ) AND ( `module` = 'admin' ) LIMIT 1   [ RunTime:0.001029s ]
+SQL: SELECT `id`,`module`,`type`,`title`,`description`,`status`,`rules` FROM `cishoo_auth_group` WHERE ( `status` >= 0 ) AND ( `module` = 'admin' ) ORDER BY id asc LIMIT 0,10   [ RunTime:0.001627s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000146s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000170s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013331s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013371s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000232s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000251s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000219s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000244s ]
+
+[ 2016-09-05T10:18:41+08:00 ] 192.168.209.1 /Admin/AuthManager/createGroup.html
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001549s ]
+SQL: SELECT * FROM `cishoo_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001268s ]
+SQL: SELECT `id` FROM `cishoo_menu` WHERE ( url like '%AuthManager/creategroup%' ) LIMIT 1   [ RunTime:0.001140s ]
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001257s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=31 ) LIMIT 1   [ RunTime:0.001178s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=27 ) LIMIT 1   [ RunTime:0.001094s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.001229s ]
+SQL: SELECT DISTINCT  `group` FROM `cishoo_menu` WHERE ( pid = 16 )  [ RunTime:0.001075s ]
+SQL: SELECT `id`,`url` FROM `cishoo_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.001270s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001311s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000934s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001165s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000106s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000124s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.007632s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007655s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000180s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000195s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000193s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000211s ]
+
+[ 2016-09-05T10:18:46+08:00 ] 192.168.209.1 /Admin/AuthManager/writeGroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.000348s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000699s ]
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.002089s ]
+SQL: SELECT * FROM `cishoo_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001394s ]
+SQL: SELECT `id` FROM `cishoo_menu` WHERE ( url like '%AuthManager/writegroup%' ) LIMIT 1   [ RunTime:0.001142s ]
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001693s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=33 ) LIMIT 1   [ RunTime:0.001106s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=27 ) LIMIT 1   [ RunTime:0.001191s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.001208s ]
+SQL: SELECT DISTINCT  `group` FROM `cishoo_menu` WHERE ( pid = 16 )  [ RunTime:0.001175s ]
+SQL: SELECT `id`,`url` FROM `cishoo_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.001190s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001204s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001242s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001166s ]
+SQL: SHOW COLUMNS FROM `cishoo_auth_group` [ RunTime:0.001345s ]
+SQL: INSERT INTO `cishoo_auth_group` (`title`,`description`,`id`,`module`,`type`) VALUES ('运营','',0,'admin',1) [ RunTime:0.001252s ]
+
+[ 2016-09-05T10:18:47+08:00 ] 192.168.209.1 /Admin/AuthManager/index.html
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.002012s ]
+SQL: SELECT * FROM `cishoo_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001447s ]
+SQL: SELECT `id` FROM `cishoo_menu` WHERE ( url like '%AuthManager/index%' ) LIMIT 1   [ RunTime:0.001058s ]
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001827s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=27 ) LIMIT 1   [ RunTime:0.001106s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.001218s ]
+SQL: SELECT DISTINCT  `group` FROM `cishoo_menu` WHERE ( pid = 16 )  [ RunTime:0.001124s ]
+SQL: SELECT `id`,`url` FROM `cishoo_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.001085s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001187s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001126s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001238s ]
+SQL: SHOW COLUMNS FROM `cishoo_auth_group` [ RunTime:0.001737s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cishoo_auth_group` WHERE ( `status` >= 0 ) AND ( `module` = 'admin' ) LIMIT 1   [ RunTime:0.001033s ]
+SQL: SELECT `id`,`module`,`type`,`title`,`description`,`status`,`rules` FROM `cishoo_auth_group` WHERE ( `status` >= 0 ) AND ( `module` = 'admin' ) ORDER BY id asc LIMIT 0,10   [ RunTime:0.001379s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000243s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000298s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.018607s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018685s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000673s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000718s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000423s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000467s ]
+
+[ 2016-09-05T10:18:53+08:00 ] 192.168.209.1 /Admin/AuthManager/changeStatus/method/deleteGroup3.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.000174s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000362s ]
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001831s ]
+SQL: SELECT * FROM `cishoo_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001163s ]
+SQL: SELECT `id` FROM `cishoo_menu` WHERE ( url like '%AuthManager/changestatus%' ) LIMIT 1   [ RunTime:0.001224s ]
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001630s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=28 ) LIMIT 1   [ RunTime:0.001277s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=27 ) LIMIT 1   [ RunTime:0.001154s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.001312s ]
+SQL: SELECT DISTINCT  `group` FROM `cishoo_menu` WHERE ( pid = 16 )  [ RunTime:0.001134s ]
+SQL: SELECT `id`,`url` FROM `cishoo_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.001289s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001263s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001165s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001240s ]
+
+[ 2016-09-05T10:20:05+08:00 ] 192.168.209.1 /Admin/AuthManager/index.html
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001854s ]
+SQL: SELECT * FROM `cishoo_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001341s ]
+SQL: SELECT `id` FROM `cishoo_menu` WHERE ( url like '%AuthManager/index%' ) LIMIT 1   [ RunTime:0.001077s ]
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001567s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=27 ) LIMIT 1   [ RunTime:0.000968s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.001167s ]
+SQL: SELECT DISTINCT  `group` FROM `cishoo_menu` WHERE ( pid = 16 )  [ RunTime:0.001193s ]
+SQL: SELECT `id`,`url` FROM `cishoo_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.001201s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001203s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001174s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001162s ]
+SQL: SHOW COLUMNS FROM `cishoo_auth_group` [ RunTime:0.001344s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cishoo_auth_group` WHERE ( `status` >= 0 ) AND ( `module` = 'admin' ) LIMIT 1   [ RunTime:0.001111s ]
+SQL: SELECT `id`,`module`,`type`,`title`,`description`,`status`,`rules` FROM `cishoo_auth_group` WHERE ( `status` >= 0 ) AND ( `module` = 'admin' ) ORDER BY id asc LIMIT 0,10   [ RunTime:0.001369s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000121s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000150s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.009539s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009564s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000197s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000214s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000184s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000204s ]
+
+[ 2016-09-05T10:20:08+08:00 ] 192.168.209.1 /Admin/AuthManager/changeStatus/method/deleteGroup/id/3.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.000220s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000421s ]
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001449s ]
+SQL: SELECT * FROM `cishoo_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001198s ]
+SQL: SELECT `id` FROM `cishoo_menu` WHERE ( url like '%AuthManager/changestatus%' ) LIMIT 1   [ RunTime:0.001083s ]
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001226s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=28 ) LIMIT 1   [ RunTime:0.001208s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=27 ) LIMIT 1   [ RunTime:0.001184s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.001175s ]
+SQL: SELECT DISTINCT  `group` FROM `cishoo_menu` WHERE ( pid = 16 )  [ RunTime:0.001218s ]
+SQL: SELECT `id`,`url` FROM `cishoo_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.001223s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001520s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000928s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001162s ]
+SQL: SHOW COLUMNS FROM `cishoo_auth_group` [ RunTime:0.001171s ]
+SQL: UPDATE `cishoo_auth_group` SET `status`=-1 WHERE ( `id` IN ('3') ) [ RunTime:0.001268s ]
+
+[ 2016-09-05T10:20:10+08:00 ] 192.168.209.1 /Admin/AuthManager/index.html
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001424s ]
+SQL: SELECT * FROM `cishoo_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001170s ]
+SQL: SELECT `id` FROM `cishoo_menu` WHERE ( url like '%AuthManager/index%' ) LIMIT 1   [ RunTime:0.001125s ]
+SQL: SHOW COLUMNS FROM `cishoo_menu` [ RunTime:0.001263s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=27 ) LIMIT 1   [ RunTime:0.001179s ]
+SQL: SELECT `id`,`pid`,`title` FROM `cishoo_menu` WHERE ( id=16 ) LIMIT 1   [ RunTime:0.001200s ]
+SQL: SELECT DISTINCT  `group` FROM `cishoo_menu` WHERE ( pid = 16 )  [ RunTime:0.001174s ]
+SQL: SELECT `id`,`url` FROM `cishoo_menu` WHERE ( `pid` = 16 ) AND ( `hide` = 0 )  [ RunTime:0.001196s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '用户管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001155s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '行为管理' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001195s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `cishoo_menu` WHERE ( `group` = '' ) AND ( `pid` = 16 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001286s ]
+SQL: SHOW COLUMNS FROM `cishoo_auth_group` [ RunTime:0.001427s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cishoo_auth_group` WHERE ( `status` >= 0 ) AND ( `module` = 'admin' ) LIMIT 1   [ RunTime:0.001218s ]
+SQL: SELECT `id`,`module`,`type`,`title`,`description`,`status`,`rules` FROM `cishoo_auth_group` WHERE ( `status` >= 0 ) AND ( `module` = 'admin' ) ORDER BY id asc LIMIT 0,10   [ RunTime:0.001174s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000187s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000218s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.011283s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011317s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000314s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000339s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000290s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000322s ]
+
+[ 2016-09-05T14:14:49+08:00 ] 192.168.209.1 /Admin/Public/login.html
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000048s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000066s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.004624s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004656s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000220s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000236s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000178s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000194s ]
+
+[ 2016-09-05T14:14:55+08:00 ] 192.168.209.1 /Home/Index/index
+SQL: SHOW COLUMNS FROM `cishoo_front_picture` [ RunTime:0.001315s ]
+SQL: SELECT * FROM `cishoo_front_picture` WHERE ( `type` = 'banner' ) AND ( `deleted` = 0 )  [ RunTime:0.001062s ]
+SQL: SHOW COLUMNS FROM `cishoo_category` [ RunTime:0.001649s ]
+SQL: SELECT `id` FROM `cishoo_category` WHERE ( `name` = 'index_product' ) LIMIT 1   [ RunTime:0.001065s ]
+SQL: SHOW COLUMNS FROM `cishoo_document` [ RunTime:0.001724s ]
+SQL: SELECT * FROM `cishoo_document` WHERE ( `category_id` = 2 ) AND ( `status` = 1 ) ORDER BY level LIMIT 2   [ RunTime:0.002142s ]
+SQL: SHOW COLUMNS FROM `cishoo_document_article` [ RunTime:0.001246s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.001196s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001167s ]
+SQL: SELECT `id` FROM `cishoo_category` WHERE ( `name` = 'index_prodecut_descript' ) LIMIT 1   [ RunTime:0.001180s ]
+SQL: SELECT * FROM `cishoo_document` WHERE ( `category_id` = 39 ) AND ( `status` = 1 ) ORDER BY level LIMIT 2   [ RunTime:0.002280s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 3 ) LIMIT 1   [ RunTime:0.000985s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 4 ) LIMIT 1   [ RunTime:0.001184s ]
+SQL: SHOW COLUMNS FROM `cishoo_front_picture` [ RunTime:0.001365s ]
+SQL: SELECT `picture_id` FROM `cishoo_front_picture` WHERE ( `type` = 'video' ) ORDER BY id desc LIMIT 1   [ RunTime:0.001253s ]
+SQL: SHOW COLUMNS FROM `cishoo_file` [ RunTime:0.001368s ]
+SQL: SELECT * FROM `cishoo_file` WHERE ( `id` = 32 )  [ RunTime:0.001128s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000087s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000117s ]
+SQL: SHOW COLUMNS FROM `cishoo_picture` [ RunTime:0.001551s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 7 ) LIMIT 1   [ RunTime:0.001106s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 7 ) LIMIT 1   [ RunTime:0.001169s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 22 ) LIMIT 1   [ RunTime:0.001219s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 21 ) LIMIT 1   [ RunTime:0.001263s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 6 ) LIMIT 1   [ RunTime:0.001212s ]
+NOTIC: [8] Undefined index: conver_id /opt/ubuntu/webvr/Runtime/Cache/Home/769e70f2e46f34ceb60619bbda5e4691.php 第 105 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.017247s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017268s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000290s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000308s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000214s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000236s ]
+
+[ 2016-09-05T14:14:56+08:00 ] 192.168.209.1 /Home/Index/index
+SQL: SHOW COLUMNS FROM `cishoo_front_picture` [ RunTime:0.001463s ]
+SQL: SELECT * FROM `cishoo_front_picture` WHERE ( `type` = 'banner' ) AND ( `deleted` = 0 )  [ RunTime:0.001176s ]
+SQL: SHOW COLUMNS FROM `cishoo_category` [ RunTime:0.001907s ]
+SQL: SELECT `id` FROM `cishoo_category` WHERE ( `name` = 'index_product' ) LIMIT 1   [ RunTime:0.001022s ]
+SQL: SHOW COLUMNS FROM `cishoo_document` [ RunTime:0.001726s ]
+SQL: SELECT * FROM `cishoo_document` WHERE ( `category_id` = 2 ) AND ( `status` = 1 ) ORDER BY level LIMIT 2   [ RunTime:0.002090s ]
+SQL: SHOW COLUMNS FROM `cishoo_document_article` [ RunTime:0.001227s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.001162s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001196s ]
+SQL: SELECT `id` FROM `cishoo_category` WHERE ( `name` = 'index_prodecut_descript' ) LIMIT 1   [ RunTime:0.001169s ]
+SQL: SELECT * FROM `cishoo_document` WHERE ( `category_id` = 39 ) AND ( `status` = 1 ) ORDER BY level LIMIT 2   [ RunTime:0.002058s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 3 ) LIMIT 1   [ RunTime:0.001238s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 4 ) LIMIT 1   [ RunTime:0.001106s ]
+SQL: SHOW COLUMNS FROM `cishoo_front_picture` [ RunTime:0.001312s ]
+SQL: SELECT `picture_id` FROM `cishoo_front_picture` WHERE ( `type` = 'video' ) ORDER BY id desc LIMIT 1   [ RunTime:0.001127s ]
+SQL: SHOW COLUMNS FROM `cishoo_file` [ RunTime:0.001282s ]
+SQL: SELECT * FROM `cishoo_file` WHERE ( `id` = 32 )  [ RunTime:0.001126s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000080s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000100s ]
+SQL: SHOW COLUMNS FROM `cishoo_picture` [ RunTime:0.001396s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 7 ) LIMIT 1   [ RunTime:0.001076s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 7 ) LIMIT 1   [ RunTime:0.001196s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 22 ) LIMIT 1   [ RunTime:0.001200s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 21 ) LIMIT 1   [ RunTime:0.001175s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 6 ) LIMIT 1   [ RunTime:0.001103s ]
+NOTIC: [8] Undefined index: conver_id /opt/ubuntu/webvr/Runtime/Cache/Home/769e70f2e46f34ceb60619bbda5e4691.php 第 105 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.013711s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013728s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000039s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000052s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000021s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000039s ]
+
+[ 2016-09-05T18:11:41+08:00 ] 192.168.209.1 /Home/Index/index
+SQL: SHOW COLUMNS FROM `cishoo_front_picture` [ RunTime:0.001623s ]
+SQL: SELECT * FROM `cishoo_front_picture` WHERE ( `type` = 'banner' ) AND ( `deleted` = 0 )  [ RunTime:0.001209s ]
+SQL: SHOW COLUMNS FROM `cishoo_category` [ RunTime:0.001869s ]
+SQL: SELECT `id` FROM `cishoo_category` WHERE ( `name` = 'index_product' ) LIMIT 1   [ RunTime:0.001021s ]
+SQL: SHOW COLUMNS FROM `cishoo_document` [ RunTime:0.001924s ]
+SQL: SELECT * FROM `cishoo_document` WHERE ( `category_id` = 2 ) AND ( `status` = 1 ) ORDER BY level LIMIT 2   [ RunTime:0.002331s ]
+SQL: SHOW COLUMNS FROM `cishoo_document_article` [ RunTime:0.001745s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.001544s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001364s ]
+SQL: SELECT `id` FROM `cishoo_category` WHERE ( `name` = 'index_prodecut_descript' ) LIMIT 1   [ RunTime:0.001120s ]
+SQL: SELECT * FROM `cishoo_document` WHERE ( `category_id` = 39 ) AND ( `status` = 1 ) ORDER BY level LIMIT 2   [ RunTime:0.002192s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 3 ) LIMIT 1   [ RunTime:0.001274s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 4 ) LIMIT 1   [ RunTime:0.001198s ]
+SQL: SHOW COLUMNS FROM `cishoo_front_picture` [ RunTime:0.001442s ]
+SQL: SELECT `picture_id` FROM `cishoo_front_picture` WHERE ( `type` = 'video' ) ORDER BY id desc LIMIT 1   [ RunTime:0.001181s ]
+SQL: SHOW COLUMNS FROM `cishoo_file` [ RunTime:0.001490s ]
+SQL: SELECT * FROM `cishoo_file` WHERE ( `id` = 32 )  [ RunTime:0.001075s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000087s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000122s ]
+SQL: SHOW COLUMNS FROM `cishoo_picture` [ RunTime:0.001723s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 7 ) LIMIT 1   [ RunTime:0.001475s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 7 ) LIMIT 1   [ RunTime:0.001158s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 22 ) LIMIT 1   [ RunTime:0.001145s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 21 ) LIMIT 1   [ RunTime:0.001144s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 6 ) LIMIT 1   [ RunTime:0.001211s ]
+NOTIC: [8] Undefined index: conver_id /opt/ubuntu/webvr/Runtime/Cache/Home/769e70f2e46f34ceb60619bbda5e4691.php 第 105 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.017739s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017766s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000345s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000361s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000217s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000237s ]
+
+[ 2016-09-05T18:11:42+08:00 ] 192.168.209.1 /Home/Index/index
+SQL: SHOW COLUMNS FROM `cishoo_front_picture` [ RunTime:0.001336s ]
+SQL: SELECT * FROM `cishoo_front_picture` WHERE ( `type` = 'banner' ) AND ( `deleted` = 0 )  [ RunTime:0.001059s ]
+SQL: SHOW COLUMNS FROM `cishoo_category` [ RunTime:0.001763s ]
+SQL: SELECT `id` FROM `cishoo_category` WHERE ( `name` = 'index_product' ) LIMIT 1   [ RunTime:0.000895s ]
+SQL: SHOW COLUMNS FROM `cishoo_document` [ RunTime:0.002244s ]
+SQL: SELECT * FROM `cishoo_document` WHERE ( `category_id` = 2 ) AND ( `status` = 1 ) ORDER BY level LIMIT 2   [ RunTime:0.002019s ]
+SQL: SHOW COLUMNS FROM `cishoo_document_article` [ RunTime:0.001561s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.001025s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001190s ]
+SQL: SELECT `id` FROM `cishoo_category` WHERE ( `name` = 'index_prodecut_descript' ) LIMIT 1   [ RunTime:0.001162s ]
+SQL: SELECT * FROM `cishoo_document` WHERE ( `category_id` = 39 ) AND ( `status` = 1 ) ORDER BY level LIMIT 2   [ RunTime:0.002171s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 3 ) LIMIT 1   [ RunTime:0.001116s ]
+SQL: SELECT * FROM `cishoo_document_article` WHERE ( `id` = 4 ) LIMIT 1   [ RunTime:0.001169s ]
+SQL: SHOW COLUMNS FROM `cishoo_front_picture` [ RunTime:0.001295s ]
+SQL: SELECT `picture_id` FROM `cishoo_front_picture` WHERE ( `type` = 'video' ) ORDER BY id desc LIMIT 1   [ RunTime:0.001138s ]
+SQL: SHOW COLUMNS FROM `cishoo_file` [ RunTime:0.001503s ]
+SQL: SELECT * FROM `cishoo_file` WHERE ( `id` = 32 )  [ RunTime:0.001435s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000087s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000118s ]
+SQL: SHOW COLUMNS FROM `cishoo_picture` [ RunTime:0.001553s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 7 ) LIMIT 1   [ RunTime:0.001136s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 7 ) LIMIT 1   [ RunTime:0.001085s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 22 ) LIMIT 1   [ RunTime:0.001200s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 21 ) LIMIT 1   [ RunTime:0.001109s ]
+SQL: SELECT * FROM `cishoo_picture` WHERE ( `status` = 1 ) AND ( `id` = 6 ) LIMIT 1   [ RunTime:0.001184s ]
+NOTIC: [8] Undefined index: conver_id /opt/ubuntu/webvr/Runtime/Cache/Home/769e70f2e46f34ceb60619bbda5e4691.php 第 105 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.015069s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015090s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000044s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000057s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000022s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000039s ]
+
