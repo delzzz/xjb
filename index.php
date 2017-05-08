@@ -25,7 +25,7 @@ if(!is_file(APP_PATH . 'User/Conf/config.php')){
 	exit;
 }
 
-/**
+/**   
  * 缓存目录设置
  * 此目录必须可写，建议移动到非WEB目录
  */
@@ -36,7 +36,9 @@ define ( 'RUNTIME_PATH', './Runtime/' );
  * ThinkPHP亦可移动到WEB以外的目录
  */
 require './ThinkPHP/ThinkPHP.php';
-
+      
+	  
+	  
 
 
 
