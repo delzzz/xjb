@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +11,18 @@
     <!-- Font Awesome -->
     <!-- Custom Theme Style -->
     <link href="/Public/Admin/build/css/custom.min.css" rel="stylesheet">
+    
+    <style>
+        .box_sm:hover, .box_lg:hover {
+            background:  url("/Public/Admin/images/cishoo/bk-icon.png") no-repeat center;
+            background-size: 100% 100%;
+            height: 277px;
+            margin-top: -5px;
+            padding-bottom: 5px;
+            /*border-bottom: 5px solid #cc0000;*/
+        }
+    </style>
+
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -28,16 +39,13 @@
                         <ul class="nav side-menu">
                             <li>
                                 <a href="../index/index.html">
-                                    <div class="left_icon1"></div>
+                                    <div class="left_icon1"
+                                         style="background: url('/Public/Admin/images/cishoo/sidebar-icon-1.png') no-repeat center 100%;"></div>
                                     平台首页 <span class="fa fa-chevron-down"></span></a>
-                                <!--<ul class="nav child_menu">-->
-                                <!--<li><a href="../../index.html">Dashboard</a></li>-->
-                                <!--<li><a href="../../index2.html">Dashboard2</a></li>-->
-                                <!--<li><a href="../../index3.html">Dashboard3</a></li>-->
-                                <!--</ul>-->
                             </li>
                             <li><a href="../data_statistics/data_index.html">
-                                <div class="left_icon2"></div>
+                                <div class="left_icon2"
+                                     style="background: url('../../images/cishoo/sidebar-icon-2.png') no-repeat center 100%;"></div>
                                 数据统计 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="">新增统计</a></li>
@@ -47,7 +55,8 @@
                                 </ul>
                             </li>
                             <li><a href="../userbasicfile/basicfile.html">
-                                <div class="left_icon3"></div>
+                                <div class="left_icon3"
+                                     style="background: url('/Public/Admin/images/cishoo/sidebar-icon-3.png') no-repeat center 100%;"></div>
                                 老人基础档案 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="">老人基础档案</a></li>
@@ -55,15 +64,16 @@
                                 </ul>
                             </li>
                             <li><a href="../warning/warning_history.html">
-                                <div class="left_icon4"></div>
+                                <div class="left_icon4"
+                                     style="background: url('/Public/Admin/images/cishoo/sidebar-icon-4.png') no-repeat center 100%;"></div>
                                 设备报警 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="">历史报警查询</a></li>
-                                    <!--<li><a href="../../tables_dynamic.html">Table Dynamic</a></li>-->
                                 </ul>
                             </li>
                             <li><a href="../health/health_list.html">
-                                <div class="left_icon5"></div>
+                                <div class="left_icon5"
+                                     style="background: url('/Public/Admin/images/cishoo/sidebar-icon-5.png') no-repeat center 100%;"></div>
                                 健康管理 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="">用药提醒</a></li>
@@ -72,7 +82,8 @@
                                 </ul>
                             </li>
                             <li><a href="../usermanage/user_manage.html">
-                                <div class="left_icon6"></div>
+                                <div class="left_icon6"
+                                     style="background: url('/Public/Admin/images/cishoo/sidebar-icon-6.png') no-repeat center 100%;"></div>
                                 通知管理<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="">消息推送</a></li>
@@ -85,7 +96,8 @@
                         <!--<h3>代理商管理</h3>-->
                         <ul class="nav side-menu">
                             <li><a href="../agent/agent_index.html">
-                                <div class="left_icon7"></div>
+                                <div class="left_icon7"
+                                     style="background: url('/Public/Admin/images/cishoo/sidebar-icon-7.png') no-repeat center 100%;"></div>
                                 代理商/机构管理<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="../agent/agent.html">添加代理商</a></li>
@@ -95,19 +107,19 @@
                             </li>
 
                             <li><a href="../usermanage/user_manage.html">
-                                <div class="left_icon8"></div>
+                                <div class="left_icon8"
+                                     style="background: url('/Public/Admin/images/cishoo/sidebar-icon-8.png') no-repeat center 100%;"></div>
                                 账号管理<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="../usermanage/user_manage.html">当前账号管理</a></li>
                                     <li><a href="../usermanage/user_list.html">坐席管理</a></li>
                                 </ul>
                             </li>
+
                         </ul>
                     </div>
-
                 </div>
                 <!-- /sidebar menu -->
-
                 <!-- /menu footer buttons -->
                 <div class="sidebar-footer hidden-small">
                     <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -135,7 +147,8 @@
                     </div>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
-                            <a href="../../javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <a href="../../javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                               aria-expanded="false">
                                 <img src="/Public/Admin/images/img.jpg" alt="">John Doe
                                 <span class=" fa fa-angle-down"></span>
                             </a>
@@ -148,19 +161,21 @@
                                     </a>
                                 </li>
                                 <li><a href="../../javascript:;">Help</a></li>
-                                <li><a href="../../login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                <li><a href="../../login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                </li>
                             </ul>
                         </li>
 
                         <li role="presentation" class="dropdown">
-                            <a href="../../javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                            <a href="../../javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
+                               aria-expanded="false">
                                 <i class="fa fa-envelope-o"></i>
                                 <span class="badge bg-green">6</span>
                             </a>
                             <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                                 <li>
                                     <a>
-                                        <span class="image"><img src="/Public/Admin/images/img.jpg" alt="Profile Image" /></span>
+                                        <span class="image"><img src="/Public/Admin/images/img.jpg" alt="Profile Image"/></span>
                                 <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -172,7 +187,7 @@
                                 </li>
                                 <li>
                                     <a>
-                                        <span class="image"><img src="/Public/Admin/images/img.jpg" alt="Profile Image" /></span>
+                                        <span class="image"><img src="/Public/Admin/images/img.jpg" alt="Profile Image"/></span>
                                 <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -184,7 +199,7 @@
                                 </li>
                                 <li>
                                     <a>
-                                        <span class="image"><img src="/Public/Admin/images/img.jpg" alt="Profile Image" /></span>
+                                        <span class="image"><img src="/Public/Admin/images/img.jpg" alt="Profile Image"/></span>
                                 <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -196,7 +211,7 @@
                                 </li>
                                 <li>
                                     <a>
-                                        <span class="image"><img src="/Public/Admin/images/img.jpg" alt="Profile Image" /></span>
+                                        <span class="image"><img src="/Public/Admin/images/img.jpg" alt="Profile Image"/></span>
                                 <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -285,10 +300,5 @@
 <script src="/Public/Admin/vendors/morris.js/morris.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="/Public/Admin/build/js/custom.min.js"></script>
-<script type="text/javascript">
-    $(".side-menu li").click(function () {
-        alert($(this).index());
-    });
-</script>
 </body>
 </html>
