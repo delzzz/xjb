@@ -91,6 +91,9 @@ return array(
         '__IMG__' => __ROOT__ . '/Public/' . MODULE_NAME . '/images',
         '__CSS__' => __ROOT__ . '/Public/' . MODULE_NAME . '/css',
         '__JS__' => __ROOT__ . '/Public/' . MODULE_NAME . '/js',
+        '__VENDOR__' => __ROOT__ . '/Public/' . MODULE_NAME . '/vendors',
+        '__SRC__' => __ROOT__ . '/Public/' . MODULE_NAME . '/src',
+        '__BUILD__' => __ROOT__ . '/Public/' . MODULE_NAME . '/build',
     ),
 
     /* SESSION 和 COOKIE 配置 */

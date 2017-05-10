@@ -1,194 +1,294 @@
-<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
-<html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title><?php echo ($meta_title); ?>|OneThink管理平台</title>
-    <link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
-    <link rel="stylesheet" type="text/css" href="/Public/Admin/css/base.css" media="all">
-    <link rel="stylesheet" type="text/css" href="/Public/Admin/css/common.css" media="all">
-    <link rel="stylesheet" type="text/css" href="/Public/Admin/css/module.css">
-    <link rel="stylesheet" type="text/css" href="/Public/Admin/css/style.css" media="all">
-	<link rel="stylesheet" type="text/css" href="/Public/Admin/css/<?php echo (C("COLOR_STYLE")); ?>.css" media="all">
-     <!--[if lt IE 9]>
-    <script type="text/javascript" src="/Public/static/jquery-1.10.2.min.js"></script>
-    <![endif]--><!--[if gte IE 9]><!-->
-    <script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
-    <!--<![endif]-->
-    
-    <style>
-        body{padding: 0}
-    </style>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数据统计-首页</title>
+    <!-- Bootstrap -->
+    <link href="/Public/Admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <!-- Custom Theme Style -->
+    <link href="/Public/Admin/build/css/custom.min.css" rel="stylesheet">
 </head>
-<body>
-    <!-- 头部 -->
-    <div class="header">
-        <!-- Logo -->
-        <span class="logo"></span>
-        <!-- /Logo -->
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <!--left-->
+        <div class="col-md-3 wsh_left left_col">
+            <div class="left_col scroll-view">
+                <div class="text-center logo_bg" style="">
+                    <img style="" src="/Public/Admin/images/cishoologo.png">
+                </div>
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <!--<h3>General</h3>-->
+                        <ul class="nav side-menu">
+                            <li>
+                                <a href="../index/index.html">
+                                    <div class="left_icon1"></div>
+                                    平台首页 <span class="fa fa-chevron-down"></span></a>
+                                <!--<ul class="nav child_menu">-->
+                                <!--<li><a href="../../index.html">Dashboard</a></li>-->
+                                <!--<li><a href="../../index2.html">Dashboard2</a></li>-->
+                                <!--<li><a href="../../index3.html">Dashboard3</a></li>-->
+                                <!--</ul>-->
+                            </li>
+                            <li><a href="../data_statistics/data_index.html">
+                                <div class="left_icon2"></div>
+                                数据统计 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="">新增统计</a></li>
+                                    <li><a href="">沉默用户</a></li>
+                                    <li><a href="">基本数据</a></li>
 
-        <!-- 主导航 -->
-        <ul class="main-nav">
-            <?php if(is_array($__MENU__["main"])): $i = 0; $__LIST__ = $__MENU__["main"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li class="<?php echo ((isset($menu["class"]) && ($menu["class"] !== ""))?($menu["class"]):''); ?>"><a href="<?php echo (u($menu["url"])); ?>"><?php echo ($menu["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
-        </ul>
-        <!-- /主导航 -->
+                                </ul>
+                            </li>
+                            <li><a href="../userbasicfile/basicfile.html">
+                                <div class="left_icon3"></div>
+                                老人基础档案 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="">老人基础档案</a></li>
+                                    <li><a href="">老人健康档案</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="../warning/warning_history.html">
+                                <div class="left_icon4"></div>
+                                设备报警 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="">历史报警查询</a></li>
+                                    <!--<li><a href="../../tables_dynamic.html">Table Dynamic</a></li>-->
+                                </ul>
+                            </li>
+                            <li><a href="../health/health_list.html">
+                                <div class="left_icon5"></div>
+                                健康管理 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="">用药提醒</a></li>
+                                    <li><a href="">健康监控</a></li>
 
-        <!-- 用户栏 -->
-        <div class="user-bar">
-            <a href="javascript:;" class="user-entrance"><i class="icon-user"></i></a>
-            <ul class="nav-list user-menu hidden">
-                <li class="manager">你好，<em title="<?php echo session('user_auth.username');?>"><?php echo session('user_auth.username');?></em></li>
-                <li><a href="<?php echo U('User/updatePassword');?>">修改密码</a></li>
-                <li><a href="<?php echo U('User/updateNickname');?>">修改昵称</a></li>
-                <li><a href="<?php echo U('Public/logout');?>">退出</a></li>
-            </ul>
+                                </ul>
+                            </li>
+                            <li><a href="../usermanage/user_manage.html">
+                                <div class="left_icon6"></div>
+                                通知管理<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="">消息推送</a></li>
+                                    <li><a href="">代理通知</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu_section">
+                        <!--<h3>代理商管理</h3>-->
+                        <ul class="nav side-menu">
+                            <li><a href="../agent/agent_index.html">
+                                <div class="left_icon7"></div>
+                                代理商/机构管理<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="../agent/agent.html">添加代理商</a></li>
+                                    <li><a href="../agent/agent2.html">添加机构平台</a></li>
+                                    <li><a href="../agent/agent_index.html">医疗机构详情</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="../usermanage/user_manage.html">
+                                <div class="left_icon8"></div>
+                                账号管理<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="../usermanage/user_manage.html">当前账号管理</a></li>
+                                    <li><a href="../usermanage/user_list.html">坐席管理</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="Settings">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Lock">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="../../login.html">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div>
         </div>
-    </div>
-    <!-- /头部 -->
+        <!--top-->
+        <div class="top_nav wsh_top">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="../../javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="/Public/Admin/images/img.jpg" alt="">John Doe
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li><a href="../../javascript:;"> Profile</a></li>
+                                <li>
+                                    <a href="../../javascript:;">
+                                        <span class="badge bg-red pull-right">50%</span>
+                                        <span>Settings</span>
+                                    </a>
+                                </li>
+                                <li><a href="../../javascript:;">Help</a></li>
+                                <li><a href="../../login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                            </ul>
+                        </li>
 
-    <!-- 边栏 -->
-    <div class="sidebar">
-        <!-- 子导航 -->
+                        <li role="presentation" class="dropdown">
+                            <a href="../../javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="badge bg-green">6</span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="/Public/Admin/images/img.jpg" alt="Profile Image" /></span>
+                                <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="/Public/Admin/images/img.jpg" alt="Profile Image" /></span>
+                                <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="/Public/Admin/images/img.jpg" alt="Profile Image" /></span>
+                                <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="/Public/Admin/images/img.jpg" alt="Profile Image" /></span>
+                                <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="text-center">
+                                        <a>
+                                            <strong>See All Alerts</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!--page content-->
         
-        <!-- /子导航 -->
-    </div>
-    <!-- /边栏 -->
-
-    <!-- 内容区 -->
-    <div id="main-content">
-        <div id="top-alert" class="fixed alert alert-error" style="display: none;">
-            <button class="close fixed" style="margin-top: 4px;">&times;</button>
-            <div class="alert-content">这是内容</div>
-        </div>
-        <div id="main" class="main">
-            
-            <!-- nav -->
-            <?php if(!empty($_show_nav)): ?><div class="breadcrumb">
-                <span>您的位置:</span>
-                <?php $i = '1'; ?>
-                <?php if(is_array($_nav)): foreach($_nav as $k=>$v): if($i == count($_nav)): ?><span><?php echo ($v); ?></span>
-                    <?php else: ?>
-                    <span><a href="<?php echo ($k); ?>"><?php echo ($v); ?></a>&gt;</span><?php endif; ?>
-                    <?php $i = $i+1; endforeach; endif; ?>
-            </div><?php endif; ?>
-            <!-- nav -->
-            
-
-            
-    <!-- 主体 -->
-    <div id="indexMain" class="index-main">
-       <!-- 插件块 -->
-       <div class="container-span"><?php echo hook('AdminIndex');?></div>
-    </div>
-
-        </div>
-        <div class="cont-ft">
-            <div class="copyright">
-                <div class="fl">感谢使用<a href="http://www.onethink.cn" target="_blank">OneThink</a>管理平台</div>
-                <div class="fr">V<?php echo (ONETHINK_VERSION); ?></div>
+    <div class="right_col" role="main">
+        <div class="box_nav" style="">
+            <div class="row top_tiles">
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="box_sm text-center bg_1">
+                        <img src="/Public/Admin/images/cishoo/bk-icon-1.png">
+                        <div>数据统计</div>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="box_sm text-center bg_2">
+                        <img src="/Public/Admin/images/cishoo/bk-icon-2.png">
+                        <div>老人基础档案</div>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="box_sm text-center bg_3">
+                        <img src="/Public/Admin/images/cishoo/bk-icon-3.png">
+                        <div>设备报警</div>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="box_sm text-center bg_4">
+                        <img src="/Public/Admin/images/cishoo/bk-icon-4.png">
+                        <div>健康管理</div>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="box_lg text-center bg_5">
+                        <img src="/Public/Admin/images/cishoo/bk-icon-5.png">
+                        <div>通知管理</div>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="box_lg text-center bg_6">
+                        <img src="/Public/Admin/images/cishoo/bk-icon-6.png">
+                        <div>账号管理</div>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="box_lg text-center bg_7">
+                        <img src="/Public/Admin/images/cishoo/bk-icon-7.png">
+                        <div>代理商/机构管理</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- /内容区 -->
-    <script type="text/javascript">
-    (function(){
-        var ThinkPHP = window.Think = {
-            "ROOT"   : "", //当前网站地址
-            "APP"    : "", //当前项目地址
-            "PUBLIC" : "/Public", //项目公共目录地址
-            "DEEP"   : "<?php echo C('URL_PATHINFO_DEPR');?>", //PATHINFO分割符
-            "MODEL"  : ["<?php echo C('URL_MODEL');?>", "<?php echo C('URL_CASE_INSENSITIVE');?>", "<?php echo C('URL_HTML_SUFFIX');?>"],
-            "VAR"    : ["<?php echo C('VAR_MODULE');?>", "<?php echo C('VAR_CONTROLLER');?>", "<?php echo C('VAR_ACTION');?>"]
-        }
-    })();
-    </script>
-    <script type="text/javascript" src="/Public/static/think.js"></script>
-    <script type="text/javascript" src="/Public/Admin/js/common.js"></script>
-    <script type="text/javascript">
-        +function(){
-            var $window = $(window), $subnav = $("#subnav"), url;
-            $window.resize(function(){
-                $("#main").css("min-height", $window.height() - 130);
-            }).resize();
 
-            /* 左边菜单高亮 */
-            url = window.location.pathname + window.location.search;
-            url = url.replace(/(\/(p)\/\d+)|(&p=\d+)|(\/(id)\/\d+)|(&id=\d+)|(\/(group)\/\d+)|(&group=\d+)/, "");
-            $subnav.find("a[href='" + url + "']").parent().addClass("current");
-
-            /* 左边菜单显示收起 */
-            $("#subnav").on("click", "h3", function(){
-                var $this = $(this);
-                $this.find(".icon").toggleClass("icon-fold");
-                $this.next().slideToggle("fast").siblings(".side-sub-menu:visible").
-                      prev("h3").find("i").addClass("icon-fold").end().end().hide();
-            });
-
-            $("#subnav h3 a").click(function(e){e.stopPropagation()});
-
-            /* 头部管理员菜单 */
-            $(".user-bar").mouseenter(function(){
-                var userMenu = $(this).children(".user-menu ");
-                userMenu.removeClass("hidden");
-                clearTimeout(userMenu.data("timeout"));
-            }).mouseleave(function(){
-                var userMenu = $(this).children(".user-menu");
-                userMenu.data("timeout") && clearTimeout(userMenu.data("timeout"));
-                userMenu.data("timeout", setTimeout(function(){userMenu.addClass("hidden")}, 100));
-            });
-
-	        /* 表单获取焦点变色 */
-	        $("form").on("focus", "input", function(){
-		        $(this).addClass('focus');
-	        }).on("blur","input",function(){
-				        $(this).removeClass('focus');
-			        });
-		    $("form").on("focus", "textarea", function(){
-			    $(this).closest('label').addClass('focus');
-		    }).on("blur","textarea",function(){
-			    $(this).closest('label').removeClass('focus');
-		    });
-
-            // 导航栏超出窗口高度后的模拟滚动条
-            var sHeight = $(".sidebar").height();
-            var subHeight  = $(".subnav").height();
-            var diff = subHeight - sHeight; //250
-            var sub = $(".subnav");
-            if(diff > 0){
-                $(window).mousewheel(function(event, delta){
-                    if(delta>0){
-                        if(parseInt(sub.css('marginTop'))>-10){
-                            sub.css('marginTop','0px');
-                        }else{
-                            sub.css('marginTop','+='+10);
-                        }
-                    }else{
-                        if(parseInt(sub.css('marginTop'))<'-'+(diff-10)){
-                            sub.css('marginTop','-'+(diff-10));
-                        }else{
-                            sub.css('marginTop','-='+10);
-                        }
-                    }
-                });
-            }
-        }();
-    </script>
-    
+    </div>
+</div>
+<script src="/Public/Admin/vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/Public/Admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<!-- bootstrap-daterangepicker -->
+<script src="/Public/Admin/vendors/moment/min/moment.min.js"></script>
+<script src="/Public/Admin/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="/Public/Admin/vendors/raphael/raphael.min.js"></script>
+<script src="/Public/Admin/vendors/morris.js/morris.min.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="/Public/Admin/build/js/custom.min.js"></script>
 <script type="text/javascript">
-    /* 插件块关闭操作 */
-    $(".title-opt .wm-slide").each(function(){
-        $(this).click(function(){
-            $(this).closest(".columns-mod").find(".bd").toggle();
-            $(this).find("i").toggleClass("mod-up");
-        });
-    })
-    $(function(){
-        // $('#main').attr({'id': 'indexMain','class': 'index-main'});
-        $('.copyright').html('<div class="copyright"> ©2013 <a href="http://www.topthink.net" target="_blank">topthink.net</a> 上海顶想信息科技有限公司版权所有</div>');
-        $('.sidebar').remove();
-    })
+    $(".side-menu li").click(function () {
+        alert($(this).index());
+    });
 </script>
-
 </body>
 </html>

@@ -88,7 +88,7 @@
     <div class="index_list">
         <div class="index_list1">
             <div class="index_tit">
-                WHAT CAN <span class="cl6">WE OFFER<?php echo (L("ss")); ?>?</span>
+                WHAT CAN <span class="cl6">WE OFFER?</span>
             </div>
             <div class="index_text1" style="">
                 <?php if(is_array($productList)): $i = 0; $__LIST__ = $productList;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$product): $mod = ($i % 2 );++$i;?><div class="index_text01" style=" ">
