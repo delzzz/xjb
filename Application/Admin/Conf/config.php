@@ -60,10 +60,10 @@ return array(
         'rename' => false
     ),
     'UPLOAD_QINIU_CONFIG' => array(
-        'accessKey' => '__ODsglZwwjRJNZHAu7vtcEf-zgIxdQAY-QqVrZD',
-        'secrectKey' => 'Z9-RahGtXhKeTUYy9WCnLbQ98ZuZ_paiaoBjByKv',
-        'bucket' => 'onethinktest',
-        'domain' => 'onethinktest.u.qiniudn.com',
+        'accessKey' => 'bdwqwF5SJiIKUeQKt5eDJ_1KKcdiDtrX0BCqV-j0',
+        'secrectKey' => 'fE1sY3EcK81b0fDyQB1YgKgVwRdUZ1lp2uPF3wiP',
+        'bucket' => 'csyl',
+        'domain' => 'opqbvrdj2.bkt.clouddn.com',
         'timeout' => 3600,
     ),
 
