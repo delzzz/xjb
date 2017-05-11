@@ -10,6 +10,7 @@
     <link href="/Public/Admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <!-- Custom Theme Style -->
+    <link href="/Public/Admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="/Public/Admin/build/css/custom.min.css" rel="stylesheet">
     
     <style>
@@ -19,7 +20,6 @@
             height: 277px;
             margin-top: -5px;
             padding-bottom: 5px;
-            /*border-bottom: 5px solid #cc0000;*/
         }
     </style>
 
@@ -39,13 +39,11 @@
                         <ul class="nav side-menu">
                             <li>
                                 <a href="../index/index.html">
-                                    <div class="left_icon1"
-                                         style="background: url('/Public/Admin/images/cishoo/sidebar-icon-1.png') no-repeat center 100%;"></div>
+                                    <div class="left_icon1" style="background: url('/Public/Admin/images/cishoo/sidebar-icon-1.png') no-repeat center 100%;"></div>
                                     平台首页 <span class="fa fa-chevron-down"></span></a>
                             </li>
-                            <li><a href="../data_statistics/data_index.html">
-                                <div class="left_icon2"
-                                     style="background: url('../../images/cishoo/sidebar-icon-2.png') no-repeat center 100%;"></div>
+                            <li><a>
+                                <div class="left_icon2" style="background: url('/Public/Admin/images/cishoo/sidebar-icon-2.png') no-repeat center 100%;"></div>
                                 数据统计 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="">新增统计</a></li>
@@ -54,7 +52,7 @@
 
                                 </ul>
                             </li>
-                            <li><a href="../userbasicfile/basicfile.html">
+                            <li><a>
                                 <div class="left_icon3"
                                      style="background: url('/Public/Admin/images/cishoo/sidebar-icon-3.png') no-repeat center 100%;"></div>
                                 老人基础档案 <span class="fa fa-chevron-down"></span></a>
@@ -63,7 +61,7 @@
                                     <li><a href="">老人健康档案</a></li>
                                 </ul>
                             </li>
-                            <li><a href="../warning/warning_history.html">
+                            <li><a>
                                 <div class="left_icon4"
                                      style="background: url('/Public/Admin/images/cishoo/sidebar-icon-4.png') no-repeat center 100%;"></div>
                                 设备报警 <span class="fa fa-chevron-down"></span></a>
@@ -71,7 +69,7 @@
                                     <li><a href="">历史报警查询</a></li>
                                 </ul>
                             </li>
-                            <li><a href="../health/health_list.html">
+                            <li><a>
                                 <div class="left_icon5"
                                      style="background: url('/Public/Admin/images/cishoo/sidebar-icon-5.png') no-repeat center 100%;"></div>
                                 健康管理 <span class="fa fa-chevron-down"></span></a>
@@ -81,7 +79,7 @@
 
                                 </ul>
                             </li>
-                            <li><a href="../usermanage/user_manage.html">
+                            <li><a>
                                 <div class="left_icon6"
                                      style="background: url('/Public/Admin/images/cishoo/sidebar-icon-6.png') no-repeat center 100%;"></div>
                                 通知管理<span class="fa fa-chevron-down"></span></a>
@@ -95,7 +93,7 @@
                     <div class="menu_section">
                         <!--<h3>代理商管理</h3>-->
                         <ul class="nav side-menu">
-                            <li><a href="../agent/agent_index.html">
+                            <li><a>
                                 <div class="left_icon7"
                                      style="background: url('/Public/Admin/images/cishoo/sidebar-icon-7.png') no-repeat center 100%;"></div>
                                 代理商/机构管理<span class="fa fa-chevron-down"></span></a>
@@ -106,7 +104,7 @@
                                 </ul>
                             </li>
 
-                            <li><a href="../usermanage/user_manage.html">
+                            <li><a >
                                 <div class="left_icon8"
                                      style="background: url('/Public/Admin/images/cishoo/sidebar-icon-8.png') no-repeat center 100%;"></div>
                                 账号管理<span class="fa fa-chevron-down"></span></a>
@@ -298,7 +296,14 @@
 <!-- Custom Theme Scripts -->
 <script src="/Public/Admin/vendors/raphael/raphael.min.js"></script>
 <script src="/Public/Admin/vendors/morris.js/morris.min.js"></script>
+<script src="/Public/Admin/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="/Public/Admin/build/js/custom.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("li").removeClass('active');
+        $(".child_menu").css('display','none');
+    });
+</script>
 </body>
 </html>

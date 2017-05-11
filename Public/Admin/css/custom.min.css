@@ -804,7 +804,7 @@ a {
 }
 
 .nav-md ul.nav.child_menu li:before {
-    background: #d90000;
+    /*background: #d90000;*/
     bottom: auto;
     content: "";
     height: 8px;
@@ -865,7 +865,7 @@ a {
 
 .nav li.current-page {
     /*background: rgba(255, 255, 255, .05)*/
-    background: #bf0000;
+    /*background: #bf0000;*/
 }
 
 .nav li li li.current-page {
