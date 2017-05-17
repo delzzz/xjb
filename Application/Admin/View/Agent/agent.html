@@ -1,6 +1,7 @@
 <extend name="Public/base"/>
 
 <block name="body">
+
     <div class="right_col" role="main">
         <div class="col-md-12 col-xs-12">
             <div class="x_panel">
@@ -12,7 +13,7 @@
                 </div>
                 <div class="x_content row">
                     <br/>
-                    <form class="form-horizontal form-label-left">
+                    <div class="form-horizontal form-label-left">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">代理商名称:</label>
@@ -78,7 +79,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             <div class="x_panel">
@@ -90,7 +91,7 @@
                 </div>
                 <div class="x_content row">
                     <br/>
-                    <form class="form-horizontal form-label-left">
+                    <div class="form-horizontal form-label-left">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">负责人姓名:</label>
@@ -113,7 +114,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             <div class="x_panel">
@@ -125,7 +126,7 @@
                 </div>
                 <div class="x_content row">
                     <br/>
-                    <form class="form-horizontal form-label-left">
+                    <div class="form-horizontal form-label-left">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">登录密码:</label>
@@ -140,7 +141,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -153,7 +154,7 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <form action="form_upload.html" class="dropzone"></form>
+                            <div class="dropzone"></div>
                         </div>
                     </div>
                 </div>
@@ -216,6 +217,40 @@
                     </div>
                 </div>
             </div>
+            <div class="x_panel">
+                <div class="x_title clear">
+                    <h2>操作</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <br/>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                    <button class="btn btn-lg btn-danger">保存</button>
+                    <button class="btn btn-lg btn-danger">关闭页面</button>
+                </div>
+            </div>
         </div>
     </div>
+
+    <script src="__VENDOR__/jquery/dist/jquery.min.js"></script>
+    <script src="__VENDOR__/dropzone/dist/min/dropzone.min.js"></script>
+
+    <script>
+        Dropzone.autoDiscover = false;
+        $(".dropzone").dropzone({
+            url: "{:U('File/upload')}",
+            maxFiles: 5,
+            maxFilesize: 10,
+            addRemoveLinks: true,
+            dictRemoveLinks: "x",
+            dictCancelUpload: "x",
+            init: function() {
+                this.on("removedfile", function(file){
+
+                });
+            }
+        })
+    </script>
+
 </block>

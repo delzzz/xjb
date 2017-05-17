@@ -10,6 +10,7 @@ class AgentController extends AdminController
 
     function agent()
     {
+
         $this->display('agent');
     }
 
