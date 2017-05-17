@@ -47,11 +47,6 @@ class FileModel extends Model
         /* 上传文件 */
         $Upload = new Upload($setting, $driver, $config);
         $info = $Upload->upload($files);
-        /* 设置文件保存位置 */
-        $this->_auto[] = array('location', 'ftp' === strtolower($driver) ? 1 : 0, self::MODEL_INSERT);
-        $myfile = fopen('test.txt', "a");
-        fwrite($myfile, var_export($info, true));
-        die();
         if ($info) { //文件上传成功，记录文件信息
             return $info; //文件上传成功
         } else {
