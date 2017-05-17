@@ -20,7 +20,6 @@ class FileController extends AdminController
     /* 文件上传 */
     public function upload()
     {
-        /* 调用文件上传组件上传文件 */
         $File = D('File');
         $info = $File->upload(
             $_FILES,
@@ -28,7 +27,11 @@ class FileController extends AdminController
             'Qiniu',
             C("UPLOAD_QINIU_CONFIG")
         );
+//        $myfile = fopen('test.txt', "a");
+//        fwrite($myfile, var_export($info,true));
+//        die();
         /* 返回JSON数据 */
+        echo $info['file']['url'];die();
         $this->ajaxReturn($info);
     }
 
