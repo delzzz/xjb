@@ -50,7 +50,7 @@ return array(
         'callback' => false, //检测文件是否存在回调函数，如果存在返回文件信息数组
     ), //图片上传相关配置（文件上传类配置）
 
-    'PICTURE_UPLOAD_DRIVER' => 'Local',
+    'PICTURE_UPLOAD_DRIVER' => 'Qiniu',
     //本地上传文件驱动配置
     'UPLOAD_LOCAL_CONFIG' => array(),
     'UPLOAD_BCS_CONFIG' => array(

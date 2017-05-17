@@ -15,6 +15,7 @@ class AgentController extends AdminController
 
     function agent2()
     {
+        $this->meta_title = "保存代理机构信息";
         $this->display('agent2');
     }
 }
