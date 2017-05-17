@@ -28,7 +28,7 @@ class FileController extends AdminController
             C("UPLOAD_QINIU_CONFIG")
         );
 //        $myfile = fopen('test.txt', "a");
-//        fwrite($myfile, var_export($info,true));
+//        fwrite($myfile,$info['file']['url']);
 //        die();
         /* 返回JSON数据 */
         echo $info['file']['url'];die();

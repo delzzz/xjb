@@ -262,12 +262,12 @@
             addRemoveLinks: true,
             dictRemoveLinks: "x",
             dictCancelUpload: "x",
-            init: function() {
-                this.on("removedfile", function(file){
+            init: function () {
+//                this.on("removedfile", function (file) {
+//                });
+                this.on("complete", function (data) {
+                    console.log(data);
                 });
-            },
-            success: function (data) {
-                console.log(data);
             }
         });
     </script>
