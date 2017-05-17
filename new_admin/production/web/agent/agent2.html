@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>代理商管理-添加代理商</title>
+    <title>代理商管理-添加机构</title>
     <!-- Bootstrap -->
     <link href="../../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -69,9 +69,7 @@
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">联系电话:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <div id="distpicker2" class="">
-                                            <select class="form-control"></select>
-                                        </div>
+                                        <input type="text" class="form-control" placeholder="">
                                     </div>
                                 </div>
 
@@ -86,7 +84,9 @@
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">所属区域:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" placeholder="">
+                                        <div id="distpicker2" class="">
+                                            <input type="password" class="form-control" placeholder="">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -128,6 +128,7 @@
                         </form>
                     </div>
                 </div>
+                <!--管理人员-->
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>管理人员基本信息</h2>
@@ -198,33 +199,34 @@
                         </form>
                     </div>
                 </div>
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>登录密码</h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content row">
-                        <br/>
-                        <form class="form-horizontal form-label-left">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">登录密码:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <!--<div class="x_panel">-->
+                    <!--<div class="x_title">-->
+                        <!--<h2>登录密码</h2>-->
+                        <!--<ul class="nav navbar-right panel_toolbox">-->
+                        <!--</ul>-->
+                        <!--<div class="clearfix"></div>-->
+                    <!--</div>-->
+                    <!--<div class="x_content row">-->
+                        <!--<br/>-->
+                        <!--<form class="form-horizontal form-label-left">-->
+                            <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+                                <!--<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">-->
+                                    <!--<label class="control-label col-md-4 col-sm-4 col-xs-12">登录密码:</label>-->
+                                    <!--<div class="col-md-8 col-sm-8 col-xs-12">-->
+                                        <!--<input type="text" class="form-control" placeholder="">-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">-->
+                                    <!--<label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>-->
+                                    <!--<div class="col-md-8 col-sm-8 col-xs-12">-->
+                                        <!--<input type="text" class="form-control" placeholder="">-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--证件上传-->
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
@@ -240,64 +242,47 @@
                         </div>
                     </div>
                 </div>
+                <!--具备条件-->
                 <div class="x_panel">
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                         <div class="x_title">
-                            <h2>设备选择</h2>
+                            <h2>具备条件</h2>
                             <ul class="nav navbar-right panel_toolbox">
                             </ul>
                             <div class="clearfix"></div>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
-                            <br>
-                            <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                <label>
-                                    <input type="checkbox" class="flat"> 老人终端机
-                                </label>
-                            </div>
-                            <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                <label>
-                                    <input type="checkbox" class="flat"> SOS手腕
-                                </label>
-                            </div>
-                            <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                <label>
-                                    <input type="checkbox" class="flat"> 门磁状态检测仪
-                                </label>
-                            </div>
-                            <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                <label>
-                                    <input type="checkbox" class="flat">
-                                    烟雾报警器
-                                </label>
-                            </div>
-                            <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                <label>
-                                    <input type="checkbox" class="flat">
-                                    漏水检测器
-                                </label>
-                            </div>
-                            <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                <label>
-                                    <input type="checkbox" class="flat">
-                                    呼吸心率仪
-                                </label>
-                            </div>
-                            <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                <label>
-                                    <input type="checkbox" class="flat">
-                                    人体红外加测
-                                </label>
-                            </div>
-                            <div class="checkbox col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-md-12 col-sm-12 col-xs-12 ">
                                 <br>
-                                <label>
-                                    <input type="text" class="flat form-control" placeholder="设备数量">
-                                </label>
+                                <div class="checkbox col-md-1 col-sm-1 col-xs-12">
+
+                                </div>
+                                <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                    <label>
+                                        <input type="checkbox" class="flat"> 医护人员
+                                    </label>
+                                </div>
+                                <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                    <label>
+                                        <input type="checkbox" class="flat"> 急救设施
+                                    </label>
+                                </div>
+                                <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                    <label>
+                                        <input type="checkbox" class="flat"> 拥有坐席
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                        <button class="btn btn-lg btn-danger">保存</button>
+                        <button class="btn btn-lg btn-danger">关闭</button>
+                    </div>
                 </div>
+
+
             </div>
         </div>
     </div>
@@ -307,38 +292,38 @@
 <!-- Bootstrap -->
 <script src="../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script src="../../../vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="../../../vendors/nprogress/nprogress.js"></script>
-<!-- Chart.js -->
-<script src="../../../vendors/Chart.js/dist/Chart.min.js"></script>
-<!-- gauge.js -->
-<script src="../../../vendors/gauge.js/dist/gauge.min.js"></script>
-<!-- bootstrap-progressbar -->
-<script src="../../../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-<!-- iCheck -->
-<script src="../../../vendors/iCheck/icheck.min.js"></script>
-<!-- Skycons -->
-<script src="../../../vendors/skycons/skycons.js"></script>
-<!-- Flot -->
-<script src="../../../vendors/Flot/jquery.flot.js"></script>
-<script src="../../../vendors/Flot/jquery.flot.pie.js"></script>
-<script src="../../../vendors/Flot/jquery.flot.time.js"></script>
-<script src="../../../vendors/Flot/jquery.flot.stack.js"></script>
-<script src="../../../vendors/Flot/jquery.flot.resize.js"></script>
-<!-- Flot plugins -->
-<script src="../../../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-<script src="../../../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-<script src="../../../vendors/flot.curvedlines/curvedLines.js"></script>
-<!-- DateJS -->
-<script src="../../../vendors/DateJS/build/date.js"></script>
-<!-- JQVMap -->
-<script src="../../../vendors/jqvmap/dist/jquery.vmap.js"></script>
-<script src="../../../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-<script src="../../../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-<!-- bootstrap-daterangepicker -->
-<script src="../../../vendors/moment/min/moment.min.js"></script>
-<script src="../../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!--<script src="../../../vendors/fastclick/lib/fastclick.js"></script>-->
+<!--&lt;!&ndash; NProgress &ndash;&gt;-->
+<!--<script src="../../../vendors/nprogress/nprogress.js"></script>-->
+<!--&lt;!&ndash; Chart.js &ndash;&gt;-->
+<!--<script src="../../../vendors/Chart.js/dist/Chart.min.js"></script>-->
+<!--&lt;!&ndash; gauge.js &ndash;&gt;-->
+<!--<script src="../../../vendors/gauge.js/dist/gauge.min.js"></script>-->
+<!--&lt;!&ndash; bootstrap-progressbar &ndash;&gt;-->
+<!--<script src="../../../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>-->
+<!--&lt;!&ndash; iCheck &ndash;&gt;-->
+<!--<script src="../../../vendors/iCheck/icheck.min.js"></script>-->
+<!--&lt;!&ndash; Skycons &ndash;&gt;-->
+<!--<script src="../../../vendors/skycons/skycons.js"></script>-->
+<!--&lt;!&ndash; Flot &ndash;&gt;-->
+<!--<script src="../../../vendors/Flot/jquery.flot.js"></script>-->
+<!--<script src="../../../vendors/Flot/jquery.flot.pie.js"></script>-->
+<!--<script src="../../../vendors/Flot/jquery.flot.time.js"></script>-->
+<!--<script src="../../../vendors/Flot/jquery.flot.stack.js"></script>-->
+<!--<script src="../../../vendors/Flot/jquery.flot.resize.js"></script>-->
+<!--&lt;!&ndash; Flot plugins &ndash;&gt;-->
+<!--<script src="../../../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>-->
+<!--<script src="../../../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>-->
+<!--<script src="../../../vendors/flot.curvedlines/curvedLines.js"></script>-->
+<!--&lt;!&ndash; DateJS &ndash;&gt;-->
+<!--<script src="../../../vendors/DateJS/build/date.js"></script>-->
+<!--&lt;!&ndash; JQVMap &ndash;&gt;-->
+<!--<script src="../../../vendors/jqvmap/dist/jquery.vmap.js"></script>-->
+<!--<script src="../../../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>-->
+<!--<script src="../../../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>-->
+<!--&lt;!&ndash; bootstrap-daterangepicker &ndash;&gt;-->
+<!--<script src="../../../vendors/moment/min/moment.min.js"></script>-->
+<!--<script src="../../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>-->
 <script src="../../js/cishoo.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../../vendors/nprogress/nprogress.js"></script>
