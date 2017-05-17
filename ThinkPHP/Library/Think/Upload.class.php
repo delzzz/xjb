@@ -163,17 +163,6 @@ class Upload{
                 $file['sha1'] = sha1_file($file['tmp_name']);
             }
 
-            /* 调用回调函数检测文件是否存在 */
-            $data = call_user_func($this->callback, $file);
-            if( $this->callback && $data ){
-                if ( file_exists('.'.$data['path'])  ) {
-                    $info[$key] = $data;
-                    continue;
-                }elseif($this->removeTrash){
-                    call_user_func($this->removeTrash,$data);//删除垃圾据
-                }
-            }
-
             /* 生成保存文件名 */
             $savename = $this->getSaveName($file);
             if(false == $savename){
