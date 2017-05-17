@@ -28,12 +28,14 @@
                         <!--<h3>General</h3>-->
                         <ul class="nav side-menu">
                             <li>
-                                <a href="{:U('index/index')} ">
-                                    <div class="left_icon1" style="background: url('__IMG__/cishoo/sidebar-icon-1.png') no-repeat center 100%;"></div>
+                                <a href="{:U('Index/index')} ">
+                                    <div class="left_icon1"
+                                         style="background: url('__IMG__/cishoo/sidebar-icon-1.png') no-repeat center 100%;"></div>
                                     平台首页 <span class="fa fa-chevron-down"></span></a>
                             </li>
                             <li><a>
-                                <div class="left_icon2" style="background: url('__IMG__/cishoo/sidebar-icon-2.png') no-repeat center 100%;"></div>
+                                <div class="left_icon2"
+                                     style="background: url('__IMG__/cishoo/sidebar-icon-2.png') no-repeat center 100%;"></div>
                                 数据统计 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{:U('Statistics/add')}">新增统计</a></li>
@@ -42,7 +44,8 @@
                                 </ul>
                             </li>
                             <li><a>
-                                <div class="left_icon3" style="background: url('__IMG__/cishoo/sidebar-icon-3.png') no-repeat center 100%;"></div>
+                                <div class="left_icon3"
+                                     style="background: url('__IMG__/cishoo/sidebar-icon-3.png') no-repeat center 100%;"></div>
                                 老人基础档案 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{:U('Userbasicfile/basicfile')}">老人基础档案</a></li>
@@ -54,7 +57,7 @@
                                      style="background: url('__IMG__/cishoo/sidebar-icon-4.png') no-repeat center 100%;"></div>
                                 设备报警 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="{:U('warning/warning_history')}">历史报警查询</a></li>
+                                    <li><a href="{:U('Warning/warning_history')}">历史报警查询</a></li>
                                 </ul>
                             </li>
                             <li><a>
@@ -92,7 +95,7 @@
                                 </ul>
                             </li>
 
-                            <li><a >
+                            <li><a>
                                 <div class="left_icon8"
                                      style="background: url('__IMG__/cishoo/sidebar-icon-8.png') no-repeat center 100%;"></div>
                                 账号管理<span class="fa fa-chevron-down"></span></a>
@@ -236,12 +239,13 @@
 <script src="__VENDOR__/raphael/raphael.min.js"></script>
 <script src="__VENDOR__/morris.js/morris.min.js"></script>
 <script src="__VENDOR__/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<script src="__VENDOR__/dropzone/dist/min/dropzone.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="__BUILD__/js/custom.min.js"></script>
 <script type="text/javascript">
-    $(function(){
+    $(function () {
         $("li").removeClass('active');
-        $(".child_menu").css('display','none');
+        $(".child_menu").css('display', 'none');
     });
 </script>
 </body>
