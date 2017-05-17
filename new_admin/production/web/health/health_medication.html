@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>健康档案-用药信息</title>
+    <title>健康档案-用药提醒</title>
     <!-- Bootstrap -->
     <link href="../../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -91,38 +91,59 @@
                                 <thead>
                                 <tr class="headings">
                                     <th class="column-title">老人姓名</th>
-                                    <th class="column-title">设备号</th>
-                                    <th class="column-title">呼吸测量数据</th>
-                                    <th class="column-title">心率测试数据</th>
-                                    <th class="column-title">睡眠质量</th>
-                                    <th class="column-title">测试时间</th>
+                                    <th class="column-title">性别</th>
+                                    <th class="column-title">年龄</th>
+                                    <th class="column-title">药品名称</th>
+                                    <th class="column-title">用量</th>
+                                    <th class="column-title">第一次</th>
+                                    <th class="column-title no-link last"><span class="nobr">第二次</span></th>
+                                    <th class="column-title">用药状态</th>
+                                    <th class="column-title">开始时间</th>
                                     <th class="column-title">操作</th>
                                 </tr>
                                 </thead>
                                 <tr class="even pointer">
-                                    <th class="column-title">王刚</th>
-                                    <th class="column-title">00001</th>
-                                    <th class="column-title">120</th>
-                                    <th class="column-title">130</th>
-                                    <th class="column-title">优</th>
-                                    <th class="column-title">2015-12-12 12:00:00</th>
+                                    <td class="">王刚</td>
+                                    <td class=" ">男</td>
+                                    <td class=" ">65</td>
+                                    <td class=" ">救心丸</td>
+                                    <td class=" ">1次/粒</td>
+                                    <td class="a-right a-right ">08:00</td>
+                                    <td class=" ">18:00</td>
+                                    <td class=" ">执行中</td>
+                                    <td class=" ">2017-04-01</td>
                                     <td class="pointer">
-                                        <a class="lay" data-toggle="modal" data-target="#myModal">历史数据</a>
+                                        <a href="health_detail.html">查看</a>
                                     </td>
                                 </tr>
                                 <tr class="even pointer">
-                                    <th class="column-title">王刚</th>
-                                    <th class="column-title">00001</th>
-                                    <th class="column-title">120</th>
-                                    <th class="column-title">130</th>
-                                    <th class="column-title">优</th>
-                                    <th class="column-title">2015-12-12 12:00:00</th>
-                                    <td class="pointer">
-                                        <a class="lay" data-toggle="modal" data-target="#myModal">历史数据</a>
+                                    <td class="">王刚</td>
+                                    <td class=" ">男</td>
+                                    <td class=" ">65</td>
+                                    <td class=" ">救心丸</td>
+                                    <td class=" ">1次/粒</td>
+                                    <td class="a-right a-right ">08:00</td>
+                                    <td class=" ">18:00</td>
+                                    <td class=" ">执行中</td>
+                                    <td class=" ">2017-04-01</td>
+                                    <td class=" ">
+                                        <a href="">查看</a>
                                     </td>
                                 </tr>
+                                <tr class="even pointer">
+                                    <td class="">王刚</td>
+                                    <td class=" ">男</td>
+                                    <td class=" ">65</td>
+                                    <td class=" ">救心丸</td>
+                                    <td class=" ">1次/粒</td>
+                                    <td class="a-right a-right ">08:00</td>
+                                    <td class=" ">18:00</td>
+                                    <td class=" ">执行中</td>
+                                    <td class=" ">2017-04-01</td>
+                                    <td class=" ">
+                                        <a href="">查看</a>
+                                    </td>
                                 </tr>
-
                             </table>
                         </div>
                         <div class="col-sm-12">
@@ -226,9 +247,9 @@
 <script src="../../../vendors/morris.js/morris.min.js"></script>
 <script src="../../../build/js/custom.min.js"></script>
 <script>
-$("#myModal").on('shown.bs.modal',function () {
-    init_echarts();
-});
+    $("#myModal").on('shown.bs.modal',function () {
+        init_echarts();
+    });
 </script>
 
 

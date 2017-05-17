@@ -12,4 +12,14 @@ class HealthController extends AdminController
     {
         $this->display();
     }
+
+    function detail()
+    {
+        $this->display();
+    }
+
+    function medication()
+    {
+        $this->display();
+    }
 }

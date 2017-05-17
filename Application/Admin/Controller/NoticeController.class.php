@@ -12,4 +12,9 @@ class NoticeController extends AdminController
     {
         $this->display();
     }
+
+    function feedback()
+    {
+        $this->display();
+    }
 }

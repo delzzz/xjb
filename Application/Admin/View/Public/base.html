@@ -28,7 +28,7 @@
                         <!--<h3>General</h3>-->
                         <ul class="nav side-menu">
                             <li>
-                                <a href="../index/index.html">
+                                <a href="{:U('index/index')} ">
                                     <div class="left_icon1" style="background: url('__IMG__/cishoo/sidebar-icon-1.png') no-repeat center 100%;"></div>
                                     平台首页 <span class="fa fa-chevron-down"></span></a>
                             </li>
@@ -36,17 +36,17 @@
                                 <div class="left_icon2" style="background: url('__IMG__/cishoo/sidebar-icon-2.png') no-repeat center 100%;"></div>
                                 数据统计 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="">新增统计</a></li>
-                                    <li><a href="">沉默用户</a></li>
-                                    <li><a href="">基本数据</a></li>
+                                    <li><a href="{:U('Statistics/add')}">新增统计</a></li>
+                                    <li><a href="{:U('Statistics/silent')}">沉默用户</a></li>
+                                    <li><a href="{:U('Statistics/index')}">基本数据</a></li>
                                 </ul>
                             </li>
                             <li><a>
                                 <div class="left_icon3" style="background: url('__IMG__/cishoo/sidebar-icon-3.png') no-repeat center 100%;"></div>
                                 老人基础档案 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="">老人基础档案</a></li>
-                                    <li><a href="">老人健康档案</a></li>
+                                    <li><a href={:U('Userbasicfile/basicfile')}">老人基础档案</a></li>
+                                    <li><a href="{:U('Userbasicfile/edit')}">老人健康档案</a></li>
                                 </ul>
                             </li>
                             <li><a>
@@ -54,7 +54,7 @@
                                      style="background: url('__IMG__/cishoo/sidebar-icon-4.png') no-repeat center 100%;"></div>
                                 设备报警 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="">历史报警查询</a></li>
+                                    <li><a href="{:U('warning/warning_history')}">历史报警查询</a></li>
                                 </ul>
                             </li>
                             <li><a>
@@ -62,8 +62,8 @@
                                      style="background: url('__IMG__/cishoo/sidebar-icon-5.png') no-repeat center 100%;"></div>
                                 健康管理 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="">用药提醒</a></li>
-                                    <li><a href="">健康监控</a></li>
+                                    <li><a href="{:U('Health/medication')}">用药提醒</a></li>
+                                    <li><a href="{:U('Health/index')}">健康监控</a></li>
                                 </ul>
                             </li>
                             <li><a>
@@ -71,8 +71,9 @@
                                      style="background: url('__IMG__/cishoo/sidebar-icon-6.png') no-repeat center 100%;"></div>
                                 通知管理<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="">消息推送</a></li>
-                                    <li><a href="">代理通知</a></li>
+                                    <li><a href="{:U('Notice/notice_fm')}">消息推送</a></li>
+                                    <li><a href="{:U('Notice/notice_agent')}">代理通知</a></li>
+                                    <li><a href="{:U('Notice/feedback')}">意见反馈</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -85,9 +86,9 @@
                                      style="background: url('__IMG__/cishoo/sidebar-icon-7.png') no-repeat center 100%;"></div>
                                 代理商/机构管理<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="{:U('agent/agent')}">添加代理商</a></li>
-                                    <li><a href="{:U('agent/agent2')}">添加机构平台</a></li>
-                                    <li><a href="{:U('agent/index')}">医疗机构详情</a></li>
+                                    <li><a href="{:U('Agent/agent')}">添加代理商</a></li>
+                                    <li><a href="{:U('Agent/agent2')}">添加机构平台</a></li>
+                                    <li><a href="{:U('Agent/index')}">医疗机构详情</a></li>
                                 </ul>
                             </li>
 
@@ -96,8 +97,8 @@
                                      style="background: url('__IMG__/cishoo/sidebar-icon-8.png') no-repeat center 100%;"></div>
                                 账号管理<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="../usermanage/user_manage.html">当前账号管理</a></li>
-                                    <li><a href="../usermanage/user_list.html">坐席管理</a></li>
+                                    <li><a href="{:U('Usermanage/user_manage')}">当前账号管理</a></li>
+                                    <li><a href="{:U('Usermanage/user_list')}">坐席管理</a></li>
                                 </ul>
                             </li>
 

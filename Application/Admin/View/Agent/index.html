@@ -1,0 +1,191 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="right_col" role="main">
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="page-title">
+                    <div class="title_left" style="width: 45%;">
+                        <h3>代理商管理</h3>
+                    </div>
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="搜索...">
+                                    <span class="input-group-btn">
+                      <button class="clf btn btn-danger" type="button" style="color: #fff;">查询</button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row col-md-3 col-sm-3 col-xs-12">
+                    <select class="form-control">
+                        <option value="显示全部">显示全部</option>
+                        <option value="一级代理商">一级代理商</option>
+                        <option value="二级代理商">二级代理商</option>
+                        <option value="三级代理商">三级代理商</option>
+                    </select>
+                </div>
+                <br>
+                <br>
+
+                <div class="x_title"></div>
+                <div class="x_content clear">
+                    <div class=""></div>
+                    <br>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped jambo_table bulk_action" style="line-height: 54px;">
+                            <thead>
+                            <tr class="headings">
+                                <th></th>
+                                <th class="column-title">日期</th>
+                                <th class="column-title">代理商等级</th>
+                                <th class="column-title">机构名称</th>
+                                <th class="column-title">机构性质</th>
+                                <th class="column-title">地址</th>
+                                <th class="column-title">联系电话</th>
+                                <th class="column-title">设备数量</th>
+                                <th class="column-title no-link last"><span class="nobr">终端用户</span></th>
+                                <th class="column-title">终端日活</th>
+                                <th class="column-title">亲属日活</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="even pointer">
+                                <td class="a-center ">
+                                </td>
+                                <td class=" ">2017-02-02</td>
+                                <td class="">一级(省)</td>
+                                <td class=" ">想家和养老院</td>
+                                <td class=" ">养老院</td>
+                                <td class=" ">上海宝山区100号</td>
+                                <td class=" ">021-88888888</td>
+                                <td class=" ">100台</td>
+                                <td class="a-right a-right ">5584</td>
+                                <td class=" ">160</td>
+                                <td class="">200</td>
+                            </tr>
+                            <tr class="even pointer">
+                                <td class="a-center ">
+                                </td>
+                                <td class=" ">2017-02-02</td>
+                                <td class="">一级(省)</td>
+                                <td class=" ">想家和养老院</td>
+                                <td class=" ">养老院</td>
+                                <td class=" ">上海宝山区100号</td>
+                                <td class=" ">021-88888888</td>
+                                <td class=" ">100台</td>
+                                <td class="a-right a-right ">5584</td>
+                                <td class=" ">160</td>
+                                <td class="">200</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-sm btn-danger">新建机构信息</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="page-title">
+                    <div class="title_left" style="width: 45%;">
+                        <h3>下属代理公司信息</h3>
+                    </div>
+                    <div class="pull-right col-md-3 col-sm-3 col-xs-12">
+                        <select class="form-control">
+                            <option value="显示全部">显示全部</option>
+                            <option value="一级代理商">一级代理商</option>
+                            <option value="二级代理商">二级代理商</option>
+                            <option value="三级代理商">三级代理商</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="x_content clear">
+                    <div class=""></div>
+                    <br>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped jambo_table bulk_action" style="line-height: 54px;">
+                            <thead>
+                            <tr class="headings">
+                                <th class="text-center">展开</th>
+                                <th class="column-title">日期</th>
+                                <th class="column-title">代理商等级</th>
+                                <th class="column-title">代理区域</th>
+                                <th class="column-title">代理公司名称</th>
+                                <th class="column-title">联系电话</th>
+                                <th class="column-title">设备数量</th>
+                                <th class="column-title">终端日活</th>
+                                <th class="column-title">亲属日活</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="even pointer">
+                                <td class="a-center text-center"><a href="">展开</a></td>
+                                <td class=" ">2017-02-02</td>
+                                <td class="">二级(市)</td>
+                                <td class=" ">浙江省杭州市</td>
+                                <td class=" ">浙江祥源和健康咨询有限公司</td>
+                                <td class=" "></td>
+                                <td class=" ">100台</td>
+                                <td class="a-right a-right ">5584</td>
+                                <td class=" ">160</td>
+                            </tr>
+                            <tr class="even pointer bg-">
+                                <td class="a-center text-center"></td>
+                                <td class=" ">2017-02-02</td>
+                                <td class="">三级(县)</td>
+                                <td class=" ">浙江省杭州市</td>
+                                <td class=" ">浙江祥源和健康咨询有限公司</td>
+                                <td class=" "></td>
+                                <td class=" ">100台</td>
+                                <td class="a-right a-right ">5584</td>
+                                <td class=" ">160</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <a href="agent.html">
+                            <button class="btn btn-sm btn-danger">新建代理商</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="x_panel">
+                <div class="row tile_count text-center">
+                    <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+                        <span class="count_top">直接管理机构</span>
+
+                        <div class="count">2</div>
+                        <span class="count_bottom">设备数量：<i class="color-red">300</i></span>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+                        <span class="count_top">下属二级代理</span>
+
+                        <div class="count">2</div>
+                        <span class="count_bottom">设备数量：<i class="color-red">300</i></span>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+                        <span class="count_top">下属三级代理</span>
+
+                        <div class="count">2</div>
+                        <span class="count_bottom">设备数量：<i class="color-red">300</i></span>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+                        <span class="count_top">总代理机构总数量</span>
+
+                        <div class="count">2</div>
+                        <span class="count_bottom">设备数量：<i class="color-red">300</i></span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
