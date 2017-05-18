@@ -1,7 +1,7 @@
 <extend name="Public/base"/>
 
 <block name="body">
-    <form method="post" name="f1">
+    <form action="{:U('addAgent')}" method="post" class="form-horizontal form-label-left">
     <div class="right_col" role="main">
         <div class="col-md-12 col-xs-12">
             <div class="x_panel">
@@ -271,50 +271,53 @@
                         <br>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input name="auth[]" value='0' type="checkbox" class="flat">
+                                <input checked disabled="disabled" type="checkbox" class="flat">
                                 数据统计
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input name="auth[]" value='1' type="checkbox" class="flat">
+                                <input checked disabled="disabled" type="checkbox" class="flat">
                                 老人档案
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input name="auth[]" value='2' type="checkbox" class="flat">
+                                <input checked disabled="disabled" type="checkbox" class="flat">
                                 设备报警
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input name="auth[]" value='3' type="checkbox" class="flat">
+                                <input checked disabled="disabled" type="checkbox" class="flat">
                                 健康管理
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input name="auth[]" value='4' type="checkbox" class="flat">
+                                <input checked disabled="disabled" type="checkbox" class="flat">
                                 通知管理
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input name="auth[]" value='5' type="checkbox" class="flat">
+                                <input name="zuozi" value='1' type="checkbox" class="flat">
                                 坐席管理
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input name="auth[]" value='6' type="checkbox" class="flat">
+                                <input name="extendFlag" value='1' type="checkbox" class="flat">
                                 允许发展下级代理
                             </label>
                         </div>
                     </div>
                     <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12  clear" style="margin-top: 30px;">
-                        <button id="btn_sub" class="btn btn-lg btn-danger">保存</button>
-                        <button class="btn btn-lg btn-danger">返回</button>
+                        <button class="btn btn-lg btn-danger ajax-post" id="submit" type="submit"
+                                target-form="form-label-left">保存
+                        </button>
+                        <button class="btn btn-lg btn-danger" onclick="javascript:history.back(-1);return false;">返回
+                        </button>
                     </div>
                 </div>
             </div>
@@ -327,52 +330,6 @@
     <script src="__JS__/distpicker.data.js"></script>
     <script src="__JS__/distpicker.js"></script>
     <script type="text/javascript">
-        //数组删除元素
-        Array.prototype.removeByValue = function(val) {
-            for(var i=0; i<this.length; i++) {
-                if(this[i] == val) {
-                    this.splice(i, 1);
-                    break;
-                }
-            }
-        }
-        //上传表单
-        $('#btn_sub').click(function(){
-            $('form[name="f1"]').submit();
-        });
-        //上传图片插件
-        Dropzone.autoDiscover = false;
-        $(".dropzone").dropzone({
-            url: "{:U('File/upload')}",
-            maxFiles: 5,
-            maxFilesize: 10,
-            addRemoveLinks: true,
-            dictRemoveLinks: "x",
-            dictCancelUpload: "x",
-            init: function() {
-                this.on("removedfile", function(file){
-                    var removeurl = file.xhr.response;
-                    var imagePath = $('#imagePath').val();
-                    var imgarr = imagePath.split(",");
-                    $.each(imgarr,function(i,item){
-                        if(item == removeurl){
-                            imgarr.removeByValue(removeurl);
-                        }
-                    });
-                    imgarr.join(',');
-                    $('#imagePath').val(imgarr);
-                });
-                this.on("success", function(file) {
-                    var imagePath = $('#imagePath').val();
-                    if (imagePath == '') {
-                        $('#imagePath').val(file.xhr.response);
-                    }
-                    else {
-                        $('#imagePath').val(imagePath+ ',' + file.xhr.response);
-                    }
-                });
-            },
-        });
         //行政区选择
         $("#distpicker2").distpicker();
         $('select[name="degree"]').change(function(){
