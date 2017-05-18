@@ -459,7 +459,7 @@ function http($url, $params, $method = 'POST', $header = array(), $multi = false
     $error = curl_error($ch);
     curl_close($ch);
     if ($error) throw new Exception('请求发生错误：' . $error);
-    return json_decode($data,true);
+    return json_decode($data, true);
 }
 
 /**
@@ -482,5 +482,8 @@ function http_post_json($url, $jsonStr)
     $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
+    if ($httpCode !== 200) {
+        return false;
+    }
     return json_decode($response, true);
 }
