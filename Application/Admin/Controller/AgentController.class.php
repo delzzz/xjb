@@ -64,7 +64,7 @@ class AgentController extends AdminController
         $param = $_POST;
         $orgContactList = null;
         foreach ($param as $keys => $val) {
-            if (is_array($val)) {
+            if (is_array($val) && $keys !='deviceType') {
                 foreach ($val as $key => $value) {
                     $orgContactList[$key][$keys] = $value;
                     $orgContactList[$key]['contactType']=$key;
@@ -74,9 +74,9 @@ class AgentController extends AdminController
         $imgArr = explode(',', $param['imagePath']);
         $imageList = null;
         foreach ($imgArr as $key => $val) {
-            $imageList[$key]['displayName'] = $val;
+            $imageList[$key]['displayName'] = '';
             $imageList[$key]['imagePath'] = $val;
-            $imageList[$key]['imagePath'] = 0;
+            $imageList[$key]['imageType'] = 0;
             $imageList[$key]['description'] = "";
             $imageList[$key]['imageSeq'] = 0;
         }
@@ -95,21 +95,32 @@ class AgentController extends AdminController
                 'deviceType'=>implode(',',$param['deviceType']),
                 'quantity'=>$param['quantity']
             ],
-            'sysUserInfo' => ['password' => $param['sysUserInfo']]
+            'sysUserInfo' => ['password' => $param['password']]
         ];
         $orgAgent = [
             'parentId'=>1,
-            'degree'=>$param['degree'],
-            'provinceId'=>$param['provinceId'],
-            'cityId'=>$param['cityId'],
-            'countyId'=>$param['countyId'],
+            'degree'=>0,
+            'provinceId'=>0,
+            'cityId'=>0,
+            'countyId'=>0,
             'extendFlag'=>!$param['extendFlag']?0:1
         ];
         $info = ['orgInfo'=>$orgInfo,'orgAgent'=>$orgAgent];
         $arr = C('INTERFACR_API');
         $res = json_encode($info);
-        var_dump($info);
-        $result = http($arr['agent_create'],substr($res,1,strlen($res)-1),post);
-        var_dump($result);
+        $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
+        var_dump($jsonData);
+    }
+
+    //代理商详情页
+    function agent_detail(){
+        $this->meta_title='代理商管理-代理商详情';
+        $this->display();
+    }
+
+    //医疗机构详情页
+    function agent2_detail(){
+        $this->meta_title='代理机构管理-机构详情';
+        $this->display();
     }
 }

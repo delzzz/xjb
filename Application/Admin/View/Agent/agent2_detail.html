@@ -1,0 +1,322 @@
+<extend name="Public/base"/>
+
+<block name="body">
+        <!--content pages-->
+        <div class="right_col" role="main">
+            <div class="col-md-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>机构信息</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content row">
+                        <br/>
+                        <form class="form-horizontal form-label-left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">机构名称:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">机构性质:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <select class="form-control" disabled="disabled">
+                                            <option>请选择</option>
+                                            <option>医院</option>
+                                            <option>家庭/个人</option>
+                                            <option>养老院</option>
+                                            <option>注册公司</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">联系电话:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">机构登录ID:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" value="A0001(自动生成不可编辑)" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">所属上级:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <div id="" class="">
+                                            <input type="password" class="form-control" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">所属区域:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <div id="distpicker2" class="">
+                                            <input type="password" class="form-control" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">登录密码:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="password" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">确认登录密码:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="password" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">公司组织机构:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">公司地址:</label>
+                                    <div class="col-md-10 col-sm-10 col-xs-12">
+                                        <div class="">
+                                            <input type="password" class="form-control" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                        备注:
+                                    </label>
+                                    <div class="col-md-10 col-sm-10 col-xs-12">
+                                        <textarea class="form-control" rows="3" disabled="disabled" placeholder='备注在2000字以内'></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--管理人员-->
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>管理人员基本信息</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content row">
+                        <br/>
+                        <form class="form-horizontal form-label-left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">负责人姓名:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">手机号码:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">公司住址:</label>
+                                    <div class="col-md-10 col-sm-10 col-xs-12">
+                                        <div class="">
+                                            <input type="text" class="form-control" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>负责人基本信息</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content row">
+                        <br/>
+                        <form class="form-horizontal form-label-left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">负责人姓名:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">手机号码:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">公司住址:</label>
+                                    <div class="col-md-10 col-sm-10 col-xs-12">
+                                        <div class="">
+                                            <input type="text" class="form-control" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--<div class="x_panel">-->
+                <!--<div class="x_title">-->
+                <!--<h2>登录密码</h2>-->
+                <!--<ul class="nav navbar-right panel_toolbox">-->
+                <!--</ul>-->
+                <!--<div class="clearfix"></div>-->
+                <!--</div>-->
+                <!--<div class="x_content row">-->
+                <!--<br/>-->
+                <!--<form class="form-horizontal form-label-left">-->
+                <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+                <!--<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">-->
+                <!--<label class="control-label col-md-4 col-sm-4 col-xs-12">登录密码:</label>-->
+                <!--<div class="col-md-8 col-sm-8 col-xs-12">-->
+                <!--<input type="text" class="form-control" placeholder="">-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">-->
+                <!--<label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>-->
+                <!--<div class="col-md-8 col-sm-8 col-xs-12">-->
+                <!--<input type="text" class="form-control" placeholder="">-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</form>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--证件上传-->
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>证件上传</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <form action="form_upload.html" class="dropzone"></form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--具备条件-->
+                <div class="x_panel">
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_title">
+                            <h2>具备条件</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
+                            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                <br>
+                                <div class="checkbox col-md-1 col-sm-1 col-xs-12">
+                                </div>
+                                <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                    <label>
+                                        <input type="checkbox" disabled="disabled" class="flat"> 医护人员
+                                    </label>
+                                </div>
+                                <div class="checkbox col-md-2  col-sm-2 col-xs-12">
+                                    <label>
+                                        <input type="checkbox" disabled="disabled" class="flat"> 急救设施
+                                    </label>
+                                </div>
+                                <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                    <label>
+                                        <input type="checkbox" disabled="disabled" class="flat"> 拥有坐席
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                        <button class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">账号托管</button>
+                        <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
+                        <button class="btn btn-lg btn-danger">账号停用</button>
+                        <button class="btn btn-lg btn-danger hide">账号启用</button>
+                        <button class="btn btn-lg btn-danger">保存页面</button>
+                        <button class="btn btn-lg btn-danger">关闭页面</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--弹框-->
+    <div class="modal fade row" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width: 70%;">
+            <div class="modal-content" style="">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">托管至代理商</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="x_content">
+                        <div class="table-responsive">
+                            <table class="table table-striped jambo_table bulk_action">
+                                <thead>
+                                <tr class="headings">
+                                    <th>
+                                        操作
+                                    </th>
+                                    <th class="column-title">代理商等级 </th>
+                                    <th class="column-title">代理区域 </th>
+                                    <th class="column-title">代理公司名称 </th>
+                                    <th class="column-title">代理公司地址</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="even pointer">
+                                    <td class="a-center ">
+                                        <input type="checkbox" class="flat" name="table_records">
+                                    </td>
+                                    <td class=" ">一级(省)代理</td>
+                                    <td class=" ">浙江省</td>
+                                    <td class=" ">浙江省圣海健康医疗有限公司 </td>
+                                    <td class=" ">浙江省温州市光明区光明路111号帝国大厦三层201</td>
+
+                                </tr>
+                                <tr class="odd pointer">
+                                    <td class="a-center ">
+                                        <input type="checkbox" class="flat" name="table_records">
+                                    </td>
+                                    <td class=" ">二级(市)代理</td>
+                                    <td class=" ">浙江省温州市</td>
+                                    <td class=" ">浙江省圣海健康医疗有限公司 </td>
+                                    <td class=" ">浙江省温州市光明区光明路111号帝国大厦三层201</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--弹框 end-->
+</div>
+</block>
