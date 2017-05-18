@@ -10,7 +10,9 @@ class AgentController extends AdminController
 
     function agent()
     {
-
+        if(isset($_POST['orgName'])){
+            //dump($_POST);
+        }
         $this->display('agent');
     }
 

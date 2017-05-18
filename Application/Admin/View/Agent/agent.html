@@ -1,7 +1,7 @@
 <extend name="Public/base"/>
 
 <block name="body">
-
+    <form method="post" name="f1">
     <div class="right_col" role="main">
         <div class="col-md-12 col-xs-12">
             <div class="x_panel">
@@ -18,17 +18,17 @@
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">代理商名称:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input name="orgName" type="text" class="form-control" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">代理商等级:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <select class="form-control">
-                                        <option>请选择</option>
-                                        <option>一级代理商</option>
-                                        <option>二级代理商</option>
-                                        <option>三级代理商</option>
+                                    <select class="form-control" name="degree">
+                                        <option value="0">请选择</option>
+                                        <option value="1">一级代理商</option>
+                                        <option value="2">二级代理商</option>
+                                        <option value="3">三级代理商</option>
                                     </select>
                                 </div>
                             </div>
@@ -36,7 +36,12 @@
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">代理区域:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
                                     <div id="distpicker2" class="">
-                                        <select class="form-control"></select>
+                                        <!--省-->
+                                        <select name="provinceId" class="data-province form-control"></select>
+                                        <!--市-->
+                                        <select style="display:none" name="cityId" class="data-city form-control"></select>
+                                        <!--县-->
+                                        <select style="display: none" name="countyId" class="data-district form-control"></select>
                                     </div>
                                 </div>
                             </div>
@@ -52,13 +57,13 @@
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">公司电话:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input name="telephone" type="text" class="form-control" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">公司组织机构:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input name="orgCode" type="text" class="form-control" placeholder="">
                                 </div>
                             </div>
 
@@ -66,7 +71,7 @@
                                 <label class="control-label col-md-2 col-sm-2 col-xs-12">公司住址:</label>
                                 <div class="col-md-10 col-sm-10 col-xs-12">
                                     <div class="">
-                                        <input type="text" class="form-control" placeholder="">
+                                        <input name="address" type="text" class="form-control" placeholder="">
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +80,42 @@
                                     备注:
                                 </label>
                                 <div class="col-md-10 col-sm-10 col-xs-12">
-                                    <textarea class="form-control" rows="3" placeholder='备注在2000字以内'></textarea>
+                                    <textarea name="remark" class="form-control" rows="3" placeholder='备注在2000字以内'></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>管理人员基本信息</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content row">
+                    <br/>
+                    <div class="form-horizontal form-label-left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">管理人姓名:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input name="name[]" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">手机号码:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input name="mobile[]" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">身份证号:</label>
+                                <div class="col-md-10 col-sm-10 col-xs-12">
+                                    <div class="">
+                                        <input name="idNo[]" type="text" class="form-control" placeholder="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -96,20 +136,20 @@
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">负责人姓名:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input name="name[]" type="text" class="form-control" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">手机号码:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input name="mobile[]" type="text" class="form-control" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                <label class="control-label col-md-2 col-sm-2 col-xs-12">公司住址:</label>
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">身份证号:</label>
                                 <div class="col-md-10 col-sm-10 col-xs-12">
                                     <div class="">
-                                        <input type="text" class="form-control" placeholder="">
+                                        <input name="idNo[]" type="text" class="form-control" placeholder="">
                                     </div>
                                 </div>
                             </div>
@@ -131,13 +171,13 @@
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">登录密码:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input type="password" class="form-control" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input name="password" type="password" class="form-control" placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -155,6 +195,7 @@
                         </div>
                         <div class="x_content">
                             <div class="dropzone"></div>
+                            <input type="hidden" id="imagePath" name="imagePath"/>
                         </div>
                     </div>
                 </div>
@@ -171,72 +212,135 @@
                         <br>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input type="checkbox" class="flat"> 老人终端机
+                                <input name="deviceType[]" value="0" type="checkbox" class="flat"> 老人终端机
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input type="checkbox" class="flat"> SOS手腕
+                                <input name="deviceType[]" value="1"  type="checkbox" class="flat"> SOS手腕
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input type="checkbox" class="flat"> 门磁状态检测仪
+                                <input name="deviceType[]" value="2"  type="checkbox" class="flat"> 门磁状态检测仪
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input type="checkbox" class="flat">
+                                <input name="deviceType[]" value="3"  type="checkbox" class="flat">
                                 烟雾报警器
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input type="checkbox" class="flat">
+                                <input name="deviceType[]" value="4" type="checkbox" class="flat">
                                 漏水检测器
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input type="checkbox" class="flat">
+                                <input name="deviceType[]" value="5"  type="checkbox" class="flat">
                                 呼吸心率仪
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input type="checkbox" class="flat">
+                                <input name="deviceType[]" value="6" type="checkbox" class="flat">
                                 人体红外加测
                             </label>
                         </div>
                         <div class="checkbox col-md-12 col-sm-12 col-xs-12">
                             <br>
                             <label>
-                                <input type="text" class="flat form-control" placeholder="设备数量">
+                                <input name="quantity" type="text" class="flat form-control" placeholder="设备数量">
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
+            <!--代理权限设置-->
             <div class="x_panel">
-                <div class="x_title clear">
-                    <h2>操作</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <br/>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
-                    <button class="btn btn-lg btn-danger">保存</button>
-                    <button class="btn btn-lg btn-danger">关闭页面</button>
+                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_title">
+                        <h2>代理权限设置</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
+                        <br>
+                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                            <label>
+                                <input name="auth[]" value='0' type="checkbox" class="flat">
+                                数据统计
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                            <label>
+                                <input name="auth[]" value='1' type="checkbox" class="flat">
+                                老人档案
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                            <label>
+                                <input name="auth[]" value='2' type="checkbox" class="flat">
+                                设备报警
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                            <label>
+                                <input name="auth[]" value='3' type="checkbox" class="flat">
+                                健康管理
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                            <label>
+                                <input name="auth[]" value='4' type="checkbox" class="flat">
+                                通知管理
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                            <label>
+                                <input name="auth[]" value='5' type="checkbox" class="flat">
+                                坐席管理
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                            <label>
+                                <input name="auth[]" value='6' type="checkbox" class="flat">
+                                允许发展下级代理
+                            </label>
+                        </div>
+                    </div>
+                    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12  clear" style="margin-top: 30px;">
+                        <button id="btn_sub" class="btn btn-lg btn-danger">保存</button>
+                        <button class="btn btn-lg btn-danger">返回</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    </form>
+</block>
 
-    <script src="__VENDOR__/jquery/dist/jquery.min.js"></script>
-    <script src="__VENDOR__/dropzone/dist/min/dropzone.min.js"></script>
-
-    <script>
+<block name="script">
+    <script src="__JS__/distpicker.data.js"></script>
+    <script src="__JS__/distpicker.js"></script>
+    <script type="text/javascript">
+        //数组删除元素
+        Array.prototype.removeByValue = function(val) {
+            for(var i=0; i<this.length; i++) {
+                if(this[i] == val) {
+                    this.splice(i, 1);
+                    break;
+                }
+            }
+        }
+        //上传表单
+        $('#btn_sub').click(function(){
+            $('form[name="f1"]').submit();
+        });
+        //上传图片插件
         Dropzone.autoDiscover = false;
         $(".dropzone").dropzone({
             url: "{:U('File/upload')}",
@@ -247,10 +351,47 @@
             dictCancelUpload: "x",
             init: function() {
                 this.on("removedfile", function(file){
-
+                    var removeurl = file.xhr.response;
+                    var imagePath = $('#imagePath').val();
+                    var imgarr = imagePath.split(",");
+                    $.each(imgarr,function(i,item){
+                        if(item == removeurl){
+                            imgarr.removeByValue(removeurl);
+                        }
+                    });
+                    imgarr.join(',');
+                    $('#imagePath').val(imgarr);
                 });
+                this.on("success", function(file) {
+                    var imagePath = $('#imagePath').val();
+                    if (imagePath == '') {
+                        $('#imagePath').val(file.xhr.response);
+                    }
+                    else {
+                        $('#imagePath').val(imagePath+ ',' + file.xhr.response);
+                    }
+                });
+            },
+        });
+        //行政区选择
+        $("#distpicker2").distpicker();
+        $('select[name="degree"]').change(function(){
+            var degree = $(this).val();
+            if(degree==1){
+                $('select[name="provinceId"]').css('display','block');
+                $('select[name="cityId"]').css('display','none');
+                $('select[name="countyId"]').css('display','none');
             }
-        })
+            else if(degree==2){
+                $('select[name="provinceId"]').css('display','none');
+                $('select[name="cityId"]').css('display','block');
+                $('select[name="countyId"]').css('display','none');
+            }
+            else if(degree==3){
+                $('select[name="provinceId"]').css('display','none');
+                $('select[name="cityId"]').css('display','none');
+                $('select[name="countyId"]').css('display','block');
+            }
+        });
     </script>
-
 </block>
