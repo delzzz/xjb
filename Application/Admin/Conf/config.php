@@ -107,7 +107,9 @@ return array(
     'TMPL_EXCEPTION_FILE' => MODULE_PATH . 'View/Public/exception.html',// 异常页面的模板文件
 
     'INTERFACR_API' => array(
-        'agent_create' => 'http://192.168.1.250:8080/service/org/agent/create',
-        'get_user' => 'http://192.168.1.250:8080/service/sys/user/get',
+        'agent_create' => 'http://192.168.1.250:8080/service/org/agent/create',//创建代理商
+        'ins_create' => 'http://192.168.1.250:8080/service/org/ins/create', //创建机构
+        'get_user' => 'http://192.168.1.250:8080/service/sys/user/get', //获取系统用户信息
+        'get_org_agent' => 'http://192.168.1.250:8080/service/org/agent/get',//获取代理商
     ),
 );
