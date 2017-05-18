@@ -50,15 +50,19 @@ class AgentController extends AdminController
         ],
             'orgContactList' => $orgContactList,
             'imageList' => $imageList,
-            'sysUserInfo' => ['password' => $param['sysUserInfo']],
-            'orgInstitution' => ['agentId' => $this->org_agent('agentId'),
-                'insType' => $param['insType'],
-                'district' => $param['district']]
+            'orgDevice' => ['deviceType' => "0,1", 'quantity' => 100],
+            'sysUserInfo' => ['password' => $param['password']]
         ];
-        $data = json_encode(['orgInfo' => $result]);
+        $orgInstitution = ['agentId' => $this->org_agent('agentId'),
+            'insType' => $param['insType'],
+            'district' => $param['district']];
+        $data = json_encode(['orgInfo' => $result, 'orgInstitution' => $orgInstitution]);
         $jsonData = http_post_json(C('INTERFACR_API')['ins_create'], $data);
-        print_r($jsonData);
-        die();
+        if (empty($jsonData)) {
+            $this->error('系统错误');
+        } elseif ($jsonData['success']) {
+            $this->success('保存成功');
+        }
     }
     function addAgent(){
         $param = $_POST;

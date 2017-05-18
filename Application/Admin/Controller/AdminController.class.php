@@ -33,7 +33,7 @@ class AdminController extends Controller
     protected function org_agent($param = '')
     {
         $User = session('user_auth');
-        $orgAgent = http(C('INTERFACR_API')['get_org_agent'], ['orgId' => $User['objectId']]);
+        $orgAgent = http(C('INTERFACR_API')['get_org_agent'], ['orgId' => $User['objectId']],'GET');
         if (!empty($param)) {
             return $orgAgent[$param];
         }
