@@ -1,18 +1,18 @@
 <extend name="Public/base"/>
 <block name="body">
     <div class="right_col" role="main">
-        <div class="col-md-12 col-xs-12">
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>机构信息</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content row">
-                    <br/>
+        <form action="{:U('write')}" method="post" class="form-horizontal form-label-left">
+            <div class="col-md-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>机构信息</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content row">
+                        <br/>
 
-                    <form class="form-horizontal form-label-left">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">机构名称:</label>
@@ -25,12 +25,13 @@
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">机构性质:</label>
 
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <select class="form-control">
+                                    <select name="insType" class="form-control">
                                         <option>请选择</option>
-                                        <option>医院</option>
-                                        <option>家庭/个人</option>
-                                        <option>养老院</option>
-                                        <option>注册公司</option>
+                                        <option value="0">医院</option>
+                                        <option value="1">生活小区</option>
+                                        <option value="2">养老院</option>
+                                        <option value="3">家庭/个人</option>
+                                        <option value="4">注册公司</option>
                                     </select>
                                 </div>
                             </div>
@@ -38,7 +39,7 @@
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">联系电话:</label>
 
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input type="text" name="telephone" class="form-control" placeholder="">
                                 </div>
                             </div>
 
@@ -86,7 +87,7 @@
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">公司组织机构:</label>
 
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input type="text" class="form-control" name="orgCode" placeholder="">
                                 </div>
                             </div>
 
@@ -95,7 +96,7 @@
 
                                 <div class="col-md-10 col-sm-10 col-xs-12">
                                     <div class="">
-                                        <input type="password" class="form-control" placeholder="">
+                                        <input type="text" name="address" class="form-control" placeholder="">
                                     </div>
                                 </div>
                             </div>
@@ -105,170 +106,153 @@
                                 </label>
 
                                 <div class="col-md-10 col-sm-10 col-xs-12">
-                                    <textarea class="form-control" rows="3" placeholder='备注在2000字以内'></textarea>
+                                    <textarea name="remark" class="form-control" rows="3"
+                                              placeholder='备注在2000字以内'></textarea>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!--管理人员-->
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>管理人员基本信息</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content row">
-                    <br/>
-
-                    <form class="form-horizontal form-label-left">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <label class="control-label col-md-4 col-sm-4 col-xs-12">负责人姓名:</label>
-
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <label class="control-label col-md-4 col-sm-4 col-xs-12">手机号码:</label>
-
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                <label class="control-label col-md-2 col-sm-2 col-xs-12">公司住址:</label>
-
-                                <div class="col-md-10 col-sm-10 col-xs-12">
-                                    <div class="">
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>负责人基本信息</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content row">
-                    <br/>
-
-                    <form class="form-horizontal form-label-left">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <label class="control-label col-md-4 col-sm-4 col-xs-12">负责人姓名:</label>
-
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <label class="control-label col-md-4 col-sm-4 col-xs-12">手机号码:</label>
-
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                <label class="control-label col-md-2 col-sm-2 col-xs-12">公司住址:</label>
-
-                                <div class="col-md-10 col-sm-10 col-xs-12">
-                                    <div class="">
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!--证件上传-->
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>证件上传</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <form action="form_upload.html" class="dropzone"></form>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--具备条件-->
-            <div class="x_panel">
-                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                <!--管理人员-->
+                <div class="x_panel">
                     <div class="x_title">
-                        <h2>具备条件</h2>
+                        <h2>管理人员基本信息</h2>
                         <ul class="nav navbar-right panel_toolbox">
                         </ul>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
-                        <div class="col-md-12 col-sm-12 col-xs-12 ">
-                            <br>
+                    <div class="x_content row">
+                        <br/>
 
-                            <div class="checkbox col-md-1 col-sm-1 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">负责人姓名:</label>
 
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input name="name[]" type="text" class="form-control" placeholder="">
+                                </div>
                             </div>
-                            <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                <label>
-                                    <input type="checkbox" class="flat"> 医护人员
-                                </label>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">手机号码:</label>
+
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input name="mobile[]" type="text" class="form-control" placeholder="">
+                                </div>
                             </div>
-                            <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                <label>
-                                    <input type="checkbox" class="flat"> 急救设施
-                                </label>
-                            </div>
-                            <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                <label>
-                                    <input type="checkbox" class="flat"> 拥有坐席
-                                </label>
+                            <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">身份证:</label>
+
+                                <div class="col-md-10 col-sm-10 col-xs-12">
+                                    <div class="">
+                                        <input type="text" name="idNo[]" class="form-control" placeholder="">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <br>
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>负责人基本信息</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content row">
+                        <br/>
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
-                    <button class="btn btn-lg btn-danger">保存</button>
-                    <button class="btn btn-lg btn-danger">关闭</button>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">负责人姓名:</label>
+
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input name="name[]" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">手机号码:</label>
+
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input name="mobile[]" type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">身份证:</label>
+
+                                <div class="col-md-10 col-sm-10 col-xs-12">
+                                    <div class="">
+                                        <input type="text" name="idNo[]" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--证件上传-->
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>证件上传</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div action="#" class="dropzone"></div>
+                                <input type="hidden" id="imagePath" name="imagePath">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--具备条件-->
+                <div class="x_panel">
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_title">
+                            <h2>具备条件</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
+                            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                <br>
+
+                                <div class="checkbox col-md-1 col-sm-1 col-xs-12">
+
+                                </div>
+                                <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                    <label>
+                                        <input type="checkbox" class="flat"> 医护人员
+                                    </label>
+                                </div>
+                                <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                    <label>
+                                        <input type="checkbox" class="flat"> 急救设施
+                                    </label>
+                                </div>
+                                <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                    <label>
+                                        <input type="checkbox" class="flat"> 拥有坐席
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                        <button class="btn btn-lg btn-danger ajax-post" id="submit" type="submit"
+                                target-form="form-label-left">保存
+                        </button>
+                        <button class="btn btn-lg btn-danger" onclick="javascript:history.back(-1);return false;">返回
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </block>
 
 <block name="script">
-    <script type="text/javascript">
-        Dropzone.autoDiscover = false;
-        $(".dropzone").dropzone({
-            url: "{:U('File/upload')}",
-            maxFiles: 5,
-            maxFilesize: 10,
-            addRemoveLinks: true,
-            dictRemoveLinks: "x",
-            dictCancelUpload: "x",
-            init: function () {
-//                this.on("removedfile", function (file) {
-//                });
-                this.on("complete", function (data) {
-                    console.log(data);
-                });
-            }
-        });
-    </script>
 </block>
