@@ -28,6 +28,7 @@ class AgentController extends AdminController
             if (is_array($val)) {
                 foreach ($val as $key => $value) {
                     $orgContactList[$key][$keys] = $value;
+                    $orgContactList[$key]['contactType'] = $key;
                 }
             }
         }
@@ -36,11 +37,11 @@ class AgentController extends AdminController
         foreach ($imgArr as $key => $val) {
             $imageList[$key]['displayName'] = $val;
             $imageList[$key]['imagePath'] = $val;
-            $imageList[$key]['imagePath'] = 0;
+            $imageList[$key]['imageType'] = 0;
             $imageList[$key]['description'] = "";
             $imageList[$key]['imageSeq'] = 0;
         }
-        $orgInfo = ['orgOrganization' => [
+        $result = ['orgOrganization' => [
             'orgName' => $param['orgName'],
             'orgCode' => $param['orgCode'],
             'telephone' => $param['telephone'],
@@ -50,7 +51,14 @@ class AgentController extends AdminController
             'orgContactList' => $orgContactList,
             'imageList' => $imageList,
             'sysUserInfo' => ['password' => $param['sysUserInfo']],
+            'orgInstitution' => ['agentId' => $this->org_agent('agentId'),
+                'insType' => $param['insType'],
+                'district' => $param['district']]
         ];
+        $data = json_encode(['orgInfo' => $result]);
+        $jsonData = http_post_json(C('INTERFACR_API')['ins_create'], $data);
+        print_r($jsonData);
+        die();
     }
     function addAgent(){
         $param = $_POST;

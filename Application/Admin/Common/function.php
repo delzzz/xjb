@@ -459,5 +459,28 @@ function http($url, $params, $method = 'POST', $header = array(), $multi = false
     $error = curl_error($ch);
     curl_close($ch);
     if ($error) throw new Exception('请求发生错误：' . $error);
-    return $data;
+    return json_decode($data,true);
+}
+
+/**
+ * @param $url
+ * @param $jsonStr
+ * @return http提交 json
+ */
+function http_post_json($url, $jsonStr)
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonStr);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json; charset=utf-8',
+            'Content-Length: ' . strlen($jsonStr)
+        )
+    );
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    return json_decode($response, true);
 }

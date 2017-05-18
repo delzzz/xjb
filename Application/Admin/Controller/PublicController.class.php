@@ -31,7 +31,7 @@ class PublicController extends \Think\Controller
             }
             /* 调用UC登录接口登录 */
             $url = C('INTERFACR_API')['get_user'];
-            $User = json_decode(http($url, ['userCode' => "0000"], 'GET'), true);
+            $User = http($url, ['userCode' => "0000"], 'GET');
             if ($username === $User['userName'] && md5($password) === $User['password']) { //UC登录成功
                 session('user_auth', $User);
                 session('user_auth_sign', data_auth_sign($User));
