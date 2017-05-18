@@ -249,6 +249,48 @@
         $("li").removeClass('active');
         $(".child_menu").css('display', 'none');
     });
+    Array.prototype.removeByValue = function (val) {
+        for (var i = 0; i < this.length; i++) {
+            if (this[i] == val) {
+                this.splice(i, 1);
+                break;
+            }
+        }
+    };
+    Dropzone.autoDiscover = false;
+    $(".dropzone").dropzone({
+        url: "{:U('File/upload')}",
+        maxFiles: 5,
+        maxFilesize: 10,
+        addRemoveLinks: true,
+        dictRemoveLinks: "x",
+        dictCancelUpload: "x",
+        init: function () {
+            this.on("success", function (data) {
+                var url = $('#imagePath').val();
+                if (url == null || url == '') {
+                    url = data.xhr.response;
+                }
+                else {
+                    url = url + "," + data.xhr.response;
+                }
+                $('#imagePath').val(url);
+                console.log(data.xhr.response);
+            });
+            this.on("removedfile", function (file) {
+                var removeurl = file.xhr.response;
+                var imgurl = $('#imagePath').val();
+                var imgarr = imgurl.split(",");
+                $.each(imgarr, function (i, item) {
+                    if (item == removeurl) {
+                        imgarr.removeByValue(removeurl);
+                    }
+                });
+                imgarr.join(',');
+                $('#imagePath').val(imgarr);
+            });
+        }
+    });
 </script>
 <block name="script"></block>
 </body>

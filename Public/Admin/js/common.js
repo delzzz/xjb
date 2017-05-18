@@ -110,9 +110,11 @@
                 console.log(data);
                 if (data.status == 1) {
                     if (data.url) {
-                        updateAlert(data.info + ' 页面即将自动跳转~', 'alert-success');
+                        alert(data.info);
+                        //updateAlert(data.info + ' 页面即将自动跳转~', 'alert-success');
                     } else {
-                        updateAlert(data.info, 'alert-success');
+                        alert(data.info);
+                        //updateAlert(data.info, 'alert-success');
                     }
                     setTimeout(function () {
                         if (data.url) {
@@ -125,7 +127,8 @@
                         }
                     }, 1500);
                 } else {
-                    updateAlert(data.info);
+                    //updateAlert(data.info);
+                    alert(data.info);
                     setTimeout(function () {
                         if (data.url) {
                             location.href = data.url;

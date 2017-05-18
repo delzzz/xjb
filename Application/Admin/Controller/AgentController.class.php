@@ -21,7 +21,8 @@ class AgentController extends AdminController
 
     function write()
     {
-        $param=I();
-        print_r($param);die();
+        $param = $_POST;
+        print_r($param);
+        die();
     }
 }

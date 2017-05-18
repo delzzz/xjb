@@ -28,14 +28,8 @@ class FileController extends AdminController
             C("UPLOAD_QINIU_CONFIG")
         );
         /* 返回JSON数据 */
+        echo $info['file']['url'];die();
         $this->ajaxReturn($info);
-    }
-
-    function delPic()
-    {
-        $file = I('file');
-        $pic = new QiniuStorage(C("UPLOAD_QINIU_CONFIG"));
-        $pic->del($file);
     }
 
     /* 下载文件 */
