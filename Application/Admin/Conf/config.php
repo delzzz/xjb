@@ -107,7 +107,7 @@ return array(
     'TMPL_EXCEPTION_FILE' => MODULE_PATH . 'View/Public/exception.html',// 异常页面的模板文件
 
     'INTERFACR_API' => array(
-        'agent_create' => 'http://service/org/agent/create',
-        'get_user' => 'http://service/sys/user/get',
+        'agent_create' => 'http://192.168.1.250:8080/service/org/agent/create',
+        'get_user' => 'http://192.168.1.250:8080/service/sys/user/get',
     ),
 );
