@@ -6,8 +6,13 @@ class AgentController extends AdminController
     function index()
     {
         $this->meta_title = '代理商管理';
+        $this->assign('agentList',$this->agentList());
+        $this->display();
+    }
+
+
+    function agentList(){
         $info = $this->orgAgent();
-        dump($info);
         $agentList = agent_list($info['agentId']);
         foreach ($agentList as $key=>&$value){
             //date类型去除后面000
@@ -22,24 +27,19 @@ class AgentController extends AdminController
                     $v['createTime'] = substr($v['createTime'],0,strlen($v['createTime'])-3);
                     $v['updateTime'] = substr($v['updateTime'],0,strlen($v['updateTime'])-3);
                     $value['child'][$k]['children'] = agent_list($v['agentId']);
-                        if($v['children'] != null){
-                            foreach ($v['children'] as $kk=>&$vv){
-                                //date类型去除后面000
-                                $vv['createTime'] = substr($vv['createTime'],0,strlen($vv['createTime'])-3);
-                                $vv['updateTime'] = substr($vv['updateTime'],0,strlen($vv['updateTime'])-3);
-                            }
+                    if($v['children'] != null){
+                        foreach ($v['children'] as $kk=>&$vv){
+                            //date类型去除后面000
+                            $vv['createTime'] = substr($vv['createTime'],0,strlen($vv['createTime'])-3);
+                            $vv['updateTime'] = substr($vv['updateTime'],0,strlen($vv['updateTime'])-3);
                         }
+                    }
 
                 }
             }
         }
-        $this->assign('agentList',$agentList);
-        dump($agentList);
-        $this->display();
+        return $agentList;
     }
-
-
-
 
     function orgList()
     {
