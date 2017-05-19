@@ -459,7 +459,6 @@ function http($url, $params, $method = 'POST', $header = array(), $multi = false
     $error = curl_error($ch);
     curl_close($ch);
     if ($error) throw new Exception('请求发生错误：' . $error);
-    return json_decode($data, true);
 }
 
 /**
@@ -488,4 +487,11 @@ function http_post_json($url, $jsonStr)
 function think_json_encode($data)
 {
     return json_encode($data, JSON_UNESCAPED_UNICODE);
+}
+
+function agent_list($agentId){
+    $url = C('INTERFACR_API')['query_agent'];
+    $param = [ 'parentId' => $agentId];
+    $res = http_post_json($url, json_encode($param));
+    return $res['itemList'];
 }

@@ -5,11 +5,41 @@ class AgentController extends AdminController
 {
     function index()
     {
-        $arr = $this->orgAgent();
-        $this->meta_title = "列表页面";
-        $this->assign('orgList', $this->orgList());
+        $this->meta_title = '代理商管理';
+        $info = $this->orgAgent();
+        dump($info);
+        $agentList = agent_list($info['agentId']);
+        foreach ($agentList as $key=>&$value){
+            //date类型去除后面000
+            $value['createTime'] = substr($value['createTime'],0,strlen($value['createTime'])-3);
+            $value['updateTime'] = substr($value['updateTime'],0,strlen($value['updateTime'])-3);
+            if(agent_list($value['agentId']) != null){
+                $value['child'] = agent_list($value['agentId']);
+            }
+            if($value['child'] != null){
+                foreach($value['child'] as $k=>&$v){
+                    //date类型去除后面000
+                    $v['createTime'] = substr($v['createTime'],0,strlen($v['createTime'])-3);
+                    $v['updateTime'] = substr($v['updateTime'],0,strlen($v['updateTime'])-3);
+                    $value['child'][$k]['children'] = agent_list($v['agentId']);
+                        if($v['children'] != null){
+                            foreach ($v['children'] as $kk=>&$vv){
+                                //date类型去除后面000
+                                $vv['createTime'] = substr($vv['createTime'],0,strlen($vv['createTime'])-3);
+                                $vv['updateTime'] = substr($vv['updateTime'],0,strlen($vv['updateTime'])-3);
+                            }
+                        }
+
+                }
+            }
+        }
+        $this->assign('agentList',$agentList);
+        dump($agentList);
         $this->display();
     }
+
+
+
 
     function orgList()
     {
@@ -26,6 +56,7 @@ class AgentController extends AdminController
 
     function agent()
     {
+
         $this->meta_title = "保存代理商信息";
         $orgId = I('get.orgId');
         $this->display('agent');
@@ -70,6 +101,7 @@ class AgentController extends AdminController
             'orgDevice' => ['deviceType' => "0,1", 'quantity' => 100],
             'sysUserInfo' => ['password' => $param['password']]
         ];
+
         $orgInstitution = ['agentId' => $this->agentId(),
             'insType' => $param['insType'],
             'district' => $param['district']];
@@ -129,7 +161,8 @@ class AgentController extends AdminController
             'extendFlag' => !$param['extendFlag'] ? 0 : 1
         ];
         $info = ['orgInfo' => $orgInfo, 'orgAgent' => $orgAgent];
-        $arr = C('INTERFACR_API');
+
+
         $res = json_encode($info);
         $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
         var_dump($jsonData);

@@ -12,8 +12,6 @@
  * 所有除开系统级别的前台配置
  */
 return array(
-    /*页面显示条数*/
-    'PAGE_SIZE' => '2',
     /* 数据缓存设置 */
     'DATA_CACHE_PREFIX' => 'onethink_', // 缓存前缀
     'DATA_CACHE_TYPE' => 'File', // 数据缓存类型
@@ -108,17 +106,12 @@ return array(
     'TMPL_ACTION_SUCCESS' => MODULE_PATH . 'View/Public/success.html', // 默认成功跳转对应的模板文件
     'TMPL_EXCEPTION_FILE' => MODULE_PATH . 'View/Public/exception.html',// 异常页面的模板文件
 
-    /*机构性质*/
-    'INS_TYPE' => [
-        '0' => '医疗机构', '1' => '生活小区', '2' => '养老机构', '3' => '家庭／个人', '4' => '注册公司'
-    ],
-    /*接口配置*/
     'INTERFACR_API' => array(
         'agent_create' => 'http://192.168.1.250:8080/service/org/agent/create',//创建代理商
         'ins_create' => 'http://192.168.1.250:8080/service/org/ins/create', //创建机构
         'get_user' => 'http://192.168.1.250:8080/service/sys/user/get', //获取系统用户信息
         'get_org_agent' => 'http://192.168.1.250:8080/service/org/agent/get',//获取代理商
-        'query_org' => 'http://192.168.1.250:8080/service/org/ins/query',//查询机构
-        'query_agent' => 'http://host/service/org/agent/query',//查询代理商
-    ),
+        'query_org' => 'http://192.168.1.250:8080/service/org/ins/query',//查询机构        
+		'query_agent'=>'http://192.168.1.250:8080/service/org/agent/query',//查询代理商    
+	),
 );
