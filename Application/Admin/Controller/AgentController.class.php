@@ -10,7 +10,11 @@ class AgentController extends AdminController
 
     function orgList()
     {
-
+        $pageNo = I('get.p',1);
+        $url = C('INTERFACR_API')['query_org'] . '?pageNo=' . $pageNo . '&pageSize=2';
+        $param = ['orgName' => $this->orgName(), 'agentId' => $this->agentId(), 'insType' => 1];
+        $list = $this->lists($url, json_encode($param));
+        print_r($list);
     }
 
     function agent()
