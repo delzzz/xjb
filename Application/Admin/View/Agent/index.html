@@ -16,26 +16,8 @@
                         <h3>代理商管理</h3>
                     </div>
                     <br>
-                    <!--<div class="title_right">-->
-                    <!--<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">-->
-                    <!--<div class="input-group">-->
-                    <!--<input type="text" class="form-control" placeholder="搜索...">-->
-                    <!--<span class="input-group-btn">-->
-                    <!--<button class="clf btn btn-danger" type="button" style="color: #fff;">查询</button>-->
-                    <!--</span>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--</div>-->
                 </div>
                 <br>
-                <!--<div class="row col-md-3 col-sm-3 col-xs-12">-->
-                <!--<select class="form-control">-->
-                <!--<option value="显示全部">显示全部</option>-->
-                <!--<option value="一级代理商">一级代理商</option>-->
-                <!--<option value="二级代理商">二级代理商</option>-->
-                <!--<option value="三级代理商">三级代理商</option>-->
-                <!--</select>-->
-                <!--</div>-->
                 <div class="page-title">
                     <div class="title_left" style="width: 45%;">
                         <h3>下属代理机构</h3>
@@ -60,6 +42,7 @@
                                 <th class="column-title no-link last"><span class="nobr">终端用户</span></th>
                                 <th class="column-title">终端日活</th>
                                 <th class="column-title">亲属日活</th>
+                                <th class="column-title">操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -77,6 +60,7 @@
                                     <td class="a-right a-right "></td>
                                     <td class=" "></td>
                                     <td class=""></td>
+                                    <td class=""><a href="{:U('agent',['orgId'=>$list['orgId']])}">查看详情</a></td>
                                 </tr>
                             </volist>
                             </tbody>
@@ -139,7 +123,7 @@
                             </tr>
                             </tbody>
                         </table>
-                        <a href="agent2.html">
+                        <a href="">
                             <button class="btn btn-sm btn-danger">新建代理商</button>
                         </a>
                     </div>

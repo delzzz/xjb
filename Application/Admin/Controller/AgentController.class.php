@@ -5,6 +5,7 @@ class AgentController extends AdminController
 {
     function index()
     {
+        $arr = $this->orgAgent();
         $this->meta_title = "列表页面";
         $this->assign('orgList', $this->orgList());
         $this->display();
@@ -25,7 +26,8 @@ class AgentController extends AdminController
 
     function agent()
     {
-        $this->meta_title = "添加代理商";
+        $this->meta_title = "保存代理商信息";
+        $orgId = I('get.orgId');
         $this->display('agent');
     }
 
