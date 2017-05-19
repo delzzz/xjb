@@ -484,3 +484,10 @@ function http_post_json($url, $jsonStr)
     curl_close($ch);
     return json_decode($response, true);
 }
+
+function agent_list($agentId){
+    $url = C('INTERFACR_API')['query_agent'];
+    $param = [ 'parentId' => $agentId];
+    $res = http_post_json($url, json_encode($param));
+    return $res['itemList'];
+}

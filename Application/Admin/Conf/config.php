@@ -112,6 +112,6 @@ return array(
         'get_user' => 'http://192.168.1.250:8080/service/sys/user/get', //获取系统用户信息
         'get_org_agent' => 'http://192.168.1.250:8080/service/org/agent/get',//获取代理商
         'query_org' => 'http://192.168.1.250:8080/service/org/ins/query',//查询机构
-        'query_agent'=>'http://host/service/org/agent/query',//查询代理商
+        'query_agent'=>'http://192.168.1.250:8080/service/org/agent/query',//查询代理商
     ),
 );
