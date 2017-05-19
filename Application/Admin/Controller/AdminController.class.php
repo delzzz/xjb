@@ -41,12 +41,15 @@ class AdminController extends Controller
         return $this->orgAgent()['agentId'];
     }
 
-    protected function orgAgent($param = '')
+    protected function orgAgent($orgId = 0, $fild = '')
     {
         $User = session('user_auth');
-        $orgAgent = http(C('INTERFACR_API')['get_org_agent'], ['orgId' => $User['objectId']], 'GET');
-        if (!empty($param)) {
-            return $orgAgent[$param];
+        if (empty($orgId)) {
+            $orgId = $User['objectId'];
+        }
+        $orgAgent = http(C('INTERFACR_API')['get_org_agent'], ['orgId' => $orgId], 'GET');
+        if (!empty($fild)) {
+            return $orgAgent[$fild];
         }
         return $orgAgent;
     }
@@ -327,7 +330,7 @@ class AdminController extends Controller
      * @return array|false
      * 返回数据集
      */
-    protected function lists($url, $params, $pageSize = 2, $order = '')
+    protected function lists($url, $params, $order = '')
     {
         $list = http_post_json($url, $params);
         $total = $list['totalCount'];
@@ -335,7 +338,7 @@ class AdminController extends Controller
         if (isset($REQUEST['r'])) {
             $listRows = (int)$REQUEST['r'];
         } else {
-            $listRows = $pageSize;
+            $listRows = C('PAGE_SIZE');
         }
         $page = new \Think\Page($total, $listRows, $REQUEST);
         if ($total > $listRows) {

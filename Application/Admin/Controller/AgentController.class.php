@@ -43,11 +43,15 @@ class AgentController extends AdminController
 
     function orgList()
     {
-        $pageNo = I('get.p',1);
-        $url = C('INTERFACR_API')['query_org'] . '?pageNo=' . $pageNo . '&pageSize=2';
-        $param = ['orgName' => $this->orgName(), 'agentId' => $this->agentId(), 'insType' => 1];
-        $list = $this->lists($url, json_encode($param));
-        print_r($list);
+        $pageNo = I('get.p', 1);
+        $url = C('INTERFACR_API')['query_org'] . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
+        $param = think_json_encode(['agentId' => $this->agentId()]);
+        $list = $this->lists($url, $param);
+        foreach ($list['itemList'] as &$val) {
+            $val['degree'] = $this->orgAgent($val['orgId'], 'degree');
+        }
+        int_to_string($list['itemList'], ['insType' => C('INS_TYPE')]);
+        return $list['itemList'];
     }
 
     function agent()
@@ -95,7 +99,8 @@ class AgentController extends AdminController
             'orgDevice' => ['deviceType' => "0,1", 'quantity' => 100],
             'sysUserInfo' => ['password' => $param['password']]
         ];
-        $orgInstitution = ['agentId' => $this->orgAgent('agentId'),
+
+        $orgInstitution = ['agentId' => $this->agentId(),
             'insType' => $param['insType'],
             'district' => $param['district']];
         $data = json_encode(['orgInfo' => $result, 'orgInstitution' => $orgInstitution]);
@@ -154,6 +159,7 @@ class AgentController extends AdminController
             'extendFlag' => !$param['extendFlag'] ? 0 : 1
         ];
         $info = ['orgInfo' => $orgInfo, 'orgAgent' => $orgAgent];
+
         $res = json_encode($info);
         $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
         var_dump($jsonData);
