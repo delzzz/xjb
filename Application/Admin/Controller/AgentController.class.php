@@ -56,7 +56,9 @@ class AgentController extends AdminController
 
     function agent()
     {
-        $this->meta_title = "添加代理商";
+
+        $this->meta_title = "保存代理商信息";
+        $orgId = I('get.orgId');
         $this->display('agent');
     }
 
@@ -159,6 +161,7 @@ class AgentController extends AdminController
             'extendFlag' => !$param['extendFlag'] ? 0 : 1
         ];
         $info = ['orgInfo' => $orgInfo, 'orgAgent' => $orgAgent];
+
 
         $res = json_encode($info);
         $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
