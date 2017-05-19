@@ -1,37 +1,46 @@
 <extend name="Public/base"/>
-
+<block name="style">
+    <style>
+        .table > tbody > tr > td {
+            line-height: 2.428571;
+        }
+    </style>
+</block>
 <block name="body">
     <div class="right_col" role="main">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <!--代理商 、代理机构信息 如果是代理机构-->
             <div class="x_panel">
-                <div class="page-title">
+                <div class="page-title border-bottom">
                     <div class="title_left" style="width: 45%;">
                         <h3>代理商管理</h3>
                     </div>
-                    <div class="title_right">
-                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="搜索...">
-                                <span class="input-group-btn">
-                      <button class="clf btn btn-danger" type="button" style="color: #fff;">查询</button>
-                    </span>
-                            </div>
-                        </div>
+                    <br>
+                    <!--<div class="title_right">-->
+                    <!--<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">-->
+                    <!--<div class="input-group">-->
+                    <!--<input type="text" class="form-control" placeholder="搜索...">-->
+                    <!--<span class="input-group-btn">-->
+                    <!--<button class="clf btn btn-danger" type="button" style="color: #fff;">查询</button>-->
+                    <!--</span>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+                <br>
+                <!--<div class="row col-md-3 col-sm-3 col-xs-12">-->
+                <!--<select class="form-control">-->
+                <!--<option value="显示全部">显示全部</option>-->
+                <!--<option value="一级代理商">一级代理商</option>-->
+                <!--<option value="二级代理商">二级代理商</option>-->
+                <!--<option value="三级代理商">三级代理商</option>-->
+                <!--</select>-->
+                <!--</div>-->
+                <div class="page-title">
+                    <div class="title_left" style="width: 45%;">
+                        <h3>下属代理机构</h3>
                     </div>
                 </div>
-                <br>
-                <div class="row col-md-3 col-sm-3 col-xs-12">
-                    <select class="form-control">
-                        <option value="显示全部">显示全部</option>
-                        <option value="一级代理商">一级代理商</option>
-                        <option value="二级代理商">二级代理商</option>
-                        <option value="三级代理商">三级代理商</option>
-                    </select>
-                </div>
-                <br>
-                <br>
-                <div class="x_title"></div>
                 <div class="x_content clear">
                     <div class=""></div>
                     <br>
@@ -83,7 +92,9 @@
                             </tr>
                             </tbody>
                         </table>
-                        <a href="agent.html"><button class="btn btn-sm btn-danger">新建机构信息</button></a>
+                        <a href="agent.html">
+                            <button class="btn btn-sm btn-danger">新建机构信息</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -92,14 +103,6 @@
                 <div class="page-title">
                     <div class="title_left" style="width: 45%;">
                         <h3>下属代理公司信息</h3>
-                    </div>
-                    <div class="pull-right col-md-3 col-sm-3 col-xs-12">
-                        <select class="form-control">
-                            <option value="显示全部">显示全部</option>
-                            <option value="一级代理商">一级代理商</option>
-                            <option value="二级代理商">二级代理商</option>
-                            <option value="三级代理商">三级代理商</option>
-                        </select>
                     </div>
                 </div>
                 <div class="x_content clear">
@@ -145,7 +148,9 @@
                             </tr>
                             </tbody>
                         </table>
-                        <a href="agent2.html"><button class="btn btn-sm btn-danger">新建代理商</button></a>
+                        <a href="agent2.html">
+                            <button class="btn btn-sm btn-danger">新建代理商</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -254,8 +259,12 @@
                         </table>
                     </div>
                 </div>
-                <a href=""><button class="btn btn-sm btn-danger">重新托管</button></a>
-                <a href=""><button class="btn btn-sm btn-danger">取消托管</button></a>
+                <a href="">
+                    <button class="btn btn-sm btn-danger">重新托管</button>
+                </a>
+                <a href="">
+                    <button class="btn btn-sm btn-danger">取消托管</button>
+                </a>
             </div>
             <div class="x_panel">
                 <div class="row tile_count text-center">
