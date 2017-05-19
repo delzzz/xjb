@@ -5,6 +5,14 @@ class AgentController extends AdminController
 {
     function index()
     {
+        $orgAgent = $this->orgAgent();
+        dump($orgAgent);
+        //$orgId = $orgAgent['orgId'];
+        //$param['orgName']=$this->orgName();
+        //$param['parentId']=$orgAgent[''];
+        //$param['degree']=1;
+        $agents = http('http://192.168.1.250:8080/service/org/agent/query?pageNo=1&pageSize=1',$param);
+        dump($agents);
         $this->display();
     }
 
@@ -117,7 +125,6 @@ class AgentController extends AdminController
             'extendFlag' => !$param['extendFlag'] ? 0 : 1
         ];
         $info = ['orgInfo' => $orgInfo, 'orgAgent' => $orgAgent];
-        $arr = C('INTERFACR_API');
         $res = json_encode($info);
         $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
         var_dump($jsonData);
