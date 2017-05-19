@@ -28,12 +28,18 @@ class AdminController extends Controller
         if (!UID) {// 还没登录 跳转到登录页面
             $this->redirect('Public/login');
         }
+        $this->assign('orgName', $this->orgName());
     }
 
-    protected function org_agent($param = '')
+    protected function orgName()
+    {
+        return $this->orgAgent()['orgOrganization']['orgName'];
+    }
+
+    protected function orgAgent($param = '')
     {
         $User = session('user_auth');
-        $orgAgent = http(C('INTERFACR_API')['get_org_agent'], ['orgId' => $User['objectId']],'GET');
+        $orgAgent = http(C('INTERFACR_API')['get_org_agent'], ['orgId' => $User['objectId']], 'GET');
         if (!empty($param)) {
             return $orgAgent[$param];
         }
