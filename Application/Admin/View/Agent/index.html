@@ -4,6 +4,12 @@
         .table > tbody > tr > td {
             line-height: 2.428571;
         }
+        .openup{
+            display: block;
+        }
+        .close{
+            display: none;
+        }
     </style>
 </block>
 <block name="body">
@@ -100,29 +106,27 @@
                             </thead>
                             <tbody>
                             <volist name="agentList" id="agent">
-                                <a href="{:U('Agent/agent_detail',array('agentId'=>$agent['agentId']))}">
-                                        <tr class="even pointer">
-                                        <td class="a-center text-center">
-                                            <if condition="$agent['child'] neq ''">
-                                                <a href="javascript:void(0)">展开</a>
-                                            </if>
-                                        </td>
-                                        <td class=" ">{$agent.createTime|date='Y-m-d',###}</td>
-                                        <td class="">{$agent.degree}</td>
-                                        <td class=" ">{$agent.provinceId}{$agent.cityId}{$agent.countyId}</td>
-                                        <td class=" ">{$agent.orgName}</td>
-                                        <td class=" ">{$agent.telephone}</td>
-                                        <td class=" ">100台</td>
-                                        <td class="a-right a-right ">5584</td>
-                                        <td class=" ">160</td>
-                                    </tr>
-                                </a>
-                                <if condition="$agent['child'] neq ''" >
+                                <tr id="first" class="even pointer">
+                                    <td class="a-center text-center">
+                                        <if condition="$agent['child'] neq null">
+                                            <a class="openup" href="javascript:void(0)">展开</a>
+                                        </if>
+                                    </td>
+                                    <td class=" ">{$agent.createTime|date='Y-m-d',###}</td>
+                                    <td class="">{$agent.degree}</td>
+                                    <td class=" ">{$agent.provinceId}{$agent.cityId}{$agent.countyId}</td>
+                                    <td class=" ">{$agent.orgName}</td>
+                                    <td class=" ">{$agent.telephone}</td>
+                                    <td class=" ">100台</td>
+                                    <td class="a-right a-right ">5584</td>
+                                    <td class=" ">160</td>
+                                </tr>
+                                <if condition="$agent['child'] neq ''">
                                     <volist name="agent['child']" id="child">
-                                        <tr class="even pointer bg-">
+                                        <tr id="second" class="even pointer bg- close">
                                             <td class="a-center text-center">
-                                                <if condition="$child['children'] neq ''">
-                                                    <a href="javascript:void(0)">展开</a>
+                                                <if condition="$child['children'] neq null">
+                                                    <a class="openup" href="javascript:void(0)">展开</a>
                                                 </if>
                                             </td>
                                             <td class=" ">{$child.createTime|date='Y-m-d',###}</td>
@@ -136,7 +140,7 @@
                                         </tr>
                                         <if condition="$child['children'] neq ''">
                                             <volist name="child['children']" id="children">
-                                                <tr class="even pointer">
+                                                <tr id="third" class="even pointer close">
                                                     <td class="a-center text-center"></td>
                                                     <td class=" ">{$children.createTime|date='Y-m-d',###}</td>
                                                     <td class="">{$children.degree}</td>
@@ -306,4 +310,12 @@
 
         </div>
     </div>
+</block>
+<block name="script">
+    <script>
+//        $('.openup').click(function(){
+//            $(this).parents('tr').next('#second').removeClass('close');
+//            $(this).parents('tr').next('#second').addClass('openup');
+//        });
+    </script>
 </block>

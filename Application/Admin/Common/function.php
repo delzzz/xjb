@@ -458,6 +458,7 @@ function http($url, $params, $method = 'POST', $header = array(), $multi = false
     $data = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     $error = curl_error($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
     if ($error) throw new Exception('请求发生错误：' . $error);
     return json_decode($data,true);
