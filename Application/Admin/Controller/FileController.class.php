@@ -28,7 +28,8 @@ class FileController extends AdminController
             C("UPLOAD_QINIU_CONFIG")
         );
         /* 返回JSON数据 */
-        echo $info['file']['url'];die();
+        echo $info['file']['url'];
+        die();
         $this->ajaxReturn($info);
     }
 
@@ -44,6 +45,16 @@ class FileController extends AdminController
             $this->error($logic->getError());
         }
 
+    }
+
+    //删除图片
+    public function delPic()
+    {
+        $imageId = I('get.imageId');
+        $baseUrl = $this->getUrl('del_pic');
+        $url = $baseUrl . $imageId;
+        $response = http($url, null, 'GET');
+        echo json_encode($response);
     }
 
     /**

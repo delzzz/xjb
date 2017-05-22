@@ -121,5 +121,6 @@ return array(
         'query_org' => 'http://192.168.1.250:8080/service/org/ins/query',//查询机构        
         'query_agent' => 'http://192.168.1.250:8080/service/org/agent/query',//查询代理商
         'get_org_detail' => 'http://192.168.1.250:8080/service/org/ins/detail/', //获取机构详情
+        'del_pic' => 'http://http://192.168.1.250:8080/service/image/delete/'//删除图片
     ),
 );
