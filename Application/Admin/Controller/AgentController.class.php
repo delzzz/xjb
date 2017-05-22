@@ -27,8 +27,6 @@ class AgentController extends AdminController
                     $v['createTime'] = substr($v['createTime'],0,strlen($v['createTime'])-3);
                     $v['updateTime'] = substr($v['updateTime'],0,strlen($v['updateTime'])-3);
                     $value['child'][$k]['children'] = agent_list($v['agentId']);
-
-
                 }
             }
         }
@@ -50,7 +48,6 @@ class AgentController extends AdminController
 
     function agent()
     {
-
         $this->meta_title = "保存代理商信息";
         $orgId = I('get.orgId');
         $this->display('agent');
@@ -175,14 +172,23 @@ class AgentController extends AdminController
             }
             //详情
             $this->meta_title = '代理商管理-代理商详情';
-            $info = $this->orgAgent();
+            $info = $this->orgAgent(3);
             $this->assign('info',$info);
             //dump($info);
-            $agentId = 1;
+            $agentId = 3;
             $manageInfo = http('http://192.168.1.250:8080/service/org/agent/detail/'.$agentId,null,'get');
-
-            dump($manageInfo);
             $this->assign('manageInfo',$manageInfo);
+            //下级代理商，当前机构
+            $orgList = $this->orgList();
+            $agentList = $this->agentList();
+            //获取下级机构
+
+            dump($agentList);
+            foreach ($agentList as $key=>$value){
+                //$value['']
+            }
+            $this->assign('orgList',$orgList);
+            $this->assign('agentList',$agentList);
             $this->display();
         }
     }
