@@ -168,11 +168,28 @@ class AgentController extends AdminController
         var_dump($jsonData);
     }
 
-    //代理商详情页
+    //代理商详情-编辑页
     function agent_detail()
     {
-        $this->meta_title = '代理商管理-代理商详情';
-        $this->display();
+        $_GET['agentId'] = 1;
+        if(isset($_GET['agentId'])){
+            if(isset($_GET['editId'])){
+                //编辑
+                $this->meta_title = '代理商管理-代理商信息变更';
+                $this->assign('editFlag',1);
+            }
+            //详情
+            $this->meta_title = '代理商管理-代理商详情';
+            $info = $this->orgAgent();
+            $this->assign('info',$info);
+            //dump($info);
+            $agentId = 1;
+            $manageInfo = http('http://192.168.1.250:8080/service/org/agent/detail/'.$agentId,null,'get');
+
+            dump($manageInfo);
+            $this->assign('manageInfo',$manageInfo);
+            $this->display();
+        }
     }
 
     //医疗机构详情页
