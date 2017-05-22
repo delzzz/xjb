@@ -177,6 +177,7 @@ class AgentController extends AdminController
         $insId = I('get.insId');
         $url = $this->getUrl('get_org_detail') . $insId;
         $option = http($url, null, 'GET');
+//        print_r($option);die();
         $this->assign('info', $option);
         $this->assign('orgInfo', $option['orgOrganization']);
         $this->assign('contactList', $option['orgOrganization']['contactList']);
