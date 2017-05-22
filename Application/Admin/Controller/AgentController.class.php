@@ -39,7 +39,7 @@ class AgentController extends AdminController
                 }
             }
         }
-
+        return $agentList;
     }
 
 
