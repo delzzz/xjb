@@ -350,4 +350,10 @@ class AdminController extends Controller
         return $list;
     }
 
+    //获取接口
+    protected function getUrl($interFace)
+    {
+        return C('INTERFACR_API')[$interFace];
+    }
+
 }
