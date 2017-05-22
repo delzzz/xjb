@@ -27,13 +27,7 @@ class AgentController extends AdminController
                     $v['createTime'] = substr($v['createTime'],0,strlen($v['createTime'])-3);
                     $v['updateTime'] = substr($v['updateTime'],0,strlen($v['updateTime'])-3);
                     $value['child'][$k]['children'] = agent_list($v['agentId']);
-                    if($v['children'] != null){
-                        foreach ($v['children'] as $kk=>&$vv){
-                            //date类型去除后面000
-                            $vv['createTime'] = substr($vv['createTime'],0,strlen($vv['createTime'])-3);
-                            $vv['updateTime'] = substr($vv['updateTime'],0,strlen($vv['updateTime'])-3);
-                        }
-                    }
+
 
                 }
             }
@@ -167,6 +161,7 @@ class AgentController extends AdminController
         $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
         var_dump($jsonData);
     }
+
 
     //代理商详情-编辑页
     function agent_detail()

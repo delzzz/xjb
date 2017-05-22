@@ -136,7 +136,8 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="">
-                        <a href="../../javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <a href="../../javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                           aria-expanded="false">
                             <img src="__IMG__/img.jpg" alt="">{$orgName}
                             <span class=" fa fa-angle-down"></span>
                         </a>
@@ -154,18 +155,20 @@
                     </li>
 
                     <li role="presentation" class="dropdown">
-                        <a href="../../javascript:;" class="dropdown-toggle info-number pull-right" data-toggle="dropdown" aria-expanded="false">
+                        <a href="../../javascript:;" class="dropdown-toggle info-number pull-right"
+                           data-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-green">6</span>
                         </a>
-                        <a href="../../javascript:;" class="dropdown-toggle info-number pull-right" data-toggle="dropdown" aria-expanded="false">
+                        <a href="../../javascript:;" class="dropdown-toggle info-number pull-right"
+                           data-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-bell-o color-red"></i>
                             <span class="badge bg-red">6</span>
                         </a>
                         <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                             <li>
                                 <a>
-                                    <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image" /></span>
+                                    <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image"/></span>
                                 <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -177,7 +180,7 @@
                             </li>
                             <li>
                                 <a>
-                                    <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image" /></span>
+                                    <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image"/></span>
                                 <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -189,7 +192,7 @@
                             </li>
                             <li>
                                 <a>
-                                    <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image" /></span>
+                                    <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image"/></span>
                                 <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -201,7 +204,7 @@
                             </li>
                             <li>
                                 <a>
-                                    <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image" /></span>
+                                    <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image"/></span>
                                 <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -242,12 +245,22 @@
 <script src="__VENDOR__/dropzone/dist/min/dropzone.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="__BUILD__/js/custom.min.js"></script>
+<!-- /内容区 -->
+<script type="text/javascript">
+    (function () {
+        var ThinkPHP = window.Think = {
+            "ROOT": "__ROOT__", //当前网站地址
+            "APP": "__APP__", //当前项目地址
+            "PUBLIC": "__PUBLIC__", //项目公共目录地址
+            "DEEP": "{:C('URL_PATHINFO_DEPR')}", //PATHINFO分割符
+            "MODEL": ["{:C('URL_MODEL')}", "{:C('URL_CASE_INSENSITIVE')}", "{:C('URL_HTML_SUFFIX')}"],
+            "VAR": ["{:C('VAR_MODULE')}", "{:C('VAR_CONTROLLER')}", "{:C('VAR_ACTION')}"]
+        }
+    })();
+</script>
+<script type="text/javascript" src="__STATIC__/think.js"></script>
 <script src="__JS__/common.js"></script>
 <script type="text/javascript">
-    $(function () {
-        $("li").removeClass('active');
-        $(".child_menu").css('display', 'none');
-    });
     Array.prototype.removeByValue = function (val) {
         for (var i = 0; i < this.length; i++) {
             if (this[i] == val) {
@@ -290,6 +303,79 @@
             });
         }
     });
+    +function () {
+        $("li").removeClass('active');
+        $(".child_menu").css('display', 'none');
+        var $window = $(window), $subnav = $("#subnav"), url;
+        $window.resize(function () {
+            $("#main").css("min-height", $window.height() - 130);
+        }).resize();
+
+        /* 左边菜单高亮 */
+        url = window.location.pathname + window.location.search;
+        url = url.replace(/(\/(p)\/\d+)|(&p=\d+)|(\/(id)\/\d+)|(&id=\d+)|(\/(group)\/\d+)|(&group=\d+)/, "");
+        $subnav.find("a[href='" + url + "']").parent().addClass("current");
+
+        /* 左边菜单显示收起 */
+        $("#subnav").on("click", "h3", function () {
+            var $this = $(this);
+            $this.find(".icon").toggleClass("icon-fold");
+            $this.next().slideToggle("fast").siblings(".side-sub-menu:visible").
+            prev("h3").find("i").addClass("icon-fold").end().end().hide();
+        });
+
+        $("#subnav h3 a").click(function (e) {
+            e.stopPropagation()
+        });
+
+        /* 头部管理员菜单 */
+        $(".user-bar").mouseenter(function () {
+            var userMenu = $(this).children(".user-menu ");
+            userMenu.removeClass("hidden");
+            clearTimeout(userMenu.data("timeout"));
+        }).mouseleave(function () {
+            var userMenu = $(this).children(".user-menu");
+            userMenu.data("timeout") && clearTimeout(userMenu.data("timeout"));
+            userMenu.data("timeout", setTimeout(function () {
+                userMenu.addClass("hidden")
+            }, 100));
+        });
+
+        /* 表单获取焦点变色 */
+        $("form").on("focus", "input", function () {
+            $(this).addClass('focus');
+        }).on("blur", "input", function () {
+            $(this).removeClass('focus');
+        });
+        $("form").on("focus", "textarea", function () {
+            $(this).closest('label').addClass('focus');
+        }).on("blur", "textarea", function () {
+            $(this).closest('label').removeClass('focus');
+        });
+
+        // 导航栏超出窗口高度后的模拟滚动条
+        var sHeight = $(".sidebar").height();
+        var subHeight = $(".subnav").height();
+        var diff = subHeight - sHeight; //250
+        var sub = $(".subnav");
+        if (diff > 0) {
+            $(window).mousewheel(function (event, delta) {
+                if (delta > 0) {
+                    if (parseInt(sub.css('marginTop')) > -10) {
+                        sub.css('marginTop', '0px');
+                    } else {
+                        sub.css('marginTop', '+=' + 10);
+                    }
+                } else {
+                    if (parseInt(sub.css('marginTop')) < '-' + (diff - 10)) {
+                        sub.css('marginTop', '-' + (diff - 10));
+                    } else {
+                        sub.css('marginTop', '-=' + 10);
+                    }
+                }
+            });
+        }
+    }();
 </script>
 <block name="script"></block>
 </body>

@@ -26,9 +26,9 @@ class PublicController extends \Think\Controller
     {
         if (IS_POST) {
             /* 检测验证码 TODO: */
-            if (!check_verify($verify)) {
-                $this->error('验证码输入错误！');
-            }
+//            if (!check_verify($verify)) {
+//                $this->error('验证码输入错误！');
+//            }
             /* 调用UC登录接口登录 */
             $url = C('INTERFACR_API')['get_user'];
             $User = http($url, ['userCode' => "0000"], 'GET');
