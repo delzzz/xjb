@@ -41,7 +41,8 @@
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">联系电话:</label>
 
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" name="telephone" class="form-control" placeholder="">
+                                        <input type="text" name="telephone" value="{$orgInfo.telephone}"
+                                               class="form-control" placeholder="">
                                     </div>
                                 </div>
 
@@ -67,7 +68,8 @@
 
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <div id="distpicker2" class="">
-                                            <input type="text" name="district" class="form-control" placeholder="">
+                                            <input type="text" value="{$info.district}" name="district"
+                                                   class="form-control" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -75,7 +77,8 @@
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">登录密码:</label>
 
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="password" name="password" class="form-control" placeholder="">
+                                        <input type="password" value="" name="password" class="form-control"
+                                               placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -89,7 +92,8 @@
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">公司组织机构:</label>
 
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" name="orgCode" placeholder="">
+                                        <input type="text" class="form-control" value="{$orgInfo.orgCode}"
+                                               name="orgCode" placeholder="">
                                     </div>
                                 </div>
 
@@ -98,7 +102,8 @@
 
                                     <div class="col-md-10 col-sm-10 col-xs-12">
                                         <div class="">
-                                            <input type="text" name="address" class="form-control" placeholder="">
+                                            <input type="text" value="{$orgInfo.address}" name="address"
+                                                   class="form-control" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -109,87 +114,60 @@
 
                                     <div class="col-md-10 col-sm-10 col-xs-12">
                                     <textarea name="remark" class="form-control" rows="3"
-                                              placeholder='备注在2000字以内'></textarea>
+                                              placeholder='备注在2000字以内'>{$orgInfo.remark}</textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--管理人员-->
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>管理人员基本信息</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content row">
-                            <br/>
+                    <volist name="contactList" id="contact">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>
+                                    <php>if($key==0)echo "管理人员基本信息";</php>
+                                    <php>if($key==1)echo"负责人基本信息";</php>
+                                </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content row">
+                                <br/>
 
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">负责人姓名:</label>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">负责人姓名:</label>
 
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input name="name[]" type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">手机号码:</label>
-
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input name="mobile[]" type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">身份证:</label>
-
-                                    <div class="col-md-10 col-sm-10 col-xs-12">
-                                        <div class="">
-                                            <input type="text" name="idNo[]" class="form-control" placeholder="">
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input name="name[]" value="{$contact.name}" type="text"
+                                                   class="form-control"
+                                                   placeholder="">
                                         </div>
                                     </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">手机号码:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input name="mobile[]" value="{$contact.mobile}" type="text"
+                                                   class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">身份证:</label>
+
+                                        <div class="col-md-10 col-sm-10 col-xs-12">
+                                            <div class="">
+                                                <input type="text" name="idNo[]" value="{$contact.idNo}"
+                                                       class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="">
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>负责人基本信息</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content row">
-                            <br/>
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">负责人姓名:</label>
-
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input name="name[]" type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">手机号码:</label>
-
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input name="mobile[]" type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">身份证:</label>
-
-                                    <div class="col-md-10 col-sm-10 col-xs-12">
-                                        <div class="">
-                                            <input type="text" name="idNo[]" class="form-control" placeholder="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </volist>
                     <!--证件上传-->
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -201,8 +179,19 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <div action="#" class="dropzone"></div>
-                                    <input type="hidden" id="imagePath" name="imagePath">
+                                    <div action="#" class="dropzone">
+                                        <volist name="imgList" id="img">
+                                            <div class="dz-preview dz-processing dz-image-preview dz-success dz-complete">
+                                                <div class="dz-image">
+                                                    <img data-dz-thumbnail="" alt="{$img.displayName}"
+                                                         src="{$img.imagePath}">
+                                                </div>
+                                                <a class="dz-remove" data-path="{$img.imagePath}"
+                                                   data-id="{$img.imageId}" href="javascript:undefined;"
+                                                   data-dz-remove="">删除</a></div>
+                                        </volist>
+                                    </div>
+                                    <input type="hidden" id="imagePath" value="{$imgPathStr}" name="imagePath">
                                 </div>
                             </div>
                         </div>
@@ -372,6 +361,26 @@
                 $("input,textarea").attr('disabled', false);
             })
         });
-        Think.setValue("insType","{$orgInfo.orgType}");
+        Think.setValue("insType", "{$orgInfo.orgType}");
+        $(".dz-remove").click(function () {
+            var pathStr = $("#imagePath").val();
+            var imgId = $(this).attr("data-id");
+            var imgPath = $(this).attr("data-path");
+            pathStr = pathStr.replace(imgPath, '');
+            pathStr = pathStr.substr(0, pathStr.length - 1);
+            var firstChat = pathStr.substr(0, 1);
+            if (firstChat == ",") {
+                pathStr = pathStr.substr(1, pathStr.length);
+            }
+            $("#imagePath").val(pathStr);
+            $.ajax({
+                url: "{file/delPic}" + "?imageId=" + imgId,
+                type: 'GET',
+                success: function (data) {
+                    console.log(data);
+                }
+            })
+            $(this).parent().remove();
+        });
     </script>
 </block>
