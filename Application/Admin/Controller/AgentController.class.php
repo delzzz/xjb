@@ -16,14 +16,17 @@ class AgentController extends AdminController
         $agentList = agent_list($info['agentId']);
         foreach ($agentList as $key=>&$value){
             //date类型去除后面000
-
+            $value['createTime'] = substr($value['createTime'], 0, strlen($value['createTime']) - 3);
+            $value['updateTime'] = substr($value['updateTime'], 0, strlen($value['updateTime']) - 3);
+            if (agent_list($value['agentId']) != null) {
                 $value['child'] = agent_list($value['agentId']);
             }
             if($value['child'] != null){
                 foreach($value['child'] as $k=>&$v){
 
                     //date类型去除后面000
-
+                    $v['createTime'] = substr($v['createTime'], 0, strlen($v['createTime']) - 3);
+                    $v['updateTime'] = substr($v['updateTime'], 0, strlen($v['updateTime']) - 3);
                     $value['child'][$k]['children'] = agent_list($v['agentId']);
                     if ($v['children'] != null) {
                         foreach ($v['children'] as $kk => &$vv) {
