@@ -180,17 +180,37 @@ class AgentController extends AdminController
             'extendFlag' => !$param['extendFlag'] ? 0 : 1
         ];
         $info = ['orgInfo' => $orgInfo, 'orgAgent' => $orgAgent];
+
+        $agentId = I('post.agentId');
+        //编辑
+        if ($agentId) {
+            $info['orgInfo']['orgOrganization']['orgId'] = I('post.orgId');
+            $info['orgAgent']['agentId'] = $agentId;
+            unset($info['orgInfo']['orgDevice']);
+            unset($info['orgAgent']['parentId']);
+        }
+        //dump($_POST);
         $res = json_encode($info);
-        $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
-        var_dump($jsonData);
+        //dump($res);
+        //exit();
+        if ($agentId) {
+            $jsonData = http_post_json(C('INTERFACR_API')['agent_update'],$res);
+        } else {
+            $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
+        }
+        if (empty($jsonData)) {
+            $this->error('系统错误');
+        } elseif ($jsonData['success']) {
+            $this->success('保存成功');
+        }
     }
 
 
     function agent_detail()
     {
         $_GET['agentId'] = 1;
-        if(isset($_GET['agentId'])){
-            if(isset($_GET['editId'])){
+        if(I('get.agentId')){
+            if(I('get.editId')){
                 //编辑
                 $this->meta_title = '代理商管理-代理商信息变更';
                 $this->assign('editFlag',1);
@@ -201,11 +221,30 @@ class AgentController extends AdminController
             }
             $info = $this->orgAgent();
             $this->assign('info',$info);
+            //dump($info);
             $agentId = 1;
-            $manageInfo = http('http://192.168.1.250:8080/service/org/agent/detail/'.$agentId,null,'get');
+            $agentDetail = $this->getUrl('get_agent_detail');
+            $manageInfo = http($agentDetail.$agentId,null,'get');
             $this->assign('manageInfo',$manageInfo);
-            dump($manageInfo);
-
+            //dump($manageInfo);
+            //图片
+            $imgList = $manageInfo['orgOrganization']['imageList'];
+            $imgPath = '';
+            $count = count($imgList);
+            $i = 0;
+            foreach ($imgList as $val) {
+                $i++;
+                if ($count == 1) {
+                    $imgPath = $val['imagePath'];
+                } else {
+                    $imgPath = $val['imagePath'] . ',';
+                }
+                if ($i > 1 && $i == $count) {
+                    $imgPath .= $val['imagePath'];
+                }
+            }
+            $this->assign('imgList', $imgList);
+            $this->assign('imgPathStr', $imgPath);
             //下级代理商，当前机构
             $orgList = org_list($agentId);
             //机构性质
