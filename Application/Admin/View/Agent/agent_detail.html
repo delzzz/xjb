@@ -261,38 +261,7 @@
                 </div>
             </div>
 
-            <!--总代理的后台显示登录密码-->
-            <if condition="$editFlag eq 1">
-                <if condition="$info['degree'] eq 0 or $info['degree'] eq 1">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>登录密码</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content row">
-                            <br/>
-                            <form class="form-horizontal form-label-left">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">登录密码:</label>
-                                        <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="password" class="form-control" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>
-                                        <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input value="{$info.}" name="password" type="password" class="form-control" placeholder="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </if>
-            </if>
+
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
@@ -316,6 +285,7 @@
                                 </volist>
                             </div>
                             <input type="hidden" id="imagePath" value="{$imgPathStr}" name="imagePath">
+                            <input type="hidden" name="imageId" value="{$img.}"/>
                         </div>
                         <if condition="$editFlag eq 1">
                             <!--变更页面显示-->
@@ -509,9 +479,7 @@
                                 <th class="column-title">代理等级</th>
                                 <th class="column-title">代理区域</th>
                                 <th class="column-title">代理公司名称</th>
-                                <th class="column-title">机构名称</th>
                                 <th class="column-title">联系电话</th>
-                                <th class="column-title">公司性质</th>
                                 <th class="column-title">设备数量</th>
                                 <th class="column-title">终端日活</th>
                                 <th class="column-title">亲属日活</th>
@@ -519,35 +487,16 @@
                             </thead>
                             <tbody>
                             <volist name="agentList" id="agent">
-                                <if condition = "$agent['childOrg'] neq ''">
-                                    <volist name="agent['childOrg']" id="ins">
                                     <tr class="even pointer <if condition="$i%2==0">bg-</if>" >
                                         <td class="column-title">{$agent.createTime|date='Y-m-d',###}</td>
                                         <td class="column-title">{$agent.degree}</td>
                                         <td class="column-title">{$agent.provinceId}{$agent.cityId}{$agent.countyId}</td>
                                         <td class="column-title">{$agent.orgName}</td>
-                                        <td class="column-title">{$ins.orgName}</td>
                                         <td class="column-title">{$agent.telephone}</td>
-                                        <td class="column-title">{$ins.insType}</td>
                                         <td class="column-title">5000</td>
                                         <td class="column-title">160</td>
                                         <td class="column-title">160</td>
                                     </tr>
-                                    </volist>
-                                    <else/>
-                                    <tr class="even pointer <if condition="$i%2==0">bg-</if>" >
-                                        <td class="column-title">{$agent.createTime|date='Y-m-d',###}</td>
-                                        <td class="column-title">{$agent.degree}</td>
-                                        <td class="column-title">{$agent.provinceId}{$agent.cityId}{$agent.countyId}</td>
-                                        <td class="column-title">{$agent.orgName}</td>
-                                        <td class="column-title"></td>
-                                        <td class="column-title">{$agent.telephone}</td>
-                                        <td class="column-title"></td>
-                                        <td class="column-title">5000</td>
-                                        <td class="column-title">160</td>
-                                        <td class="column-title">160</td>
-                                    </tr>
-                                </if>
                             </volist>
                             </tbody>
                         </table>

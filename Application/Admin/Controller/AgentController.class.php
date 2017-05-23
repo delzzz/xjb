@@ -250,17 +250,6 @@ class AgentController extends AdminController
             //机构性质
             int_to_string($orgList, ['insType' => C('INS_TYPE')]);
             $agentList = $this->agentList();
-            //获取下级机构
-            foreach ($agentList as $key=>$value){
-                $orgArr = org_list($value['agentId']);
-                if($orgArr != null){
-                    $agentList[$key]['childOrg'] = $orgArr;
-                    foreach ($agentList[$key]['childOrg'] as $k=>&$v){
-                        $v['insType']=C('INS_TYPE')[$v['insType']];
-                    }
-                }
-            }
-
             $this->assign('orgList',$orgList);
             $this->assign('agentList',$agentList);
             $this->display();
