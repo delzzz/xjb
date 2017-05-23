@@ -498,3 +498,12 @@ function agent_list($agentId){
     $res = http_post_json($url, json_encode($param));
     return $res['itemList'];
 }
+
+function org_list($agentId){
+    if (empty($agentId)) {
+        $agentId = $this->agentId();
+    }
+    $url = C('INTERFACR_API')['query_org'];
+    $res = http_post_json($url,json_encode(['agentId' => $agentId]));
+    return $res['itemList'];
+}
