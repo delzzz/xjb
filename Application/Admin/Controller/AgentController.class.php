@@ -66,6 +66,7 @@ class AgentController extends AdminController
         $this->display('agent2');
     }
 
+    //添加编辑机构
     function AddOrg()
     {
         $param = $_POST;
@@ -81,7 +82,7 @@ class AgentController extends AdminController
         $imgArr = explode(',', $param['imagePath']);
         $imageList = null;
         foreach ($imgArr as $key => $val) {
-            $imageList[$key]['displayName'] = $val;
+            $imageList[$key]['displayName'] = "";
             $imageList[$key]['imagePath'] = $val;
             $imageList[$key]['imageType'] = 0;
             $imageList[$key]['description'] = "";
@@ -99,12 +100,25 @@ class AgentController extends AdminController
             'orgDevice' => ['deviceType' => "0,1", 'quantity' => 100],
             'sysUserInfo' => ['password' => $param['password']]
         ];
-
-        $orgInstitution = ['agentId' => $this->agentId(),
+        $orgInstitution = [
+            'agentId' => $this->agentId(),
             'insType' => $param['insType'],
-            'district' => $param['district']];
+            'district' => $param['district']
+        ];
+        $orgId = I('post.orgId');
+        //如果是编辑
+        if ($orgId) {
+            $result['orgOrganization']['orgId'] = $orgId;
+            unset($orgInstitution['agentId']);
+            $orgInstitution['institutionId'] = I('post.institutionId');
+        }
         $data = json_encode(['orgInfo' => $result, 'orgInstitution' => $orgInstitution]);
-        $jsonData = http_post_json(C('INTERFACR_API')['ins_create'], $data);
+//echo $data;die();
+        if ($orgId) {
+            $jsonData = http_post_json(C('INTERFACR_API')['ins_update'], $data);
+        } else {
+            $jsonData = http_post_json(C('INTERFACR_API')['ins_create'], $data);
+        }
         if (empty($jsonData)) {
             $this->error('系统错误');
         } elseif ($jsonData['success']) {
@@ -159,8 +173,6 @@ class AgentController extends AdminController
             'extendFlag' => !$param['extendFlag'] ? 0 : 1
         ];
         $info = ['orgInfo' => $orgInfo, 'orgAgent' => $orgAgent];
-
-
         $res = json_encode($info);
         $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
         var_dump($jsonData);
@@ -186,8 +198,12 @@ class AgentController extends AdminController
         $i = 0;
         foreach ($imgList as $val) {
             $i++;
-            $imgPath = $val['imagePath'] . ',';
-            if ($i == $count) {
+            if ($count == 1) {
+                $imgPath = $val['imagePath'];
+            } else {
+                $imgPath = $val['imagePath'] . ',';
+            }
+            if ($i > 1 && $i == $count) {
                 $imgPath .= $val['imagePath'];
             }
         }
