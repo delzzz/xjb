@@ -115,6 +115,8 @@ return array(
     /*接口配置*/
     'INTERFACR_API' => array(
         'agent_create' => 'http://192.168.1.250:8080/service/org/agent/create',//创建代理商
+        'agent_update'=>'http://192.168.1.250:8080/service/org/agent/update',//更新代理商
+        'get_agent_detail'=>'http://192.168.1.250:8080/service/org/agent/detail/',//获取代理商详情
         'ins_create' => 'http://192.168.1.250:8080/service/org/ins/create', //创建机构
         'ins_update'=>'http://192.168.1.250:8080/service/org/ins/update',//更新机构
         'get_user' => 'http://192.168.1.250:8080/service/sys/user/get', //获取系统用户信息
@@ -122,6 +124,9 @@ return array(
         'query_org' => 'http://192.168.1.250:8080/service/org/ins/query',//查询机构        
         'query_agent' => 'http://192.168.1.250:8080/service/org/agent/query',//查询代理商
         'get_org_detail' => 'http://192.168.1.250:8080/service/org/ins/detail/', //获取机构详情
-        'del_pic' => 'http://192.168.1.250:8080/service/image/delete/'//删除图片
+        'del_pic' => 'http://192.168.1.250:8080/service/image/delete/',//删除图片
+
+        'zuoxi_detail'=>'http://192.168.1.250:8080/service/org/cs/',//获坐席息详情
+        'zuoxi_create'=> 'http://192.168.1.250:8080/service/org/cs/create',//创建坐席
     ),
 );

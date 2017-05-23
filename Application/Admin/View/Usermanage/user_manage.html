@@ -1,152 +1,150 @@
 <extend name="Public/base"/>
 <block name="body">
-<div class="container body">
-    <div class="main_container">
-        <!--content pages-->
-        <div class="right_col" role="main">
-            <div class="col-md-12 col-xs-12">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>基本资料</h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content row">
-                        <br/>
-                        <form class="form-horizontal form-label-left">
-                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">姓名:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">性别:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <select class="form-control">
-                                            <option>男</option>
-                                            <option>女</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">电话:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control"  placeholder="">
-                                    </div>
-                                </div>
+    <div class="container body">
+        <div class="main_container">
+            <!--content pages-->
+            <div class="right_col" role="main">
+                <div class="col-md-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>基本资料</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content row">
+                            <br/>
 
+                            <form class="form-horizontal form-label-left" method="post" action="{:U('write')}">
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">姓名:</label>
 
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">坐席工号:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control"  placeholder="">
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" name="name" class="form-control" placeholder="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">初始密码:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control"  placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control"  placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">
-                                        备注:
-                                    </label>
-                                    <div class="col-md-10 col-sm-10 col-xs-12">
-                                        <textarea class="form-control" rows="3" placeholder='备注在2000字以内'></textarea>
-                                    </div>
-                                </div>
-                                <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
-                                <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>-->
-                                <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
-                                <!--<input type="password" class="form-control" value="passwordonetwo">-->
-                                <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
-                                <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">AutoComplete</label>-->
-                                <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
-                                <!--<input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10"/>-->
-                                <!--</div>-->
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                <img src="__IMG__/user.png">
-                            </div>
-                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                <div class="x_title">
-                                    <br><br>
-                                    <h2>兴趣爱好</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
-                                    <br>
-                                    <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                        <label>
-                                            <input type="checkbox" class="flat" checked="checked"> 数据统计
-                                        </label>
-                                    </div>
-                                    <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                        <label>
-                                            <input type="checkbox" class="flat"> 基础档案
-                                        </label>
-                                    </div>
-                                    <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                        <label>
-                                            <input type="checkbox" class="flat"> 设备报警
-                                        </label>
-                                    </div>
-                                    <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                        <label>
-                                            <input type="checkbox" class="flat">
-                                            通知管理
-                                        </label>
-                                    </div>
-                                    <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                        <label>
-                                            <input type="checkbox" class="flat" >
-                                            代理机构管理
-                                        </label>
-                                    </div>
-                                </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">性别:</label>
 
-                                <div class="x_title clear">
-                                    <br>
-                                    <br>
-                                    <h2>操作</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                    </ul>
-                                    <div class="clearfix"></div>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <select name="sex" class="form-control">
+                                                <option value="1">男</option>
+                                                <option value="0">女</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">电话:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" name="telephone" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">初始密码:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="password" name="password" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="password" name="repassword" class="form-control"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                            备注:
+                                        </label>
+
+                                        <div class="col-md-10 col-sm-10 col-xs-12">
+                                            <textarea class="form-control" name="remark" rows="3"
+                                                      placeholder='备注在2000字以内'></textarea>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
-                                    <br>
-                                    <button class="btn btn-lg btn-danger">保存</button>
-                                    <button class="btn btn-lg btn-danger">关闭</button>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                    <img src="__IMG__/user.png">
                                 </div>
-                            </div>
-                        </form>
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_title">
+                                        <br><br>
+
+                                        <h2>权限设置</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
+                                        <br>
+
+                                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                            <label>
+                                                <input type="checkbox" class="flat" checked="checked"> 数据统计
+                                            </label>
+                                        </div>
+                                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                            <label>
+                                                <input type="checkbox" class="flat"> 基础档案
+                                            </label>
+                                        </div>
+                                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                            <label>
+                                                <input type="checkbox" class="flat"> 设备报警
+                                            </label>
+                                        </div>
+                                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                            <label>
+                                                <input type="checkbox" class="flat">
+                                                通知管理
+                                            </label>
+                                        </div>
+                                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                            <label>
+                                                <input type="checkbox" class="flat">
+                                                代理机构管理
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="x_title clear">
+                                        <br>
+                                        <br>
+
+                                        <h2>操作</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                                        <br>
+                                        <button type="submit" class="btn btn-lg btn-danger ajax-post"
+                                                target-form="form-label-left">
+                                            保存
+                                        </button>
+                                        <button class="btn btn-lg btn-danger"
+                                                onclick="javascript:history.back(-1);return false;">关闭
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="distpicker1" class="hide">
-                <select></select>
-                <select></select>
-                <select></select>
+                <div id="distpicker1" class="hide">
+                    <select></select>
+                    <select></select>
+                    <select></select>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    $("#distpicker2").distpicker();
-</script>
+    <script>
+        $("#distpicker2").distpicker();
+    </script>
 </block>
