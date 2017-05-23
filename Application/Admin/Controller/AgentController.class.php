@@ -6,17 +6,24 @@ class AgentController extends AdminController
     function index()
     {
         $this->meta_title = '代理商管理';
+        $this->assign('agentList',$this->agentList());
+        $this->display();
+    }
+
+
+    function agentList(){
         $info = $this->orgAgent();
         $agentList = agent_list($info['agentId']);
-        foreach ($agentList as $key => &$value) {
+        foreach ($agentList as $key=>&$value){
             //date类型去除后面000
             $value['createTime'] = substr($value['createTime'], 0, strlen($value['createTime']) - 3);
             $value['updateTime'] = substr($value['updateTime'], 0, strlen($value['updateTime']) - 3);
             if (agent_list($value['agentId']) != null) {
                 $value['child'] = agent_list($value['agentId']);
             }
-            if ($value['child'] != null) {
-                foreach ($value['child'] as $k => &$v) {
+            if($value['child'] != null){
+                foreach($value['child'] as $k=>&$v){
+
                     //date类型去除后面000
                     $v['createTime'] = substr($v['createTime'], 0, strlen($v['createTime']) - 3);
                     $v['updateTime'] = substr($v['updateTime'], 0, strlen($v['updateTime']) - 3);
@@ -32,10 +39,9 @@ class AgentController extends AdminController
                 }
             }
         }
-        $this->assign('agentList', $agentList);
-        $this->assign('orgList', $this->orgList());
-        $this->display();
+        return $agentList;
     }
+
 
 
     function orgList($agentId = 0)
@@ -45,6 +51,7 @@ class AgentController extends AdminController
         }
         $pageNo = I('get.p', 1);
         $url = C('INTERFACR_API')['query_org'] . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
+
         $param = think_json_encode(['agentId' => $agentId]);
         $list = $this->lists($url, $param);
         foreach ($list['itemList'] as &$val) {
@@ -178,11 +185,38 @@ class AgentController extends AdminController
         var_dump($jsonData);
     }
 
-    //代理商详情页
+
     function agent_detail()
     {
-        $this->meta_title = '代理商管理-代理商详情';
-        $this->display();
+
+        $_GET['agentId'] = 1;
+        if(isset($_GET['agentId'])){
+            if(isset($_GET['editId'])){
+                //编辑
+                $this->meta_title = '代理商管理-代理商信息变更';
+                $this->assign('editFlag',1);
+            }
+            //详情
+            $this->meta_title = '代理商管理-代理商详情';
+            $info = $this->orgAgent(3);
+            $this->assign('info',$info);
+            //dump($info);
+            $agentId = 3;
+            $manageInfo = http('http://192.168.1.250:8080/service/org/agent/detail/'.$agentId,null,'get');
+            $this->assign('manageInfo',$manageInfo);
+            //下级代理商，当前机构
+            $orgList = $this->orgList();
+            $agentList = $this->agentList();
+            //获取下级机构
+
+            dump($agentList);
+            foreach ($agentList as $key=>$value){
+                //$value['']
+            }
+            $this->assign('orgList',$orgList);
+            $this->assign('agentList',$agentList);
+            $this->display();
+        }
     }
 
     //医疗机构详情页

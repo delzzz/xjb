@@ -1,7 +1,7 @@
 <extend name="Public/base"/>
 <block name="style">
     <style>
-        #btn_edit{
+        #btn_edit {
             display: none;
         }
     </style>
@@ -25,7 +25,7 @@
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">代理商名称:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input value="{$info['orgOrganization']['orgName']}"  name="orgName" type="text" class="form-control" disabled="disabled" placeholder="">
+                                    <input value="{$info['orgOrganization']['orgName']}" name="orgName" type="text" class="form-control" disabled="disabled" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -70,7 +70,7 @@
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">公司组织机构:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input name="orgCode" value="{$info['orgOrganization']['orgCode']}"  type="text" class="form-control" disabled="disabled" placeholder="">
+                                    <input name="orgCode" value="{$info['orgOrganization']['orgCode']}" type="text" class="form-control" disabled="disabled" placeholder="">
                                 </div>
                             </div>
 
@@ -176,13 +176,12 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="btn_edit">
                     <button class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">账号托管</button>
                     <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
-                    <button class="btn btn-lg btn-danger" >账号停用
+                    <button class="btn btn-lg btn-danger">账号停用
                     </button>
                     <button class="btn btn-lg btn-danger ">保存页面</button>
                     <button class="btn btn-lg btn-danger ">关闭页面</button>
                 </div>
             </div>
-
 
 
             <!--弹框 托管-->
@@ -316,35 +315,35 @@
 
             <!--总代理的后台显示登录密码-->
             <if condition="$editFlag eq 1">
-            <if condition="$info['degree'] eq 0 or $info['degree'] eq 1">
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>登录密码</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content row">
-                    <br/>
-                    <form class="form-horizontal form-label-left">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <label class="control-label col-md-4 col-sm-4 col-xs-12">登录密码:</label>
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="password" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input value="{$info.}" name="password" type="password" class="form-control" placeholder="">
-                                </div>
-                            </div>
+                <if condition="$info['degree'] eq 0 or $info['degree'] eq 1">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>登录密码</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                            </ul>
+                            <div class="clearfix"></div>
                         </div>
-                    </form>
-                </div>
-            </div>
-            </if>
+                        <div class="x_content row">
+                            <br/>
+                            <form class="form-horizontal form-label-left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">登录密码:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="password" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input value="{$info.}" name="password" type="password" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </if>
             </if>
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -502,26 +501,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="even pointer">
-                                <td class="column-title">2017-02-02</td>
-                                <td class="column-title">浙江祥源和健康咨询有限公司</td>
-                                <td class="column-title">注册公司</td>
-                                <td class="column-title">浙江省杭州市浙江省杭州市浙江省杭州市</td>
-                                <td class="column-title">13838383838</td>
-                                <td class="column-title">200</td>
-                                <td class="column-title">2000</td>
-                                <td class="column-title">20000</td>
-                            </tr>
-                            <tr class="even pointer bg-">
-                                <td class="column-title">2017-02-02</td>
-                                <td class="column-title">浙江祥源和健康咨询有限公司</td>
-                                <td class="column-title">注册公司</td>
-                                <td class="column-title">浙江省杭州市浙江省杭州市浙江省杭州市</td>
-                                <td class="column-title">13838383838</td>
-                                <td class="column-title">200</td>
-                                <td class="column-title">2000</td>
-                                <td class="column-title">20000</td>
-                            </tr>
+                            <volist name="orgList" id="list">
+                                <tr class="even pointer">
+                                    <td class="column-title">{:time_format($list['createTime']/1000,'Y-m-d')}</td>
+                                    <td class="column-title">{$list.orgName}</td>
+                                    <td class="column-title">{$list.insType_text}</td>
+                                    <td class="column-title">{$list.district}</td>
+                                    <td class="column-title">{$list.telephone}</td>
+                                    <td class="column-title">200</td>
+                                    <td class="column-title">2000</td>
+                                    <td class="column-title">20000</td>
+                                </tr>
+                            </volist>
                             </tbody>
                         </table>
                     </div>
@@ -547,30 +538,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="even pointer">
-                                <td class="column-title">2017-02-02</td>
-                                <td class="column-title">一级（省）</td>
-                                <td class="column-title">浙江省</td>
-                                <td class="column-title">浙江祥源和健康咨询有限公司</td>
-                                <td class="column-title">屈烨健康医疗公司</td>
-                                <td class="column-title">13030303300</td>
-                                <td class="column-title">养老院</td>
-                                <td class="column-title">20</td>
-                                <td class="column-title">1000</td>
-                                <td class="column-title">20000</td>
-                            </tr>
-                            <tr class="even pointer bg-">
-                                <td class="column-title">2017-02-02</td>
-                                <td class="column-title">一级（省）</td>
-                                <td class="column-title">浙江省</td>
-                                <td class="column-title">浙江祥源和健康咨询有限公司</td>
-                                <td class="column-title">屈烨健康医疗公司</td>
-                                <td class="column-title">13030303300</td>
-                                <td class="column-title">养老院</td>
-                                <td class="column-title">20</td>
-                                <td class="column-title">1000</td>
-                                <td class="column-title">20000</td>
-                            </tr>
+                            <volist name="agentList" id="agent">
+                                    <tr class="even pointer <if condition="$i%2==0">bg-</if>" >
+                                        <td class="column-title">{$agent.createTime|date='Y-m-d',###}</td>
+                                        <td class="column-title">{$agent.degree}</td>
+                                        <td class="column-title">{$agent.provinceId}{$agent.cityId}{$agent.countyId}</td>
+                                        <td class="column-title">{$agent.orgName}</td>
+                                        <td class="column-title">机构名称</td>
+                                        <td class="column-title">{$agent.telephone}</td>
+                                        <td class="column-title">gongsixingzhi</td>
+                                        <td class="column-title">5000</td>
+                                        <td class="column-title">160</td>
+                                        <td class="column-title">160</td>
+                                    </tr>
+                            </volist>
                             </tbody>
                         </table>
                     </div>
@@ -607,20 +588,22 @@
 </block>
 <block name="script">
     <script>
+
+
         //设备多选选中
         var device = $('#device').val();
         var device_arr = device.split(',');
-        $.each(device_arr,function(i,item){
+        $.each(device_arr, function (i, item) {
             console.log(item);
-            $('input[name="deviceType[]"]').each(function(j,devices){
-                if($(this).val()==item){
-                    $(this).attr('checked',true);
+            $('input[name="deviceType[]"]').each(function (j, devices) {
+                if ($(this).val() == item) {
+                    $(this).attr('checked', true);
                 }
             })
         });
         //编辑页
         var editFlag = $('#editFlag').val();
-        if(editFlag == 1){
+        if (editFlag == 1) {
             $('#f1 input:not(#logId)').removeAttr('disabled');
             $('#f1 textarea').removeAttr('disabled');
             $('#f2 input').removeAttr('disabled');
@@ -629,7 +612,7 @@
 
         }
 
-        $('#btn_edit').click(function(){
+        $('#btn_edit').click(function () {
 
         });
     </script>
