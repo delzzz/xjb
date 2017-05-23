@@ -41,6 +41,16 @@ class AdminController extends Controller
         return $this->orgAgent()['agentId'];
     }
 
+    protected function orgId()
+    {
+        return $this->orgAgent(0,'orgId');
+    }
+
+    protected function orgType()
+    {
+        return $this->orgAgent()['orgOrganization']['orgType'];
+    }
+
     protected function orgAgent($orgId = 0, $fild = '')
     {
         $User = session('user_auth');

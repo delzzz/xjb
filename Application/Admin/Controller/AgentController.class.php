@@ -116,11 +116,11 @@ class AgentController extends AdminController
         //如果是编辑
         if ($orgId) {
             $result['orgOrganization']['orgId'] = $orgId;
+            unset($result['sysUserInfo']);
             unset($orgInstitution['agentId']);
             $orgInstitution['institutionId'] = I('post.institutionId');
         }
         $data = json_encode(['orgInfo' => $result, 'orgInstitution' => $orgInstitution]);
-//echo $data;die();
         if ($orgId) {
             $jsonData = http_post_json(C('INTERFACR_API')['ins_update'], $data);
         } else {
