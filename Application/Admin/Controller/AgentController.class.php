@@ -23,11 +23,12 @@ class AgentController extends AdminController
             }
             if($value['child'] != null){
                 foreach($value['child'] as $k=>&$v){
-
                     //date类型去除后面000
                     $v['createTime'] = substr($v['createTime'], 0, strlen($v['createTime']) - 3);
                     $v['updateTime'] = substr($v['updateTime'], 0, strlen($v['updateTime']) - 3);
-                    $value['child'][$k]['children'] = agent_list($v['agentId']);
+                    if(agent_list($v['agentId']) != null){
+                        $value['child'][$k]['children'] = agent_list($v['agentId']) ;
+                    }
                     if ($v['children'] != null) {
                         foreach ($v['children'] as $kk => &$vv) {
                             //date类型去除后面000
@@ -35,7 +36,6 @@ class AgentController extends AdminController
                             $vv['updateTime'] = substr($vv['updateTime'], 0, strlen($vv['updateTime']) - 3);
                         }
                     }
-
                 }
             }
         }
@@ -176,7 +176,6 @@ class AgentController extends AdminController
 
     function agent_detail()
     {
-
         $_GET['agentId'] = 1;
         if(isset($_GET['agentId'])){
             if(isset($_GET['editId'])){
@@ -184,23 +183,33 @@ class AgentController extends AdminController
                 $this->meta_title = '代理商管理-代理商信息变更';
                 $this->assign('editFlag',1);
             }
-            //详情
-            $this->meta_title = '代理商管理-代理商详情';
-            $info = $this->orgAgent(3);
+            else{
+                //详情
+                $this->meta_title = '代理商管理-代理商详情';
+            }
+            $info = $this->orgAgent();
             $this->assign('info',$info);
-            //dump($info);
-            $agentId = 3;
+            $agentId = 1;
             $manageInfo = http('http://192.168.1.250:8080/service/org/agent/detail/'.$agentId,null,'get');
             $this->assign('manageInfo',$manageInfo);
+            dump($manageInfo);
+
             //下级代理商，当前机构
-            $orgList = $this->orgList();
+            $orgList = org_list($agentId);
+            //机构性质
+            int_to_string($orgList, ['insType' => C('INS_TYPE')]);
             $agentList = $this->agentList();
             //获取下级机构
-
-            dump($agentList);
             foreach ($agentList as $key=>$value){
-                //$value['']
+                $orgArr = org_list($value['agentId']);
+                if($orgArr != null){
+                    $agentList[$key]['childOrg'] = $orgArr;
+                    foreach ($agentList[$key]['childOrg'] as $k=>&$v){
+                        $v['insType']=C('INS_TYPE')[$v['insType']];
+                    }
+                }
             }
+
             $this->assign('orgList',$orgList);
             $this->assign('agentList',$agentList);
             $this->display();

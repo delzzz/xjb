@@ -1,13 +1,7 @@
 <extend name="Public/base"/>
-<block name="style">
-    <style>
-        #btn_edit {
-            display: none;
-        }
-    </style>
-</block>
 
 <block name="body">
+    <form action="{:U('editAgent')}" method="post" id="form1">
     <div class="right_col" role="main">
         <input type="hidden" id="editFlag" value="{$editFlag|default=0}"/>
         <div class="col-md-12 col-xs-12">
@@ -163,24 +157,27 @@
                         </div>
                     </div>
                 </div>
-                <!--详情页面显示-->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="btn_detail">
-                    <br>
-                    <button class="btn btn-lg btn-danger">关闭页面</button>
-                    <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
-                    <button class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal2">代理商信息变更
-                    </button>
-                    <button class="btn btn-lg btn-danger ">导出为文档资料</button>
-                </div>
-                <!--变更页面显示-->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="btn_edit">
-                    <button class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">账号托管</button>
-                    <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
-                    <button class="btn btn-lg btn-danger">账号停用
-                    </button>
-                    <button class="btn btn-lg btn-danger ">保存页面</button>
-                    <button class="btn btn-lg btn-danger ">关闭页面</button>
-                </div>
+                <if condition="$editFlag eq 1">
+                    <!--变更页面显示-->
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="btn_edit">
+                        <button class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">账号托管</button>
+                        <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
+                        <button class="btn btn-lg btn-danger">账号停用
+                        </button>
+                        <button class="btn btn-lg btn-danger ajax-post" id="submit" type="submit">保存页面</button>
+                        <button class="btn btn-lg btn-danger ">关闭页面</button>
+                    </div>
+                    <else/>
+                    <!--详情页面显示-->
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="btn_detail">
+                        <br>
+                        <button class="btn btn-lg btn-danger">关闭页面</button>
+                        <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
+                        <button class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal2">代理商信息变更
+                        </button>
+                        <button class="btn btn-lg btn-danger ">导出为文档资料</button>
+                    </div>
+                </if>
             </div>
 
 
@@ -539,18 +536,35 @@
                             </thead>
                             <tbody>
                             <volist name="agentList" id="agent">
+                                <if condition = "$agent['childOrg'] neq ''">
+                                    <volist name="agent['childOrg']" id="ins">
                                     <tr class="even pointer <if condition="$i%2==0">bg-</if>" >
                                         <td class="column-title">{$agent.createTime|date='Y-m-d',###}</td>
                                         <td class="column-title">{$agent.degree}</td>
                                         <td class="column-title">{$agent.provinceId}{$agent.cityId}{$agent.countyId}</td>
                                         <td class="column-title">{$agent.orgName}</td>
-                                        <td class="column-title">机构名称</td>
+                                        <td class="column-title">{$ins.orgName}</td>
                                         <td class="column-title">{$agent.telephone}</td>
-                                        <td class="column-title">gongsixingzhi</td>
+                                        <td class="column-title">{$ins.insType}</td>
                                         <td class="column-title">5000</td>
                                         <td class="column-title">160</td>
                                         <td class="column-title">160</td>
                                     </tr>
+                                    </volist>
+                                    <else/>
+                                    <tr class="even pointer <if condition="$i%2==0">bg-</if>" >
+                                        <td class="column-title">{$agent.createTime|date='Y-m-d',###}</td>
+                                        <td class="column-title">{$agent.degree}</td>
+                                        <td class="column-title">{$agent.provinceId}{$agent.cityId}{$agent.countyId}</td>
+                                        <td class="column-title">{$agent.orgName}</td>
+                                        <td class="column-title"></td>
+                                        <td class="column-title">{$agent.telephone}</td>
+                                        <td class="column-title"></td>
+                                        <td class="column-title">5000</td>
+                                        <td class="column-title">160</td>
+                                        <td class="column-title">160</td>
+                                    </tr>
+                                </if>
                             </volist>
                             </tbody>
                         </table>
@@ -585,6 +599,7 @@
             </div>
         </div>
     </div>
+    </form>
 </block>
 <block name="script">
     <script>
