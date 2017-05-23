@@ -372,11 +372,13 @@
             var pathStr = $("#imagePath").val();
             var imgId = $(this).attr("data-id");
             var imgPath = $(this).attr("data-path");
+            pathStr = pathStr.replace(imgPath + ',', '');
             pathStr = pathStr.replace(imgPath, '');
-            pathStr = pathStr.substr(0, pathStr.length - 1);
+//            pathStr = pathStr.substr(0, pathStr.length - 1);
             var firstChat = pathStr.substr(0, 1);
-            if (firstChat == ",") {
-                pathStr = pathStr.substr(1, pathStr.length);
+            var lastChat = pathStr.substr(pathStr.length - 1, pathStr.length);
+            if (lastChat == ',') {
+                pathStr = pathStr.substr(0, pathStr.length - 1);
             }
             $("#imagePath").val(pathStr);
             $.ajax({
