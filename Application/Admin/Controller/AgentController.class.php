@@ -113,12 +113,18 @@ class AgentController extends AdminController
             'district' => $param['district']
         ];
         $orgId = I('post.orgId');
+        $imgIdArr = explode(',', I('post.imgIdStr'));
         //如果是编辑
         if ($orgId) {
             $result['orgOrganization']['orgId'] = $orgId;
             unset($result['sysUserInfo']);
             unset($orgInstitution['agentId']);
             $orgInstitution['institutionId'] = I('post.institutionId');
+            if (!empty($imgIdArr)) {
+                foreach ($imgIdArr as $val) {
+                    $this->delPicture($val);
+                }
+            }
         }
         $data = json_encode(['orgInfo' => $result, 'orgInstitution' => $orgInstitution]);
         if ($orgId) {
@@ -191,6 +197,7 @@ class AgentController extends AdminController
         }
         //dump($_POST);
         $res = json_encode($info);
+
         //dump($res);
         //exit();
         if ($agentId) {
@@ -250,6 +257,7 @@ class AgentController extends AdminController
             //机构性质
             int_to_string($orgList, ['insType' => C('INS_TYPE')]);
             $agentList = $this->agentList();
+
             $this->assign('orgList',$orgList);
             $this->assign('agentList',$agentList);
             $this->display();
@@ -271,18 +279,23 @@ class AgentController extends AdminController
             $i++;
             if ($count == 1) {
                 $imgPath = $val['imagePath'];
-            } else {
-                $imgPath = $val['imagePath'] . ',';
-            }
-            if ($i > 1 && $i == $count) {
+                $imgIdStr = $val['imageId'];
+            } elseif ($i > 1 && $i == $count) {
                 $imgPath .= $val['imagePath'];
+                $imgIdStr .= $val['imageId'];
+            } else {
+
+                $imgPath .= $val['imagePath'] . ',';
+                $imgIdStr .= $val['imageId'] . ',';
             }
+
         }
         $this->assign('info', $option);
         $this->assign('orgInfo', $option['orgOrganization']);
         $this->assign('contactList', $option['orgOrganization']['contactList']);
         $this->assign('imgList', $imgList);
         $this->assign('imgPathStr', $imgPath);
+        $this->assign('imgIdStr', $imgIdStr);
         $this->assign('orgDevice', $option['orgDevice']);
         $this->display();
     }

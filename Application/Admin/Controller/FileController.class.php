@@ -51,10 +51,7 @@ class FileController extends AdminController
     public function delPic()
     {
         $imageId = I('get.imageId');
-        $baseUrl = $this->getUrl('del_pic');
-        $url = $baseUrl . $imageId;
-        $response = http($url, null, 'GET');
-        echo json_encode($response);
+        $this->delPicture($imageId);
     }
 
     /**
