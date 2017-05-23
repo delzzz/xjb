@@ -58,7 +58,7 @@
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">机构性质:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <select class="form-control">
-                                            <option>请选择</option>
+                                            <option selected="selected">请选择</option>
                                             <option>医院</option>
                                             <option>家庭/个人</option>
                                             <option>养老院</option>
@@ -287,7 +287,7 @@
                         <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
                         <button class="btn btn-lg btn-danger">账号停用</button>
                         <button class="btn btn-lg btn-danger hide">账号启用</button>
-                        <button class="btn btn-lg btn-danger">保存页面</button>
+                        <button class="btn btn-lg btn-danger " onclick="vilad();">保存页面</button>
                         <button class="btn btn-lg btn-danger">关闭页面</button>
                     </div>
                 </div>
@@ -399,6 +399,33 @@
 <script src="../../js/distpicker.js"></script>
 <script>
     $("#distpicker2").distpicker();
+    function vilad() {
+        $("input").each(function () {
+            if($(this).val()==''&& $(this).val()==''){
+                $(this).next("span").remove();
+                $(this).parent().append("<span class='color-red'>此项目为必填项</span>")
+            }
+        });
+        $("select").each(function () {
+            if($(this).val()=='请选择'){
+                $(this).next("span").remove();
+                $(this).parent().append("<span class='color-red'>此项目为必选项</span>")
+            }
+        });
+    }
+    $("input").blur(function () {
+        if($(this).val()==''){
+            $(this).parent().append("<span class='color-red'>此项目为必填项</span>");
+        }
+    });
+
+    $("input").focus(function () {
+        $(this).next("span").remove();
+    });
+    $("select").onchange(function () {
+        alert("a");
+        $(this).next("span").remove();
+    });
 </script>
 </body>
 </html>

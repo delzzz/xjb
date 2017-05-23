@@ -43,7 +43,7 @@ class AdminController extends Controller
 
     protected function orgId()
     {
-        return $this->orgAgent(0,'orgId');
+        return $this->orgAgent(0, 'orgId');
     }
 
     protected function orgType()
@@ -62,6 +62,14 @@ class AdminController extends Controller
             return $orgAgent[$fild];
         }
         return $orgAgent;
+    }
+
+    protected function delPicture($imgId)
+    {
+        $baseUrl = $this->getUrl('del_pic');
+        $url = $baseUrl . $imgId;
+        $response = http($url, null, 'GET');
+        return json_encode($response);
     }
 
     /**
