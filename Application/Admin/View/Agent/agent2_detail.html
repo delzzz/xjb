@@ -163,7 +163,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="">
+                                    <input type="hidden" name="contactId[]" value="{$contact.contactId}">
                                 </div>
                             </div>
                         </div>
@@ -247,11 +247,14 @@
                             <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
                             <button class="btn btn-lg btn-danger">账号停用
                             </button>
-                            <button class="btn btn-lg btn-danger" type="button">保存页面</button>
+                            <button class="btn btn-lg btn-danger ajax-post" type="submit"
+                                    target-form="form-label-left">保存页面
+                            </button>
                             <button class="btn btn-lg btn-danger ">关闭页面</button>
                         </div>
                     </div>
                 </div>
+                <input type="hidden" name="institutionId" value="{$info.institutionId}">
                 <input type="hidden" name="orgId" value="{$info.orgId}">
             </form>
         </div>
@@ -355,7 +358,7 @@
 <block name="script">
     <script type="application/javascript">
         $(function () {
-            $("input,textarea").attr('readonly', true);
+            $("input,textarea").attr('disabled', true);
             $("#btnDailiShang").click(function () {
                 $("#divOption").removeClass('hide');
                 $("input,textarea").attr('disabled', false);
@@ -374,10 +377,9 @@
             }
             $("#imagePath").val(pathStr);
             $.ajax({
-                url: "{file/delPic}" + "?imageId=" + imgId,
+                url: "{:U('file/delPic')}" + "?imageId=" + imgId,
                 type: 'GET',
                 success: function (data) {
-                    console.log(data);
                 }
             })
             $(this).parent().remove();
