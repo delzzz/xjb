@@ -6,30 +6,28 @@ class AgentController extends AdminController
     function index()
     {
         $this->meta_title = '代理商管理';
-        $this->assign('agentList', $this->agentList());
-        $this->assign('orgList', $this->orgList());
+        $this->assign('agentList',$this->agentList());
         $this->display();
     }
 
 
-    function agentList()
-    {
+    function agentList(){
         $info = $this->orgAgent();
         $agentList = agent_list($info['agentId']);
-        foreach ($agentList as $key => &$value) {
+        foreach ($agentList as $key=>&$value){
             //date类型去除后面000
             $value['createTime'] = substr($value['createTime'], 0, strlen($value['createTime']) - 3);
             $value['updateTime'] = substr($value['updateTime'], 0, strlen($value['updateTime']) - 3);
             if (agent_list($value['agentId']) != null) {
                 $value['child'] = agent_list($value['agentId']);
             }
-            if ($value['child'] != null) {
-                foreach ($value['child'] as $k => &$v) {
+            if($value['child'] != null){
+                foreach($value['child'] as $k=>&$v){
                     //date类型去除后面000
                     $v['createTime'] = substr($v['createTime'], 0, strlen($v['createTime']) - 3);
                     $v['updateTime'] = substr($v['updateTime'], 0, strlen($v['updateTime']) - 3);
-                    if (agent_list($v['agentId']) != null) {
-                        $value['child'][$k]['children'] = agent_list($v['agentId']);
+                    if(agent_list($v['agentId']) != null){
+                        $value['child'][$k]['children'] = agent_list($v['agentId']) ;
                     }
                     if ($v['children'] != null) {
                         foreach ($v['children'] as $kk => &$vv) {
@@ -43,6 +41,7 @@ class AgentController extends AdminController
         }
         return $agentList;
     }
+
 
 
     function orgList($agentId = 0)
@@ -187,49 +186,80 @@ class AgentController extends AdminController
             'extendFlag' => !$param['extendFlag'] ? 0 : 1
         ];
         $info = ['orgInfo' => $orgInfo, 'orgAgent' => $orgAgent];
+
+        $agentId = I('post.agentId');
+        //编辑
+        if ($agentId) {
+            $info['orgInfo']['orgOrganization']['orgId'] = I('post.orgId');
+            $info['orgAgent']['agentId'] = $agentId;
+            unset($info['orgInfo']['orgDevice']);
+            unset($info['orgAgent']['parentId']);
+        }
+        //dump($_POST);
         $res = json_encode($info);
-        $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
-        var_dump($jsonData);
+
+        //dump($res);
+        //exit();
+        if ($agentId) {
+            $jsonData = http_post_json(C('INTERFACR_API')['agent_update'],$res);
+        } else {
+            $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
+        }
+        if (empty($jsonData)) {
+            $this->error('系统错误');
+        } elseif ($jsonData['success']) {
+            $this->success('保存成功');
+        }
     }
 
 
     function agent_detail()
     {
         $_GET['agentId'] = 1;
-        if (isset($_GET['agentId'])) {
-            if (isset($_GET['editId'])) {
+        if(I('get.agentId')){
+            if(I('get.editId')){
                 //编辑
                 $this->meta_title = '代理商管理-代理商信息变更';
-                $this->assign('editFlag', 1);
-            } else {
+                $this->assign('editFlag',1);
+            }
+            else{
                 //详情
                 $this->meta_title = '代理商管理-代理商详情';
             }
             $info = $this->orgAgent();
-            $this->assign('info', $info);
+            $this->assign('info',$info);
+            //dump($info);
             $agentId = 1;
-            $manageInfo = http('http://192.168.1.250:8080/service/org/agent/detail/' . $agentId, null, 'get');
-            $this->assign('manageInfo', $manageInfo);
-            dump($manageInfo);
-
+            $agentDetail = $this->getUrl('get_agent_detail');
+            $manageInfo = http($agentDetail.$agentId,null,'get');
+            $this->assign('manageInfo',$manageInfo);
+            //dump($manageInfo);
+            //图片
+            $imgList = $manageInfo['orgOrganization']['imageList'];
+            $imgPath = '';
+            $count = count($imgList);
+            $i = 0;
+            foreach ($imgList as $val) {
+                $i++;
+                if ($count == 1) {
+                    $imgPath = $val['imagePath'];
+                } else {
+                    $imgPath = $val['imagePath'] . ',';
+                }
+                if ($i > 1 && $i == $count) {
+                    $imgPath .= $val['imagePath'];
+                }
+            }
+            $this->assign('imgList', $imgList);
+            $this->assign('imgPathStr', $imgPath);
             //下级代理商，当前机构
             $orgList = org_list($agentId);
             //机构性质
             int_to_string($orgList, ['insType' => C('INS_TYPE')]);
             $agentList = $this->agentList();
-            //获取下级机构
-            foreach ($agentList as $key => $value) {
-                $orgArr = org_list($value['agentId']);
-                if ($orgArr != null) {
-                    $agentList[$key]['childOrg'] = $orgArr;
-                    foreach ($agentList[$key]['childOrg'] as $k => &$v) {
-                        $v['insType'] = C('INS_TYPE')[$v['insType']];
-                    }
-                }
-            }
 
-            $this->assign('orgList', $orgList);
-            $this->assign('agentList', $agentList);
+            $this->assign('orgList',$orgList);
+            $this->assign('agentList',$agentList);
             $this->display();
         }
     }
@@ -243,10 +273,8 @@ class AgentController extends AdminController
         $option = http($url, null, 'GET');
         $imgList = $option['orgOrganization']['imageList'];
         $imgPath = '';
-        $imgIdStr = '';
         $count = count($imgList);
         $i = 0;
-//        print_r($imgList);die();
         foreach ($imgList as $val) {
             $i++;
             if ($count == 1) {
@@ -256,9 +284,11 @@ class AgentController extends AdminController
                 $imgPath .= $val['imagePath'];
                 $imgIdStr .= $val['imageId'];
             } else {
+
                 $imgPath .= $val['imagePath'] . ',';
                 $imgIdStr .= $val['imageId'] . ',';
             }
+
         }
         $this->assign('info', $option);
         $this->assign('orgInfo', $option['orgOrganization']);
