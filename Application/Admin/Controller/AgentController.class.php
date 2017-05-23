@@ -194,12 +194,15 @@ class AgentController extends AdminController
             $info['orgAgent']['agentId'] = $agentId;
             unset($info['orgInfo']['orgDevice']);
             unset($info['orgAgent']['parentId']);
+            //删除照片
+            if (!empty($imgIdArr)) {
+                foreach ($imgIdArr as $val) {
+                    $this->delPicture($val);
+                }
+            }
         }
-        //dump($_POST);
         $res = json_encode($info);
-
-        //dump($res);
-        //exit();
+        //编辑or创建
         if ($agentId) {
             $jsonData = http_post_json(C('INTERFACR_API')['agent_update'],$res);
         } else {
@@ -243,15 +246,19 @@ class AgentController extends AdminController
                 $i++;
                 if ($count == 1) {
                     $imgPath = $val['imagePath'];
-                } else {
-                    $imgPath = $val['imagePath'] . ',';
-                }
-                if ($i > 1 && $i == $count) {
+                    $imgIdStr = $val['imageId'];
+                } elseif ($i > 1 && $i == $count) {
                     $imgPath .= $val['imagePath'];
+                    $imgIdStr .= $val['imageId'];
+                } else {
+                    $imgPath .= $val['imagePath'] . ',';
+                    $imgIdStr .= $val['imageId'] . ',';
                 }
             }
+            dump($imgList);
             $this->assign('imgList', $imgList);
             $this->assign('imgPathStr', $imgPath);
+            $this->assign('imgIdStr', $imgIdStr);
             //下级代理商，当前机构
             $orgList = org_list($agentId);
             //机构性质
