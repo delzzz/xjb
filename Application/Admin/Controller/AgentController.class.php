@@ -7,6 +7,7 @@ class AgentController extends AdminController
     {
         $this->meta_title = '代理商管理';
         $this->assign('agentList',$this->agentList());
+        $this->assign('orgList',$this->orgList());
         $this->display();
     }
 
@@ -245,7 +246,6 @@ class AgentController extends AdminController
                 $this->meta_title = '代理商管理-代理商详情';
         }
             //$agentId = $this->agentId();
-
             $info = get_agent_info(5);
             $this->assign('info',$info);
             dump($info);
