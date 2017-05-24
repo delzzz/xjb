@@ -492,6 +492,10 @@ function think_json_encode($data)
     return json_encode($data, JSON_UNESCAPED_UNICODE);
 }
 
+/**
+ * @param $agentId
+ * @return mixed 根据父级id获取下级代理商列表
+ */
 function agent_list($agentId){
     $url = C('INTERFACR_API')['query_agent'];
     $param = [ 'parentId' => $agentId];
@@ -499,6 +503,10 @@ function agent_list($agentId){
     return $res['itemList'];
 }
 
+/**
+ * @param $agentId
+ * @return mixed 根据代理商Id获取机构列表
+ */
 function org_list($agentId){
     if (empty($agentId)) {
         $agentId = $this->agentId();
@@ -507,3 +515,25 @@ function org_list($agentId){
     $res = http_post_json($url,json_encode(['agentId' => $agentId]));
     return $res['itemList'];
 }
+
+/**
+ * @param $agentId
+ * @return mixed 根据代理商Id获取信息
+ */
+function get_agent_info($agentId){
+    $url = C('INTERFACR_API')['get_agent'];
+    $res = http($url.$agentId,null,'get');
+    return $res;
+}
+
+/**
+ * @param $sourceId
+ * @param $targetId
+ * @return http 提交 代理商托管
+ */
+function deposit_agent($sourceId,$targetId){
+    $url = C('INTERFACR_API')['agent_collocation'];
+    $res = http($url,['sourceId'=>$sourceId,'targetId'=>$targetId],'get');
+    return $res;
+}
+

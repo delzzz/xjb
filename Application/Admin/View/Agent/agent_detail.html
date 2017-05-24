@@ -17,7 +17,7 @@
                 </div>
                 <div class="x_content row">
                     <br/>
-                    <div id="f1" class="form-horizontal form-label-left">
+                    <div id="f1">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">代理商名称:</label>
@@ -101,7 +101,7 @@
                     </div>
                     <div class="x_content row">
                         <br/>
-                        <div id="f2" class="form-horizontal form-label-left">
+                        <div id="f2">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">管理人姓名:</label>
@@ -129,105 +129,6 @@
                     </div>
                 </div>
             </volist>
-            </div>
-
-
-            <!--弹框 托管-->
-            <div class="modal fade row" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document" style="width: 70%;">
-                    <div class="modal-content" style="">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">托管至代理商</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="x_content">
-                                <div class="table-responsive">
-                                    <table class="table table-striped jambo_table bulk_action">
-                                        <thead>
-                                        <tr class="headings">
-                                            <th>
-                                                操作
-                                            </th>
-                                            <th class="column-title">代理商等级</th>
-                                            <th class="column-title">代理区域</th>
-                                            <th class="column-title">代理公司名称</th>
-                                            <th class="column-title">代理公司地址</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr class="even pointer">
-                                            <td class="a-center ">
-                                                <input type="checkbox" class="flat" name="table_records">
-                                            </td>
-                                            <td class=" ">一级(省)代理</td>
-                                            <td class=" ">浙江省</td>
-                                            <td class=" ">浙江省圣海健康医疗有限公司</td>
-                                            <td class=" ">浙江省温州市光明区光明路111号帝国大厦三层201</td>
-
-                                        </tr>
-                                        <tr class="odd pointer">
-                                            <td class="a-center ">
-                                                <input type="checkbox" class="flat" name="table_records">
-                                            </td>
-                                            <td class=" ">二级(市)代理</td>
-                                            <td class=" ">浙江省温州市</td>
-                                            <td class=" ">浙江省圣海健康医疗有限公司</td>
-                                            <td class=" ">浙江省温州市光明区光明路111号帝国大厦三层201</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-
-                            <div class="x_content">
-                                <div class="table-responsive">
-                                    <table class="table table-striped jambo_table bulk_action">
-                                        <thead>
-                                        <tr class="headings">
-                                            <th>
-                                                操作
-                                            </th>
-                                            <th class="column-title">机构名称</th>
-                                            <th class="column-title">机构性质</th>
-                                            <th class="column-title">联系电话</th>
-                                            <th class="column-title">代理机构地址</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr class="even pointer">
-                                            <td class="a-center ">
-                                                <input type="checkbox" class="flat" name="table_records">
-                                            </td>
-                                            <td class=" ">升龙广场</td>
-                                            <td class=" ">生活小区</td>
-                                            <td class=" ">18888888888</td>
-                                            <td class=" ">浙江省温州市光明区光明路111号帝国大厦三层201</td>
-
-                                        </tr>
-                                        <tr class="odd pointer">
-                                            <td class="a-center ">
-                                                <input type="checkbox" class="flat" name="table_records">
-                                            </td>
-                                            <td class=" ">升龙广场</td>
-                                            <td class=" ">生活小区</td>
-                                            <td class=" ">18888888888</td>
-                                            <td class=" ">浙江省温州市光明区光明路111号帝国大厦三层201</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger">确定</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!--弹框 代理商信息变更-->
             <div class="modal fade row" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -272,11 +173,11 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <div action="#" class="dropzone">
+                            <div action="#" class="dropzone" disabled="disabled">
                                 <volist name="imgList" id="img">
                                     <div class="dz-preview dz-processing dz-image-preview dz-success dz-complete">
                                         <div class="dz-image">
-                                            <img data-dz-thumbnail="" alt="{$img.displayName}"
+                                            <img style="width:120px;height:120px;max-width: 100%;" data-dz-thumbnail="" alt="{$img.displayName}"
                                                  src="{$img.imagePath}">
                                         </div>
                                         <a class="dz-remove" data-path="{$img.imagePath}"
@@ -285,27 +186,27 @@
                                 </volist>
                             </div>
                             <input type="hidden" id="imagePath" value="{$imgPathStr}" name="imagePath">
-                            <input type="hidden" name="imageId" value="{$img.}"/>
+                            <input type="hidden" value="{$imgIdStr}" name="imgIdStr">
                         </div>
                         <if condition="$editFlag eq 1">
                             <!--变更页面显示-->
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="btn_edit">
-                                <button class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">账号托管</button>
+                                <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">账号托管</button>
                                 <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
-                                <button class="btn btn-lg btn-danger">账号停用
+                                <button type="button" class="btn btn-lg btn-danger">账号停用
                                 </button>
                                 <button class="btn btn-lg btn-danger ajax-post" type="submit" target-form="form-label-left">保存页面</button>
-                                <button class="btn btn-lg btn-danger ">关闭页面</button>
+                                <button type="button" class="btn btn-lg btn-danger ">关闭页面</button>
                             </div>
                             <else/>
                             <!--详情页面显示-->
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="btn_detail">
                                 <br>
-                                <button class="btn btn-lg btn-danger">关闭页面</button>
+                                <button type="button" class="btn btn-lg btn-danger">关闭页面</button>
                                 <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
-                                <button class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal2">代理商信息变更
+                                <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal2">代理商信息变更
                                 </button>
-                                <button class="btn btn-lg btn-danger ">导出为文档资料</button>
+                                <button type="button" class="btn btn-lg btn-danger ">导出为文档资料</button>
                             </div>
                         </if>
                     </div>
@@ -488,6 +389,7 @@
                             <tbody>
                             <volist name="agentList" id="agent">
                                     <tr class="even pointer <if condition="$i%2==0">bg-</if>" >
+                                        <input type="hidden" value="{$agent.agentId}"/>
                                         <td class="column-title">{$agent.createTime|date='Y-m-d',###}</td>
                                         <td class="column-title">{$agent.degree}</td>
                                         <td class="column-title">{$agent.provinceId}{$agent.cityId}{$agent.countyId}</td>
@@ -532,6 +434,68 @@
         </div>
     </div>
     </form>
+    <form action="{:U('depositAgent')}" method="post"  class="form-horizontal form-label-deposit">
+        <input type="hidden" name="agentId" value="{$info.agentId}"/>
+        <!--弹框 托管-->
+        <div class="modal fade row" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document" style="width: 70%;">
+                <div class="modal-content" style="">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">托管至代理商</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="x_content">
+                            <div class="table-responsive">
+                                <table class="table table-striped jambo_table bulk_action">
+                                    <thead>
+                                    <tr class="headings">
+                                        <th>
+                                            操作
+                                        </th>
+                                        <th class="column-title">代理商等级</th>
+                                        <th class="column-title">代理区域</th>
+                                        <th class="column-title">代理公司名称</th>
+                                        <th class="column-title">代理公司地址</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <volist name="proAgents" id="agents">
+                                        <tr class="<if condition='$key %2 ==0'>even<else/>odd</if> pointer">
+                                            <td class="a-center ">
+                                                <input type="radio" class="flat" name="targetId" value="{$agents.agentId}">
+                                            </td>
+                                            <td class=" ">
+                                                <if condition="$agents.degree eq 1">
+                                                    一级(省)
+                                                    <elseif condition="$agents.degree eq 2"/>
+                                                    二级（市）
+                                                    <elseif condition="$agents.degree eq 3"/>
+                                                    三级(县)
+                                                    <else/>
+                                                    官方
+                                                </if>代理
+                                            </td>
+                                            <td class=" ">{$agents.provinceId}{$agents.cityId}{$agents.countyId}</td>
+                                            <td class=" ">{$agents.orgName}</td>
+                                            <td class=" ">{$agents.address}</td>
+                                        </tr>
+                                    </volist>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger ajax-post" target-form="form-label-deposit">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </block>
 <block name="script">
     <script>
@@ -553,17 +517,20 @@
             $('#f1 textarea').removeAttr('disabled');
             $('#f2 input').removeAttr('disabled');
             $('#f3 input').removeAttr('disabled');
+            $('.dropzone').removeAttr('disabled');
         }
         //图片
         $(".dz-remove").click(function () {
             var pathStr = $("#imagePath").val();
             var imgId = $(this).attr("data-id");
             var imgPath = $(this).attr("data-path");
+            pathStr = pathStr.replace(imgPath + ',', '');
             pathStr = pathStr.replace(imgPath, '');
-            pathStr = pathStr.substr(0, pathStr.length - 1);
+//            pathStr = pathStr.substr(0, pathStr.length - 1);
             var firstChat = pathStr.substr(0, 1);
-            if (firstChat == ",") {
-                pathStr = pathStr.substr(1, pathStr.length);
+            var lastChat = pathStr.substr(pathStr.length - 1, pathStr.length);
+            if (lastChat == ',') {
+                pathStr = pathStr.substr(0, pathStr.length - 1);
             }
             $("#imagePath").val(pathStr);
             $.ajax({
