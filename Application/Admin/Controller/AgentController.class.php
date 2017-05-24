@@ -11,9 +11,11 @@ class AgentController extends AdminController
     }
 
 
-    function agentList(){
-        $info = $this->orgAgent();
-        $agentList = agent_list($info['agentId']);
+    function agentList($agentId = 0){
+        if(empty($agentId)){
+            $agentId = $this->agentId();
+        }
+        $agentList = agent_list($agentId);
         foreach ($agentList as $key=>&$value){
             //date类型去除后面000
             $value['createTime'] = substr($value['createTime'], 0, strlen($value['createTime']) - 3);
@@ -186,8 +188,8 @@ class AgentController extends AdminController
             'extendFlag' => !$param['extendFlag'] ? 0 : 1
         ];
         $info = ['orgInfo' => $orgInfo, 'orgAgent' => $orgAgent];
-
         $agentId = I('post.agentId');
+        $imgIdArr = explode(',', I('post.imgIdStr'));
         //编辑
         if ($agentId) {
             $info['orgInfo']['orgOrganization']['orgId'] = I('post.orgId');
@@ -215,6 +217,19 @@ class AgentController extends AdminController
         }
     }
 
+    //托管代理商
+    function depositAgent(){
+        $param = $_POST;
+        //托管
+        //dump($param);
+        if(!empty($param['targetId'])){
+            $res = deposit_agent($param['agentId'],$param['targetId']);
+            if($res['success']){
+                echo 111;
+                exit();
+            }
+        }
+    }
 
     function agent_detail()
     {
@@ -228,11 +243,13 @@ class AgentController extends AdminController
             else{
                 //详情
                 $this->meta_title = '代理商管理-代理商详情';
-            }
-            $info = $this->orgAgent();
+        }
+            //$agentId = $this->agentId();
+
+            $info = get_agent_info(5);
             $this->assign('info',$info);
-            //dump($info);
-            $agentId = 1;
+            dump($info);
+            $agentId = 5;
             $agentDetail = $this->getUrl('get_agent_detail');
             $manageInfo = http($agentDetail.$agentId,null,'get');
             $this->assign('manageInfo',$manageInfo);
@@ -255,18 +272,46 @@ class AgentController extends AdminController
                     $imgIdStr .= $val['imageId'] . ',';
                 }
             }
-            dump($imgList);
             $this->assign('imgList', $imgList);
             $this->assign('imgPathStr', $imgPath);
             $this->assign('imgIdStr', $imgIdStr);
-            //下级代理商，当前机构
+            //当前机构
             $orgList = org_list($agentId);
-            //机构性质
             int_to_string($orgList, ['insType' => C('INS_TYPE')]);
-            $agentList = $this->agentList();
-
+            //下级代理商                 agentId
+            $agentList = $this->agentList(5);
             $this->assign('orgList',$orgList);
             $this->assign('agentList',$agentList);
+            //dump($agentList);
+            //可托管的代理商-同级/父级
+            $parentId = $info['parentId'];
+            if(!empty($parentId)){
+                //同级
+                $siblingAgents = $this->agentList($parentId);
+                foreach ($siblingAgents as $key=>&$value){
+                    if($value['agentId'] == $info['agentId']){
+                        unset($siblingAgents[$key]);
+                    }
+                    if($value['child'] != null){
+                        unset($value['child']);
+                    }
+                }
+                sort($siblingAgents);
+                //父级
+                $parentInfo = get_agent_info($parentId);
+                $parentInfo['orgName'] = $parentInfo['orgOrganization']['orgName'];
+                $parentInfo['orgCode'] = $parentInfo['orgOrganization']['orgCode'];
+                $parentInfo['telephone'] = $parentInfo['orgOrganization']['telephone'];
+                $parentInfo['address'] = $parentInfo['orgOrganization']['address'];
+                unset($parentInfo['orgOrganization']);
+                $arr[]=$parentInfo;
+                $proAgents = array_merge($arr,$siblingAgents);
+
+            }
+            else{
+            }
+            $this->assign('proAgents',$proAgents);
+            //dump($proAgents);
             $this->display();
         }
     }
