@@ -804,7 +804,7 @@ a {
 }
 
 .nav-md ul.nav.child_menu li:before {
-    /*background: #d90000;*/
+    background: #d90000;
     bottom: auto;
     content: "";
     height: 8px;
@@ -860,12 +860,12 @@ a {
 }
 
 .nav.side-menu > li.active > li, .nav.side-menu > li.current-page {
-    /*border-right: 5px solid #cc0000;*/
+    border-right: 5px solid #cc0000;
 }
 
 .nav li.current-page {
     /*background: rgba(255, 255, 255, .05)*/
-    /*background: #bf0000;*/
+    background: #bf0000;
 }
 
 .nav li li li.current-page {
@@ -2476,7 +2476,9 @@ legend {
 }
 
 .form-group {
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    min-height: 70px;
+    line-height: 25px;
 }
 
 .validate {
@@ -4903,4 +4905,9 @@ ul.notifications {
     height: 20px;
     float: left;
     margin-right: 20px;
+}
+#head_img{
+    width: 60%;
+    vertical-align: middle;
+    height: 250px;
 }
