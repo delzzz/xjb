@@ -537,3 +537,13 @@ function deposit_agent($sourceId,$targetId){
     return $res;
 }
 
+/**
+ * @param $insId
+ * @param $agentId
+ * @return array 机构托管
+ */
+function deposit_ins($insId,$agentId){
+    $url = C('INTERFACR_API')['ins_collocation'];
+    $res = http($url,['insId'=>$insId,'agentId'=>$agentId],'get');
+    return $res;
+}

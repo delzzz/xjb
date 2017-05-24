@@ -130,39 +130,6 @@
                 </div>
             </volist>
             </div>
-            <!--弹框 代理商信息变更-->
-            <div class="modal fade row" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document" style="">
-                    <div class="modal-content" style="">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel2">安全验证</h4>
-                        </div>
-                        <div class="modal-body">
-                            <h4 class="modal-title text-center" id="">为了保护公司信息安全，需要通过本公司负责人手机验证码</h4><br>
-                            <div class="input-group col-lg-12 col-md-12 col-sm-12">
-                                <input type="text" class="form-control">
-                                <span class="input-group-btn">
-                           <button type="button" class="btn btn-danger">发送验证码</button>
-                        </span>
-                            </div>
-                            <div class="input-group col-lg-12 col-md-12 col-sm-12">
-                                <input type="text" class="form-control" placeholder="输入验证码">
-
-                            </div>
-                            <div class="input-group col-lg-12 col-md-12 col-sm-12">
-                                <input type="text" class="form-control" placeholder="情况说明：例如二级代理商信息变更">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger col-lg-12 col-md-12 col-sm-12">确定</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
@@ -435,7 +402,7 @@
     </div>
     </form>
     <form action="{:U('depositAgent')}" method="post"  class="form-horizontal form-label-deposit">
-        <input type="hidden" name="agentId" value="{$info.agentId}"/>
+        <input type="hidden" name="agentId" value="{$agentId}"/>
         <!--弹框 托管-->
         <div class="modal fade row" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document" style="width: 70%;">
@@ -486,7 +453,6 @@
                                 </table>
                             </div>
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-danger ajax-post" target-form="form-label-deposit">确定</button>
@@ -496,6 +462,37 @@
             </div>
         </div>
     </form>
+    <!--弹框 代理商信息变更-->
+    <div class="modal fade row" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="">
+            <div class="modal-content" style="">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel2">安全验证</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal-title text-center" id="">为了保护公司信息安全，需要通过本公司负责人手机验证码</h4><br>
+                    <div class="input-group col-lg-12 col-md-12 col-sm-12">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                           <button type="button" class="btn btn-danger">发送验证码</button>
+                        </span>
+                    </div>
+                    <div class="input-group col-lg-12 col-md-12 col-sm-12">
+                        <input type="text" class="form-control" placeholder="输入验证码">
+
+                    </div>
+                    <div class="input-group col-lg-12 col-md-12 col-sm-12">
+                        <input type="text" class="form-control" placeholder="情况说明：例如二级代理商信息变更">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger col-lg-12 col-md-12 col-sm-12">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </block>
 <block name="script">
     <script>
