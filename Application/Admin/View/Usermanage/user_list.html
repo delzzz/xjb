@@ -1,37 +1,35 @@
 <extend name="Public/base"/>
 <block name="body">
-<div class="container body">
-    <div class="main_container">
-        <!--content pages-->
-        <div class="right_col" role="main">
+    <div class="container body">
+        <div class="main_container">
+            <!--content pages-->
+            <div class="right_col" role="main">
 
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                    <div class="page-title">
-                        <div class="title_left" style="width: 45%;">
-                            <h3>坐席列表</h3>
-                        </div>
-                        <div class="title_right">
-                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="搜索...">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="page-title">
+                            <div class="title_left" style="width: 45%;">
+                                <h3>坐席列表</h3>
+                            </div>
+                            <div class="title_right">
+                                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="搜索...">
                                     <span class="input-group-btn">
                       <button class="clf btn btn-danger" type="button" style="color: #fff;">查询</button>
                     </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="x_title"></div>
-                    <div class="row col-md-6 col-sm-6 col-xs-12">
-                       <a class="btn btn-sm btn-danger" href="{:U('Usermanage/user_manage')}">新建坐席</a>
-                    </div>
+                        <div class="x_title"></div>
+                        <div class="row col-md-6 col-sm-6 col-xs-12">
+                            <a class="btn btn-sm btn-danger" href="{:U('Usermanage/user_manage')}">新建坐席</a>
+                        </div>
 
-                    <div class="x_content">
-                        <div class=""></div>
-
-                        <div class="table-responsive">
-                            <a href="{:U('Usermanage/user_manage')}">
+                        <div class="x_content">
+                            <div class=""></div>
+                            <div class="table-responsive">
                                 <table class="table table-striped jambo_table bulk_action">
                                     <thead>
                                     <tr class="headings">
@@ -40,45 +38,36 @@
                                         <th class="column-title">姓名</th>
                                         <th class="column-title">ID工号</th>
                                         <th class="column-title">性别</th>
-                                        <th class="column-title">年龄</th>
-                                        <th class="column-title">电话 </th>
-                                        <th class="column-title">居住地址</th>
-                                        <th class="column-title">操作 </th>
+                                        <th class="column-title">电话</th>
+                                        <th class="column-title">操作</th>
                                     </tr>
                                     </thead>
-                                    <tr class="even pointer">
-                                        <td class="a-center ">
-                                        </td>
-                                        <td class="">小白</td>
-                                        <td class=" ">AK100000 </td>
-                                        <td class=" ">男</td>
-                                        <td class=" ">65</td>
-                                        <td class=" ">18521722837</td>
-                                        <td class="a-right a-right ">上海市宝山区菊太路100号48楼101</td>
-                                        <td class="last"><a href="" class="color-red">删除</a></td>
-                                    </tr>
-                                    <tr class="even pointer">
-                                        <td class="a-center ">
-                                        </td>
-                                        <td class="">小白</td>
-                                        <td class=" ">AK100000 </td>
-                                        <td class=" ">男</td>
-                                        <td class=" ">65</td>
-                                        <td class=" ">18521722837</td>
-                                        <td class="a-right a-right ">上海市宝山区菊太路100号48楼101</td>
-                                        <td class="last"><a href="" class="color-red">删除</a></td>
-                                    </tr>
+                                    <volist name="list" id="cs">
+                                        <tr class="even pointer">
+                                            <td class="a-center ">
+                                            </td>
+                                            <td class="">{$cs.name}</td>
+                                            <td class=" ">{$cs.csId}</td>
+                                            <td class=" ">{$cs.sex_text}</td>
+                                            <td class=" ">{$cs.telephone}</td>
+                                            <td class="last">
+                                                <a class="color-red"
+                                                   href="{:U('user_manage',['csId'=>$cs['csId']])}">编辑</a>
+                                                <a href="{:U('del?csId='.$cs['csId'])}"
+                                                   class="color-red confirm ajax-get">删除</a></td>
+                                        </tr>
+                                    </volist>
                                 </table>
-                            </a>
+                                {$_page}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    $("#distpicker2").distpicker();
-</script>
+    <script>
+        $("#distpicker2").distpicker();
+    </script>
 </block>

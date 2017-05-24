@@ -374,8 +374,6 @@
             var imgPath = $(this).attr("data-path");
             pathStr = pathStr.replace(imgPath + ',', '');
             pathStr = pathStr.replace(imgPath, '');
-//            pathStr = pathStr.substr(0, pathStr.length - 1);
-            var firstChat = pathStr.substr(0, 1);
             var lastChat = pathStr.substr(pathStr.length - 1, pathStr.length);
             if (lastChat == ',') {
                 pathStr = pathStr.substr(0, pathStr.length - 1);

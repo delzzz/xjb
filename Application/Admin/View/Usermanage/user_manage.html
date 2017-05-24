@@ -21,7 +21,8 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">姓名:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" name="name" class="form-control" placeholder="">
+                                            <input type="text" name="name" value="{$info.name|default=''}"
+                                                   class="form-control" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -38,24 +39,24 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">电话:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" name="telephone" class="form-control" placeholder="">
+                                            <input type="text" name="telephone" value="{$info.telephone|default=''}"
+                                                   class="form-control" placeholder="">
                                         </div>
                                     </div>
-                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">初始密码:</label>
-
-                                        <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="password" name="password" class="form-control" placeholder="">
+                                    <if condition="empty($info)">
+                                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">初始密码:</label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <input type="password" name="password" class="form-control"  placeholder="">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>
-
-                                        <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="password" name="repassword" class="form-control"
-                                                   placeholder="">
+                                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <input type="password" name="repassword" class="form-control"  placeholder="">
+                                            </div>
                                         </div>
-                                    </div>
+                                    </if>
                                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                         <label class="control-label col-md-2 col-sm-2 col-xs-12">
                                             备注:
@@ -63,19 +64,21 @@
 
                                         <div class="col-md-10 col-sm-10 col-xs-12">
                                             <textarea class="form-control" name="remark" rows="3"
-                                                      placeholder='备注在2000字以内'></textarea>
+                                                      placeholder='备注在2000字以内'>{$info.remark|default=''}</textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <img src="__IMG__/user.png">
+                                    <img id="head_img" src="{$img.imagePath|default='__IMG__/user.png'}">
+                                    <input type="hidden" name="imageId" value="{$img.imageId}">
+                                    <input type="hidden" name="imagePath" value="{$img.imagePath}">
                                     <div>
                                         <br>
                                         <button class="btn btn-danger btn-sm col-lg-6 col-md-6 col-sm-6">
                                             点击替换
                                         </button>
-                                        <input class="btn btn-danger btn-sm col-lg-6 col-md-6 col-sm-6" style="opacity:0; margin-top: -40px;position: relative;" type="file">
-
+                                        <input class="btn btn-danger btn-sm col-lg-6 col-md-6 col-sm-6" id="image"
+                                               style="opacity:0; margin-top: -40px;position: relative;" type="file">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
@@ -130,6 +133,7 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
                                         <br>
+                                        <input type="hidden" name="csId" value="{$info.csId|default=0}">
                                         <button type="submit" class="btn btn-lg btn-danger ajax-post"
                                                 target-form="form-label-left">
                                             保存
@@ -151,8 +155,28 @@
             </div>
         </div>
     </div>
+</block>
 
+<block name="script">
     <script>
-        $("#distpicker2").distpicker();
+        $(function () {
+            Think.setValue('sex', "{$info.sex}");
+            $("#image").on('change', function () {
+                var formData = new FormData();
+                formData.append('file', $("#image")[0].files[0]);
+                $.ajax({
+                    url: "{:U('file/upload')}",
+                    type: 'POST',
+                    cache: false,
+                    data: formData,
+                    processData: false,
+                    contentType: false
+                }).done(function (res) {
+                    $("input[name='imagePath']").val(res);
+                    $("#head_img").attr('src', res);
+                }).fail(function (res) {
+                });
+            });
+        });
     </script>
 </block>

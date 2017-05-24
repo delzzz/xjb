@@ -6,28 +6,30 @@ class AgentController extends AdminController
     function index()
     {
         $this->meta_title = '代理商管理';
-        $this->assign('agentList',$this->agentList());
+        $this->assign('agentList', $this->agentList());
+        $this->assign('orgList', $this->orgList());
         $this->display();
     }
 
 
-    function agentList(){
+    function agentList()
+    {
         $info = $this->orgAgent();
         $agentList = agent_list($info['agentId']);
-        foreach ($agentList as $key=>&$value){
+        foreach ($agentList as $key => &$value) {
             //date类型去除后面000
             $value['createTime'] = substr($value['createTime'], 0, strlen($value['createTime']) - 3);
             $value['updateTime'] = substr($value['updateTime'], 0, strlen($value['updateTime']) - 3);
             if (agent_list($value['agentId']) != null) {
                 $value['child'] = agent_list($value['agentId']);
             }
-            if($value['child'] != null){
-                foreach($value['child'] as $k=>&$v){
+            if ($value['child'] != null) {
+                foreach ($value['child'] as $k => &$v) {
                     //date类型去除后面000
                     $v['createTime'] = substr($v['createTime'], 0, strlen($v['createTime']) - 3);
                     $v['updateTime'] = substr($v['updateTime'], 0, strlen($v['updateTime']) - 3);
-                    if(agent_list($v['agentId']) != null){
-                        $value['child'][$k]['children'] = agent_list($v['agentId']) ;
+                    if (agent_list($v['agentId']) != null) {
+                        $value['child'][$k]['children'] = agent_list($v['agentId']);
                     }
                     if ($v['children'] != null) {
                         foreach ($v['children'] as $kk => &$vv) {
@@ -41,7 +43,6 @@ class AgentController extends AdminController
         }
         return $agentList;
     }
-
 
 
     function orgList($agentId = 0)
@@ -201,7 +202,7 @@ class AgentController extends AdminController
         //dump($res);
         //exit();
         if ($agentId) {
-            $jsonData = http_post_json(C('INTERFACR_API')['agent_update'],$res);
+            $jsonData = http_post_json(C('INTERFACR_API')['agent_update'], $res);
         } else {
             $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
         }
@@ -216,23 +217,22 @@ class AgentController extends AdminController
     function agent_detail()
     {
         $_GET['agentId'] = 1;
-        if(I('get.agentId')){
-            if(I('get.editId')){
+        if (I('get.agentId')) {
+            if (I('get.editId')) {
                 //编辑
                 $this->meta_title = '代理商管理-代理商信息变更';
-                $this->assign('editFlag',1);
-            }
-            else{
+                $this->assign('editFlag', 1);
+            } else {
                 //详情
                 $this->meta_title = '代理商管理-代理商详情';
             }
             $info = $this->orgAgent();
-            $this->assign('info',$info);
+            $this->assign('info', $info);
             //dump($info);
             $agentId = 1;
             $agentDetail = $this->getUrl('get_agent_detail');
-            $manageInfo = http($agentDetail.$agentId,null,'get');
-            $this->assign('manageInfo',$manageInfo);
+            $manageInfo = http($agentDetail . $agentId, null, 'get');
+            $this->assign('manageInfo', $manageInfo);
             //dump($manageInfo);
             //图片
             $imgList = $manageInfo['orgOrganization']['imageList'];
@@ -258,8 +258,8 @@ class AgentController extends AdminController
             int_to_string($orgList, ['insType' => C('INS_TYPE')]);
             $agentList = $this->agentList();
 
-            $this->assign('orgList',$orgList);
-            $this->assign('agentList',$agentList);
+            $this->assign('orgList', $orgList);
+            $this->assign('agentList', $agentList);
             $this->display();
         }
     }
