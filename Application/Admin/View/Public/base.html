@@ -169,11 +169,11 @@
                             <li>
                                 <a>
                                     <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image"/></span>
-                                <span>
+                                    <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
                         </span>
-                                <span class="message">
+                                    <span class="message">
                           Film festivals used to be do-or-die moments for movie makers. They were where...
                         </span>
                                 </a>
@@ -181,11 +181,11 @@
                             <li>
                                 <a>
                                     <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image"/></span>
-                                <span>
+                                    <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
                         </span>
-                                <span class="message">
+                                    <span class="message">
                           Film festivals used to be do-or-die moments for movie makers. They were where...
                         </span>
                                 </a>
@@ -193,11 +193,11 @@
                             <li>
                                 <a>
                                     <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image"/></span>
-                                <span>
+                                    <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
                         </span>
-                                <span class="message">
+                                    <span class="message">
                           Film festivals used to be do-or-die moments for movie makers. They were where...
                         </span>
                                 </a>
@@ -205,11 +205,11 @@
                             <li>
                                 <a>
                                     <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image"/></span>
-                                <span>
+                                    <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
                         </span>
-                                <span class="message">
+                                    <span class="message">
                           Film festivals used to be do-or-die moments for movie makers. They were where...
                         </span>
                                 </a>
@@ -320,8 +320,7 @@
         $("#subnav").on("click", "h3", function () {
             var $this = $(this);
             $this.find(".icon").toggleClass("icon-fold");
-            $this.next().slideToggle("fast").siblings(".side-sub-menu:visible").
-            prev("h3").find("i").addClass("icon-fold").end().end().hide();
+            $this.next().slideToggle("fast").siblings(".side-sub-menu:visible").prev("h3").find("i").addClass("icon-fold").end().end().hide();
         });
 
         $("#subnav h3 a").click(function (e) {
@@ -376,6 +375,106 @@
             });
         }
     }();
+    //省市县三级联动
+    var Page = {
+        province_obj: $("select[name='provinceId']"),
+        city_obj: $("select[name='cityId']"),
+        area_obj: $("select[name='countyId']"),
+        hid_p: '',//省
+        hid_c: '',//市
+        hid_co: '',//县
+        init: function () {
+            this.fullProvince();
+            Page.province_obj.change(this.selectChange(Page.province_obj));  //设置默认选择
+            Page.city_obj.change(this.selectChange(Page.city_obj));
+            Page.province_obj.unbind('change');  //卸载change时间以便重新监听
+            Page.city_obj.unbind('change');
+            Page.province_obj.change(this.selectChange);
+            Page.city_obj.change(this.selectChange);
+        },
+        fullProvince: function () {
+            var province_obj = this.province_obj;
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: "{:U('Area/getArea')}",
+                success: function (data) {
+                    //console.log(data);
+                    console.log(Page.supplier_area);
+                    data = eval('(' + data + ')');
+                    var options = '<option value="0" selected="selected">--省--</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].regionId == Page.hid_p) {
+                            options += '<option value=' + data[i].regionId + ' selected="selected">' + data[i].name + '</option>';
+                        } else {
+                            options += '<option value=' + data[i].regionId + '>' + data[i].name + '</option>';
+                        }
+                    }
+                    province_obj.empty();
+                    province_obj.append(options);
+                }
+            });
+        },
+        selectChange: function (obj_element) {
+            var id = 0;
+            var obj_name = '';
+            if (obj_element.length > 0) {  //判断当前对象是否存在
+                id = obj_element.val();
+                obj_name = obj_element.attr('name');
+            } else {
+                id = $(this).val();
+                obj_name = $(this).attr('name');
+            }
+            var obj = '';
+            var options = '';
+            if (obj_name == 'cityId') {
+                options = '<option value="0" selected="selected">--县/区--</option>';
+                obj = Page.area_obj;
+            } else if (obj_name == 'provinceId') {
+                options = '<option value="0">--市--</option>';
+                obj = Page.city_obj;
+                Page.area_obj.empty();
+            }
+            $.ajax({
+                type: 'POST',
+                async: false,
+                dataType: 'json',
+                url: "{:U('Area/getCity')}",
+                data: {
+                    parentId: id
+                },
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].regionId == Page.hid_c || data[i].regionId == Page.hid_co) {
+                            options += '<option value=' + data[i].regionId + ' selected="selected">' + data[i].name + '</option>';
+                        } else {
+                            options += '<option value=' + data[i].regionId + '>' + data[i].name + '</option>';
+                        }
+                    }
+                    obj.empty();
+                    obj.append(options);
+                }
+            })
+        }
+    }
+    //代理商等级更改，地区联动更改
+    function hide_area(degree){
+        if(degree==1){
+            $('select[name="provinceId"]').css('display','block');
+            $('select[name="cityId"]').css('display','none');
+            $('select[name="countyId"]').css('display','none');
+        }
+        else if(degree==2){
+            $('select[name="provinceId"]').css('display','block');
+            $('select[name="cityId"]').css('display','block');
+            $('select[name="countyId"]').css('display','none');
+        }
+        else if(degree==3){
+            $('select[name="provinceId"]').css('display','block');
+            $('select[name="cityId"]').css('display','block');
+            $('select[name="countyId"]').css('display','block');
+        }
+    }
 </script>
 <block name="script"></block>
 </body>
