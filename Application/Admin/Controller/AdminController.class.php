@@ -368,6 +368,28 @@ class AdminController extends Controller
         return $list;
     }
 
+
+    protected function lists2($url, $params, $order = '')
+    {
+        $list = http_post_json($url, $params);
+        $total = $list['totalCount'];
+        $REQUEST = (array)I('request.');
+        if (isset($REQUEST['r'])) {
+            $listRows = (int)$REQUEST['r'];
+        } else {
+            $listRows = C('PAGE_SIZE');
+        }
+        $page2 = new \Think\Page($total, $listRows, $REQUEST);
+        $page2->p="p2";
+        if ($total > $listRows) {
+            $page2->setConfig('theme', '%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+        }
+        $p = $page2->show();
+        $this->assign('_page2', $p ? $p : '');
+        $this->assign('_total2', $total);
+        return $list;
+    }
+
     //获取接口
     protected function getUrl($interFace)
     {

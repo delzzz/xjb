@@ -13,6 +13,8 @@
     </style>
 </block>
 <block name="body">
+    <input id="current_p" type="hidden" value="{$current_p|default=1}"/>
+    <input id="current_p2" type="hidden" value="{$current_p2|default=1}"/>
     <div class="right_col" role="main">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <!--代理商 、代理机构信息 如果是代理机构-->
@@ -34,7 +36,7 @@
                     <br>
 
                     <div class="table-responsive">
-                        <table class="table table-striped jambo_table bulk_action" style="line-height: 54px;">
+                        <table id="table_ins" class="table table-striped jambo_table bulk_action" style="line-height: 54px;">
                             <thead>
                             <tr class="headings">
                                 <th></th>
@@ -69,10 +71,12 @@
                                     <td class=""><a href="{:U('agent2_detail',['insId'=>$list['institutionId']])}">查看详情</a></td>
                                 </tr>
                             </volist>
+                            <tr class="page">
+                                <td colspan="11">{$_page}</td>
+                            </tr>
                             </tbody>
                         </table>
-                        {$_page}
-                        <a href="agent.html">
+                        <a href="{:U('Agent/agent2')}">
                             <button class="btn btn-sm btn-danger">新建机构信息</button>
                         </a>
                     </div>
@@ -90,7 +94,7 @@
                     <br>
 
                     <div class="table-responsive">
-                        <table class="table table-striped jambo_table bulk_action" style="line-height: 54px;">
+                        <table id="table_agent" class="table table-striped jambo_table bulk_action" style="line-height: 54px;">
                             <thead>
                             <tr class="headings">
                                 <th class="text-center">展开</th>
@@ -112,9 +116,19 @@
                                             <a class="openup" href="javascript:void(0)">展开</a>
                                         </if>
                                     </td>
-                                    <td class=" ">{$agent.createTime|date='Y-m-d',###}</td>
-                                    <td class="">{$agent.degree}</td>
-                                    <td class=" ">{$agent.provinceId}{$agent.cityId}{$agent.countyId}</td>
+                                    <td class=" ">{$agent.agentId}&nbsp;{$agent.createTime|date='Y-m-d',###}</td>
+                                    <td class="">
+                                        <if condition="$agent.degree eq 1">
+                                        一级(省)
+                                        <elseif condition="$agent.degree eq 2"/>
+                                        二级（市）
+                                        <elseif condition="$agent.degree eq 3"/>
+                                        三级(县)
+                                        <else/>
+                                        官方
+                                        </if>
+                                    </td>
+                                    <td class=" ">{$agent.area}</td>
                                     <td class=" ">{$agent.orgName}</td>
                                     <td class=" ">{$agent.telephone}</td>
                                     <td class=" ">100台</td>
@@ -123,15 +137,25 @@
                                 </tr>
                                 <if condition="$agent['child'] neq ''">
                                     <volist name="agent['child']" id="child">
-                                        <tr id="second" class="even pointer bg- close">
+                                        <tr id="second" class="even pointer bg- ">
                                             <td class="a-center text-center">
                                                 <if condition="$child['children'] neq null">
                                                     <a class="openup" href="javascript:void(0)">展开</a>
                                                 </if>
                                             </td>
-                                            <td class=" ">{$child.createTime|date='Y-m-d',###}</td>
-                                            <td class="">{$child.degree}</td>
-                                            <td class=" ">{$child.provinceId}{$child.cityId}{$child.countyId}</td>
+                                            <td class=" ">{$child.agentId}&nbsp;{$child.createTime|date='Y-m-d',###}</td>
+                                            <td class="">
+                                                <if condition="$child.degree eq 1">
+                                                    一级(省)
+                                                    <elseif condition="$child.degree eq 2"/>
+                                                    二级（市）
+                                                    <elseif condition="$child.degree eq 3"/>
+                                                    三级(县)
+                                                    <else/>
+                                                    官方
+                                                </if>
+                                            </td>
+                                            <td class=" ">{$child.area}</td>
                                             <td class=" ">{$child.orgName}</td>
                                             <td class=" ">{$child.telephone}</td>
                                             <td class=" ">100台</td>
@@ -140,11 +164,21 @@
                                         </tr>
                                         <if condition="$child['children'] neq ''">
                                             <volist name="child['children']" id="children">
-                                                <tr id="third" class="even pointer close">
+                                                <tr id="third" class="even pointer ">
                                                     <td class="a-center text-center"></td>
-                                                    <td class=" ">{$children.createTime|date='Y-m-d',###}</td>
-                                                    <td class="">{$children.degree}</td>
-                                                    <td class=" ">{$children.provinceId}{$children.cityId}{$children.countyId}</td>
+                                                    <td class=" ">{$children.agentId}&nbsp;{$children.createTime|date='Y-m-d',###}</td>
+                                                    <td class="">
+                                                        <if condition="$children.degree eq 1">
+                                                            一级(省)
+                                                            <elseif condition="$children.degree eq 2"/>
+                                                            二级（市）
+                                                            <elseif condition="$children.degree eq 3"/>
+                                                            三级(县)
+                                                            <else/>
+                                                            官方
+                                                        </if>
+                                                    </td>
+                                                    <td class=" ">{$children.area}</td>
                                                     <td class=" ">{$children.orgName}</td>
                                                     <td class=" ">{$children.telephone}</td>
                                                     <td class=" ">100台</td>
@@ -156,9 +190,13 @@
                                     </volist>
                                 </if>
                             </volist>
+                            <tr class="page">
+                                <td colspan="9">{$_page2}</td>
+                            </tr>
+                            <input type="hidden" id="totalPage" value="{$totalPage}"/>
                             </tbody>
                         </table>
-                        <a href="">
+                        <a href="{:U('Agent/agent')}">
                             <button class="btn btn-sm btn-danger">新建代理商</button>
                         </a>
                     </div>
@@ -313,6 +351,80 @@
 </block>
 <block name="script">
     <script>
+        //返回匹配替换的字符串
+        function replace_str(str, newstr) {
+            var reg = /p2\/(.*?)\//;
+            var reg2 = /p2\/(.*?)\./;
+            if (reg.test(agent_href)) {
+                return str.replace(reg, newstr);
+                //var test1 =str.match(reg);
+                //return test1[1];
+            }
+            else if (reg2.test(agent_href)) {
+                //var test2 =str.match(reg2);
+                //return test2[1];
+                return str.replace(reg2, newstr + '.');
+            }
+            else {
+                return false;
+            }
+        }
+        var current_p = $('#current_p').val();
+        var current_p2 = $('#current_p2').val();
+        //console.log(current_p);
+        // console.log(current_p2);
+        if (current_p2 != 1) {
+            var agent_href = $('#table_agent .page a').attr('href');
+            //替换span current p2 url
+            current_href = replace_str(agent_href, 'p2/' + current_p);
+            $('#table_agent .page .current').replaceWith('<a class="num" href="' + current_href + '">' + current_p + '</a>');
+            if (current_p == 1) {
+                //更改current
+                $('#table_agent .page a').eq(current_p2 - 1).replaceWith('<span class="current">' + current_p2 + '</span>');
+                var prev_href = replace_str(agent_href, 'p2/' + (current_p2 - 1));
+                //添加agent的prev
+                $('#table_agent .page .num').parent('div').prepend('<a class="prev" href="' + prev_href + '"><<</a>');
+                //更改next
+                if ($('#totalPage').val() == current_p2) {
+                    $('#table_agent .page .next').hide();
+                }
+                else {
+                    var next_href = replace_str(agent_href, 'p2/' + (parseInt(current_p2) + 1));
+                    $('#table_agent .page .next').attr('href', next_href);
+                }
+            }
+            else {
+                //更改current
+                $('#table_agent .page a').eq(current_p2).replaceWith('<span class="current">' + current_p2 + '</span>');
+                //更改agent的prev
+                var prev_href = replace_str(agent_href, 'p2/' + (current_p2 - 1)+'/');
+                $('#table_agent .page .prev').attr('href', prev_href);
+                //最后页隐藏next
+                if ($('#totalPage').val() == current_p2) {
+                    $('#table_agent .page .next').hide();
+                }
+                else {
+                    //更改agent的next
+                    var next_href = replace_str(agent_href, 'p2/' + (parseInt(current_p2) + 1)+'/');
+                    $('#table_agent .page .next').attr('href', next_href);
+                }
+
+            }
+        }
+        else {
+            //替换span current p2 url
+            var agent_href = $('#table_agent .page a').attr('href');
+            var cp2 = $('#table_agent .page .current').text();
+            agent_href = replace_str(agent_href, 'p2/' + cp2);
+            $('#table_agent .page .current').replaceWith('<a class="num" href="' + agent_href + '">' + cp2 + '</a>');
+            //更改current
+            $('#table_agent .page .num').eq(0).replaceWith('<span class="current">1</span>');
+            //隐藏agent prev
+            $('#table_agent .page .prev').hide();
+            //更改Next
+            var next_href = replace_str(agent_href, 'p2/2');
+            $('#table_agent .page .next').attr('href', next_href);
+        }
 //        $('.openup').click(function(){
 //            $(this).parents('tr').next('#second').removeClass('close');
 //            $(this).parents('tr').next('#second').addClass('openup');
