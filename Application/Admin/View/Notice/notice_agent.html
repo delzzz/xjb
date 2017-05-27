@@ -8,8 +8,10 @@
                     <h2>代理通知</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li>
-                            <i class="fa fa-trash color-red"></i>
-                            批量删除
+                            <a class="btn ajax-post confirm" url="{:U('del')}" target-form="ids">
+                                <i class="fa fa-trash color-red ajax-post confirm" url="{:U('del')}" target-form="ids"></i>
+                                删除
+                            </a>
                         </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -17,57 +19,42 @@
 
                 <div class="x_content">
                     <div class="table-responsive">
-                        <table class="table table-striped text-center jambo_table bulk_action">
-                            <thead>
-                            <tr class="headings bg-success cl3">
-                                <th class="text-center">
-                                    <input type="checkbox" id="check-all" class="flat">
-                                </th>
-                                <th class="column-title text-center">时间</th>
-                                <th class="column-title text-center">代理公司名称</th>
-                                <th class="column-title text-center">当前代理商等级</th>
-                                <th class="column-title text-center">发生事件</th>
-                                <th class="column-title text-center">加盟公司/机构名称</th>
-                                <th class="column-title text-center">新增设备</th>
-                                <!--<th class="column-title text-center no-link last"><span class="nobr">Action</span>-->
-                                <!--</th>-->
-                                <!--<th class="bulk-actions" colspan="7">-->
-                                <!--<a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>-->
-                                <!--</th>-->
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            <tr class="even pointer">
-                                <td class="a-center">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">2017-3-1</td>
-                                <td class=" ">浙江审视医疗有限责任公司</td>
-                                <td class=" ">一级</td>
-                                <td class=" ">杭州市代理加盟</td>
-                                <td class=" ">杭州冠生园</td>
-                                <td class="a-right a-right ">12台</td>
-                                </td>
-                            </tr>
-                            <tr class="even pointer">
-                                <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">2017-3-1</td>
-                                <td class=" ">浙江审视医疗有限责任公司</td>
-                                <td class=" ">一级</td>
-                                <td class=" ">杭州市代理加盟</td>
-                                <td class=" ">杭州冠生园</td>
-                                <td class="a-right a-right ">12台</td>
-                                </td>
-                            </tr>
-
-                            </tbody>
-                        </table>
+                        <form class="ids">
+                            <table class="table table-striped text-center jambo_table bulk_action">
+                                <thead>
+                                <tr class="headings bg-success cl3">
+                                    <th class="text-center">
+                                        <input type="checkbox" class="flat check-all">
+                                    </th>
+                                    <th class="column-title text-center">时间</th>
+                                    <th class="column-title text-center">代理公司名称</th>
+                                    <th class="column-title text-center">当前代理商等级</th>
+                                    <th class="column-title text-center">发生事件</th>
+                                    <th class="column-title text-center">加盟公司/机构名称</th>
+                                    <th class="column-title text-center">新增设备</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <volist name="list" id="notice">
+                                    <tr class="even pointer">
+                                        <td class="a-center">
+                                            <input type="checkbox" name="noticeId[]" value="{$notice.noticeId}"
+                                                   class="flat ids">
+                                        </td>
+                                        <td>{:time_format($notice['create_time'],'Y-m-d')}</td>
+                                        <td>{$notice.agentName}</td>
+                                        <td>{$notice.agentDegree}级</td>
+                                        <td>{$notice.event}</td>
+                                        <td>{$notice.orgName}</td>
+                                        <td class="a-right a-right ">{$notice.quantity}</td>
+                                        </td>
+                                    </tr>
+                                </volist>
+                                </tbody>
+                            </table>
+                        </form>
+                        {$_page}
                     </div>
-
-
                 </div>
             </div>
         </div>

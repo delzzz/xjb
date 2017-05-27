@@ -30,21 +30,22 @@
             $.get(target).success(function (data) {
                 if (data.status == 1) {
                     if (data.url) {
-                        updateAlert(data.info + ' 页面即将自动跳转~', 'alert-success');
+                        alert(data.info);
                     } else {
-                        updateAlert(data.info, 'alert-success');
+                        alert(data.info);
                     }
                     setTimeout(function () {
                         if (data.url) {
                             location.href = data.url;
                         } else if ($(that).hasClass('no-refresh')) {
                             $('#top-alert').find('button').click();
+                            $(that).removeClass('disabled').prop('disabled', false);
                         } else {
                             location.reload();
                         }
                     }, 1500);
                 } else {
-                    updateAlert(data.info);
+                    alert(data.info);
                     setTimeout(function () {
                         if (data.url) {
                             location.href = data.url;
@@ -67,7 +68,6 @@
         var nead_confirm = false;
         if (($(this).attr('type') == 'submit') || (target = $(this).attr('href')) || (target = $(this).attr('url'))) {
             form = $('.' + target_form);
-
             if ($(this).attr('hide-data') === 'true') {//无数据时也可以使用的功能
                 form = $('.hide-data');
                 query = form.serialize();

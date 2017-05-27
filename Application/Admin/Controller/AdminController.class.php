@@ -31,9 +31,9 @@ class AdminController extends Controller
         $this->assign('orgName', $this->orgName());
     }
 
-    protected function orgName()
+    protected function orgName($orgId = 0)
     {
-        return $this->orgAgent()['orgOrganization']['orgName'];
+        return $this->orgAgent($orgId)['orgOrganization']['orgName'];
     }
 
     protected function agentId()

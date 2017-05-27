@@ -138,5 +138,8 @@ return array(
         'zuoxi_del' => 'http://192.168.1.250:8080/service/org/cs/delete/',//更新坐席
 
         'get_area' => 'http://192.168.1.250:8080/service/region/get',//获取行政区域
+
+        'notice_query' => 'http://192.168.1.250:8080/service/notice/org/query',//查询代理通知
+        'notice_del' => 'http://192.168.1.250:8080/service/notice/org/delete'//删除通知
     ),
 );
