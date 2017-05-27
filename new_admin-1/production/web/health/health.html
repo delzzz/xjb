@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>健康档案-用药提醒</title>
+    <!-- Bootstrap -->
+    <link href="../../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../../../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="../../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../../../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../../../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../../../build/css/custom.min.css" rel="stylesheet">
+    <style>
+        .table > tbody > tr > td {
+            line-height: 2.428571;
+        }
+    </style>
+</head>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <!--left-->
+        <div class="col-md-3 wsh_left left_col"></div>
+        <!--top-->
+        <div class="top_nav wsh_top"></div>
+        <!--content pages-->
+        <div class="right_col" role="main">
+            <div class="col-md-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>用药提醒基本信息</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content row">
+                        <br/>
+                        <form class="form-horizontal form-label-left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">老人姓名:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control color-red" value="王军" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">性别:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control " value="男" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">年龄:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" value="56" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">联系电话:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" value="18818881888" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">居住地址:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" value="小六子" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">开始日期:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" value="2017-04-15" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">用药周期:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <!--<input type="text" class="form-control" value="无" disabled="disabled" placeholder="">-->
+                                        <select class="form-control" >
+                                            <option value="每天">每天</option>
+                                            <option value="一天三次">一天三次</option>
+                                            <option value="一天两次">一天两次</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">服药周期:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <select class="form-control" >
+                                        <option value="每天">两星期后停止用药</option>
+                                        <option value="一天三次">一个月后停止用药</option>
+                                        <option value="一天两次">三个月后停止用药</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">结束时间:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="date" class="form-control" value="2017-04-04" placeholder="">
+                                    </div>
+                                </div>
+
+                                <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
+                                <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>-->
+                                <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
+                                <!--<input type="password" class="form-control" value="passwordonetwo">-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
+                                <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">AutoComplete</label>-->
+                                <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
+                                <!--<input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10"/>-->
+                                <!--</div>-->
+                            </div>
+
+
+
+                            <div class="x_title clear">
+                                <br>
+                                <br>
+                                <h2>用药信息</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_panel clear">
+                                    <div class="x_content">
+                                        <table class="table table-bordered text-center table-hover">
+                                            <thead class="bg-info ">
+                                            <tr>
+                                                <th class="text-center">药品名称</th>
+                                                <th class="text-center">单词用药剂量</th>
+                                                <th class="text-center">用药单位</th>
+                                                <th class="text-center">第一次</th>
+                                                <th class="text-center">第二次</th>
+                                                <th class="text-center">用药备注</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>感冒通</td>
+                                                <td>1</td>
+                                                <td>
+                                                    <select class="form-control" >
+                                                        <option value="每天">粒</option>
+                                                        <option value="一天三次">包</option>
+                                                        <option value="一天两次">瓶</option>
+                                                    </select>
+                                                </td>
+                                                <td>08：00 </td>
+                                                <td>19：00</td>
+                                                <td>饭后一小时</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--<button class="btn btn-sm btn-danger pull-right">打印</button>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_title clear">
+                                    <br>
+                                    <br>
+                                    <h2>操作记录</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel clear">
+                                        <div class="x_content">
+                                            <table class="table table-bordered text-center table-hover">
+                                                <thead class="bg-info ">
+                                                <tr>
+                                                    <th class="text-center">操作时间</th>
+                                                    <th class="text-center">添加类型</th>
+                                                    <th class="text-center">药品名称</th>
+                                                    <th class="text-center">单次用药剂量</th>
+                                                    <th class="text-center">用药单位</th>
+                                                    <th class="text-center">服药时间</th>
+                                                    <th class="text-center">用药备注</th>
+                                                    <th class="text-center">提醒状态</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>2017-03-03 09:09:09</td>
+                                                    <td>老人添加</td>
+                                                    <td>感冒灵</td>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <select class="form-control" >
+                                                            <option value="每天">粒</option>
+                                                            <option value="一天三次">包</option>
+                                                            <option value="一天两次">瓶</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>08:00 18:00</td>
+                                                    <td>无</td>
+                                                    <td>老人关闭提醒</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="x_title clear">
+                                <br>
+                                <br>
+                                <h2>操作</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <br>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                                <button class="btn btn-sm btn-danger">编辑档案</button>
+                                <button class="btn btn-sm btn-danger">视频呼叫</button>
+                                <button class="btn btn-sm btn-danger">发送消息</button>
+                                <button class="btn btn-sm btn-danger">打印</button>
+                                <button class="btn btn-sm btn-danger">设置随身腕表</button>
+                                <button class="btn btn-sm btn-danger">关闭页面</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="distpicker1" class="hide">
+                <select></select>
+                <select></select>
+                <select></select>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="../../../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../../../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../../../vendors/nprogress/nprogress.js"></script>
+<!-- Chart.js -->
+<script src="../../../vendors/Chart.js/dist/Chart.min.js"></script>
+<!-- gauge.js -->
+<script src="../../../vendors/gauge.js/dist/gauge.min.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="../../../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="../../../vendors/iCheck/icheck.min.js"></script>
+<!-- Skycons -->
+<script src="../../../vendors/skycons/skycons.js"></script>
+<!-- Flot -->
+<script src="../../../vendors/Flot/jquery.flot.js"></script>
+<script src="../../../vendors/Flot/jquery.flot.pie.js"></script>
+<script src="../../../vendors/Flot/jquery.flot.time.js"></script>
+<script src="../../../vendors/Flot/jquery.flot.stack.js"></script>
+<script src="../../../vendors/Flot/jquery.flot.resize.js"></script>
+<!-- Flot plugins -->
+<script src="../../../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+<script src="../../../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="../../../vendors/flot.curvedlines/curvedLines.js"></script>
+<!-- DateJS -->
+<script src="../../../vendors/DateJS/build/date.js"></script>
+<!-- JQVMap -->
+<script src="../../../vendors/jqvmap/dist/jquery.vmap.js"></script>
+<script src="../../../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="../../../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="../../../vendors/moment/min/moment.min.js"></script>
+<script src="../../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="../../js/cishoo.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="../../../build/js/custom.min.js"></script>
+<script src="../../js/distpicker.data.js"></script>
+<script src="../../js/distpicker.js"></script>
+<script>
+    $("#distpicker2").distpicker();
+</script>
+</body>
+</html>

@@ -6,20 +6,11 @@
             <div class="title_left" style="">
                 <h3>健康监控</h3>
             </div>
-            <!--<div class="title_right">-->
-            <!--<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">-->
-            <!--<div class="input-group">-->
-            <!--<input type="text" class="form-control" placeholder="搜索...">-->
-            <!--<span class="input-group-btn">-->
-            <!--<button class="clf btn btn-danger" type="button" style="color: #fff;">查询</button>-->
-            <!--</span>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
         </div>
         <div class="page-title">
             <div class="title_left" style="width: 50%; line-height: 2.5">
                 <label class="control-label col-md-2 col-sm-2 col-xs-12 text-right">老人姓名:</label>
+
                 <div class="col-md-4 col-sm-4 col-xs-4">
                     <div class="">
                         <input type="text" class="form-control" placeholder="输入姓名">
@@ -30,6 +21,7 @@
                 <!--<input type="text" class="form-control pull-left" placeholder="输入姓名">-->
                 <!--</div>-->
                 <label class="control-label col-md-2 col-sm-2 col-xs-12 text-right">状态:</label>
+
                 <div class="col-md-4 col-sm-4 col-xs-4">
                     <select class="form-control">
                         <option value="所有">所有</option>
@@ -44,6 +36,7 @@
         <br>
         <br>
         <br>
+
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title"></div>
@@ -128,4 +121,35 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" style="" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" style="width: 80%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="myModalLabel">历史数据</h3>
+                </div>
+                <div class="x_panel">
+                    <div class="bd-list" style="">
+                        <div class="text-center pull-left bd-box" style="border-right: none;">呼吸测量</div>
+                        <div class="text-center pull-left bd-box" style="border-right: none;">心率测量</div>
+                        <div class="border-dark text-center pull-left bd-box" style="">睡眠质量</div>
+                    </div>
+                    <div class="x_content col-md-6 col-sm-6 col-xs-6">
+                        <div id="echart_line" style="height:350px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <script src="__JS__/distpicker.data.js"></script>
+    <script src="__VENDOR__/echarts/dist/echarts.min.js"></script>
+    <script>
+        $("#myModal").on('shown.bs.modal', function () {
+            init_echarts();
+        });
+    </script>
 </block>

@@ -5,6 +5,7 @@ class HealthController extends AdminController
 {
     function index()
     {
+        $this->meta_title = "健康监控";
         $this->display();
     }
 

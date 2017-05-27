@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>账号管理-坐席管理-新建坐席</title>
+    <!-- Bootstrap -->
+    <link href="../../../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../../../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!--&lt;!&ndash; NProgress &ndash;&gt;-->
+    <!--<link href="../../../vendors/nprogress/nprogress.css" rel="stylesheet">-->
+    <!--&lt;!&ndash; iCheck &ndash;&gt;-->
+    <!--<link href="../../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">-->
+    <!--&lt;!&ndash; bootstrap-progressbar &ndash;&gt;-->
+    <link href="../../../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!--&lt;!&ndash; JQVMap &ndash;&gt;-->
+    <!--<link href="../../../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>-->
+    <!--&lt;!&ndash; bootstrap-daterangepicker &ndash;&gt;-->
+    <link href="../../../../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../../../../build/css/custom.min.css" rel="stylesheet">
+</head>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <!--left-->
+        <div class="col-md-3 wsh_left left_col"></div>
+        <!--top-->
+        <div class="top_nav wsh_top"></div>
+        <!--content pages-->
+        <div class="right_col" role="main">
+            <div class="col-md-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>用药提醒基本信息</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content row">
+                        <br/>
+                        <form class="form-horizontal form-label-left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">老人姓名:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control">
+                                            <span class="input-group-btn">
+                                              <button type="button" class="btn btn-danger"data-toggle="modal" data-target="#myModal">+</button>
+                                          </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">性别:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <select class="form-control" disabled="disabled">
+                                            <option>男</option>
+                                            <option>女</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">年龄:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">联系电话:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">居住情况:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">健康情况:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                        居住地址:
+                                    </label>
+                                    <div class="col-md-10 col-sm-10 col-xs-12">
+                                        <input type="text" class="form-control"  disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
+                                <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>-->
+                                <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
+                                <!--<input type="password" class="form-control" value="passwordonetwo">-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
+                                <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">AutoComplete</label>-->
+                                <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
+                                <!--<input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10"/>-->
+                                <!--</div>-->
+                            </div>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_title">
+                                    <br><br>
+                                    <h2>用药信息</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">药品名称:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control"  placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">每次用量:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control"  placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">用药单位:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <select class="form-control">
+                                                <option>粒</option>
+                                                <option>包</option>
+                                                <option>盒</option>
+                                                <option>瓶</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">用药时间:</label>
+                                        <div class="col-md-10 col-sm-10 col-xs-12">
+                                            <input type="text" class="form-control"  placeholder='如需添加多个用药时间，请将用药时间以 " ; " 隔开'>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 clear" >
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">开始服药时间:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="date" class="form-control"  placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">结束服药时间:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="date" class="form-control  right" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                            用药说明:
+                                        </label>
+                                        <div class="col-md-10 col-sm-10 col-xs-12">
+                                            <input type="text" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
+                                    <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>-->
+                                    <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
+                                    <!--<input type="password" class="form-control" value="passwordonetwo">-->
+                                    <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
+                                    <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">AutoComplete</label>-->
+                                    <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
+                                    <!--<input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10"/>-->
+                                    <!--</div>-->
+                                </div>
+
+                                <div class="x_title clear">
+                                    <br>
+                                    <br>
+                                    <button class="btn btn-sm btn-danger">新增用药提醒</button>
+                                    <br>
+                                    <br>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+
+
+                                <div class="x_title clear">
+                                    <br>
+                                    <br>
+                                    <h2>操作</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                                    <br>
+                                    <button class="btn btn-sm btn-danger">保存提醒</button>
+                                    <button class="btn btn-sm btn-danger">关闭页面</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width: 80%;line-height: 2.54">
+        <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">老人信息选择框</h4>
+                <br>
+                <div class="form-group col-lg-5 col-md-5 col-sm-12 col-xs-12 clear">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                        姓名:
+                    </label>
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                        <input type="text" class="form-control" placeholder="请输入姓名查询">
+                    </div>
+                </div>
+                <div class="form-group col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                        用户ID:
+                    </label>
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                        <input type="text" class="form-control" placeholder="请输入用户ID查询">
+                    </div>
+                </div>
+                <div class="form-group col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    <button type="button" class="btn btn-primary  pull-left">查询</button>
+                    <button type="reset" class="btn  btn-default">重置</button>
+                </div>
+            </div>
+            <div class="modal-body col-lg-12 col-md-12 col-sm-12 col-sm-12">
+
+                <table class="table table-striped jambo_table bulk_action" style="line-height: 54px;">
+                    <thead>
+                    <tr class="headings">
+                        <th></th>
+                        <th class="column-title">姓名</th>
+                        <th class="column-title">老人编号</th>
+                        <th class="column-title">年龄</th>
+                        <th class="column-title">性别</th>
+                        <th class="column-title">联系方式</th>
+                        <th class="column-title">居住地址</th>
+                        <th class="column-title">居住情况</th>
+                        <!--<th class="column-title no-link last"><span class="nobr">老人编号</span></th>-->
+                        <th class="column-title">经济来源</th>
+                        <th class="column-title">设备号</th>
+                        <th class="column-title">所属代理/机构</th>
+                        <th class="column-title">登记时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="even pointer">
+                        <td class="a-center ">
+                           <input type="checkbox" class="">
+                        </td>
+                        <th class="column-title">小绵羊</th>
+                        <th class="column-title">00010</th>
+                        <th class="column-title">65</th>
+                        <th class="column-title">男</th>
+                        <th class="column-title">13939393399</th>
+                        <th class="column-title">上海崇明</th>
+                        <th class="column-title">独居</th>
+                        <!--<th class="column-title no-link last"><span class="nobr">老人编号</span></th>-->
+                        <th class="column-title">养老金</th>
+                        <th class="column-title">A1000</th>
+                        <th class="column-title">同润加州</th>
+                        <th class="column-title">2015-12-12 20:00</th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="../../../../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--&lt;!&ndash; FastClick &ndash;&gt;-->
+<!--<script src="../../../vendors/fastclick/lib/fastclick.js"></script>-->
+<!--&lt;!&ndash; NProgress &ndash;&gt;-->
+<!--<script src="../../../vendors/nprogress/nprogress.js"></script>-->
+<!--&lt;!&ndash; Chart.js &ndash;&gt;-->
+<!--<script src="../../../vendors/Chart.js/dist/Chart.min.js"></script>-->
+<!--&lt;!&ndash; gauge.js &ndash;&gt;-->
+<!--<script src="../../../vendors/gauge.js/dist/gauge.min.js"></script>-->
+<!--&lt;!&ndash; bootstrap-progressbar &ndash;&gt;-->
+<!--<script src="../../../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>-->
+<!--&lt;!&ndash; iCheck &ndash;&gt;-->
+<!--<script src="../../../vendors/iCheck/icheck.min.js"></script>-->
+<!--&lt;!&ndash; Skycons &ndash;&gt;-->
+<!--<script src="../../../vendors/skycons/skycons.js"></script>-->
+<!--&lt;!&ndash; Flot &ndash;&gt;-->
+<!--<script src="../../../vendors/Flot/jquery.flot.js"></script>-->
+<!--<script src="../../../vendors/Flot/jquery.flot.pie.js"></script>-->
+<!--<script src="../../../vendors/Flot/jquery.flot.time.js"></script>-->
+<!--<script src="../../../vendors/Flot/jquery.flot.stack.js"></script>-->
+<!--<script src="../../../vendors/Flot/jquery.flot.resize.js"></script>-->
+<!--&lt;!&ndash; Flot plugins &ndash;&gt;-->
+<!--<script src="../../../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>-->
+<!--<script src="../../../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>-->
+<!--<script src="../../../vendors/flot.curvedlines/curvedLines.js"></script>-->
+<!--&lt;!&ndash; DateJS &ndash;&gt;-->
+<!--<script src="../../../vendors/DateJS/build/date.js"></script>-->
+<!--&lt;!&ndash; JQVMap &ndash;&gt;-->
+<!--<script src="../../../vendors/jqvmap/dist/jquery.vmap.js"></script>-->
+<!--<script src="../../../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>-->
+<!--<script src="../../../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>-->
+<!--&lt;!&ndash; bootstrap-daterangepicker &ndash;&gt;-->
+<!--<script src="../../../vendors/moment/min/moment.min.js"></script>-->
+<!--<script src="../../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>-->
+<!--<script src="../../../js/cishoo.js"></script>-->
+<!-- Custom Theme Scripts -->
+<script src="../../../../build/js/custom.min.js"></script>
+<script src="../../../js/distpicker.data.js"></script>
+<script src="../../../js/distpicker.js"></script>
+<script>
+    $("#distpicker2").distpicker();
+    $(document).ready(function () {
+        $(".wsh_left").load("../../common/left.html");
+        $(".wsh_top").load("../../common/top.html");
+        init_sidebar();
+
+    });
+</script>
+</body>
+</html>
