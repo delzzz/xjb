@@ -16,10 +16,6 @@
                         <input type="text" class="form-control" placeholder="输入姓名">
                     </div>
                 </div>
-                <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">-->
-                <!--<label class="pull-left">老人姓名:</label>-->
-                <!--<input type="text" class="form-control pull-left" placeholder="输入姓名">-->
-                <!--</div>-->
                 <label class="control-label col-md-2 col-sm-2 col-xs-12 text-right">状态:</label>
 
                 <div class="col-md-4 col-sm-4 col-xs-4">
@@ -29,8 +25,6 @@
                         <option value="已关闭">已关闭</option>
                     </select>
                 </div>
-
-
             </div>
         </div>
         <br>
@@ -40,12 +34,6 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title"></div>
-                <!--<div class="row col-md-6 col-sm-6 col-xs-12">-->
-                <!--<a href="newadd.html"><button class="btn btn-sm btn-danger">新建老人档案</button></a>-->
-                <!--<button class="btn btn-default  btn-group-sm">批量导入</button>-->
-                <!--<button class="btn btn-default  btn-group-sm">导出数据</button>-->
-                <!--</div>-->
-
                 <div class="x_content">
                     <div class=""></div>
                     <div class="table-responsive">
@@ -61,61 +49,24 @@
                                 <th class="column-title">操作</th>
                             </tr>
                             </thead>
-                            <tr class="even pointer">
-                                <th class="column-title">王刚</th>
-                                <th class="column-title">00001</th>
-                                <th class="column-title">120</th>
-                                <th class="column-title">130</th>
-                                <th class="column-title">优</th>
-                                <th class="column-title">2015-12-12 12:00:00</th>
-                                <td class="pointer">
-                                    <a class="lay" data-toggle="modal" data-target="#myModal">历史数据</a>
-                                </td>
-                            </tr>
-                            <tr class="even pointer">
-                                <th class="column-title">王刚</th>
-                                <th class="column-title">00001</th>
-                                <th class="column-title">120</th>
-                                <th class="column-title">130</th>
-                                <th class="column-title">优</th>
-                                <th class="column-title">2015-12-12 12:00:00</th>
-                                <td class="pointer">
-                                    <a class="lay" data-toggle="modal" data-target="#myModal">历史数据</a>
-                                </td>
-                            </tr>
-                            </tr>
-
+                            <volist name="list" id="l">
+                                <tr class="even pointer">
+                                    <th class="column-title">{$l.peopleName}</th>
+                                    <th class="column-title">{$l.device_str}</th>
+                                    <th class="column-title">{$l.dataBreathValue}</th>
+                                    <th class="column-title">{$l.dataHeartbeatValue}</th>
+                                    <th class="column-title"></th>
+                                    <th class="column-title">{:time_format($l['measureTime']/1000,'Y-m-d')}</th>
+                                    <td class="pointer">
+                                        <a class="lay" data-toggle="modal" data-id="{$l.peopleId}"
+                                           data-target="#myModal">历史数据</a>
+                                    </td>
+                                </tr>
+                            </volist>
                         </table>
                     </div>
                     <div class="col-sm-12">
-                        <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
-                            <ul class="pagination">
-                                <li class="paginate_button previous disabled" id="datatable_previous">
-                                    <a href="#" aria-controls="datatable" data-dt-idx="0" tabindex="0">上一页</a>
-                                </li>
-                                <li class="paginate_button active">
-                                    <a href="#" aria-controls="datatable" data-dt-idx="1" tabindex="0">1</a>
-                                </li>
-                                <li class="paginate_button ">
-                                    <a href="#" aria-controls="datatable" data-dt-idx="2" tabindex="0">2</a>
-                                </li>
-                                <li class="paginate_button ">
-                                    <a href="#" aria-controls="datatable" data-dt-idx="3" tabindex="0">3</a>
-                                </li>
-                                <li class="paginate_button ">
-                                    <a href="#" aria-controls="datatable" data-dt-idx="4" tabindex="0">4</a>
-                                </li>
-                                <li class="paginate_button ">
-                                    <a href="#" aria-controls="datatable" data-dt-idx="5" tabindex="0">5</a>
-                                </li>
-                                <li class="paginate_button ">
-                                    <a href="#" aria-controls="datatable" data-dt-idx="6" tabindex="0">6</a>
-                                </li>
-                                <li class="paginate_button next" id="datatable_next">
-                                    <a href="#" aria-controls="datatable" data-dt-idx="7" tabindex="0">下一页</a>
-                                </li>
-                            </ul>
-                        </div>
+                        {$_page}
                     </div>
                 </div>
             </div>
@@ -136,7 +87,7 @@
                         <div class="border-dark text-center pull-left bd-box" style="">睡眠质量</div>
                     </div>
                     <div class="x_content col-md-6 col-sm-6 col-xs-6">
-                        <div id="echart_line" style="height:350px;"></div>
+                        <div id="echart" style="height:350px;    "></div>
                     </div>
                 </div>
             </div>
@@ -150,6 +101,43 @@
     <script>
         $("#myModal").on('shown.bs.modal', function () {
             init_echarts();
+            var f = echarts.init(document.getElementById("echart"));
+            f.setOption({
+                title: {text: "沉默用户", subtext: "趋势图"},
+                tooltip: {trigger: "axis"},
+                legend: {x: 220, y: 40, data: ["沉默用户", "新增用户"]},
+                toolbox: {
+                    show: !0,
+                    feature: {
+                        magicType: {
+                            show: !0,
+                            title: {line: "Line", bar: "Bar", stack: "Stack", tiled: "Tiled"},
+                            type: ["line"]
+                        }, restore: {show: !0, title: "Restore"}, saveAsImage: {show: !0, title: "Save Image"}
+                    }
+                },
+                calculable: !0,
+                xAxis: [{
+                    type: "category",
+                    boundaryGap: !1,
+                    data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+                }],
+                yAxis: [{type: "value"}],
+                series: [{
+                    name: "新增用户",
+                    type: "line",
+                    smooth: !0,
+                    itemStyle: {normal: {areaStyle: {type: "default"}}},
+                    data: [10, 12, 21, 54, 260, 830, 710]
+                }, {
+                    name: "沉默用户",
+                    type: "line",
+                    smooth: !0,
+                    itemStyle: {normal: {areaStyle: {type: "default"}}},
+                    data: [30, 182, 434, 791, 390, 30, 10]
+                }
+                ]
+            })
         });
     </script>
 </block>
