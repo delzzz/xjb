@@ -17,19 +17,19 @@
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">老人姓名:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control color-red" value="王军" disabled="disabled" placeholder="">
+                                    <input type="text" class="form-control color-red" value="{$medicationInfo.peopleName}" disabled="disabled" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">性别:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control " value="男" disabled="disabled" placeholder="">
+                                    <input type="text" class="form-control " value="{$medicationInfo['peopleGnder'] == 1?女:男}" disabled="disabled" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">年龄:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" value="56" disabled="disabled" placeholder="">
+                                    <input type="text" class="form-control" value="{$medicationInfo.peopleAge}" disabled="disabled" placeholder="">
                                 </div>
                             </div>
 
@@ -37,46 +37,26 @@
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">联系电话:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" value="18818881888" disabled="disabled" placeholder="">
+                                    <input type="text" class="form-control" value="{$medicationInfo.telephone}" disabled="disabled" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">居住地址:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" value="小六子" disabled="disabled" placeholder="">
+                                    <input type="text" class="form-control" value="{$medicationInfo.livingStatus}" disabled="disabled" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">开始日期:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control" value="2017-04-15" disabled="disabled" placeholder="">
+                                    <input type="text" class="form-control" value="{:time_format($remind['startDate']/1000,'Y-m-d')}" disabled="disabled" placeholder="">
                                 </div>
                             </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <label class="control-label col-md-4 col-sm-4 col-xs-12">用药周期:</label>
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <!--<input type="text" class="form-control" value="无" disabled="disabled" placeholder="">-->
-                                    <select class="form-control" >
-                                        <option value="每天">每天</option>
-                                        <option value="一天三次">一天三次</option>
-                                        <option value="一天两次">一天两次</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <label class="control-label col-md-4 col-sm-4 col-xs-12">服药周期:</label>
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <select class="form-control" >
-                                        <option value="每天">两星期后停止用药</option>
-                                        <option value="一天三次">一个月后停止用药</option>
-                                        <option value="一天两次">三个月后停止用药</option>
-                                    </select>
-                                </div>
-                            </div>
+
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">结束时间:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="date" class="form-control" value="2017-04-04" placeholder="">
+                                    <input type="date" class="form-control" disabled="disabled" value="{:time_format($remind['endDate']/1000,'Y-m-d')}" placeholder="">
                                 </div>
                             </div>
 
@@ -92,7 +72,6 @@
                             <!--<input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10"/>-->
                             <!--</div>-->
                         </div>
-
 
 
                         <div class="x_title clear">
@@ -112,25 +91,51 @@
                                             <th class="text-center">药品名称</th>
                                             <th class="text-center">单词用药剂量</th>
                                             <th class="text-center">用药单位</th>
-                                            <th class="text-center">第一次</th>
-                                            <th class="text-center">第二次</th>
+                                            <?php
+                                           foreach($remind['triggerTimes'] as $key=>$value){
+                                                    if($key==0){
+                                                        echo '<th class="text-center">第一次</th>';
+                                                    }
+                                                    elseif($key==1){
+                                                        echo '<th class="text-center">第二次</th>';
+                                                    }
+                                                    elseif($key==2){
+                                                         echo '<th class="text-center">第三次</th>';
+                                                    }
+                                                }
+                                            ?>
                                             <th class="text-center">用药备注</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td>感冒通</td>
-                                            <td>1</td>
+                                            <td>{$remind.drugName}</td>
+                                            <td>{$remind.dose}</td>
                                             <td>
-                                                <select class="form-control" >
-                                                    <option value="每天">粒</option>
-                                                    <option value="一天三次">包</option>
-                                                    <option value="一天两次">瓶</option>
+                                                <select class="form-control">
+                                                    <option
+                                                    <if condition="$remind.doseUnit eq 0">selected</if>
+                                                    value="0">粒</option>
+                                                    <option
+                                                    <if condition="$remind.doseUnit eq 1">selected</if>
+                                                    value="1">片</option>
+                                                    <option
+                                                    <if condition="$remind.doseUnit eq 2">selected</if>
+                                                    value="2">袋</option>
+                                                    <option
+                                                    <if condition="$remind.doseUnit eq 3">selected</if>
+                                                    value="3">颗</option>
+                                                    <option
+                                                    <if condition="$remind.doseUnit eq 4">selected</if>
+                                                    value="4">瓶</option>
                                                 </select>
                                             </td>
-                                            <td>08：00 </td>
-                                            <td>19：00</td>
-                                            <td>饭后一小时</td>
+                                            <?php
+                                           foreach($remind['triggerTimes'] as $key=>$value){
+                                                    echo '<td>'.$value.'</td>';
+                                                }
+                                             ?>
+                                            <td>{$remind.remark}</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -142,7 +147,15 @@
                             <div class="x_title clear">
                                 <br>
                                 <br>
-                                <h2>操作记录</h2>
+                                <h2>
+                                    <if condition="$flag eq 1">
+                                    <!--坐席端显示-->
+                                        操作记录
+                                    <else/>
+                                    <!--后台端显示-->
+                                        历史用药
+                                    </if>
+                                </h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                 </ul>
                                 <div class="clearfix"></div>
@@ -161,25 +174,43 @@
                                                 <th class="text-center">服药时间</th>
                                                 <th class="text-center">用药备注</th>
                                                 <th class="text-center">提醒状态</th>
+                                                <th class="text-center">操作人</th>
+                                                <if condition="$flag eq 1">
+                                                    <!--坐席端显示-->
+                                                    <th class="text-center">关闭原因</th>
+                                                </if>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>2017-03-03 09:09:09</td>
-                                                <td>老人添加</td>
-                                                <td>感冒灵</td>
-                                                <td>1</td>
-                                                <td>
-                                                    <select class="form-control" >
-                                                        <option value="每天">粒</option>
-                                                        <option value="一天三次">包</option>
-                                                        <option value="一天两次">瓶</option>
-                                                    </select>
-                                                </td>
-                                                <td>08:00 18:00</td>
-                                                <td>无</td>
-                                                <td>老人关闭提醒</td>
-                                            </tr>
+                                                <volist name="history" id="history">
+                                                    <tr>
+                                                        <td>{:time_format($history['createTime']/1000,'Y-m-d')}</td>
+                                                        <td>
+                                                            {$history.adder}
+                                                        </td>
+                                                        <td>{$history.drugName}</td>
+                                                        <td>{$history.dose}</td>
+                                                        <td>
+                                                                <if condition="$history.doseUnit eq 0">粒
+                                                                    <elseif condition="$history.doseUnit eq 1" />
+                                                                    片
+                                                                    <elseif condition="$history.doseUnit eq 2" />
+                                                                    袋
+                                                                    <elseif condition="$history.doseUnit eq 3" />
+                                                                    颗
+                                                                    <elseif condition="$history.doseUnit eq 4" />
+                                                                    瓶
+                                                                </if>
+                                                        </td>
+                                                        <td>{$history.timeStr}</td>
+                                                        <td>{$history.remark}</td>
+                                                        <td>{$history['status'] == 1 ? 已关闭:执行中}</td>
+                                                        <td>{$history.closer}</td>
+                                                        <if condition="$flag eq 1">
+                                                            <td>{$history.closeReason}</td>
+                                                        </if>
+                                                    </tr>
+                                                </volist>
                                             </tbody>
                                         </table>
                                     </div>
@@ -196,22 +227,58 @@
                         </div>
                         <br>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
-                            <button class="btn btn-sm btn-danger">编辑档案</button>
-                            <button class="btn btn-sm btn-danger">视频呼叫</button>
-                            <button class="btn btn-sm btn-danger">发送消息</button>
-                            <button class="btn btn-sm btn-danger">打印</button>
-                            <button class="btn btn-sm btn-danger">设置随身腕表</button>
-                            <button class="btn btn-sm btn-danger">关闭页面</button>
+                            <input type="hidden" id="remindId" value="{$remind.remindId}" />
+                            <input type="hidden" id="closerId" value="2" />
+                            <if condition="$flag eq 1">
+                                <button type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-sm btn-danger">关闭提醒</button>
+                            </if>
+                            <button onclick="javascript:history.back(-1);return false;" class="btn btn-sm btn-danger">关闭页面</button>
                         </div>
-
                     </form>
                 </div>
             </div>
         </div>
-        <div id="distpicker1" class="hide">
-            <select></select>
-            <select></select>
-            <select></select>
+        <div class="modal fade" id="myModal1" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document" style="width: 80%;line-height: 2.54">
+                <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel2">关闭提醒</h4>
+                        <br>
+                        关闭原因：
+                        <br>
+                        <textarea id="closeReason" class="col-lg-12 col-sm-12"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-danger btn-close">保存</button>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
     </div>
+</block>
+
+<block name="script">
+    <script>
+        $('.btn-close').click(function(){
+            $.ajax({
+                url: "{:U('Health/closeRemind')}",
+                type: 'POST',
+                data:{'remindId':$('#remindId').val(),'closerId':$('#closerId').val(),'closeReason':$('#closeReason').val()},
+                success: function (data) {
+                    if(data==1){
+                        alert('关闭提醒成功！');
+                        $('#myModal1').removeClass('in');
+                        $('.modal-backdrop').css('display','none');
+                    }
+                    else{
+                        alert('关闭提醒失败！');
+                    }
+                }
+            })
+        });
+    </script>
 </block>

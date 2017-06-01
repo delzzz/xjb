@@ -1,0 +1,342 @@
+<extend name="Public/base"/>
+
+<block name="body">
+        <div class="right_col" role="main">
+            <div class="col-md-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>用药提醒基本信息</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content row">
+                        <br/>
+                        <form method="post" action="{:U('add_call')}" class="form-horizontal form-label-left">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">老人姓名:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <div class="input-group">
+                                            <input disabled id="name" type="text" class="form-control">
+                                            <span class="input-group-btn">
+                                              <button type="button" class="btn btn-danger"data-toggle="modal" data-target="#myModal">+</button>
+                                          </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">性别:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <select id="gender" class="form-control" disabled="disabled">
+                                            <option value="0">男</option>
+                                            <option value="1">女</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">年龄:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input id="age" type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">联系电话:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input id="tel" type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">居住情况:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input id="livingStatus" type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">健康情况:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input id="healthStatus" type="text" class="form-control" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                        居住地址:
+                                    </label>
+                                    <div class="col-md-10 col-sm-10 col-xs-12">
+                                        <input id="address" type="text" class="form-control"  disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
+                                <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>-->
+                                <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
+                                <!--<input type="password" class="form-control" value="passwordonetwo">-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
+                                <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">AutoComplete</label>-->
+                                <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
+                                <!--<input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10"/>-->
+                                <!--</div>-->
+                            </div>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_title">
+                                    <br><br>
+                                    <h2>用药信息</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div id="wrapper" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <br/>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">药品名称:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input name="drugName[]" type="text" class="form-control"  placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">每次用量:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input name="dose[]" type="text" class="form-control"  placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">用药单位:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <select name="doseUnit[]" class="form-control">
+                                                <option value="0">粒</option>
+                                                <option value="1">片</option>
+                                                <option value="2">袋</option>
+                                                <option value="3">颗</option>
+                                                <option value="4">瓶</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">用药时间:</label>
+                                        <div class="col-md-10 col-sm-10 col-xs-12">
+                                            <input name="triggerTimes[]" type="text" class="form-control"  placeholder='如需添加多个用药时间，请将用药时间以 " ; " 隔开'>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 clear" >
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">开始服药时间:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input name="startDate[]" type="date" class="form-control"  placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">结束服药时间:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input name="endDate[]" type="date" class="form-control  right" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                            用药说明:
+                                        </label>
+                                        <div class="col-md-10 col-sm-10 col-xs-12">
+                                            <input name="remark[]" type="text" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
+                                    <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>-->
+                                    <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
+                                    <!--<input type="password" class="form-control" value="passwordonetwo">-->
+                                    <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
+                                    <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">AutoComplete</label>-->
+                                    <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
+                                    <!--<input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10"/>-->
+                                    <!--</div>-->
+                                </div>
+
+                                <div class="x_title clear">
+                                    <br>
+                                    <br>
+                                    <button type="button" id="add_btn" class="btn btn-sm btn-danger">新增用药提醒</button>
+                                    <br>
+                                    <br>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+
+
+                                <div class="x_title clear">
+                                    <br>
+                                    <br>
+                                    <h2>操作</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                                    <br>
+                                    <input type="hidden" id="pid" name="pid" value="0"/>
+                                    <button target-form="form-label-left" id="submit" type="submit" class="btn btn-sm btn-danger ajax-post">保存提醒</button>
+                                    <button onclick="javascript:history.back(-1);return false;" class="btn btn-sm btn-danger">关闭页面</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width: 80%;line-height: 2.54">
+        <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">老人信息选择框</h4>
+                <br>
+                <!--<div class="form-group col-lg-5 col-md-5 col-sm-12 col-xs-12 clear">-->
+                    <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">-->
+                        <!--姓名:-->
+                    <!--</label>-->
+                    <!--<div class="col-md-10 col-sm-10 col-xs-12">-->
+                        <!--<input id="name" type="text" class="form-control" placeholder="请输入姓名查询">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group col-lg-5 col-md-5 col-sm-12 col-xs-12">-->
+                    <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">-->
+                        <!--用户ID:-->
+                    <!--</label>-->
+                    <!--<div class="col-md-10 col-sm-10 col-xs-12">-->
+                        <!--<input type="text" class="form-control" placeholder="请输入用户ID查询">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group col-lg-2 col-md-2 col-sm-12 col-xs-12">-->
+                    <!--<button id="btn_select" type="button" class="btn btn-primary  pull-left">查询</button>-->
+                    <!--<button type="reset" class="btn  btn-default">重置</button>-->
+                <!--</div>-->
+            </div>
+            <div class="modal-body col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                <table class="table table-striped jambo_table bulk_action" style="line-height: 54px;">
+                    <thead>
+                    <tr class="headings">
+                        <th></th>
+                        <th class="column-title">姓名</th>
+                        <th class="column-title">老人编号</th>
+                        <th class="column-title">年龄</th>
+                        <th class="column-title">性别</th>
+                        <th class="column-title">联系方式</th>
+                        <th class="column-title">居住地址</th>
+                        <th class="column-title">居住情况</th>
+                        <!--<th class="column-title no-link last"><span class="nobr">老人编号</span></th>-->
+                        <th class="column-title">经济来源</th>
+                        <th class="column-title">设备号</th>
+                        <th class="column-title">所属代理/机构</th>
+                        <th class="column-title">登记时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="oldList" id="oldList">
+                    <tr class="even pointer">
+                        <td class="a-center ">
+                           <input name="peopleId" id="peopleId" type="radio" value="{$oldList.peopleId}" />
+                        </td>
+                        <th class="column-title">{$oldList.name}</th>
+                        <th class="column-title">{$oldList.peopleIdentifier}</th>
+                        <th class="column-title">{$oldList.age}</th>
+                        <th class="column-title">{$oldList['gender']==0?男:女}</th>
+                        <th class="column-title">{$oldList.telephone}</th>
+                        <th class="column-title">{$oldList.adress}</th>
+                        <th class="column-title">{$oldList.livingStatus}</th>
+                        <!--<th class="column-title no-link last"><span class="nobr">老人编号</span></th>-->
+                        <th class="column-title">{$oldList.economy}</th>
+                        <th class="column-title">
+                            <volist name="oldList['deviceIdentifiers']" id="device">
+                                {$device}&nbsp;
+                            </volist>
+                        </th>
+                        <th class="column-title">{$oldList.orgName}</th>
+                        <th class="column-title">{:time_format($oldList['createTime']/1000,'Y-m-d')}</th>
+                    </tr>
+                    </volist>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="btn_choose">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="script">
+    <script>
+        $('.ajax-post').click(function() {
+            var pid =$('#pid').val();
+            if(empty(pid)){
+                alert('请选择老人');
+                return;
+            }
+//            $.ajax({
+//                url: "{:U('Health/add_call')}",
+//                type: 'POST',
+//                data: {'peopleId': peopleId},
+//                success: function (data) {
+//                    alert(data);
+//                    if (data == 9) {
+//                        alert('请选择老人！');
+//                    }
+//                    else if (data == 0) {
+//                        alert('添加失败！');
+//                    }
+//                    else if (data == 1) {
+//                        alert('添加成功！');
+//                    }
+//                }
+//            });
+        });
+        //选择老人
+        $('#btn_choose').click(function(){
+            var peopleId = $('#peopleId:checked').val();
+            if(peopleId == ''|| peopleId == undefined || peopleId == null){
+                return;
+            }
+            else{
+                //根据peopleId查询老人基础档案
+                $.ajax({
+                    url: "{:U('Health/add_reminder')}",
+                    type: 'POST',
+                    data:{'peopleId':peopleId},
+                    success: function (data) {
+                        $('#name').val(data['name']);
+                        $('#gender').val(data['gender']);
+                        $('#age').val(data['age']);
+                        $('#tel').val(data['telephone']);
+                        $('#livingStatus').val(data['livingStatus']);
+                        $('#healthStatus').val(data['healthStatus']);
+                        $('#address').val(data['adress']);
+                        $('#pid').val(peopleId);
+                    }
+                })
+                $('.modal').removeClass('in');
+                $('.modal-backdrop').removeClass('in');
+            }
+        });
+        //新增一次
+        $('#add_btn').click(function(){
+            $('#wrapper').after('<div class="x_title clear"></div>'+$('#wrapper').html());
+        });
+//        $('#btn_select').click(function(){
+//            var name = $('#name').val();
+//            $.ajax({
+//                url: "{:U('Health/add_reminder')}",
+//                type: 'POST',
+//                data:{'name':name},
+//                success: function (data) {
+//                    console.log(data);
+//                }
+//            })
+//        });
+    </script>
+</block>
