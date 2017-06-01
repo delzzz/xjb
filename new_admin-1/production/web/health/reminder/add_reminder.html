@@ -185,6 +185,7 @@
                                 <div class="x_title clear">
                                     <br>
                                     <br>
+                                    <!--如果是查看详情则隐藏该按钮-->
                                     <button class="btn btn-sm btn-danger">新增用药提醒</button>
                                     <br>
                                     <br>
@@ -204,8 +205,55 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
                                     <br>
+                                    <!--如果事详情页面则显示关闭提醒按钮-->
+                                    <!--如果事新增页面则显示保存提醒按钮-->
+                                    <button class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-target="#myModal1">关闭提醒</button>
                                     <button class="btn btn-sm btn-danger">保存提醒</button>
                                     <button class="btn btn-sm btn-danger">关闭页面</button>
+                                </div>
+                                <div class="x_panel">
+                                    <div class="x_title border-bottom">
+                                        <h2>用药提醒</h2>
+                                    </div>
+                                    <!--<div class="row col-md-6 col-sm-6 col-xs-12">-->
+                                    <!--<a href="newadd.html"><button class="btn btn-sm btn-danger">新建老人档案</button></a>-->
+                                    <!--<button class="btn btn-default  btn-group-sm">批量导入</button>-->
+                                    <!--<button class="btn btn-default  btn-group-sm">导出数据</button>-->
+                                    <!--</div>-->
+
+                                    <div class="x_content">
+                                        <div class=""></div>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped jambo_table bulk_action">
+                                                <thead>
+                                                <tr class="headings">
+                                                    <th class="column-title">操作时间</th>
+                                                    <th class="column-title">添加类型</th>
+                                                    <th class="column-title">药品名称</th>
+                                                    <th class="column-title">用药剂量</th>
+                                                    <th class="column-title">用药单位</th>
+                                                    <th class="column-title no-link last">服药时间</th>
+                                                    <th class="column-title">用药备注</th>
+                                                    <th class="column-title">提醒状态</th>
+                                                    <th class="column-title">关闭原因</th>
+                                                </tr>
+                                                </thead>
+                                                <tr class="even pointer">
+                                                    <td class="">2017-10-23 14:00:00</td>
+                                                    <td class=" ">老人添加</td>
+                                                    <td class=" ">救心丸</td>
+                                                    <td class=" ">1</td>
+                                                    <td class="a-right a-right ">粒</td>
+                                                    <td class=" ">9:00 12:00 18:00</td>
+                                                    <td class=" ">忌辛辣</td>
+                                                    <td class=" ">老人关闭</td>
+                                                    <td class="pointer">
+                                                        无
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -215,6 +263,9 @@
         </div>
     </div>
 </div>
+
+
+<!--选择框-->
 <!-- Modal -->
 <div class="modal fade" id="myModal" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document" style="width: 80%;line-height: 2.54">
@@ -245,7 +296,6 @@
                 </div>
             </div>
             <div class="modal-body col-lg-12 col-md-12 col-sm-12 col-sm-12">
-
                 <table class="table table-striped jambo_table bulk_action" style="line-height: 54px;">
                     <thead>
                     <tr class="headings">
@@ -292,6 +342,28 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="myModal1" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width: 80%;line-height: 2.54">
+        <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel2">关闭提醒</h4>
+                <br>
+                关闭原因：
+                <br>
+                <textarea class="col-lg-12 col-sm-12"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 <!-- jQuery -->
 <script src="../../../../vendors/jquery/dist/jquery.min.js"></script>

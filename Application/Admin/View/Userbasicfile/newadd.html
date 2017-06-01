@@ -21,7 +21,7 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">老人姓名:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" name="pel_name" class="form-control" placeholder="">
+                                            <input type="text" name="pel_name" value="{$peopleBasic.name}" class="form-control" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -38,7 +38,7 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">编号:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" name="peopleIdentifier" class="form-control"
+                                            <input type="text" value="{$peopleBasic.peopleIdentifier}" name="peopleIdentifier" class="form-control"
                                                    placeholder="">
                                         </div>
                                     </div>
@@ -48,21 +48,21 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">身份证:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" name="idNumber" class="form-control" placeholder="">
+                                            <input type="text" value="{$peopleBasic.idNumber}" name="idNumber" class="form-control" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">年龄:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" name="age" class="form-control" placeholder="">
+                                            <input type="text" value="{$peopleBasic.age}" name="age" class="form-control" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">电话:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" name="tele_phone" class="form-control" placeholder="">
+                                            <input type="text" value="{$peopleBasic.telephone}" name="tele_phone" class="form-control" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -328,6 +328,9 @@
 
 <block name="script">
     <script type="text/javascript">
+        Think.setValue('gender',{$peopleBasic.gender});
+        Think.setValue('ethnicity',{$peopleBasic.ethnicity});
+
         $(function () {
             $('#inputSuccess2Status').datetimepicker();
             Page.init();

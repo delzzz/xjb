@@ -125,9 +125,15 @@ class UserbasicfileController extends AdminController
         $this->assign('economy', $economy);
         $this->assign('livingStatus', $livingStatus);
         $this->assign('healthStatus', $healthStatus);
-        $peopleId = I('get.peopleId');
+        $peopleId = I('get.id');
         if ($peopleId) {
-          
+            $url = $this->getUrl('people_detail') . $peopleId;
+            $response = http($url, null, 'GET');
+            $this->assign('peopleBasic', $response['peopleBasic']);
+            $this->assign('peopleDetail', $response['peopleDetail']);
+            $this->assign('impage', $response['impage']);
+            $this->assign('peopleRelativeList', $response['peopleRelativeList']);
+            $this->assign('peopleDeviceList', $response['peopleDeviceList']);
         }
         $this->assign('hobby', $hobby);
         $this->display();
