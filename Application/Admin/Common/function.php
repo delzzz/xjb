@@ -483,6 +483,7 @@ function http_post_json($url, $jsonStr)
     );
     $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+//    echo $httpCode;die();
     curl_close($ch);
     return json_decode($response, true);
 }

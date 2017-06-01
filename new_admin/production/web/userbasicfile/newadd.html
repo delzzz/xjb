@@ -324,18 +324,7 @@
                                     </div>
                                 </div>
 
-                                <div class="x_title clear">
-                                    <br>
-                                    <br>
-                                    <h2>操作</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
-                                    <button class="btn btn-lg btn-danger">编辑</button>
-                                    <button class="btn btn-lg btn-danger">关闭页面</button>
-                                </div>
+
                                 <div class="x_title clear">
                                     <br>
                                     <br>
@@ -356,7 +345,7 @@
                                                     <th class="text-center">现居地</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody class="tab1">
                                                 <tr>
                                                     <td><input type="text" class="flat form-control"  value="小六子" placeholder=""></td>
                                                     <td><input type="text" class="flat form-control"  value="18838383888" placeholder=""></td>
@@ -365,7 +354,7 @@
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <button class="btn btn-sm btn-danger pull-right">新增亲属</button>
+                                            <button class="btn btn-sm btn-danger pull-right new_add">新增亲属</button>
                                         </div>
                                     </div>
                                 </div>
@@ -390,41 +379,40 @@
                                                     <th class="text-center">安装日期</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody class="tab2">
                                                 <tr>
-                                                    <td>A9007077</td>
-                                                    <td>老人1</td>
-                                                    <td>1105</td>
-                                                    <td>2017-03-03 09:09:09</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>A9007077</td>
-                                                    <td>老人1</td>
-                                                    <td>1105</td>
-                                                    <td>2017-03-03 09:09:09</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>A9007077</td>
-                                                    <td>老人1</td>
-                                                    <td>1105</td>
-                                                    <td>2017-03-03 09:09:09</td>
+                                                    <td><input type="text" class="flat form-control"  value="" placeholder="A9007077"></td>
+                                                    <td><input type="text" class="flat form-control"  value="" placeholder="老人1"></td>
+                                                    <td><input type="text" class="flat form-control"  value="" placeholder="1105"></td>
+                                                    <td><input type="text" class="flat form-control"  value="" placeholder="2017-03-03 09:09:09"></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <button class="btn btn-sm btn-danger pull-right">打印</button>
+                                            <button class="btn btn-sm btn-danger pull-right new_add2">新增设备</button>
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="x_title clear">
+                                    <br>
+                                    <br>
+                                    <h2>操作</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">-->
+                                <!--<button class="btn btn-lg btn-danger">编辑</button>-->
+                                <!--<button class="btn btn-lg btn-danger">关闭页面</button>-->
+                                <!--</div>-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                                    <br>
+                                    <button class="btn btn-lg btn-danger">保存</button>
+                                    <button class="btn btn-lg btn-danger">关闭页面</button>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>
-            <div id="distpicker1" class="hide">
-                <select></select>
-                <select></select>
-                <select></select>
             </div>
         </div>
     </div>
@@ -475,6 +463,22 @@
 <script src="../../js/distpicker.js"></script>
 <script>
     $("#distpicker2").distpicker();
+    $(".new_add").click(function () {
+       $(".tab1").append('<tr><td><input type="text" class="flat form-control"  value="" placeholder=""></td>'+
+            '<td><input type="text" class="flat form-control"  value="" placeholder=""></td>'+
+           '<td><input type="text" class="flat form-control"  value="" placeholder=""></td>'+
+            '<td><input type="text" class="flat form-control"  value="" placeholder=""></td>'+
+            '</tr>');
+       return false;
+    });
+    $(".new_add2").click(function () {
+        $(".tab2").append('<tr><td><input type="text" class="flat form-control"  value="" placeholder=""></td>'+
+            '<td><input type="text" class="flat form-control"  value="" placeholder=""></td>'+
+            '<td><input type="text" class="flat form-control"  value="" placeholder=""></td>'+
+            '<td><input type="text" class="flat form-control"  value="" placeholder=""></td>'+
+            '</tr>');
+        return false;
+    });
 </script>
 </body>
 </html>

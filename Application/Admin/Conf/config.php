@@ -112,6 +112,115 @@ return array(
     'INS_TYPE' => [
         '0' => '医疗机构', '1' => '生活小区', '2' => '养老机构', '3' => '家庭／个人', '4' => '注册公司'
     ],
+    /*学历*/
+    'EDUCATION' => [
+        '不识字',
+        '小学',
+        '初中',
+        '高中/中专',
+        '专科',
+        '本科',
+        '研究生及以上'
+    ],
+    /*经济来源*/
+    'ECONOMY' => [
+        '城镇职工基本养老保险',
+        '城市低保',
+        '子女供养',
+        '家庭存款',
+        '离退休金',
+        '五保',
+        '抚恤金',
+        '商业保险',
+        '其他',
+    ],
+    /*居住情况*/
+    'LIVINGSTATUS' => [
+        '经济来源',
+        '一人居',
+        '二老居',
+        '一人保姆居',
+        '二老保姆居',
+        '子女同居',
+        '孙辈同居',
+        '其他',
+    ],
+    /*健康状况*/
+    'HEALTHSTATUS' => [
+        '健康',
+        '基本健康',
+        '不健康但能自理',
+        '生活不能自理',
+    ],
+
+    'HOBBY' => [
+        '歌舞',
+        '下棋',
+        '书法',
+        '乐器',
+        '晨练',
+        '逛公园'
+    ],
+    /*民族*/
+    'ETHNICITY' => [
+        '汉族',
+        '蒙古族',
+        '回族',
+        '藏族',
+        '维吾尔族',
+        '苗族',
+        '彝族',
+        '壮族',
+        '布依族',
+        '朝鲜族',
+        '满族',
+        '侗族',
+        '瑶族',
+        '白族',
+        '土家族',
+        '哈尼族',
+        '哈萨克族',
+        '傣族',
+        '黎族',
+        '僳僳族',
+        '佤族',
+        '畲族',
+        '高山族',
+        '拉祜族',
+        '水族',
+        '东乡族',
+        '纳西族',
+        '景颇族',
+        '柯尔克孜族',
+        '土族',
+        '达斡尔族',
+        '仫佬族',
+        '羌族',
+        '布朗族',
+        '撒拉族',
+        '毛南族',
+        '仡佬族',
+        '锡伯族',
+        '阿昌族',
+        '普米族',
+        '塔吉克族',
+        '怒族',
+        '乌孜别克族',
+        '俄罗斯族',
+        '鄂温克族',
+        '德昂族',
+        '保安族',
+        '裕固族',
+        '京族',
+        '塔塔尔族',
+        '独龙族',
+        '鄂伦春族',
+        '赫哲族',
+        '门巴族',
+        '珞巴族',
+        '基诺族',
+    ],
+
     /*接口配置*/
     'INTERFACR_API' => array(
         'agent_create' => 'http://192.168.1.250:8080/service/org/agent/create',//创建代理商
@@ -126,7 +235,7 @@ return array(
 
         'get_user' => 'http://192.168.1.250:8080/service/sys/user/get', //获取系统用户信息
         'get_org_agent' => 'http://192.168.1.250:8080/service/org/agent/get',//获取代理商
-        'query_org' => 'http://192.168.1.250:8080/service/org/ins/query',//查询机构        
+        'query_org' => 'http://192.168.1.250:8080/service/org/ins/query',//查询机构
         'query_agent' => 'http://192.168.1.250:8080/service/org/agent/query',//查询代理商
         'get_org_detail' => 'http://192.168.1.250:8080/service/org/ins/detail/', //获取机构详情
         'del_pic' => 'http://192.168.1.250:8080/service/image/delete/',//删除图片
@@ -140,6 +249,12 @@ return array(
         'get_area' => 'http://192.168.1.250:8080/service/region/get',//获取行政区域
 
         'notice_query' => 'http://192.168.1.250:8080/service/notice/org/query',//查询代理通知
-        'notice_del' => 'http://192.168.1.250:8080/service/notice/org/delete'//删除通知
+        'notice_del' => 'http://192.168.1.250:8080/service/notice/org/delete',//删除通知
+
+        'health_query' => 'http://192.168.1.250:8080/service/health/breath/get/page',//健康监控
+        'history' => 'http://192.168.1.250:8080/service/health/breath/get/history/',  //历史数据
+
+        'people_query' => 'http://192.168.1.250:8080/service/people/get/basic/page', //老人基础档案分页查询
+        'people_save_edit' => 'http://192.168.1.250:8080/service/people/saveOrUpdate/detail', //新增/更新老人基础档案
     ),
 );

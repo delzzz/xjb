@@ -163,7 +163,7 @@
                                     <label class="control-label col-md-2 col-sm-2 col-xs-12">公司住址:</label>
                                     <div class="col-md-10 col-sm-10 col-xs-12">
                                         <div class="">
-                                            <input type="text" class="form-control" placeholder="">
+                                            <input type="text" required="required" class="form-control" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -265,7 +265,7 @@
                                 </div>
                                 <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                                     <label>
-                                        <input type="checkbox" class="flat"> 医护人员
+                                        <input type="checkbox"  class="flat"> 医护人员
                                     </label>
                                 </div>
                                 <div class="checkbox col-md-2 col-sm-2 col-xs-12">
@@ -423,8 +423,8 @@
         $(this).next("span").remove();
     });
     $("select").onchange(function () {
-        alert("a");
         $(this).next("span").remove();
+
     });
 </script>
 </body>
