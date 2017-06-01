@@ -256,5 +256,6 @@ return array(
 
         'people_query' => 'http://192.168.1.250:8080/service/people/get/basic/page', //老人基础档案分页查询
         'people_save_edit' => 'http://192.168.1.250:8080/service/people/saveOrUpdate/detail', //新增/更新老人基础档案
+        'people_detail' => 'http://192.168.1.250:8080/service/people/get/detail/'//获取老人基础信息
     ),
 );
