@@ -236,7 +236,7 @@
                                                     <tbody class="tab1">
                                                     <volist name="peopleRelativeList" id="r">
                                                         <tr>
-                                                            <input type="hidden" name="relativeId"
+                                                            <input type="hidden" name="relativeId[]"
                                                                    value="{$r.relativeId}">
                                                             <td><input type="text" name="name[]"
                                                                        class="flat form-control"
@@ -296,8 +296,8 @@
                                                             <td>
                                                                 <input type="text" name="deviceInstallDate[]"
                                                                        class="form-control has-feedback-left"
-                                                                       value="{:time_format($d.createTime/1000,'Y-m-d')}"
-                                                                       id="single_cal1" placeholder="First Name"
+                                                                       value="{:time_format($d['createTime']/1000,'Y-m-d')}"
+                                                                       placeholder="First Name"
                                                                        aria-describedby="inputSuccess2Status">
                                                             </td>
                                                         </tr>
@@ -343,38 +343,30 @@
 
 <block name="script">
     <script type="text/javascript">
-        Think.setValue('gender', {$peopleBasic.gender
-        })
-        ;
-        Think.setValue('ethnicity', {$peopleBasic.ethnicity
-        })
-        ;
-        Think.setValue('education', {$peopleBasic.education
-        })
-        ;
-        Think.setValue('economy', {$peopleBasic.economy
-        })
-        ;
-        Think.setValue('healthStatus', {$peopleBasic.healthStatus
-        })
-        ;
+        Think.setValue('gender', {$peopleBasic.gender});
+        Think.setValue('ethnicity', {$peopleBasic.ethnicity});
+        Think.setValue('education', {$peopleBasic.education});
+        Think.setValue('economy', {$peopleBasic.economy});
+        Think.setValue('healthStatus', {$peopleBasic.healthStatus});
         $(function () {
-            $('#inputSuccess2Status').datetimepicker();
+            $(".has-feedback-left").datetimepicker();
             Page.init();
         });
         $(".new_add").click(function () {
-            $(".tab1").append('<tr><td><input type="text" class="flat form-control"  value="" placeholder=""></td>' +
-                    '<td><input type="text" class="flat form-control"  value="" placeholder=""></td>' +
-                    '<td><input type="text" class="flat form-control"  value="" placeholder=""></td>' +
-                    '<td><input type="text" class="flat form-control"  value="" placeholder=""></td>' +
+            $(".tab1").append('<tr><td>  <input type="hidden" name="relativeId[]">' +
+                    '<input type="text" name="name[]" class="flat form-control"  value="" placeholder=""></td>' +
+                    '<td><input type="text" name="telephone[]" class="flat form-control"  value="" placeholder=""></td>' +
+                    '<td><input type="text" name="relation[]" class="flat form-control"  value="" placeholder=""></td>' +
+                    '<td><input type="text" name="address[]" class="flat form-control"  value="" placeholder=""></td>' +
                     '</tr>');
             return false;
         });
         $(".new_add2").click(function () {
-            $(".tab2").append('<tr><td><input type="text" class="flat form-control"  value="" placeholder=""></td>' +
-                    '<td><input type="text" class="flat form-control"  value="" placeholder=""></td>' +
-                    '<td><input type="text" class="flat form-control"  value="" placeholder=""></td>' +
-                    '<td><input type="text" class="flat form-control"  value="" placeholder=""></td>' +
+            $(".tab2").append('<tr><td>' +
+                    '<input type="text" name="peopleDeviceId[]" class="flat form-control"  value="" placeholder=""></td>' +
+                    '<td><input type="text" name="deviceName[]" class="flat form-control"  value="" placeholder=""></td>' +
+                    '<td><input type="text" name="deviceIdentifier[]" class="flat form-control"  value="" placeholder=""></td>' +
+                    '<td><input type="text" name="deviceInstallDate[]" class="form-control has-feedback-left"  value="" placeholder=""></td>' +
                     '</tr>');
             return false;
         });

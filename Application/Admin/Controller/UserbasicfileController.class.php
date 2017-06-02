@@ -39,6 +39,7 @@ class UserbasicfileController extends AdminController
     function write()
     {
         $param = $_POST;
+        $peopleId = $param['peopleId'];
         $peopleBasic = [
             'peopleIdentifier' => $param['peopleIdentifier'],
             'orgId' => $this->orgId(),
@@ -61,7 +62,7 @@ class UserbasicfileController extends AdminController
             foreach ($param['hobby'] as $value) {
                 $hobby = $value . ';';
             }
-            $hobby = substr($hobby, 1, strlen($hobby) - 1);
+            $hobby = substr($hobby, 0, strlen($hobby) - 1);
         }
         $peopleDetail = [
             'hobby' => $hobby,
@@ -84,6 +85,9 @@ class UserbasicfileController extends AdminController
                 $peopleRelativeList[$key]['telephone'] = $param['telephone'][$key];
                 $peopleRelativeList[$key]['relation'] = $param['relation'][$key];
                 $peopleRelativeList[$key]['address'] = $param['address'][$key];
+                if ($peopleId) {
+                    $peopleRelativeList[$key]['relativeId'] = $param['relativeId'][$key];
+                }
             }
         }
         $peopleDeviceList = [];
@@ -92,7 +96,15 @@ class UserbasicfileController extends AdminController
                 $peopleDeviceList[$key]['deviceName'] = $value;
                 $peopleDeviceList[$key]['deviceIdentifier'] = $param['deviceIdentifier'][$key];
                 $peopleDeviceList[$key]['deviceInstallDate'] = $param['deviceInstallDate'][$key];
+                if ($peopleId) {
+                    $peopleDeviceList[$key]['peopleDeviceId'] = $param['peopleDeviceId'][$key];
+                }
             }
+        }
+        if ($peopleId) {
+            $peopleBasic['peopleId'] = $peopleId;
+            $impage['imageId'] = $param['imageId'];
+            $peopleDetail['peopleDetailId'] = $param['peopleDetailId'];
         }
         $data = [
             'peopleBasic' => $peopleBasic,
@@ -124,7 +136,6 @@ class UserbasicfileController extends AdminController
         if ($peopleId) {
             $url = $this->getUrl('people_detail') . $peopleId;
             $response = http($url, null, 'GET');
-            print_r($response);die();
             $this->assign('peopleBasic', $response['peopleBasic']);
             $this->assign('peopleDetail', $response['peopleDetail']);
             $hobby_attr = explode(';', $response['peopleDetail']['hobby']);
@@ -133,7 +144,7 @@ class UserbasicfileController extends AdminController
                     if ($val == $key) {
                         $value = ['name' => $value['name'], 'checked' => 'checked'];
                     } else {
-                        $value =['name'=>$value['name'],'checked'=>'false'];
+                        $value = ['name' => $value['name'], 'checked' => 'false'];
                     }
                 }
             }

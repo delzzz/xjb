@@ -230,6 +230,7 @@ return array(
             '商业保险',
             '其它'
         ],
+    /*血型*/
     'BLOOD_TYPE' =>
         [
             'A型',
@@ -237,6 +238,15 @@ return array(
             'AB型',
             'O型'
         ],
+    /*数据来源*/
+    'DATASRC' => [
+        '数据导入', '手工录入', '体检报告', '家庭端导入'
+    ],
+
+    /*睡眠质量*/
+    'DATASLEEPVALUE ' => [
+        '优', '良', '差',
+    ],
 
     /*接口配置*/
     'INTERFACR_API' => array(
