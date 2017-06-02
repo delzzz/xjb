@@ -244,7 +244,7 @@ return array(
     ],
 
     /*睡眠质量*/
-    'DATASLEEPVALUE ' => [
+    'DATASLEEPVALUE' => [
         '优', '良', '差',
     ],
 
