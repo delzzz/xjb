@@ -120,18 +120,22 @@ class UserbasicfileController extends AdminController
         $livingStatus = C('LIVINGSTATUS');
         $healthStatus = C('HEALTHSTATUS');
         $hobby = C('HOBBY');
-//        print_r($hobby);die();
         $peopleId = I('get.id');
         if ($peopleId) {
             $url = $this->getUrl('people_detail') . $peopleId;
             $response = http($url, null, 'GET');
+            print_r($response);die();
             $this->assign('peopleBasic', $response['peopleBasic']);
             $this->assign('peopleDetail', $response['peopleDetail']);
             $hobby_attr = explode(';', $response['peopleDetail']['hobby']);
-            foreach($hobby as $key=>&$value){
-                 foreach($hobby_attr as $val){
-//                     $value
-                 }
+            foreach ($hobby as $key => &$value) {
+                foreach ($hobby_attr as $val) {
+                    if ($val == $key) {
+                        $value = ['name' => $value['name'], 'checked' => 'checked'];
+                    } else {
+                        $value =['name'=>$value['name'],'checked'=>'false'];
+                    }
+                }
             }
             $this->assign('hobby', $hobby_attr);
             $this->assign('impage', $response['impage']);

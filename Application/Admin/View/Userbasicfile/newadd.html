@@ -198,15 +198,15 @@
                                         <volist name="hobby" id="l">
                                             <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                                                 <label>
-                                                    <input type="checkbox" value="{$key}" class="flat" name="hobby[]">
-                                                    {$l}
+                                                    <input type="checkbox" value="{$key}" {$l.checked} class="flat" name="hobby[]">
+                                                    {$l.name}
                                                 </label>
                                             </div>
                                         </volist>
                                         <div class="checkbox col-md-12 col-sm-12 col-xs-12">
                                             <br>
                                             <label>
-                                                <input type="text" name="hobbyOtherDesc" class="flat form-control"
+                                                <input type="text" name="hobbyOtherDesc" value="{$peopleDetail.hobbyOtherDesc}" class="flat form-control"
                                                        placeholder="其他">
                                             </label>
                                         </div>
