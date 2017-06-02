@@ -221,6 +221,14 @@ return array(
         '基诺族',
     ],
 
+    'BLOOD_TYPE' =>
+        [
+            'A',
+            'B',
+            'AB',
+            'O'
+        ],
+
     /*接口配置*/
     'INTERFACR_API' => array(
         'agent_create' => 'http://192.168.1.250:8080/service/org/agent/create',//创建代理商
