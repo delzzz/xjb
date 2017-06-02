@@ -21,7 +21,8 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">老人姓名:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" name="pel_name" value="{$peopleBasic.name}" class="form-control" placeholder="">
+                                            <input type="text" name="pel_name" value="{$peopleBasic.name}"
+                                                   class="form-control" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -38,7 +39,8 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">编号:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" value="{$peopleBasic.peopleIdentifier}" name="peopleIdentifier" class="form-control"
+                                            <input type="text" value="{$peopleBasic.peopleIdentifier}"
+                                                   name="peopleIdentifier" class="form-control"
                                                    placeholder="">
                                         </div>
                                     </div>
@@ -48,21 +50,24 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">身份证:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" value="{$peopleBasic.idNumber}" name="idNumber" class="form-control" placeholder="">
+                                            <input type="text" value="{$peopleBasic.idNumber}" name="idNumber"
+                                                   class="form-control" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">年龄:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" value="{$peopleBasic.age}" name="age" class="form-control" placeholder="">
+                                            <input type="text" value="{$peopleBasic.age}" name="age"
+                                                   class="form-control" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">电话:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" value="{$peopleBasic.telephone}" name="tele_phone" class="form-control" placeholder="">
+                                            <input type="text" value="{$peopleBasic.telephone}" name="tele_phone"
+                                                   class="form-control" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -70,10 +75,8 @@
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <div id="distpicker2" class="">
-                                                <select name="provinceId"
-                                                        class="data-province col-md-6 col-sm-6 form-control"></select>
-                                                <select name="cityId"
-                                                        class="data-city col-md-6 col-sm-6 form-control"></select>
+                                                <input type="text" value="{$peopleBasic.nativePlace}" name="nativePlace"
+                                                       class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -151,7 +154,8 @@
 
                                         <div class="col-md-10 col-sm-10 col-xs-12">
                                             <div class="">
-                                                <input type="text" name="pel_adress" class="form-control"
+                                                <input type="text" value="{$peopleBasic.adress}" name="pel_adress"
+                                                       class="form-control"
                                                        placeholder="">
                                             </div>
                                         </div>
@@ -163,14 +167,14 @@
 
                                         <div class="col-md-10 col-sm-10 col-xs-12">
                                             <textarea class="form-control" name="remark" rows="3"
-                                                      placeholder='备注在2000字以内'></textarea>
+                                                      placeholder='备注在2000字以内'>{$peopleDetail.remark}</textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <img id="head_img" src="{$img.imagePath|default='__IMG__/user.png'}">
-                                    <input type="hidden" name="imageId" value="{$img.imageId}">
-                                    <input type="hidden" name="imagePath" value="{$img.imagePath}">
+                                    <img id="head_img" src="{$impage.imagePath|default='__IMG__/user.png'}">
+                                    <input type="hidden" name="imageId" value="{$impage.imageId}">
+                                    <input type="hidden" name="imagePath" value="{$impage.imagePath}">
 
                                     <div>
                                         <br>
@@ -230,21 +234,26 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody class="tab1">
-                                                    <tr>
-                                                        <td><input type="text" name="name[]" class="flat form-control"
-                                                                   value="小六子"
-                                                                   placeholder=""></td>
-                                                        <td><input type="text" class="flat form-control"
-                                                                   name="telephone[]" value="18838383888"
-                                                                   placeholder=""></td>
-                                                        <td><input type="text" name="relation[]"
-                                                                   class="flat form-control" value="父子"
-                                                                   placeholder=""></td>
-                                                        <td><input type="text" name="address[]"
-                                                                   class="flat form-control"
-                                                                   value="上海"
-                                                                   placeholder=""></td>
-                                                    </tr>
+                                                    <volist name="peopleRelativeList" id="r">
+                                                        <tr>
+                                                            <input type="hidden" name="relativeId"
+                                                                   value="{$r.relativeId}">
+                                                            <td><input type="text" name="name[]"
+                                                                       class="flat form-control"
+                                                                       value="{$r.name}"
+                                                                       placeholder=""></td>
+                                                            <td><input type="text" class="flat form-control"
+                                                                       name="telephone[]" value="{$r.telephone}"
+                                                                       placeholder=""></td>
+                                                            <td><input type="text" name="relation[]"
+                                                                       class="flat form-control" value="{$r.relation}"
+                                                                       placeholder=""></td>
+                                                            <td><input type="text" name="address[]"
+                                                                       class="flat form-control"
+                                                                       value="{$r.address}"
+                                                                       placeholder=""></td>
+                                                        </tr>
+                                                    </volist>
                                                     </tbody>
                                                 </table>
                                                 <button type="button" class="btn btn-sm btn-danger pull-right new_add">
@@ -276,20 +285,23 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody class="tab2">
-                                                    <tr>
-                                                        <td><input type="text" name="peopleDeviceId[]"
-                                                                   class="flat form-control" value=""></td>
-                                                        <td><input type="text" name="deviceName[]"
-                                                                   class="flat form-control" value=""></td>
-                                                        <td><input type="text" name="deviceIdentifier[]"
-                                                                   class="flat form-control" value=""></td>
-                                                        <td>
-                                                            <input type="text" name="deviceInstallDate[]"
-                                                                   class="form-control has-feedback-left"
-                                                                   id="single_cal1" placeholder="First Name"
-                                                                   aria-describedby="inputSuccess2Status">
-                                                        </td>
-                                                    </tr>
+                                                    <volist name="peopleDeviceList" id="d">
+                                                        <tr>
+                                                            <td><input type="text" name="peopleDeviceId[]"
+                                                                       class="flat form-control" value="{$d.peopleDeviceId}"></td>
+                                                            <td><input type="text" name="deviceName[]"
+                                                                       class="flat form-control" value="{$d.deviceName}"></td>
+                                                            <td><input type="text" name="deviceIdentifier[]"
+                                                                       class="flat form-control" value="{$d.deviceIdentifier}"></td>
+                                                            <td>
+                                                                <input type="text" name="deviceInstallDate[]"
+                                                                       class="form-control has-feedback-left"
+                                                                       value="{:time_format($d.createTime/1000,'Y-m-d')}"
+                                                                       id="single_cal1" placeholder="First Name"
+                                                                       aria-describedby="inputSuccess2Status">
+                                                            </td>
+                                                        </tr>
+                                                    </volist>
                                                     </tbody>
                                                 </table>
                                                 <button type="button" class="btn btn-sm btn-danger pull-right new_add2">
@@ -309,6 +321,9 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
                                         <br>
+                                        <input type="hidden" value="{$peopleBasic.peopleId}" name="peopleId">
+                                        <input type="hidden" value="{$peopleDetail.peopleDetailId}"
+                                               name="peopleDetailId">
                                         <button type="submit" class="btn btn-danger ajax-post"
                                                 target-form="form-label-left">保存
                                         </button>
@@ -328,8 +343,21 @@
 
 <block name="script">
     <script type="text/javascript">
-        Think.setValue('gender',{$peopleBasic.gender});
-        Think.setValue('ethnicity',{$peopleBasic.ethnicity});
+        Think.setValue('gender', {$peopleBasic.gender
+        })
+        ;
+        Think.setValue('ethnicity', {$peopleBasic.ethnicity
+        })
+        ;
+        Think.setValue('education', {$peopleBasic.education
+        })
+        ;
+        Think.setValue('economy', {$peopleBasic.economy
+        })
+        ;
+        Think.setValue('healthStatus', {$peopleBasic.healthStatus
+        })
+        ;
         $(function () {
             $('#inputSuccess2Status').datetimepicker();
             Page.init();
