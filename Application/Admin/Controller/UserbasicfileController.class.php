@@ -128,8 +128,10 @@ class UserbasicfileController extends AdminController
             $this->assign('peopleBasic', $response['peopleBasic']);
             $this->assign('peopleDetail', $response['peopleDetail']);
             $hobby_attr = explode(';', $response['peopleDetail']['hobby']);
-            foreach($hobby as $key=>$value){
-
+            foreach($hobby as $key=>&$value){
+                 foreach($hobby_attr as $val){
+//                     $value
+                 }
             }
             $this->assign('hobby', $hobby_attr);
             $this->assign('impage', $response['impage']);
