@@ -88,7 +88,8 @@
                                     </ul>
                                     <div class="clearfix"></div>
                                 </div>
-                                <div id="wrapper" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div id="wrap">
+                                <div class="wrapper" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <br/>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">药品名称:</label>
@@ -152,7 +153,7 @@
                                     <!--<input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10"/>-->
                                     <!--</div>-->
                                 </div>
-
+                                </div>
                                 <div class="x_title clear">
                                     <br>
                                     <br>
@@ -177,7 +178,7 @@
                                     <br>
                                     <input type="hidden" id="pid" name="pid" value="0"/>
                                     <button target-form="form-label-left" id="submit" type="submit" class="btn btn-sm btn-danger ajax-post">保存提醒</button>
-                                    <button onclick="javascript:history.back(-1);return false;" class="btn btn-sm btn-danger">关闭页面</button>
+                                    <a href="{:U('Health/zuoxi_medication')}" class="btn btn-sm btn-danger">关闭页面</a>
                                 </div>
                             </div>
                         </form>
@@ -244,12 +245,12 @@
                         <th class="column-title">{$oldList.name}</th>
                         <th class="column-title">{$oldList.peopleIdentifier}</th>
                         <th class="column-title">{$oldList.age}</th>
-                        <th class="column-title">{$oldList['gender']==0?男:女}</th>
+                        <th class="column-title">{$oldList['gender']==0?女:男}</th>
                         <th class="column-title">{$oldList.telephone}</th>
                         <th class="column-title">{$oldList.adress}</th>
-                        <th class="column-title">{$oldList.livingStatus}</th>
+                        <th class="column-title">{$livingStatus[$oldList['livingStatus']]}</th>
                         <!--<th class="column-title no-link last"><span class="nobr">老人编号</span></th>-->
-                        <th class="column-title">{$oldList.economy}</th>
+                        <th class="column-title">{$economy[$oldList['economy']]}</th>
                         <th class="column-title">
                             <volist name="oldList['deviceIdentifiers']" id="device">
                                 {$device}&nbsp;
@@ -272,30 +273,7 @@
 </block>
 <block name="script">
     <script>
-        $('.ajax-post').click(function() {
-            var pid =$('#pid').val();
-            if(empty(pid)){
-                alert('请选择老人');
-                return;
-            }
-//            $.ajax({
-//                url: "{:U('Health/add_call')}",
-//                type: 'POST',
-//                data: {'peopleId': peopleId},
-//                success: function (data) {
-//                    alert(data);
-//                    if (data == 9) {
-//                        alert('请选择老人！');
-//                    }
-//                    else if (data == 0) {
-//                        alert('添加失败！');
-//                    }
-//                    else if (data == 1) {
-//                        alert('添加成功！');
-//                    }
-//                }
-//            });
-        });
+
         //选择老人
         $('#btn_choose').click(function(){
             var peopleId = $('#peopleId:checked').val();
@@ -325,7 +303,7 @@
         });
         //新增一次
         $('#add_btn').click(function(){
-            $('#wrapper').after('<div class="x_title clear"></div>'+$('#wrapper').html());
+            $('#wrap').append('<div class="x_title clear"></div>'+$('.wrapper').html());
         });
 //        $('#btn_select').click(function(){
 //            var name = $('#name').val();

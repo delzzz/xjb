@@ -1,0 +1,110 @@
+<extend name="Public/base"/>
+<block name="body">
+        <!--content pages-->
+        <div class="right_col" role="main">
+            <div class="page-title">
+                <div class="title_left" style="">
+                    <h3>老人健康档案</h3>
+                </div>
+                <div class="title_right" style="float:right">
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <input type="text" id="key" value="{$name}" class="form-control"
+                                   placeholder="请输入用户姓名">
+                            <span class="input-group-btn">
+                                <a class="clf btn btn-danger" id="search" url="{:U('health_list')}" style="color: #fff;">查询</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+                <div class="x_panel">
+                    <div class="x_title"></div>
+                    <!--<div class="row col-md-6 col-sm-6 col-xs-12">-->
+                    <!--<a href="newadd.html"><button class="btn btn-sm btn-danger">新建老人档案</button></a>-->
+                    <!--<button class="btn btn-default  btn-group-sm">批量导入</button>-->
+                    <!--<button class="btn btn-default  btn-group-sm">导出数据</button>-->
+                    <!--</div>-->
+                    <div class="x_content">
+                        <div class="table-responsive">
+                            <table class="table table-striped jambo_table bulk_action">
+                                <thead>
+                                <tr class="headings">
+                                    <th class="column-title">老人姓名</th>
+                                    <th class="column-title">编号</th>
+                                    <th class="column-title">出生年月</th>
+                                    <th class="column-title">性别</th>
+                                    <th class="column-title">年龄</th>
+                                    <th class="column-title">电话</th>
+                                    <th class="column-title">居住住址</th>
+                                    <th class="column-title">长期用药</th>
+                                    <th class="column-title">操作</th>
+                                </tr>
+                                </thead>
+                                <volist name="list" id="list">
+                                    <a href="http://www.baidu.com">
+                                        <tr class="even pointer">
+                                            <td>{$list.name}</td>
+                                            <td>{$list.peopleIdentifier}</td>
+                                            <td>{$list.birthDate}</td>
+                                            <td>{$list.gender}</td>
+                                            <td>{$list.age}</td>
+                                            <td>{$list.telephone}</td>
+                                            <td>{$list.adress}</td>
+                                            <td>{$list['longTermMedication']==1?是:否}</td>
+                                            <td><a href="{:U('edit',['id'=>$list['peopleId']])}">编辑</a></td>
+                                        </tr>
+                                    </a>
+                                </volist>
+                            </table>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                                <ul class="pagination">
+                                    {$_page}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" style="" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" style="width: 80%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title" id="myModalLabel">历史数据</h3>
+            </div>
+            <div class="x_panel">
+                <div class="bd-list" style="">
+                    <div class="text-center pull-left bd-box" style="border-right: none;">呼吸测量</div>
+                    <div class="text-center pull-left bd-box" style="border-right: none;">心率测量</div>
+                    <div class="border-dark text-center pull-left bd-box" style="">睡眠质量</div>
+                </div>
+                <div class="x_content col-md-6 col-sm-6 col-xs-6">
+                    <div id="echart_line" style="height:350px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>
+<block name="script">
+    <script>
+        $("#myModal").on('shown.bs.modal', function () {
+            init_echarts();
+        });
+        $("#search").click(function () {
+            var url = $(this).attr("url");
+            var key = $("#key").val();
+            location.href = url + "?name=" + key;
+        })
+    </script>
+</block>

@@ -40,6 +40,7 @@ class HealthController extends AdminController
     //详情
     function detail()
     {
+        $this->meta_title = '健康管理-用药提醒详情';
         $rid = I('get.rid');
         if($rid){
             $info = $this->medication_detail($rid);
@@ -56,6 +57,7 @@ class HealthController extends AdminController
     //后台-用药提醒页面
     function medication()
     {
+        $this->meta_title = '健康管理-用药提醒列表';
         $medicationList = $this->medication_list(I('get.status'));
         $this->assign('medicationList',$medicationList);
         //dump($medicationList);
@@ -65,6 +67,7 @@ class HealthController extends AdminController
 
     //坐席-用药提醒页面
     function zuoxi_medication(){
+        $this->meta_title = '健康管理-用药提醒列表';
         $medication_lists = $this->medication_list(I('get.status'));
         $current_hour = date('H:i');
         $c_arr = explode(':',$current_hour);
@@ -149,20 +152,32 @@ class HealthController extends AdminController
 
     //坐席-添加用药提醒页面
     function add_reminder(){
+        $this->meta_title = '健康管理-添加用药提醒';
         //根据peopleId查询老人基础档案
         if(isset($_POST['peopleId'])){
             $info = $this->getInfo($_POST['peopleId']);
+            $info['livingStatus'] = C('LIVINGSTATUS')[$info['livingStatus']];
+            $info['healthStatus'] = C('HEALTHSTATUS')[$info['healthStatus']];
             $this->ajaxReturn($info);
             exit();
         }
-//        if(isset($_POST['name'])){
-//            $oldList = $this->getInfoList($_POST['name']);
-//            exit();
-//        }
-//        else{
+        //        if(isset($_POST['name'])){
+        //            $oldList = $this->getInfoList($_POST['name']);
+        //            exit();
+        //        }
+        //        else{
             $oldList = $this->getInfoList();
         //dump($oldList);
-//        }
+        //        }
+        //居住情况数组
+        $livingStatus = C('LIVINGSTATUS');
+        $this->assign('livingStatus',$livingStatus);
+        //健康情况
+        $healthStatus = C('HEALTHSTATUS');
+        $this->assign('healthStatus',$healthStatus);
+        //经济来源
+        $economy = C('ECONOMY');
+        $this->assign('economy',$economy);
         $this->assign('oldList',$oldList);
         $this->display();
     }
@@ -197,19 +212,19 @@ class HealthController extends AdminController
                 $param['doseUnit'] = $_POST['doseUnit'][$key];
                 $param['remark'] = $_POST['remark'][$key];
                 $trigger_arr = explode(';',$_POST['triggerTimes'][$key]);
-                $param['triggerTimes'] = json_encode(array_filter($trigger_arr));
+                $param['triggerTimes'] = array_filter($trigger_arr);
+               // dump($param);
                 $url = 'http://192.168.1.250:8080/service/medication/remind/create';
-                $res = http_post_json($url,json_encode($param));
-                var_dump(json_encode($param));
-                var_dump($res);
-                exit();
-                if($res['success']){
-                    $this->success('添加成功');
-                }
-                else{
-                    $this->error('添加失败');
-                }
+                $jsonarr = json_encode($param);
+                $res = http_post_json($url,$jsonarr);
+                $msg = $res['success'];
             }
+             if($msg){
+                 $this->success('添加成功');
+             }
+             else{
+                 $this->error('添加失败');
+             }
         }
     }
 }
