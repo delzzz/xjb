@@ -141,7 +141,7 @@ class AgentController extends AdminController
             'orgContactList' => $orgContactList,
             'imageList' => $imageList,
             'orgDevice' => ['deviceType' => "0,1", 'quantity' => 100],
-            'sysUserInfo' => ['password' => $param['password']]
+            'userInfo' => ['password' => $param['password']]
         ];
         $orgInstitution = [
             'agentId' => $this->agentId(),
@@ -211,7 +211,7 @@ class AgentController extends AdminController
                 'deviceType' => implode(',', $param['deviceType']),
                 'quantity' => $param['quantity']
             ],
-            'sysUserInfo' => ['password' => $param['password']]
+            'userInfo' => ['password' => $param['password']]
         ];
         $orgAgent = [
             'parentId' => $param['agentId'],

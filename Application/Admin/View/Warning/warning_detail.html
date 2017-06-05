@@ -19,19 +19,19 @@
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">当前设备报警:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control color-red" value="SOS紧急报警" disabled="disabled" placeholder="">
+                                        <input type="text" class="form-control color-red" value="{$data.alarmType_text}" disabled="disabled" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">亲属电话:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control " value="18848961111" disabled="disabled" placeholder="">
+                                        <input type="text" class="form-control " value="{$data.telephone}" disabled="disabled" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">亲属地址:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="6048" disabled="disabled" placeholder="">
+                                        <input type="text" class="form-control" value="{$data.adress}" disabled="disabled" placeholder="">
                                     </div>
                                 </div>
 
@@ -39,25 +39,19 @@
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">居住情况:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="独居" disabled="disabled" placeholder="">
+                                        <input type="text" class="form-control" value="{$data.liveStatus_text}" disabled="disabled" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">姓名:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="小六子" disabled="disabled" placeholder="">
+                                        <input type="text" class="form-control" value="{$data.name}" disabled="disabled" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">身体状况:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="健康" disabled="disabled" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">慢性病:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="无" disabled="disabled" placeholder="">
+                                        <input type="text" class="form-control" value="{$data.healthStatus_text}" disabled="disabled" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -66,8 +60,21 @@
                                         <input type="text" class="form-control" value="上海" disabled="disabled" placeholder="">
                                     </div>
                                 </div>
+
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">长期用药:</label>
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">心率:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" value="{$data.hertbeat}" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">呼吸:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control" value="{$data.breath}" disabled="disabled" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">紧急联系人:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <input type="text" class="form-control" value="无" disabled="disabled" placeholder="">
                                     </div>
@@ -75,29 +82,17 @@
 
 
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">心率:</label>
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">紧急联系电话:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <input type="text" class="form-control" value="" disabled="disabled" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">呼吸:</label>
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">与老人关系:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <input type="text" class="form-control" value="" disabled="disabled" placeholder="">
                                     </div>
                                 </div>
-
-                                <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
-                                <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>-->
-                                <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
-                                <!--<input type="password" class="form-control" value="passwordonetwo">-->
-                                <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">-->
-                                <!--<label class="control-label col-md-3 col-sm-3 col-xs-12">AutoComplete</label>-->
-                                <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
-                                <!--<input type="text" name="country" id="autocomplete-custom-append" class="form-control col-md-10"/>-->
-                                <!--</div>-->
                             </div>
 
 
@@ -159,12 +154,10 @@
                             </div>
                             <br>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
-                                <button class="btn btn-sm btn-danger">编辑档案</button>
                                 <button class="btn btn-sm btn-danger">视频呼叫</button>
-                                <button class="btn btn-sm btn-danger">发送消息</button>
-                                <button class="btn btn-sm btn-danger">打印</button>
-                                <button class="btn btn-sm btn-danger">设置随身腕表</button>
-                                <button class="btn btn-sm btn-danger">关闭页面</button>
+                                <button class="btn btn-sm btn-danger">联系老人</button>
+                                <button class="btn btn-sm btn-danger">联系亲属</button>
+                                <button class="btn btn-sm btn-danger">已处理</button>
                             </div>
 
 

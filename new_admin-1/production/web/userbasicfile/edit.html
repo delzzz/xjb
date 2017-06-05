@@ -571,7 +571,7 @@
                                         <button type="button" class=" btn btn-sm btn-danger">删除此条数据</button>
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                        <button type="button" class="btn btn-sm btn-danger">历史记录</button>
+                                        <button type="button" data-toggle="modal" data-target="#myModal6" class="btn btn-sm btn-danger">历史记录</button>
                                     </div>
                                 </div>
                             </div>
@@ -886,8 +886,49 @@
             </div>
         </div>
     </div>
+    <!--历史-->
+    <div class="modal fade" id="myModal6" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
+            <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel6">历史</h4>
+                    <br>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <!--<h2>Line graph<small>Sessions</small></h2>-->
+                                <!--<ul class="nav navbar-right panel_toolbox">-->
+                                    <!--&lt;!&ndash;<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<li class="dropdown">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<ul class="dropdown-menu" role="menu">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<li><a href="#">Settings 1</a>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<li><a href="#">Settings 2</a>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                                    <!--<li><a class="close-link"><i class="fa fa-close text-right"></i></a>-->
+                                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                                <!--</ul>-->
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <canvas id="lineChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
 
 
+
+
+
+</div>
 <!-- jQuery -->
 <script src="../../../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
@@ -898,6 +939,8 @@
 <script src="../../../build/js/custom.min.js"></script>
 <script src="../../js/distpicker.data.js"></script>
 <script src="../../js/distpicker.js"></script>
+<!--charts-->
+<script src="../../../vendors/Chart.js/dist/Chart.min.js"></script>
 <script>
     $("#distpicker2").distpicker();
 </script>

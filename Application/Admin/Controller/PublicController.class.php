@@ -26,21 +26,15 @@ class PublicController extends \Think\Controller
     {
         if (IS_POST) {
             /* 检测验证码 TODO: */
-//            if (!check_verify($verify)) {
-//                $this->error('验证码输入错误！');
-//            }
-            /* 调用UC登录接口登录 */
             $url = C('INTERFACR_API')['get_user'];
-            $User = http($url, ['userCode' => "0000"], 'GET');
+            $User = http($url, ['userName' =>$username], 'GET');
             if ($username === $User['userName'] && md5($password) === $User['password']) { //UC登录成功
                 session('user_auth', $User);
                 session('user_auth_sign', data_auth_sign($User));
                 $this->success('登录成功！', U('Index/index'));
             } else { //登录失败
                 if (empty($User)) {
-                    $error = "系统错误";
-                } else {
-                    $error = "密码错误";
+                    $error = "登陆失败";
                 }
                 $this->error($error);
             }
