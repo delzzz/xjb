@@ -38,11 +38,13 @@ class UserhealthfileController extends AdminController
         $this->assign('consultings',$info['consultings']);
         $this->assign('breathe',$info['breathe']);
         $this->assign('pressure',$info['bloodPressure']);
-        dump($info['bloodPressure']);
+        $this->assign('glucose',$info['bloodGlucose']);
+        dump($info['bloodGlucose']);
         $this->assign('bType',C('BLOOD_TYPE'));
         $this->assign('medicalInsurance',C('MEDICAL_INSURANCE'));
         $this->assign('dataSrc',C('DATASRC'));
         $this->assign('dataSleepValue',C('DATASLEEPVALUE'));
+        $this->assign('measureCondition',C('MEASURE_CONDITION'));
         $this->assign('consultRecorder',UID);
         $this->assign('historyBreathe',$historyBreathe);
         $this->assign('historyPressure',$historyPressure);
@@ -146,10 +148,9 @@ class UserhealthfileController extends AdminController
         return $res;
     }
 
-    //新增血压
+    //新增修改血压
     function addPressure(){
         if(isset($_POST['dataInValue'])){
-            //echo 111; exit();
             $param = $_POST;
             if(empty($param['bloodPressureId'])){
                 $param['bloodPressureId'] = null;
@@ -175,9 +176,39 @@ class UserhealthfileController extends AdminController
     function historyPressure($id){
         $url='http://192.168.1.250:8080/service/health/bloodPressure/get/all/'.$id;
         $res = http($url,null,'get');
+        foreach ($res as $key=>&$value){
+            if($value['dataInValue']<90||$value['dataOutValue']<60){
+                $value['condition'] = '偏低';
+            }
+            elseif ($value['dataInValue']>140||$value['dataOutValue']>90){
+                $value['condition'] = '偏高';
+            }
+            else{
+                $value['condition'] = '正常';
+            }
+
+        }
         return $res;
     }
+    //删除血压历史记录
+    function delPressure(){
+        $id = I('get.id');
+        if($id){
+            $url='http://192.168.1.250:8080/service/health/bloodPressure/delete/'.$id;
+            $res = http($url,null,'get');
+            if($res['success']){
+                $this->success('删除成功！');
+            }
+            else{
+                $this->error('删除失败!');
+            }
+        }
+    }
 
+    //添加修改血糖
+    function addGlucose(){
+
+    }
 
 
 

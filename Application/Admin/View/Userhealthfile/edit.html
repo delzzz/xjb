@@ -250,7 +250,7 @@
                                 <button id="breathe_edit" type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-sm btn-danger">修改数据</button>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                <a href="{:U('delBreathe',array('id'=>$breathe['breatheId']))}" class=" btn btn-sm btn-danger">删除此条数据</a>
+                                <a onclick="if(confirm('确定删除?')==false)return false;" href="{:U('delBreathe',array('id'=>$breathe['breatheId']))}" class=" btn btn-sm btn-danger">删除此条数据</a>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 <button type="button" data-toggle="modal" data-target="#myModal6" class="btn btn-sm btn-danger">历史记录</button>
@@ -287,7 +287,7 @@
                                             <td>收缩压数值</td>
                                             <td>{$pressure.dataInValue}</td>
                                             <!--有多少条数据就横跨多少行-->
-                                            <td class="" rowspan="3" style="vertical-align: middle">
+                                            <td class="pressureText" rowspan="3" style="vertical-align: middle">
                                                 偏高
                                             </td>
                                         </tr>
@@ -312,10 +312,10 @@
                                 <button id="pressure_edit" type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-sm btn-danger">修改数据</button>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                <button type="button" class=" btn btn-sm btn-danger">删除此条数据</button>
+                                <a onclick="if(confirm('确定删除?')==false)return false;" href="{:U('delPressure',array('id'=>$pressure['bloodPressureId']))}" class=" btn btn-sm btn-danger">删除此条数据</a>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                <button type="button" class="btn btn-sm btn-danger">历史记录</button>
+                                <button type="button" data-toggle="modal" data-target="#myModal7" class="btn btn-sm btn-danger">历史记录</button>
                             </div>
                         </div>
                         <!--血糖-->
@@ -324,12 +324,12 @@
                             <br>
                             <h2 class="col-lg-4 col-md-4 col-sm-6">血糖</h2>
                             <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div>数据来源：</div>
-                                <div>测量时间：</div>
+                                <div>数据来源：{$dataSrc[$glucose['dataSrc']]}</div>
+                                <div>测量时间：{:time_format($glucose['measureTime']/1000,'Y-m-d')}</div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div>录入人员：</div>
-                                <div>录入时间：</div>
+                                <div>录入人员：{$glucose.entryUserId}</div>
+                                <div>录入时间：{:time_format($glucose['entryTime']/1000,'Y-m-d')}</div>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -339,25 +339,15 @@
                                     <table class="table table-bordered text-center table-hover">
                                         <thead class="bg-info ">
                                         <tr>
-                                            <th class="text-center">小项</th>
-                                            <th class="text-center">测量数据</th>
+                                            <th class="text-center">血糖</th>
                                             <th class="text-center">测量条件</th>
                                             <th class="text-center">血糖情况</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td>血糖（mmol/L）</td>
-                                            <td></td>
-                                            <td></td>
-                                            <!--有多少条数据就横跨多少行-->
-                                            <td class="" rowspan="2">
-                                                偏高
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>血糖（mmol/L）</td>
-                                            <td></td>
+                                            <td>{$glucose.dataValue}（mmol/L）</td>
+                                            <td>{$measureCondition[$glucose['measureCondition']]}</td>
                                             <td></td>
                                         </tr>
                                         </tbody>
@@ -643,7 +633,7 @@
                         <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                             <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">血压情况:</label>
                             <div class="col-md-8 col-sm-8 col-xs-12">
-                                <input disabled="disabled" type="text" class="form-control" placeholder="">
+                                <input id="pressureCondition" disabled="disabled" type="text" class="form-control" placeholder="">
                             </div>
                         </div>
                         <br>
@@ -686,6 +676,7 @@
     </div>
     <!--血糖-->
     <div class="modal fade" id="myModal3" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <form method="post" action="{:U('addGlucose')}" class="form-horizontal form-glucose">
         <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
             <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
                 <div class="modal-header">
@@ -693,16 +684,9 @@
                     <h4 class="modal-title" id="myModalLabel3">血糖</h4>
                     <br>
                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">小项:</label>
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">血糖:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" placeholder="">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">监测数据:</label>
-                        <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" placeholder="">
+                            <input value="{$glucose.dataValue}" type="text" class="form-control" placeholder="">
                         </div>
                     </div>
                     <br>
@@ -716,25 +700,47 @@
                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">数据来源:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <select class="form-control">
-                                <option></option>
+                            <select name="dataSrc" class="form-control">
+                                <volist name="dataSrc" id="dasc">
+                                    <option
+                                    <if condition="$pressure['dataSrc'] eq $key">selected</if>
+                                    value="{$key}">
+                                    {$dataSrc[$key]}
+                                    </option>
+                                </volist>
                             </select>
                         </div>
                     </div>
                     <br>
                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">测量条件:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <select name="measureCondition" class="form-control">
+                                <volist name="measureCondition" id="mc">
+                                    <option
+                                    <if condition="$glucose['measureCondition'] eq $key">selected</if>
+                                    value="{$key}">
+                                    {$glucose[$key]}
+                                    </option>
+                                </volist>
+                            </select>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">测量日期:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input type="date" class="form-control" placeholder="">
+                            <input value="{:time_format($glucose['measureTime']/1000,'Y-m-d')}" name="measureTime" type="date" class="form-control" placeholder="">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-danger">保存</button>
+                    <button type="submit" target-form="form-glucose" class="btn btn-lg btn-danger ajax-post">保存</button>
                 </div>
             </div>
         </div>
+        </form>
     </div>
     <!--血氧-->
     <div class="modal fade" id="myModal4" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -833,7 +839,7 @@
             </div>
         </div>
     </div>
-    <!--历史-->
+    <!--呼吸历史-->
     <div class="modal fade" id="myModal6" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
             <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
@@ -875,7 +881,52 @@
             </div>
         </div>
     </div>
-
+    <!--血压历史-->
+    <div class="modal fade" id="myModal7" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
+            <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel7">历史记录</h4>
+                    <br>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <table class="table table-bordered text-center table-hover">
+                                <thead class="bg-info ">
+                                <tr>
+                                    <th class="text-center">收缩压数值</th>
+                                    <th class="text-center">舒张压数值</th>
+                                    <th class="text-center">脉搏率</th>
+                                    <th class="text-center">血压情况</th>
+                                    <th class="text-center">数据来源</th>
+                                    <th class="text-center">录入人员</th>
+                                    <th class="text-center">测量时间</th>
+                                    <th class="text-center">录入时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <if condition="$historyPressure neq null">
+                                    <volist name="historyPressure" id="historyPressure">
+                                        <tr>
+                                            <td>{$historyPressure.dataInValue}</td>
+                                            <td>{$historyPressure.dataOutValue}</td>
+                                            <td>{$historyPressure.dataPulseValue}</td>
+                                            <td>{$historyPressure.condition}</td>
+                                            <td>{$dataSrc[$historyPressure['dataSrc']]}</td>
+                                            <td>{$historyPressure.entryUserId}</td>
+                                            <td>{:time_format($historyPressure['measureTime']/1000,'Y-m-d')}</td>
+                                            <td>{:time_format($historyPressure['entryTime']/1000,'Y-m-d')}</td>
+                                        </tr>
+                                    </volist>
+                                </if>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </block>
 <block name="script">
     <script>
@@ -1011,6 +1062,7 @@
                     $('#myModal2 input[name="dataPulseValue"]').val('');
                     $('#myModal2 input[name="dataSrc"]').val(0);
                     $('#myModal2 input[name="measureTime"]').val('');
+                    $('#pressureCondition').val('');
                 }
                 else {
                     $('#bloodPressureId').val($('#myModal2 #hid_pressureid').val());
@@ -1019,9 +1071,33 @@
                     $('#myModal2 input[name="dataPulseValue"]').val($('#hid_datapulsevalue').val());
                     $('#myModal2 input[name="dataSrc"]').val($('#hid_datasrc2').val());
                     $('#myModal2 input[name="measureTime"]').val($('#hid_measureTime').val());
+                    getPressureCondition();
                 }
             });
         });
+        $('#myModal2 input[name="dataInValue"],#myModal2 input[name="dataOutValue"]').blur(function(){
+            getPressureCondition();
+        });
+        getPressureCondition();
+        function getPressureCondition(){
+            if($('#myModal2 input[name="dataInValue"]').val()=='' || $('#myModal2 input[name="dataOutValue"]').val()==''){
+                $('#pressureCondition').val('');
+                $('.pressureText').text('');
+                return;
+            }
+            if($('#myModal2 input[name="dataInValue"]').val()<90||$('#myModal2 input[name="dataOutValue"]').val()<60){
+                $('#pressureCondition').val('偏低');
+                $('.pressureText').text('偏低');
+            }
+            else if($('#myModal2 input[name="dataInValue"]').val()>140||$('#myModal2 input[name="dataOutValue"]').val()>90){
+                $('#pressureCondition').val('偏高');
+                $('.pressureText').text('偏高');
+            }
+            else{
+                $('#pressureCondition').val('正常');
+                $('.pressureText').text('正常');
+            }
+        }
 
     </script>
 </block>
