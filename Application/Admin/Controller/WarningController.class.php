@@ -14,7 +14,6 @@ class WarningController extends AdminController
         $response['alarmType_text'] = $warning_status[$response['alarmType']];
         $response['liveStatus_text'] = $living_status[$response['livingStatus']];
         $response['healthStatus_text'] = $health_status[$response['healthStatus']];
-//        print_r($response);die();
         $this->assign('data', $response);
         $this->meta_title = "设备报警详情";
         $this->display();

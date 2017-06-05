@@ -266,6 +266,12 @@ return array(
         '想家宝一键求救'
     ],
 
+    /*血糖测量时间*/
+    'MEASURE_CONDITION' => [
+        '餐前',
+        '餐后'
+    ],
+
     /*接口配置*/
     'INTERFACR_API' => array(
         'agent_create' => 'http://192.168.1.250:8080/service/org/agent/create',//创建代理商
