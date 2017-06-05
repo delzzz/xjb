@@ -240,12 +240,30 @@ return array(
         ],
     /*数据来源*/
     'DATASRC' => [
-        '数据导入', '手工录入', '体检报告', '家庭端导入'
+        '数据导入',
+        '手工录入',
+        '体检报告',
+        '家庭端导入'
     ],
 
     /*睡眠质量*/
     'DATASLEEPVALUE' => [
-        '优', '良', '差',
+        '优',
+        '良',
+        '差',
+    ],
+    /*历史报警分类*/
+    'WARNING_STATUS' => [
+        '查看全部报警分类',
+        '当前报警查询',
+        '历史报警查询',
+        '紧急呼叫',
+        '人体红外监测',
+        '门磁状态监测',
+        '烟雾报警',
+        '燃气泄漏报警',
+        '漏水监测',
+        '想家宝一键求救'
     ],
 
     /*接口配置*/
@@ -260,7 +278,7 @@ return array(
         'agent_collocation' => 'http://192.168.1.250:8080/service/org/agent/collocation',//代理商托管
         'ins_collocation' => 'http://192.168.1.250:8080/service/org/ins/collocation',//机构托管
 
-        'get_user' => 'http://192.168.1.250:8080/service/sys/user/get', //获取系统用户信息
+        'get_user' => 'http://192.168.1.250:8080/service/user/get', //获取系统用户信息
         'get_org_agent' => 'http://192.168.1.250:8080/service/org/agent/get',//获取代理商
         'query_org' => 'http://192.168.1.250:8080/service/org/ins/query',//查询机构
         'query_agent' => 'http://192.168.1.250:8080/service/org/agent/query',//查询代理商
@@ -283,6 +301,10 @@ return array(
 
         'people_query' => 'http://192.168.1.250:8080/service/people/get/basic/page', //老人基础档案分页查询
         'people_save_edit' => 'http://192.168.1.250:8080/service/people/saveOrUpdate/detail', //新增/更新老人基础档案
-        'people_detail' => 'http://192.168.1.250:8080/service/people/get/detail/'//获取老人基础信息
+        'people_detail' => 'http://192.168.1.250:8080/service/people/get/detail/',//获取老人基础信息
+
+        'warning_list' => 'http://192.168.1.250:8080/service/device/alarm/get/page',//谁被报警分页
+        'warning_detail' => 'http://192.168.1.250:8080/service/device/alarm/get/detail/',//获取设备详情
+
     ),
 );

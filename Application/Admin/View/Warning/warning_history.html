@@ -7,133 +7,91 @@
     </style>
 </block>
 <block name="body">
-<div class="container body">
-    <div class="main_container">
-        <!--content pages-->
-        <div class="right_col" role="main">
-            <div class="page-title">
-                <div class="title_left" style="width: 45%;">
-                    <h3>设备报警</h3>
-                </div>
-                <div class="title_right">
-                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="搜索...">
+    <div class="container body">
+        <div class="main_container">
+            <!--content pages-->
+            <div class="right_col" role="main">
+                <div class="page-title">
+                    <div class="title_left" style="width: 45%;">
+                        <h3>设备报警</h3>
+                    </div>
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="搜索...">
                             <span class="input-group-btn">
                       <button class="clf btn btn-danger" type="button" style="color: #fff;">查询</button>
                     </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                    <br>
-                    <div class="row col-md-3 col-sm-3 col-xs-12">
-                        <select class="form-control">
-                            <option value="查看全部报警分类">查看全部报警分类</option>
-                            <option value="当前报警查询">当前报警查询</option>
-                            <option value="历史报警查询">历史报警查询</option>
-                            <option value="紧急呼叫">紧急呼叫</option>
-                            <option value="人体红外监测">人体红外监测</option>
-                            <option value="门磁状态监测">门磁状态监测</option>
-                            <option value="烟雾报警">烟雾报警</option>
-                            <option value="燃气泄漏报警">燃气泄漏报警</option>
-                            <option value="漏水监测">漏水监测</option>
-                            <option value="想家宝一键求救">想家宝一键求救</option>
-                        </select>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="x_title"></div>
-                    <div class="x_content clear">
-                        <div class=""></div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
                         <br>
-                        <div class="table-responsive">
-                            <table class="table table-striped jambo_table bulk_action" style="line-height: 54px;">
-                                <thead>
-                                <tr class="headings">
-                                    <th></th>
-                                    <th class="column-title">报警时间</th>
-                                    <th class="column-title">报警类型</th>
-                                    <th class="column-title">设备名称</th>
-                                    <th class="column-title">名称</th>
-                                    <th class="column-title">性别</th>
-                                    <th class="column-title">年龄</th>
-                                    <th class="column-title">电话</th>
-                                    <th class="column-title no-link last"><span class="nobr">老人编号</span></th>
-                                    <th class="column-title">居住地址</th>
-                                    <th class="column-title">处理结果</th>
-                                    <th class="column-title">操作</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr class="even pointer">
-                                    <td class="a-center ">
-                                        <i class="fa fa-bell  color-red"></i>
-                                    </td>
-                                    <td class=" ">2017-02-02 10:27:27</td>
-                                    <td class="color-red">SOS紧急报警</td>
-                                    <td class=" ">00323365</td>
-                                    <td class=" ">王军</td>
-                                    <td class=" ">男</td>
-                                    <td class=" ">56</td>
-                                    <td class=" ">18521722837</td>
-                                    <td class="a-right a-right ">5584</td>
-                                    <td class=" ">上海宝山区100号</td>
-                                    <td class="color-red">未处理</td>
-                                    <td class=" ">
-                                        <a href="warning_detail.html"><button class="btn btn-default">查看</button></a>
-                                    </td>
-                                </tr>
-                                <tr class="even pointer">
-                                    <td class="a-center ">
-                                        <i class="fa fa-check"></i>
-                                    </td>
-                                    <td class=" ">2017-02-02 10:27:27</td>
-                                    <td class="color-red">SOS紧急报警</td>
-                                    <td class=" ">00323365</td>
-                                    <td class=" ">王军</td>
-                                    <td class=" ">男</td>
-                                    <td class=" ">56</td>
-                                    <td class=" ">18521722837</td>
-                                    <td class="a-right a-right ">5584</td>
-                                    <td class=" ">上海宝山区100号</td>
-                                    <td class="">已通知家人</td>
-                                    <td class=" ">
-                                        <button class="btn btn-default">查看</button>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <div class="col-sm-12">
-                                <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button previous disabled" id="datatable_previous">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="0" tabindex="0">上一页</a>
-                                        </li>
-                                        <li class="paginate_button active">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="1" tabindex="0">1</a>
-                                        </li>
-                                        <li class="paginate_button ">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="2" tabindex="0">2</a>
-                                        </li>
-                                        <li class="paginate_button ">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="3" tabindex="0">3</a>
-                                        </li>
-                                        <li class="paginate_button ">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="4" tabindex="0">4</a>
-                                        </li>
-                                        <li class="paginate_button ">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="5" tabindex="0">5</a>
-                                        </li>
-                                        <li class="paginate_button ">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="6" tabindex="0">6</a>
-                                        </li>
-                                        <li class="paginate_button next" id="datatable_next">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="7" tabindex="0">下一页</a>
-                                        </li>
-                                    </ul>
+
+                        <div class="row col-md-3 col-sm-3 col-xs-12">
+                            <select class="form-control">
+                                <volist name="warning_status" id="warning">
+                                    <option value="{$key}">{$warning}</option>
+                                </volist>
+                            </select>
+                        </div>
+                        <br>
+                        <br>
+
+                        <div class="x_title"></div>
+                        <div class="x_content clear">
+                            <div class=""></div>
+                            <br>
+
+                            <div class="table-responsive">
+                                <table class="table table-striped jambo_table bulk_action" style="line-height: 54px;">
+                                    <thead>
+                                    <tr class="headings">
+                                        <th></th>
+                                        <th class="column-title">报警时间</th>
+                                        <th class="column-title">报警类型</th>
+                                        <th class="column-title">设备名称</th>
+                                        <th class="column-title">名称</th>
+                                        <th class="column-title">性别</th>
+                                        <th class="column-title">年龄</th>
+                                        <th class="column-title">电话</th>
+                                        <th class="column-title no-link last"><span class="nobr">老人编号</span></th>
+                                        <th class="column-title">居住地址</th>
+                                        <th class="column-title">处理结果</th>
+                                        <th class="column-title">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <volist name="list" id="l">
+                                        <tr class="even pointer">
+                                            <td class="a-center ">
+                                                <i class="fa fa-bell  color-red"></i>
+                                            </td>
+                                            <td class=" ">{:time_format($l['alarmTime']/1000)}</td>
+                                            <td class="color-red">{$l.alarmType_text}</td>
+                                            <td class=" ">{$l.deviceIdentifier}</td>
+                                            <td class=" ">{$l.name}</td>
+                                            <td class=" ">{$l.gender_text}</td>
+                                            <td class=" ">{$l.age}</td>
+                                            <td class=" ">{$l.telephone}</td>
+                                            <td class="a-right a-right ">{$l.peopleIdentifier}</td>
+                                            <td class=" ">{$l.adress}</td>
+                                            <td class="color-red">未处理</td>
+                                            <td class=" ">
+                                                <a href="{:U('warning_detail',['alarmId'=>$l['alarmId']])}">
+                                                    <button class="btn btn-default">查看</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </volist>
+                                    </tbody>
+                                </table>
+                                <div class="col-sm-12">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                                    {$_page}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -142,9 +100,8 @@
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    $("#distpicker2").distpicker();
-</script>
+    <script>
+        $("#distpicker2").distpicker();
+    </script>
 </block>
