@@ -30,24 +30,35 @@ class UserhealthfileController extends AdminController
         $peopleId = I('get.id');
         $url = 'http://192.168.1.250:8080/service/health/get/detail/'.$peopleId;
         $info = http($url,null,'get');
+        $healthId = $info['healthBasic']['healthId'];
         //dump($info);
-        $historyBreathe = $this->historyBreathe($info['healthBasic']['healthId']);
-        $historyPressure = $this->historyPressure($info['healthBasic']['healthId']);
+        $this->assign('currentTime',date('Y-m-d'));
+        $historyBreathe = $this->historyBreathe($healthId);
+        $historyPressure = $this->historyPressure($healthId);
+        $historyGlucose = $this->historyGlucose($healthId);
+        $historyOxygen = $this->historyOxygen($healthId);
+        $historyBmi = $this->historyBmi($healthId);
+        $this->assign('peopleId',$peopleId);
         $this->assign('info',$info);
         $this->assign('basic',$info['healthBasic']);
         $this->assign('consultings',$info['consultings']);
         $this->assign('breathe',$info['breathe']);
         $this->assign('pressure',$info['bloodPressure']);
         $this->assign('glucose',$info['bloodGlucose']);
-        dump($info['bloodGlucose']);
+        $this->assign('oxygen',$info['bloodOxygen']);
+        $this->assign('bmi',$info['bmi']);
+        //dump($info['healthBasic']);
         $this->assign('bType',C('BLOOD_TYPE'));
         $this->assign('medicalInsurance',C('MEDICAL_INSURANCE'));
         $this->assign('dataSrc',C('DATASRC'));
         $this->assign('dataSleepValue',C('DATASLEEPVALUE'));
-        $this->assign('measureCondition',C('MEASURE_CONDITION'));
+        $this->assign('mCondition',C('MEASURE_CONDITION'));
         $this->assign('consultRecorder',UID);
         $this->assign('historyBreathe',$historyBreathe);
         $this->assign('historyPressure',$historyPressure);
+        $this->assign('historyGlucose',$historyGlucose);
+        $this->assign('historyOxygen',$historyOxygen);
+        $this->assign('historyBmi',$historyBmi);
         $this->display();
     }
 
@@ -55,8 +66,13 @@ class UserhealthfileController extends AdminController
     function editFile(){
         if(isset($_POST['peopleId'])){
             $param = $_POST;
+            if(empty($param['peopleId'])){
+                $param['peopleId']=null;
+            }
+            $param['entryUserId']=UID;
             $url = 'http://192.168.1.250:8080/service/health/saveOrUpdate/basic';
             $res = http_post_json($url,json_encode($param));
+            //dump($res);
             if($res['success']){
                 $this->success('保存成功！');
             }
@@ -83,9 +99,9 @@ class UserhealthfileController extends AdminController
         }
     }
 
-    //新增呼吸心率
+    //新增修改呼吸心率
     function addBreathe(){
-        if(isset($_POST['healthId'])){
+        if(isset($_POST['dataBreathValue'])){
             $param = $_POST;
             $param['entryUserId']=UID;
             $param['entryTime']=date('Y-m-d');
@@ -96,47 +112,10 @@ class UserhealthfileController extends AdminController
             $url='http://192.168.1.250:8080/service/health/breath/saveOrUpdate';
             $res = http_post_json($url,json_encode($param));
             if($res['success']){
-                echo 1;
-                exit();
+                $this->success('保存成功!');
             }
             else{
-                echo 2;
-                exit();
-            }
-        }
-    }
-
-    //修改呼吸心率
-    function editBreathe(){
-        if(isset($_POST['breatheId'])){
-            $param = $_POST;
-            $param['entryUserId']=UID;
-            $param['entryTime']=date('Y-m-d');
-            $param['measureCondition']=$param['dataSrc'];
-            $url='http://192.168.1.250:8080/service/health/breath/saveOrUpdate';
-            $res = http_post_json($url,json_encode($param));
-            if($res['success']){
-                echo 1;
-                exit();
-            }
-            else{
-                echo 0;
-                exit();
-            }
-        }
-    }
-
-    //删除呼吸心率
-    function delBreathe(){
-        $id = I('get.id');
-        if($id){
-            $url='http://192.168.1.250:8080/service/health/breath/delete/'.$id;
-            $res = http($url,null,'get');
-            if($res['success']){
-                $this->success('删除成功！');
-            }
-            else{
-                $this->error('删除失败!');
+                $this->error('保存失败！');
             }
         }
     }
@@ -155,11 +134,9 @@ class UserhealthfileController extends AdminController
             if(empty($param['bloodPressureId'])){
                 $param['bloodPressureId'] = null;
             }
-            $param['healthId'] = $param['healthId2'];
             $param['entryUserId']=UID;
             $param['entryTime']=date('Y-m-d');
             $param['measureCondition']=$param['dataSrc'];
-            unset($param['healthId2']);
             //dump($param);exit();
             $url = 'http://192.168.1.250:8080/service/health/bloodPressure/saveOrUpdate';
             $res = http_post_json($url,json_encode($param));
@@ -170,7 +147,6 @@ class UserhealthfileController extends AdminController
                 $this->error('保存失败！');
             }
         }
-
     }
     //血压历史记录
     function historyPressure($id){
@@ -190,11 +166,100 @@ class UserhealthfileController extends AdminController
         }
         return $res;
     }
-    //删除血压历史记录
-    function delPressure(){
+
+    //添加修改血糖
+    function addGlucose(){
+        if(isset($_POST['dataValue'])){
+            $param = $_POST;
+            if(empty($param['bloodGlucoseId'])){
+                $param['bloodGlucoseId'] = null;
+            }
+            $param['entryUserId']=UID;
+            $param['entryTime']=date('Y-m-d');
+            $url = 'http://192.168.1.250:8080/service/health/bloodGlucose/saveOrUpdate';
+            $res = http_post_json($url,json_encode($param));
+            if($res['success']){
+                $this->success('保存成功!');
+            }
+            else{
+                $this->error('保存失败！');
+            }
+        }
+    }
+
+    //血糖历史记录
+    function historyGlucose($id){
+        $url='http://192.168.1.250:8080/service/health/bloodGlucose/get/all/'.$id;
+        $res = http($url,null,'get');
+        foreach ($res as $key=>&$value){
+            if($value['dataValue']<3.6){
+                $value['condition'] = '偏低';
+            }
+            elseif ($value['dataValue']>11.1 || $value['measureCondition']==0 && $value['dataValue']>6.1 || $value['measureCondition']==1 && $value['dataValue']>7.9){
+                $value['condition'] = '偏高';
+            }
+            else{
+                $value['condition'] = '正常';
+            }
+            $value['measureCondition']=$value['measureCondition']==1?'餐后两小时':'餐前';
+
+        }
+        return $res;
+    }
+
+    //添加修改血氧
+    function addOxygen(){
+        if(isset($_POST['dataValue'])){
+            $param = $_POST;
+            if(empty($param['bloodOxygenId'])){
+                $param['bloodOxygenId'] = null;
+            }
+            $param['entryUserId']=UID;
+            $param['entryTime']=date('Y-m-d');
+            $param['measureCondition']=$param['dataSrc'];
+            $url = 'http://192.168.1.250:8080/service/health/bloodOxygen/saveOrUpdate';
+            $res = http_post_json($url,json_encode($param));
+            if($res['success']){
+                $this->success('保存成功!');
+            }
+            else{
+                $this->error('保存失败！');
+            }
+        }
+    }
+
+    //血氧历史
+    function historyOxygen($id){
+        $url='http://192.168.1.250:8080/service/health/bloodOxygen/get/all/'.$id;
+        $res = http($url,null,'get');
+        return $res;
+    }
+
+    //删除血氧
+    function delLatest(){
         $id = I('get.id');
+        $type = I('get.type');
         if($id){
-            $url='http://192.168.1.250:8080/service/health/bloodPressure/delete/'.$id;
+            if($type==1){
+                //呼吸
+                $url='http://192.168.1.250:8080/service/health/breath/delete/'.$id;
+            }
+            elseif($type==2){
+                //血压
+                $url='http://192.168.1.250:8080/service/health/bloodPressure/delete/'.$id;
+            }
+            elseif($type==3){
+                //血糖
+                $url='http://192.168.1.250:8080/service/health/bloodGlucose/delete/'.$id;
+            }
+            elseif($type==4){
+                //血氧
+                $url='http://192.168.1.250:8080/service/health/bloodOxygen/delete/'.$id;
+            }
+            elseif ($type==5){
+                //bmi
+                $url='http://192.168.1.250:8080/service/health/bmi/delete/'.$id;
+            }
             $res = http($url,null,'get');
             if($res['success']){
                 $this->success('删除成功！');
@@ -204,12 +269,31 @@ class UserhealthfileController extends AdminController
             }
         }
     }
-
-    //添加修改血糖
-    function addGlucose(){
-
+    //添加修改bmi
+    function addBmi(){
+        if(isset($_POST['dataHeightValue'])){
+            $param = $_POST;
+            if(empty($param['bmiId'])){
+                $param['bmiId'] = null;
+            }
+            $param['entryUserId']=UID;
+            $param['entryTime']=date('Y-m-d');
+            $param['measureCondition']=$param['dataSrc'];
+            $url = 'http://192.168.1.250:8080/service/health/bmi/saveOrUpdate';
+            $res = http_post_json($url,json_encode($param));
+            //dump($res);exit();
+            if($res['success']){
+                $this->success('保存成功!');
+            }
+            else{
+                $this->error('保存失败！');
+            }
+        }
     }
-
-
-
+    //bmi历史
+    function historyBmi($id){
+        $url='http://192.168.1.250:8080/service/health/bmi/get/all/'.$id;
+        $res = http($url,null,'get');
+        return $res;
+    }
 }
