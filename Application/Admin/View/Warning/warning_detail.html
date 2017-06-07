@@ -1,211 +1,131 @@
 <extend name="Public/base"/>
 <block name="body">
-<div class="container body">
-    <div class="main_container">
-        <!--content pages-->
-        <div class="right_col" role="main">
-            <div class="col-md-12 col-xs-12">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>设备报警</h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content row">
-                        <br/>
-                        <form class="form-horizontal form-label-left">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">当前设备报警:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control color-red" value="{$data.alarmType_text}" disabled="disabled" placeholder="">
+    <div class="container body">
+        <div class="main_container">
+            <!--content pages-->
+            <div class="right_col" role="main">
+                <div class="col-md-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>设备报警</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content row">
+                            <br/>
+
+                            <form class="form-horizontal form-label-left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">当前设备报警:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control color-red"
+                                                   value="{$data.alarmType_text}" disabled="disabled" placeholder="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">亲属电话:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control " value="{$data.telephone}" disabled="disabled" placeholder="">
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">亲属电话:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control " value="{$data.telephone}"
+                                                   disabled="disabled" placeholder="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">亲属地址:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="{$data.adress}" disabled="disabled" placeholder="">
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">亲属地址:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.adress}"
+                                                   disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">居住情况:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.liveStatus_text}"
+                                                   disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">姓名:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.name}"
+                                                   disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">身体状况:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.healthStatus_text}"
+                                                   disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">居住地址:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="上海" disabled="disabled"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">心率:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.hertbeat}"
+                                                   disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">呼吸:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.breath}"
+                                                   disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">紧急联系人:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="无" disabled="disabled"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">紧急联系电话:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="" disabled="disabled"
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">与老人关系:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="" disabled="disabled"
+                                                   placeholder="">
+                                        </div>
                                     </div>
                                 </div>
 
 
-                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">居住情况:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="{$data.liveStatus_text}" disabled="disabled" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">姓名:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="{$data.name}" disabled="disabled" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">身体状况:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="{$data.healthStatus_text}" disabled="disabled" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">居住地址:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="上海" disabled="disabled" placeholder="">
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">心率:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="{$data.hertbeat}" disabled="disabled" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">呼吸:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="{$data.breath}" disabled="disabled" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">紧急联系人:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="无" disabled="disabled" placeholder="">
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">紧急联系电话:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="" disabled="disabled" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">与老人关系:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="" disabled="disabled" placeholder="">
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="x_title clear">
-                                <br>
-                                <br>
-                                <h2>联系记录</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="x_panel clear">
-                                    <div class="x_content">
-                                        <table class="table table-bordered text-center table-hover">
-                                            <thead class="bg-info ">
-                                            <tr>
-                                                <th class="text-center">时间</th>
-                                                <th class="text-center">发生事件</th>
-                                                <th class="text-center">通话时长</th>
-                                                <th class="text-center">操作</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>2017-03-03 09:09:09</td>
-                                                <td>主动与老人链接视频</td>
-                                                <td>05：20</td>
-                                                <td>已经接通</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017-03-03 09:09:09</td>
-                                                <td>主动与老人链接视频</td>
-                                                <td>05：20</td>
-                                                <td>已经接通</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017-03-03 09:09:09</td>
-                                                <td>主动与老人链接视频</td>
-                                                <td>05：20</td>
-                                                <td class="color-red">未接通</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                        <!--<button class="btn btn-sm btn-danger pull-right">打印</button>-->
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="x_title clear">
-                                <br>
-                                <br>
-                                <h2>操作</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <br>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
-                                <button class="btn btn-sm btn-danger">视频呼叫</button>
-                                <button class="btn btn-sm btn-danger">联系老人</button>
-                                <button class="btn btn-sm btn-danger">联系亲属</button>
-                                <button class="btn btn-sm btn-danger">已处理</button>
-                            </div>
-
-
-
-                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                <div class="x_title">
-                                    <br><br>
-                                    <h2>处理结果</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <br>
-                                <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
-                                    <div class="checkbox col-md-3 col-sm-3 col-xs-12">
-                                        <label>
-                                            <input type="checkbox" class="flat">
-                                            已经通知当地医疗结构
-                                        </label>
-                                    </div>
-                                    <div class="checkbox col-md-3 col-sm-3 col-xs-12">
-                                        <label>
-                                            <input type="checkbox" class="flat">
-                                            已经通知亲属、本人
-                                        </label>
-                                    </div>
-                                    <div class="checkbox col-md-6 col-sm-6 col-xs-12 text-right">
-
-                                        <label>
-                                            处理人：<span>小王</span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left">
-                                    <br>
-                                    <br>
-                                    <label class="control-label col-md-1 col-sm-1 col-xs-12 text-left">
-                                        其他:
-                                    </label>
-                                    <div class="col-md-11 col-sm-11 col-xs-12">
-                                        <textarea class="form-control" rows="3" placeholder='备注在2000字以内'></textarea>
-                                    </div>
-                                </div>
                                 <div class="x_title clear">
                                     <br>
                                     <br>
-                                    <h2>当前报警记录</h2>
+
+                                    <h2>联系记录</h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                     </ul>
                                     <div class="clearfix"></div>
@@ -216,38 +136,138 @@
                                             <table class="table table-bordered text-center table-hover">
                                                 <thead class="bg-info ">
                                                 <tr>
-                                                    <th class="text-center">触发时间</th>
-                                                    <th class="text-center">报警类型</th>
-                                                    <th class="text-center">处理结果</th>
-                                                    <th class="text-center">处理人</th>
+                                                    <th class="text-center">时间</th>
+                                                    <th class="text-center">发生事件</th>
+                                                    <th class="text-center">通话时长</th>
+                                                    <th class="text-center">操作</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>2017-03-03 09:09:09</td>
-                                                    <td>燃气泄漏</td>
-                                                    <td>已经通知家属、本人</td>
-                                                    <td>客服001</td>
-                                                </tr>
+                                                <volist name="processMode" id="p">
+                                                    <tr>
+                                                        <td>{:time_format($p['processTime']/1000)}</td>
+                                                        <td>{$p.processMode_text}</td>
+                                                        <td>{$p.processDuration}</td>
+                                                        <td>{$p.processResult_text}</td>
+                                                    </tr>
+                                                </volist>
                                                 </tbody>
                                             </table>
+                                            <!--<button class="btn btn-sm btn-danger pull-right">打印</button>-->
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+
+
+                                <div class="x_title clear">
+                                    <br>
+                                    <br>
+
+                                    <h2>操作</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <br>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                                    <button class="btn btn-sm btn-danger">视频呼叫</button>
+                                    <button class="btn btn-sm btn-danger">联系老人</button>
+                                    <button class="btn btn-sm btn-danger">联系亲属</button>
+                                    <button class="btn btn-sm btn-danger">已处理</button>
+                                </div>
+
+
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_title">
+                                        <br><br>
+
+                                        <h2>处理结果</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <br>
+
+                                    <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
+                                        <div class="checkbox col-md-3 col-sm-3 col-xs-12">
+                                            <label>
+                                                <input type="checkbox" class="flat">
+                                                已经通知当地医疗结构
+                                            </label>
+                                        </div>
+                                        <div class="checkbox col-md-3 col-sm-3 col-xs-12">
+                                            <label>
+                                                <input type="checkbox" class="flat">
+                                                已经通知亲属、本人
+                                            </label>
+                                        </div>
+                                        <div class="checkbox col-md-6 col-sm-6 col-xs-12 text-right">
+
+                                            <label>
+                                                处理人：<span>小王</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left">
+                                        <br>
+                                        <br>
+                                        <label class="control-label col-md-1 col-sm-1 col-xs-12 text-left">
+                                            其他:
+                                        </label>
+
+                                        <div class="col-md-11 col-sm-11 col-xs-12">
+                                            <textarea class="form-control" rows="3" placeholder='备注在2000字以内'></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="x_title clear">
+                                        <br>
+                                        <br>
+
+                                        <h2>当前报警记录</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="x_panel clear">
+                                            <div class="x_content">
+                                                <table class="table table-bordered text-center table-hover">
+                                                    <thead class="bg-info ">
+                                                    <tr>
+                                                        <th class="text-center">触发时间</th>
+                                                        <th class="text-center">报警类型</th>
+                                                        <th class="text-center">处理结果</th>
+                                                        <th class="text-center">处理人</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <volist name="list" id="l">
+                                                        <tr>
+                                                            <td>{:time_format($l['alarmTime']/1000)}</td>
+                                                            <td>{$l.alarmType_text}</td>
+                                                            <td>{$l.processResult_text}</td>
+                                                            <td>{$l.processUserName}</td>
+                                                        </tr>
+                                                    </volist>
+                                                    </tbody>
+                                                </table>
+                                                {$_page}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="distpicker1" class="hide">
-                <select></select>
-                <select></select>
-                <select></select>
+                <div id="distpicker1" class="hide">
+                    <select></select>
+                    <select></select>
+                    <select></select>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script>
-    $("#distpicker2").distpicker();
-</script>
 </block>

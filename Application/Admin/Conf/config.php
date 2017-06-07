@@ -272,6 +272,32 @@ return array(
         '餐后'
     ],
 
+    /*报警处理类型*/
+    'PROCESS_MODE' =>
+        [
+            '主动与老人链接视频',
+            '坐席帮助老人添加医疗机构第三方视频',
+            '拨打亲属电话',
+        ],
+    /*报警处理结果*/
+    'PROCESS_RESULT' =>
+        [
+            '成功',
+            '失败'
+        ],
+    /*报警处理类型*/
+    'PROCESS_RESULT_TYPE' =>
+        [
+            '已经通知当地医疗结构 ',
+            '已经通知亲属、本人 '
+        ],
+    /*报警类型*/
+    'ALARM_TYPE' =>
+        [
+            '类型1',
+            '类型2',
+        ],
+
     /*接口配置*/
     'INTERFACR_API' => array(
         'agent_create' => 'http://192.168.1.250:8080/service/org/agent/create',//创建代理商
@@ -309,8 +335,35 @@ return array(
         'people_save_edit' => 'http://192.168.1.250:8080/service/people/saveOrUpdate/detail', //新增/更新老人基础档案
         'people_detail' => 'http://192.168.1.250:8080/service/people/get/detail/',//获取老人基础信息
 
-        'warning_list' => 'http://192.168.1.250:8080/service/device/alarm/get/page',//谁被报警分页
+        'warning_list' => 'http://192.168.1.250:8080/service/device/alarm/get/page',//设备报警分页
         'warning_detail' => 'http://192.168.1.250:8080/service/device/alarm/get/detail/',//获取设备详情
+        'warning_history' => 'http://192.168.1.250:8080/service/device/alarm/get/history/page', //设备历史报警
+        'warning_add_deal' => 'http://192.168.1.250:8080/service/device/alarm/process/create',//新增报警处理记录
+        'warning_deal' => 'http://192.168.1.250:8080/service/device/alarm/update',//报警处理
 
+
+        'health_medication_query'=>'http://192.168.1.250:8080/service/medication/remind/get/page',//用药提醒列表
+        'health_medication_detail'=>'http://192.168.1.250:8080/service/medication/remind/get/detail/',//用药提醒详情
+        'remind_add'=>'http://192.168.1.250:8080/service/medication/remind/create',//添加提醒用药
+        'close_remind'=>'http://192.168.1.250:8080/service/medication/remind/close/',//关闭提醒
+        'userhealth_query'=>'http://192.168.1.250:8080/service/health/get/page',//健康档案列表
+        'userhealth_detail'=>'http://192.168.1.250:8080/service/health/get/detail/',//健康档案详情
+        'userhealth_edit'=>'http://192.168.1.250:8080/service/health/saveOrUpdate/basic',//编辑健康档案
+        'consultant_add'=>'http://192.168.1.250:8080/service/health/consult/saveOrUpdate',//添加咨询
+        'breathe_add'=>'http://192.168.1.250:8080/service/health/breath/saveOrUpdate',//添加修改呼吸心率
+        'breathe_history'=>'http://192.168.1.250:8080/service/health/breath/get/all/',//呼吸心率历史
+        'breathe_del'=>'http://192.168.1.250:8080/service/health/breath/delete/',//删除呼吸
+        'pressure_add'=>'http://192.168.1.250:8080/service/health/bloodPressure/saveOrUpdate',//添加修改血压
+        'pressure_history'=>'http://192.168.1.250:8080/service/health/bloodPressure/get/all/',//血压历史
+        'pressure_del'=>'http://192.168.1.250:8080/service/health/bloodPressure/delete/',//删除血压
+        'glucose_add'=>'http://192.168.1.250:8080/service/health/bloodGlucose/saveOrUpdate',//血糖添加修改
+        'glucose_hisotory'=>'http://192.168.1.250:8080/service/health/bloodGlucose/get/all/',//血糖历史
+        'glucose_del'=>'http://192.168.1.250:8080/service/health/bloodGlucose/delete/',//血糖删除
+        'oxygen_add'=>'http://192.168.1.250:8080/service/health/bloodOxygen/saveOrUpdate',//添加修改血氧
+        'oxygen_history'=>'http://192.168.1.250:8080/service/health/bloodOxygen/get/all/',//血氧历史
+        'oxygen_del'=>'http://192.168.1.250:8080/service/health/bloodOxygen/delete/',//血氧删除
+        'bmi_add'=>'http://192.168.1.250:8080/service/health/bmi/saveOrUpdate',//bmi添加修改
+        'bmi_history'=>'http://192.168.1.250:8080/service/health/bmi/get/all/',//bmi历史
+        'bmi_del'=>'http://192.168.1.250:8080/service/health/bmi/delete/',//bmi删除
     ),
 );

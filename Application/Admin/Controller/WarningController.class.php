@@ -14,6 +14,18 @@ class WarningController extends AdminController
         $response['alarmType_text'] = $warning_status[$response['alarmType']];
         $response['liveStatus_text'] = $living_status[$response['livingStatus']];
         $response['healthStatus_text'] = $health_status[$response['healthStatus']];
+        $processList = $response['processList'];
+        int_to_string($processList, ['processMode' => C('PROCESS_MODE'), 'processResult' => C('PROCESS_RESULT')]);
+
+        $pageNo = I('get.p2', 1);
+        $pageSize = C('PAGE_SIZE');
+        $request = '{}';
+        $base_url = $this->getUrl('warning_history') . '?pageNo=' . $pageNo . '&pageSize=' . $pageSize;
+        $history_list = $this->lists($base_url, $request);
+        int_to_string($history_list['itemList'], ['alarmType' => C('ALARM_TYPE'), 'processResult' => C('PROCESS_RESULT_TYPE')]);
+
+        $this->assign('list', $history_list['itemList']);
+        $this->assign('processMode', $processList);
         $this->assign('data', $response);
         $this->meta_title = "设备报警详情";
         $this->display();
@@ -31,5 +43,11 @@ class WarningController extends AdminController
         $this->assign('warning_status', $warning_status);
         $this->assign('list', $list['itemList']);
         $this->display();
+    }
+
+    //新增报警处理记录
+    function warning_add_deal()
+    {
+        $alarmId = I('');
     }
 }
