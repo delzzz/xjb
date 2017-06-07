@@ -1,0 +1,1393 @@
+<extend name="Public/base"/>
+<block name="body">
+    <div class="right_col" role="main">
+        <div class="col-md-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>老人基本资料</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content row">
+                    <br/>
+                    <div id="basic_file" class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                        <form method="post" action="{:U('editFile')}" class="form-horizontal form-label-left">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">老人姓名:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input id="name" value="{$info.name}" type="text" class="form-control" disabled="disabled" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">性别:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <select id="gender" value="{$info.gender}" class="form-control" disabled="disabled">
+                                        <option
+                                        <if condition="$info['gender']==0">selected</if>
+                                        value="0">女</option>
+                                        <option
+                                        <if condition="$info['gender']==1">selected</if>
+                                        value="1">男</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">年龄:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input id="age" value="{$info.age}" type="text" class="form-control" disabled="disabled" placeholder="">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">血型:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <select name="bloodType" class="form-control" disabled="disabled">
+                                        <volist name="bType" id="bt">
+                                            <option
+                                            <if condition="$basic['bloodType'] eq $key">selected</if>
+                                            value="{$key}">{$bType[$key]}</option>
+                                        </volist>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">医疗保障:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <select name="medicalInsurance" class="form-control" disabled="disabled">
+                                        <volist name="medicalInsurance" id="mi">
+                                            <option
+                                            <if condition="$basic['medicalInsurance'] eq $key">selected</if>
+                                            value="{$key}">{$medicalInsurance[$key]}</option>
+                                        </volist>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12 ">视力:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input name="eyesight" value="{$basic.eyesight}" type="text" class="form-control" disabled="disabled" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">过敏史:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input name="allergy" value="{$basic.allergy}" type="text" class="form-control" disabled="disabled" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">其他慢性病:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input name="chronicDisease" value="{$basic.chronicDisease}" type="text" class="form-control" disabled="disabled" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">听力:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input name="hearing" value="{$basic.hearing}" type="text" class="form-control" disabled="disabled" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">老人编号:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input id="peopleIdentifier" value="{$info.peopleIdentifier}" type="text" class="form-control" disabled="disabled" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">长期用药:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <select name="longTermMedication" class="form-control" disabled="disabled">
+                                        <option
+                                        <if condition="$basic['longTermMedication'] eq 0">selected</if>
+                                        value="0">否</option>
+                                        <option
+                                        <if condition="$basic['longTermMedication'] eq 1">selected</if>
+                                        value="1">是</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">所属机构:</label>
+                                <div class="col-md-10 col-sm-10 col-xs-12">
+                                    <div class="">
+                                        <input id="orgName" value="{$info.orgName}" type="text" class="form-control" disabled="disabled" placeholder="所属机构">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                    用药说明:
+                                </label>
+                                <div class="col-md-10 col-sm-10 col-xs-12">
+                                    <textarea name="medicineInstruction" class="form-control" rows="2" disabled="disabled" placeholder=''>{$basic.medicineInstruction}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                                    备注:
+                                </label>
+                                <div class="col-md-10 col-sm-10 col-xs-12">
+                                    <textarea name="remark" class="form-control" rows="3" disabled="disabled" placeholder='备注在2000字以内'>{$basic.remark}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 clear">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">录入时间:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input readonly  id="entryTime" name="entryTime" value="<?php if($basic['entryTime']==''){
+                                    echo $currentTime;
+                                    }else{
+                                    echo date('Y-m-d',$basic['entryTime']/1000);
+                                    }
+                                ?>"
+                                      type="date" class="form-control"  placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">录入人员:</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input name="entryUserName" value="{$basic.entryUserName}" type="text" class="form-control" disabled="disabled" placeholder="">
+                                </div>
+                            </div>
+                            <div class="x_title clear">
+                                <br>
+                                <br>
+                                <h2>操作</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                                <input type="hidden" id="healthId" name="healthId" value="{$basic.healthId}"/>
+                                <input id="peopleId" type="hidden" name="peopleId" value="{$peopleId}"/>
+                                <input type="hidden" name="entryUserId" value="{$basic.entryUserId}"/>
+
+                                <button id="edit_btn" type="button" class="btn btn-lg btn-danger">编辑</button>
+                                <button id="sub" target-form="form-label-left" type="submit" class="btn btn-lg btn-danger ajax-post">保存</button>
+                                <button type="button" class="btn btn-lg btn-danger">关闭页面</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <img width="200px" height="200px" src="{$basic['image']['imagePath']|default='__IMG__/user.png'}">
+                    </div>
+
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+
+                        <div class="x_title clear">
+                            <br>
+                            <br>
+                            <h2>健康咨询记录</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel clear">
+                                <div class="x_content">
+                                    <table class="table table-bordered text-center table-hover">
+                                        <thead class="bg-info ">
+                                        <tr>
+                                            <th class="text-center">录入时间</th>
+                                            <th class="text-center">录入人员</th>
+                                            <th class="text-center">说明</th>
+                                            <th class="text-center">咨询记录</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <volist name="consultings" id="consultings">
+                                            <tr>
+                                                <td>{:time_format($consultings['createTime']/1000,'Y-m-d')}</td>
+                                                <td>{$consultings.entryUserName}</td>
+                                                <td>{$consultings.consultingDesc}</td>
+                                                <td>{$consultings.remark}</td>
+                                            </tr>
+                                        </volist>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-danger">增加记录</button>
+                        </div>
+                        <!--呼吸-->
+                        <div class="x_title clear">
+                            <br>
+                            <br>
+                            <h2>老人呼吸、心率、睡眠</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel clear">
+                                <div class="x_content">
+                                    <table class="table table-bordered text-center table-hover">
+                                        <thead class="bg-info ">
+                                        <tr>
+                                            <th class="text-center">呼吸频率</th>
+                                            <th class="text-center">老人心率</th>
+                                            <th class="text-center">睡眠质量</th>
+                                            <th class="text-center">录入时间</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <if condition="$breathe neq null">
+                                            <tr>
+                                                <td>{$breathe.dataBreathValue}次/分</td>
+                                                <td>{$breathe.dataHeartbeatValue}次/分</td>
+                                                <td>{$dataSleepValue[$breathe['dataSleepValue']]}</td>
+                                                <td>{:time_format($breathe['measureTime']/1000,'Y-m-d')}</td>
+                                            </tr>
+                                        </if>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button id="add_breath" type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-sm btn-danger">录入新数据</button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button id="breathe_edit" type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-sm btn-danger">修改数据</button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <a id="breathe_del" onclick="if(confirm('确定删除?')==false)return false;" href="{:U('delLatest',array('id'=>$breathe['breatheId'],'type'=>1))}" class=" btn btn-sm btn-danger">删除此条数据</a>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button type="button" data-toggle="modal" data-target="#myModal6" class="btn btn-sm btn-danger">历史记录</button>
+                            </div>
+                        </div>
+                        <!--血压-->
+                        <div class="x_title clear">
+                            <br>
+                            <br>
+                            <h2 class="col-lg-4 col-md-4 col-sm-6">血压</h2>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div>数据来源：{$dataSrc[$pressure['dataSrc']]}</div>
+                                <div>测量时间：{:time_format($pressure['measureTime']/1000,'Y-m-d')}</div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div>录入人员：{$pressure.entryUserName}</div>
+                                <div>录入时间：{:time_format($pressure['createTime']/1000,'Y-m-d')}</div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel clear">
+                                <div class="x_content">
+                                    <table class="table table-bordered text-center table-hover">
+                                        <thead class="bg-info ">
+                                        <tr>
+                                            <th class="text-center">小项</th>
+                                            <th class="text-center">监测数据</th>
+                                            <th class="text-center">血压情况</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>收缩压数值</td>
+                                            <td>{$pressure.dataInValue}</td>
+                                            <!--有多少条数据就横跨多少行-->
+                                            <td class="pressureText" rowspan="3" style="vertical-align: middle">
+                                                偏高
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>舒张压数值</td>
+                                            <td>{$pressure.dataOutValue}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>脉搏率</td>
+                                            <td>{$pressure.dataPulseValue}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button id="add_pressure" type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-sm btn-danger">录入新数据</button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button id="pressure_edit" type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-sm btn-danger">修改数据</button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <a id="pressure_del" onclick="if(confirm('确定删除?')==false)return false;" href="{:U('delLatest',array('id'=>$pressure['bloodPressureId'],'type'=>2))}" class=" btn btn-sm btn-danger">删除此条数据</a>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button type="button" data-toggle="modal" data-target="#myModal7" class="btn btn-sm btn-danger">历史记录</button>
+                            </div>
+                        </div>
+                        <!--血糖-->
+                        <div class="x_title clear">
+                            <br>
+                            <br>
+                            <h2 class="col-lg-4 col-md-4 col-sm-6">血糖</h2>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div>数据来源：{$dataSrc[$glucose['dataSrc']]}</div>
+                                <div>测量时间：{:time_format($glucose['measureTime']/1000,'Y-m-d')}</div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div>录入人员：{$glucose.entryUserName}</div>
+                                <div>录入时间：{:time_format($glucose['entryTime']/1000,'Y-m-d')}</div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel clear">
+                                <div class="x_content">
+                                    <table class="table table-bordered text-center table-hover">
+                                        <thead class="bg-info ">
+                                        <tr>
+                                            <th class="text-center">小项</th>
+                                            <th class="text-center">测量数据</th>
+                                            <th class="text-center">测量条件</th>
+                                            <th class="text-center">状态描述</th>
+                                            <th class="text-center">血糖情况</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>血糖</td>
+                                            <td>{$glucose.dataValue}（mmol/L）</td>
+                                            <td>{$mCondition[$glucose['measureCondition']]}</td>
+                                            <td>{$glucose.statusDesc}</td>
+                                            <td class="glucoseText"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button id="add_glucose" type="button" data-toggle="modal" data-target="#myModal3" class="btn btn-sm btn-danger">录入新数据</button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button id="glucose_edit" type="button" data-toggle="modal" data-target="#myModal3" class="btn btn-sm btn-danger">修改数据</button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <a id="glucose_del" onclick="if(confirm('确定删除?')==false)return false;" href="{:U('delLatest',array('id'=>$glucose['bloodGlucoseId'],'type'=>3))}" class=" btn btn-sm btn-danger">删除此条数据</a>
+
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button type="button" data-toggle="modal" data-target="#myModal8" class="btn btn-sm btn-danger">历史记录</button>
+                            </div>
+                        </div>
+                        <!--血氧-->
+                        <div class="x_title clear">
+                            <br>
+                            <br>
+                            <h2 class="col-lg-4 col-md-4 col-sm-6">血氧</h2>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div>数据来源：{$dataSrc[$oxygen['dataSrc']]}</div>
+                                <div>测量时间：{:time_format($oxygen['measureTime']/1000,'Y-m-d')}</div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div>录入人员：{$oxygen.entryUserName}</div>
+                                <div>录入时间：{:time_format($oxygen['entryTime']/1000,'Y-m-d')}</div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel clear">
+                                <div class="x_content">
+                                    <table class="table table-bordered text-center table-hover">
+                                        <thead class="bg-info ">
+                                        <tr>
+                                            <th class="text-center">小项</th>
+                                            <th class="text-center">测量数据</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>血氧饱和度</td>
+                                            <td>{$oxygen.dataValue}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button id="add_oxygen" type="button" data-toggle="modal" data-target="#myModal4" class="btn btn-sm btn-danger">录入新数据</button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button id="edit_oxygen" type="button" data-toggle="modal" data-target="#myModal4" class="btn btn-sm btn-danger">修改数据</button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <a id="oxygen_del" onclick="if(confirm('确定删除?')==false)return false;" href="{:U('delLatest',array('id'=>$oxygen['bloodOxygenId'],'type'=>4))}" class=" btn btn-sm btn-danger">删除此条数据</a>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button type="button" data-toggle="modal" data-target="#myModal9" class="btn btn-sm btn-danger">历史记录</button>
+                            </div>
+                        </div>
+                        <!--BMI-->
+                        <div class="x_title clear">
+                            <br>
+                            <br>
+                            <h2 class="col-lg-4 col-md-4 col-sm-6">BMI</h2>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div>数据来源：{$dataSrc[$bmi['dataSrc']]}</div>
+                                <div>测量时间：{:time_format($bmi['measureTime']/1000,'Y-m-d')}</div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div>录入人员：{$bmi.entryUserName}</div>
+                                <div>录入时间：{:time_format($bmi['entryTime']/1000,'Y-m-d')}</div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel clear">
+                                <div class="x_content">
+                                    <table class="table table-bordered text-center table-hover">
+                                        <thead class="bg-info ">
+                                        <tr>
+                                            <th class="text-center">小项</th>
+                                            <th class="text-center">测量数据</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>身高（cm）</td>
+                                            <td>{$bmi.dataHeightValue}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>体重（kg）</td>
+                                            <td>{$bmi.dataWeightValue}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>BMI</td>
+                                            <td>{$bmi.dataBmiValue}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>状态描述</td>
+                                            <td>{$bmi.statusDesc}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button id="add_bmi" type="button" data-toggle="modal" data-target="#myModal5" class="btn btn-sm btn-danger">录入新数据</button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button id="edit_bmi" type="button" data-toggle="modal" data-target="#myModal5" class="btn btn-sm btn-danger">修改数据</button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <a id="bmi_del" onclick="if(confirm('确定删除?')==false)return false;" href="{:U('delLatest',array('id'=>$bmi['bmiId'],'type'=>5))}" class=" btn btn-sm btn-danger">删除此条数据</a>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button type="button" data-toggle="modal" data-target="#myModal10" class="btn btn-sm btn-danger">历史记录</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--增加记录-->
+    <div class="modal fade" id="myModal" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
+            <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel1">
+                        新增健康咨询记录
+                    </h4>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">录入人员:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="entryUserName" value="{$consultRecorder}" type="text" class="form-control"/>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">说明:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="consultingDesc" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">咨询记录:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="remark" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="consult_btn" type="button" class="btn btn-danger">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--呼吸睡眠心率-->
+    <div class="modal fade" id="myModal1" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <form method="post" action="{:U('addBreathe')}" class="form-horizontal form-breathe">
+        <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
+            <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel2">呼吸心率</h4>
+                    <br>
+                    <input type="hidden" name='healthId' value="{$basic.healthId}"/>
+                    <input type="hidden" name="breatheId" id="breatheId" value="{$breathe.breatheId}"/>
+                    <input id="hid_breatheid" type="hidden" value="{$breathe.breatheId}"/>
+                    <input type="hidden" id="hid_breath" value="{$breathe.dataBreathValue}"/>
+                    <input type="hidden" id="hid_heart" value="{$breathe.dataHeartbeatValue}"/>
+                    <input type="hidden" id="hid_sleep" value="{$breathe.dataSleepValue}"/>
+                    <input type="hidden" id="hid_datasrc" value="{$breathe['dataSrc']}"/>
+                    <input type="hidden" id="hid_bdate" value="{:time_format($breathe['entryTime']/1000,'Y-m-d')}"/>
+
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">老人呼吸:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input name="dataBreathValue" id="dataBreathValue" value="{$breathe.dataBreathValue}" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">心率:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input name="dataHeartbeatValue" id="dataHeartbeatValue" value="{$breathe.dataHeartbeatValue}" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">睡眠:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <select name="dataSleepValue" id="dataSleepValue">
+                                <volist name="dataSleepValue" id="dsp">
+                                    <option
+                                    <if condition="$breathe['dataSleepValue'] eq $key">selected</if>
+                                    value="{$key}">
+                                    {$dataSleepValue[$key]}
+                                    </option>
+                                </volist>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">数据来源:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <select name="dataSrc" id="dataSrc" class="form-control">
+                                <volist name="dataSrc" id="datasrc">
+                                    <option
+                                    <if condition="$breathe['dataSrc'] eq $key">selected</if>
+                                    value="{$key}">
+                                    {$dataSrc[$key]}
+                                    </option>
+                                </volist>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">测量日期:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input name="measureTime" id="breatheDate" value="{:time_format($breathe['measureTime']/1000,'Y-m-d')}" type="date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <!--<button id="breathe_btn" type="button" class="btn btn-danger">保存</button>-->
+                    <!--<button id="edit_breathe_btn" type="button" class="btn btn-danger">保存</button>-->
+                    <button id="add_breathe" type="submit" target-form="form-breathe" class="btn btn-lg btn-danger ajax-post">保存</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    <!--血压-->
+    <div class="modal fade" id="myModal2" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <form method="post" action="{:U('addPressure')}" class="form-horizontal form-pressure">
+            <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
+                <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                    <div class="modal-header">
+                        <input type="hidden" name="healthId" value="{$basic.healthId}"/>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">血压</h4>
+                        <br>
+                        <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">收缩压数值:</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input name="dataInValue" value="{$pressure.dataInValue}" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">舒张压数值:</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input name="dataOutValue" value="{$pressure.dataOutValue}" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">脉搏率:</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input name="dataPulseValue" value="{$pressure.dataPulseValue}" ype="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">血压情况:</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input id="pressureCondition" disabled="disabled" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">数据来源:</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <select name="dataSrc" id="dataSrc2" class="form-control">
+                                    <volist name="dataSrc" id="dasc">
+                                        <option
+                                        <if condition="$pressure['dataSrc'] eq $key">selected</if>
+                                        value="{$key}">
+                                        {$dataSrc[$key]}
+                                        </option>
+                                    </volist>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">测量日期:</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input value="{:time_format($pressure['measureTime']/1000,'Y-m-d')}" name="measureTime" type="date" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input id="bloodPressureId" type="hidden" name="bloodPressureId" value="{$pressure.bloodPressureId}"/>
+                        <input id="hid_pressureid" type="hidden" value="{$pressure.bloodPressureId}"/>
+                        <input id="hid_datainvalue" value="{$pressure.dataInValue}" type="hidden"/>
+                        <input id="hid_dataoutvalue" value="{$pressure.dataOutValue}" type="hidden"/>
+                        <input id="hid_datapulsevalue" value="{$pressure.dataPulseValue}" type="hidden"/>
+                        <input id="hid_datasrc2" value="{$pressure.dataSrc}" type="hidden"/>
+                        <input id="hid_measureTime" value="{:time_format($pressure['measureTime']/1000,'Y-m-d')}" type="hidden"/>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button id="sub_pressure" type="submit" target-form="form-pressure" class="btn btn-lg btn-danger ajax-post">保存</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--血糖-->
+    <div class="modal fade" id="myModal3" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <form method="post" action="{:U('addGlucose')}" class="form-horizontal form-glucose">
+        <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
+            <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel3">血糖</h4>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">测量条件:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <select name="measureCondition" class="form-control">
+                                <volist name="mCondition" id="mc">
+                                    <option
+                                    <if condition="$glucose['measureCondition'] eq $key">selected</if>
+                                    value="{$key}">
+                                    {$mCondition[$key]}
+                                    </option>
+                                </volist>
+                            </select>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">血糖:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="dataValue" name="dataValue" value="{$glucose.dataValue}" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">血糖情况:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input disabled="disabled" id="glucose_condition" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">数据来源:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <select name="dataSrc" class="form-control">
+                                <volist name="dataSrc" id="dtsc">
+                                    <option
+                                    <if condition="$glucose['dataSrc'] eq $key">selected</if>
+                                    value="{$key}">
+                                    {$dataSrc[$key]}
+                                    </option>
+                                </volist>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">测量日期:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input value="{:time_format($glucose['measureTime']/1000,'Y-m-d')}" name="measureTime" type="date" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">状态描述:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="statusDesc" value="{$glucose.statusDesc}" name="statusDesc"  class="form-control" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="healthId" value="{$basic.healthId}"/>
+                    <input id="bloodGlucoseId" name="bloodGlucoseId" type="hidden" value="{$glucose.bloodGlucoseId}"/>
+                    <input id="hid_glucose" type="hidden" value="{$glucose.bloodGlucoseId}"/>
+                    <input id="hid_dataValue" value="{$glucose.dataValue}" type="hidden"/>
+                    <input id="hid_datasrc3" value="{$glucose.dataSrc}" type="hidden"/>
+                    <input id="hid_mcondition" value="{$glucose.measureCondition}" type="hidden"/>
+                    <input id="hid_measureTime2" value="{:time_format($glucose['measureTime']/1000,'Y-m-d')}" type="hidden"/>
+                    <input id="hid_statusDesc" value="{$glucose['statusDesc']}" type="hidden"/>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" target-form="form-glucose" class="btn btn-lg btn-danger ajax-post">保存</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    <!--血氧-->
+    <div class="modal fade" id="myModal4" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <form method="post" action="{:U('addOxygen')}" class="form-horizontal form-oxygen">
+        <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
+            <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel4">血氧</h4>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">血氧饱和度:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input name="dataValue" value="{$oxygen.dataValue}" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">数据来源:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <select name="dataSrc" class="form-control">
+                                <volist name="dataSrc" id="dtsc">
+                                    <option
+                                    <if condition="$oxygen['dataSrc'] eq $key">selected</if>
+                                    value="{$key}">
+                                    {$dataSrc[$key]}
+                                    </option>
+                                </volist>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">测量日期:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input value="{:time_format($oxygen['measureTime']/1000,'Y-m-d')}" name="measureTime" type="date" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="healthId" value="{$basic.healthId}"/>
+                    <input type="hidden" id="bloodOxygenId" name="bloodOxygenId" value="{$oxygen.bloodOxygenId}" />
+                    <input type="hidden" id="hid_oxygen"  value="{$oxygen.bloodOxygenId}" />
+                    <input id="hid_dataValue2" value="{$oxygen.dataValue}" type="hidden"/>
+                    <input id="hid_datasrc4" value="{$oxygen.dataSrc}" type="hidden"/>
+                    <input id="hid_measureTime3" value="{:time_format($oxygen['measureTime']/1000,'Y-m-d')}" type="hidden"/>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" target-form="form-oxygen" class="btn btn-lg btn-danger ajax-post">保存</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    <!--BMI-->
+    <div class="modal fade" id="myModal5" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <form method="post" action="{:U('addBmi')}" class="form-horizontal form-bmi">
+        <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
+            <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel5">BMI</h4>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">身高:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input name="dataHeightValue" value="{$bmi.dataHeightValue}" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">体重:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input name="dataWeightValue" value="{$bmi.dataWeightValue}" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">BMI:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input name="dataBmiValue" value="{$bmi.dataBmiValue}" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">状态描述:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input name="statusDesc" value="{$bmi.statusDesc}" type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">数据来源:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <select name="dataSrc" class="form-control">
+                                <volist name="dataSrc" id="dtsc">
+                                    <option
+                                    <if condition="$bmi['dataSrc'] eq $key">selected</if>
+                                    value="{$key}">
+                                    {$dataSrc[$key]}
+                                    </option>
+                                </volist>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">测量日期:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input value="{:time_format($bmi['measureTime']/1000,'Y-m-d')}" name="measureTime" type="date" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="healthId" value="{$basic.healthId}"/>
+                    <input type="hidden" name="bmiId" id="bmiId" value="{$bmi.bmiId}"/>
+                    <input type="hidden" id="hid_bmiId" value="{$bmi.bmiId}"/>
+                    <input type="hidden" id="hid_weight" value="{$bmi.dataWeightValue}"/>
+                    <input type="hidden" id="hid_height" value="{$bmi.dataHeightValue}"/>
+                    <input type="hidden" id="hid_bmi" value="{$bmi.dataBmiValue}"/>
+                    <input id="hid_statusDesc2" value="{$bmi['statusDesc']}" type="hidden"/>
+                    <input id="hid_datasrc5" value="{$bmi.dataSrc}" type="hidden"/>
+                    <input id="hid_measureTime4" value="{:time_format($bmi['measureTime']/1000,'Y-m-d')}" type="hidden"/>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" target-form="form-bmi" class="btn btn-lg btn-danger ajax-post">保存</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    <!--呼吸历史-->
+    <div class="modal fade" id="myModal6" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
+            <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel6">历史记录</h4>
+                    <br>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <table class="table table-bordered text-center table-hover">
+                                <thead class="bg-info ">
+                                <tr>
+                                    <th class="text-center">呼吸频率</th>
+                                    <th class="text-center">老人心率</th>
+                                    <th class="text-center">睡眠质量</th>
+                                    <th class="text-center">数据来源</th>
+                                    <th class="text-center">测量时间</th>
+                                    <th class="text-center">录入时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <if condition="$historyBreathe neq null">
+                                    <volist name="historyBreathe" id="historyBreathe">
+                                        <tr>
+                                            <td>{$historyBreathe.dataBreathValue}次/分</td>
+                                            <td>{$historyBreathe.dataHeartbeatValue}次/分</td>
+                                            <td>{$dataSleepValue[$historyBreathe['dataSleepValue']]}</td>
+                                            <td>{$dataSrc[$historyBreathe['dataSrc']]}</td>
+                                            <td>{:time_format($historyBreathe['measureTime']/1000,'Y-m-d')}</td>
+                                            <td>{:time_format($historyBreathe['entryTime']/1000,'Y-m-d')}</td>
+                                        </tr>
+                                    </volist>
+                                </if>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--血压历史-->
+    <div class="modal fade" id="myModal7" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
+            <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel7">历史记录</h4>
+                    <br>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <table class="table table-bordered text-center table-hover">
+                                <thead class="bg-info ">
+                                <tr>
+                                    <th class="text-center">收缩压数值</th>
+                                    <th class="text-center">舒张压数值</th>
+                                    <th class="text-center">脉搏率</th>
+                                    <th class="text-center">血压情况</th>
+                                    <th class="text-center">数据来源</th>
+                                    <th class="text-center">录入人员</th>
+                                    <th class="text-center">测量时间</th>
+                                    <th class="text-center">录入时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <if condition="$historyPressure neq null">
+                                    <volist name="historyPressure" id="historyPressure">
+                                        <tr>
+                                            <td>{$historyPressure.dataInValue}</td>
+                                            <td>{$historyPressure.dataOutValue}</td>
+                                            <td>{$historyPressure.dataPulseValue}</td>
+                                            <td>{$historyPressure.condition}</td>
+                                            <td>{$dataSrc[$historyPressure['dataSrc']]}</td>
+                                            <td>{$historyPressure.entryUserName}</td>
+                                            <td>{:time_format($historyPressure['measureTime']/1000,'Y-m-d')}</td>
+                                            <td>{:time_format($historyPressure['entryTime']/1000,'Y-m-d')}</td>
+                                        </tr>
+                                    </volist>
+                                </if>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--血压历史-->
+    <div class="modal fade" id="myModal8" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
+            <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel8">历史记录</h4>
+                    <br>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <table class="table table-bordered text-center table-hover">
+                                <thead class="bg-info ">
+                                <tr>
+                                    <th class="text-center">血糖值</th>
+                                    <th class="text-center">测量条件</th>
+                                    <th class="text-center">血糖情况</th>
+                                    <th class="text-center">数据来源</th>
+                                    <th class="text-center">状态描述</th>
+                                    <th class="text-center">录入人员</th>
+                                    <th class="text-center">测量时间</th>
+                                    <th class="text-center">录入时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <if condition="$historyGlucose neq null">
+                                    <volist name="historyGlucose" id="historyGlucose">
+                                        <tr>
+                                            <td>{$historyGlucose.dataValue}</td>
+                                            <td>{$historyGlucose.measureCondition}</td>
+                                            <td>{$historyGlucose.condition}</td>
+                                            <td>{$dataSrc[$historyGlucose['dataSrc']]}</td>
+                                            <td>{$historyGlucose.statusDesc}</td>
+                                            <td>{$historyGlucose.entryUserName}</td>
+                                            <td>{:time_format($historyGlucose['measureTime']/1000,'Y-m-d')}</td>
+                                            <td>{:time_format($historyGlucose['entryTime']/1000,'Y-m-d')}</td>
+                                        </tr>
+                                    </volist>
+                                </if>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--血氧历史-->
+    <div class="modal fade" id="myModal9" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
+            <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel9">历史记录</h4>
+                    <br>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <table class="table table-bordered text-center table-hover">
+                                <thead class="bg-info ">
+                                <tr>
+                                    <th class="text-center">血氧值</th>
+                                    <th class="text-center">数据来源</th>
+                                    <th class="text-center">录入人员</th>
+                                    <th class="text-center">测量时间</th>
+                                    <th class="text-center">录入时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <if condition="$historyOxygen neq null">
+                                    <volist name="historyOxygen" id="historyOxygen">
+                                        <tr>
+                                            <td>{$historyOxygen.dataValue}</td>
+                                            <td>{$dataSrc[$historyOxygen['dataSrc']]}</td>
+                                            <td>{$historyOxygen.entryUserName}</td>
+                                            <td>{:time_format($historyOxygen['measureTime']/1000,'Y-m-d')}</td>
+                                            <td>{:time_format($historyOxygen['entryTime']/1000,'Y-m-d')}</td>
+                                        </tr>
+                                    </volist>
+                                </if>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--bmi历史-->
+    <div class="modal fade" id="myModal10" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
+            <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel10">历史记录</h4>
+                    <br>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <table class="table table-bordered text-center table-hover">
+                                <thead class="bg-info ">
+                                <tr>
+                                    <th class="text-center">身高</th>
+                                    <th class="text-center">体重</th>
+                                    <th class="text-center">BMI</th>
+                                    <th class="text-center">数据来源</th>
+                                    <th class="text-center">录入人员</th>
+                                    <th class="text-center">状态描述</th>
+                                    <th class="text-center">测量时间</th>
+                                    <th class="text-center">录入时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <if condition="$historyBmi neq null">
+                                    <volist name="historyBmi" id="historyBmi">
+                                        <tr>
+                                            <td>{$historyBmi.dataHeightValue}</td>
+                                            <td>{$historyBmi.dataWeightValue}</td>
+                                            <td>{$historyBmi.dataBmiValue}</td>
+                                            <td>{$dataSrc[$historyBmi['dataSrc']]}</td>
+                                            <td>{$historyBmi.entryUserName}</td>
+                                            <td>{$historyBmi.statusDesc}</td>
+                                            <td>{:time_format($historyBmi['measureTime']/1000,'Y-m-d')}</td>
+                                            <td>{:time_format($historyBmi['entryTime']/1000,'Y-m-d')}</td>
+                                        </tr>
+                                    </volist>
+                                </if>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script>
+        $('#edit_breathe_btn').hide();
+        //$("#distpicker2").distpicker();
+        $('#sub').hide();
+        $('#edit_btn').click(function () {
+            $('#basic_file input,#basic_file textarea,#basic_file select').not("#name,#gender,#age,#orgName,#peopleIdentifier,#entryPeople").removeAttr('disabled');
+            $('#edit_btn').hide();
+            $('#sub').show();
+        });
+        //保存基础档案
+        $('#sub').click(function () {
+            $.ajax({
+                url: "{:U('editFile')}",
+                type: 'POST',
+                async: true,
+                success: function (data) {
+                    $('#edit_btn').show();
+                    $('#sub').hide();
+                    $('#basic_file input,#basic_file textarea,#basic_file select').not("#entryTime,#name,#gender,#age,#orgName,#peopleIdentifier,#entryPeople").attr('disabled', 'disabled');
+                }
+            });
+        });
+        //新增咨询记录
+        $('#consult_btn').click(function () {
+            $.ajax({
+                url: "{:U('addConsult')}",
+                data: {
+                    'healthId': $('#healthId').val(),
+                    'consultingDesc': $('#consultingDesc').val(),
+                    'remark': $('#remark').val(),
+                    'entryUserName': $('#entryUserName').val(),
+                },
+                type: 'POST',
+                success: function (data) {
+                    if (data == 1) {
+                        alert('添加咨询记录成功！');
+                        window.location.reload(true);
+                    }
+                    else {
+                        alert('添加失败！')
+                    }
+                }
+            });
+        });
+
+        //按钮隐藏显示
+        if ($('#breatheId').val() == '') {
+            $('#breathe_edit').attr('disabled', 'disabled');
+            $('#breathe_del').attr('disabled', 'disabled');
+        }
+
+        //判断新增还是修改呼吸心率
+        $('#add_breath,#breathe_edit').each(function (i, item) {
+            $(this).bind("click", function () {
+                if (i == 0) {
+                    $('#breatheId').val('');
+                    $('#breathe_btn').show();
+                    $('#edit_breathe_btn').hide();
+                    $('#dataBreathValue').val('');
+                    $('#dataHeartbeatValue').val('');
+                    $('#breatheDate').val('');
+                    $('#myModal1 select').val(0);
+                }
+                else {
+                    $('#breatheId').val($('#hid_breatheid').val());
+                    $('#dataBreathValue').val($('#hid_breath').val());
+                    $('#dataHeartbeatValue').val($('#hid_heart').val());
+                    $('#dataSleepValue').val($('#hid_sleep').val());
+                    $('#dataSrc').val($('#hid_datasrc').val());
+                    $('#breatheDate').val($('#hid_bdate').val());
+                    $('#edit_breathe_btn').show();
+                    $('#breathe_btn').hide();
+                }
+            });
+        });
+
+        //判断新增血压还是修改
+        if ($('#bloodPressureId').val() == '') {
+            $('#pressure_edit').attr('disabled', 'disabled');
+            $('#pressure_del').attr('disabled', 'disabled');
+        }
+        $('#add_pressure,#pressure_edit').each(function (i, item) {
+            $(this).bind("click", function () {
+                if (i == 0) {
+                    $('#bloodPressureId').val('');
+                    $('#myModal2 input[name="dataInValue"]').val('');
+                    $('#myModal2 input[name="dataOutValue"]').val('');
+                    $('#myModal2 input[name="dataPulseValue"]').val('');
+                    $('#myModal2 select[name="dataSrc"]').val(0);
+                    $('#myModal2 input[name="measureTime"]').val('');
+                    $('#pressureCondition').val('');
+                }
+                else {
+                    $('#bloodPressureId').val($('#myModal2 #hid_pressureid').val());
+                    $('#myModal2 input[name="dataInValue"]').val($('#hid_datainvalue').val());
+                    $('#myModal2 input[name="dataOutValue"]').val($('#hid_dataoutvalue').val());
+                    $('#myModal2 input[name="dataPulseValue"]').val($('#hid_datapulsevalue').val());
+                    $('#myModal2 input[name="dataSrc"]').val($('#hid_datasrc2').val());
+                    $('#myModal2 input[name="measureTime"]').val($('#hid_measureTime').val());
+                    getPressureCondition();
+                }
+            });
+        });
+        $('#myModal2 input[name="dataInValue"],#myModal2 input[name="dataOutValue"]').blur(function(){
+            getPressureCondition();
+        });
+        getPressureCondition();
+        function getPressureCondition(){
+            if($('#myModal2 input[name="dataInValue"]').val()=='' || $('#myModal2 input[name="dataOutValue"]').val()==''){
+                $('#pressureCondition').val('');
+                $('.pressureText').text('');
+                return;
+            }
+            if($('#myModal2 input[name="dataInValue"]').val()<90||$('#myModal2 input[name="dataOutValue"]').val()<60){
+                $('#pressureCondition').val('偏低');
+                $('.pressureText').text('偏低');
+            }
+            else if($('#myModal2 input[name="dataInValue"]').val()>140||$('#myModal2 input[name="dataOutValue"]').val()>90){
+                $('#pressureCondition').val('偏高');
+                $('.pressureText').text('偏高');
+            }
+            else{
+                $('#pressureCondition').val('正常');
+                $('.pressureText').text('正常');
+            }
+        }
+        //判断新增血糖还是修改
+        if ($('#bloodGlucoseId').val() == '') {
+            $('#glucose_edit').attr('disabled', 'disabled');
+            $('#glucose_del').attr('disabled', 'disabled');
+        }
+        $('#add_glucose,#glucose_edit').each(function (i, item) {
+            $(this).bind("click", function () {
+                if (i == 0) {
+                    $('#bloodGlucoseId').val('');
+                    $('#myModal3 input[name="dataValue"]').val('');
+                    $('#myModal3 select[name="dataSrc"]').val(0);
+                    $('#myModal3 select[name="measureCondition]').val(0);
+                    $('#myModal3 input[name="measureTime"]').val('');
+                    $('#glucose_condition').val('');
+                    $('#statusDesc').val('');
+                }
+                else {
+                    $('#bloodGlucoseId').val($('#hid_glucose').val());
+                    $('#myModal3 input[name="dataValue"]').val($('#hid_dataValue').val());
+                    $('#myModal3 select[name="dataSrc"]').val($('#hid_datasrc3').val());
+                    $('#myModal3 select[name="measureCondition]').val($('#hid_mcondition').val());
+                    $('#myModal3 input[name="measureTime"]').val($('#hid_measureTime2').val());
+                    $('#statusDesc').val($('#hid_statusDesc').val());
+                    getGlucoseCondition();
+                }
+            });
+        });
+        getGlucoseCondition();
+        $('#dataValue').blur(function(){
+            getGlucoseCondition();
+        });
+        $('select[name="measureCondition"]').change(function(){
+            getGlucoseCondition();
+        });
+        //血糖情况
+        function getGlucoseCondition(){
+            var dataValue = $('#dataValue').val();
+            if(dataValue==''){
+                $('#glucose_condition').val('');
+                $('.glucoseText').text('');
+            }
+            else if(dataValue<3.6){
+                $('#glucose_condition').val('偏低');
+                $('.glucoseText').text('偏低');
+            }
+            else if(dataValue>11.1 || dataValue>6.1 && $('select[name="measureCondition"]').val()==0 || dataValue>7.9 && $('select[name="measureCondition"]').val()==1){
+                $('#glucose_condition').val('偏高');
+                $('.glucoseText').text('偏高');
+            }
+            else{
+                $('#glucose_condition').val('正常');
+                $('.glucoseText').text('正常');
+            }
+        }
+        //判断新增血氧还是修改
+        if ($('#bloodOxygenId').val() == '') {
+            $('#edit_oxygen').attr('disabled', 'disabled');
+            $('#oxygen_del').attr('disabled', 'disabled');
+        }
+        $('#add_oxygen,#edit_oxygen').each(function (i, item) {
+            $(this).bind("click", function () {
+                if (i == 0) {
+                    $('#bloodOxygenId').val('');
+                    $('#myModal4 input[name="dataValue"]').val('');
+                    $('#myModal4 select[name="dataSrc"]').val(0);
+                    $('#myModal4 input[name="measureTime"]').val('');
+                }
+                else {
+                    $('#bloodOxygenId').val($('#myModal4 #hid_oxygen').val());
+                    $('#myModal4 input[name="dataValue"]').val($('#hid_dataValue2').val());
+                    $('#myModal4 select[name="dataSrc"]').val($('#hid_datasrc4').val());
+                    $('#myModal4 input[name="measureTime"]').val($('#hid_measureTime3').val());
+                }
+            });
+        });
+        //判断新增还是修改bmi
+        if ($('#bloodOxygenId').val() == '') {
+            $('#edit_bmi').attr('disabled', 'disabled');
+            $('#bmi_del').attr('disabled', 'disabled');
+        }
+        $('#add_bmi,#edit_bmi').each(function (i, item) {
+            $(this).bind("click", function () {
+                if (i == 0) {
+                    $('#bmiId').val('');
+                    $('#myModal5 input[name="dataWeightValue"]').val('');
+                    $('#myModal5 input[name="dataHeightValue"]').val('');
+                    $('#myModal5 input[name="dataBmiValue"]').val('');
+                    $('#myModal5 input[name="statusDesc"]').val('');
+                    $('#myModal5 select[name="dataSrc"]').val(0);
+                    $('#myModal5 input[name="measureTime"]').val('');
+                }
+                else {
+                    $('#bmiId').val($('#myModal5 #hid_bmiId').val());
+                    $('#myModal5 input[name="dataWeightValue"]').val($('#hid_weight').val());
+                    $('#myModal5 input[name="dataHeightValue"]').val($('#hid_height').val());
+                    $('#myModal5 input[name="dataBmiValue"]').val($('#hid_bmi').val());
+                    $('#myModal5 input[name="statusDesc"]').val($('#hid_statusDesc2').val());
+                    $('#myModal5 select[name="dataSrc"]').val($('#hid_datasrc5').val());
+                    $('#myModal5 input[name="measureTime"]').val($('#hid_measureTime4').val());
+                }
+            });
+        });
+        $('#myModal5 input[name="dataWeightValue"],#myModal5 input[name="dataHeightValue"]').blur(function(){
+            var weight = $('#myModal5 input[name="dataWeightValue"]').val();
+            var height = $('#myModal5 input[name="dataHeightValue"]').val();
+            if(weight =='' || height == ''){
+                return;
+            }
+            var bmi =getBmi();
+            $('#myModal5 input[name="dataBmiValue"]').val(bmi);
+            var statusDesc = $('#myModal5 input[name="statusDesc"]').val();
+            if(statusDesc==''){
+                if(bmi<18.5){
+                    $('#myModal5 input[name="statusDesc"]').val('过轻');
+                }
+                else if(bmi>32){
+                    $('#myModal5 input[name="statusDesc"]').val('超重');
+                }
+                else if(bmi>=28){
+                    $('#myModal5 input[name="statusDesc"]').val('肥胖');
+                }
+                else if(bmi>=25){
+                    $('#myModal5 input[name="statusDesc"]').val('偏重');
+                }
+                else{
+                    $('#myModal5 input[name="statusDesc"]').val('正常');
+                }
+            }
+        });
+        //计算bmi
+        function getBmi(){
+            var weight = $('#myModal5 input[name="dataWeightValue"]').val();
+            var height = $('#myModal5 input[name="dataHeightValue"]').val();
+            return decimal(weight/((height/100)*(height/100)),1);
+        }
+        //四舍五入
+        function decimal(num,v){
+            var vv = Math.pow(10,v);
+            return Math.round(num*vv)/vv;
+        }
+    </script>
+</block>

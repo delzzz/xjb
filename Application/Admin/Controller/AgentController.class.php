@@ -259,8 +259,10 @@ class AgentController extends AdminController
         if (!empty($param['targetId'])) {
             $res = deposit_agent($param['insId'], $param['targetId']);
             if ($res['success']) {
-                echo 111;
-                exit();
+                $this->success('操作成功');
+            }
+            else{
+                $this->error('操作失败');
             }
         }
     }
@@ -274,8 +276,10 @@ class AgentController extends AdminController
             $res = deposit_ins($param['insId'], $param['targetId']);
             //dump($res);
             if ($res['success']) {
-                echo 222;
-                exit();
+                $this->success('操作成功');
+            }
+            else{
+                $this->error('操作失败');
             }
         }
     }
