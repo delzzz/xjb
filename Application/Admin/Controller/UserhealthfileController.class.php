@@ -46,13 +46,12 @@ class UserhealthfileController extends AdminController
         $this->assign('glucose',$info['bloodGlucose']);
         $this->assign('oxygen',$info['bloodOxygen']);
         $this->assign('bmi',$info['bmi']);
-        //dump($info['healthBasic']);
         $this->assign('bType',C('BLOOD_TYPE'));
         $this->assign('medicalInsurance',C('MEDICAL_INSURANCE'));
         $this->assign('dataSrc',C('DATASRC'));
         $this->assign('dataSleepValue',C('DATASLEEPVALUE'));
         $this->assign('mCondition',C('MEASURE_CONDITION'));
-        $this->assign('consultRecorder',UID);
+        $this->assign('consultRecorder',$_SESSION['onethink_admin']['user_auth']['userName']);
         $this->assign('historyBreathe',$historyBreathe);
         $this->assign('historyPressure',$historyPressure);
         $this->assign('historyGlucose',$historyGlucose);
