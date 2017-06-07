@@ -117,7 +117,7 @@ class HealthController extends AdminController
 //            $status = 1;
 //        }
         //$url = C('INTERFACR_API')['medication_list'];
-        $url = 'http://192.168.1.250:8080/service/medication/remind/get/page?pageNo=' . $pageNo . '&pageSize=' .$pageSize ;
+        $url = $this->getUrl('health_medication_query').'?pageNo='. $pageNo . '&pageSize=' .$pageSize ;
         $param = think_json_encode(['status' => $status ]);
         $lists = $this->lists($url,$param);
         return $lists['itemList'];
@@ -125,7 +125,7 @@ class HealthController extends AdminController
 
     //获取详情
     function medication_detail($rid){
-        $url = 'http://192.168.1.250:8080/service/medication/remind/get/detail/'.$rid;
+        $url = $this->getUrl('health_medication_detail').$rid;
         $info = http($url,null,'get');
         return $info;
     }
@@ -134,7 +134,7 @@ class HealthController extends AdminController
     function closeRemind(){
         if(isset($_POST['remindId'])){
             $rid =  $_POST['remindId'];
-            $url = 'http://192.168.1.250:8080/service/medication/remind/close/'.$rid;
+            $url = $this->getUrl('close_remind').$rid;
             $data = json_encode(['closerId' => $_POST['closerId'], 'closeReason' => $_POST['closeReason']]);
             $info = http_post_json($url,$data);
             //dump($info);
@@ -184,7 +184,7 @@ class HealthController extends AdminController
 
     //老人信息列表
     function getInfoList($name=null){
-        $url = 'http://192.168.1.250:8080/service/people/get/basic/page?pageNo=1&pageSize=100';
+        $url = $this->getUrl('people_query').'?pageNo=1&pageSize=100';
         $param['name'] = $name;
         $list = http_post_json($url,json_encode($param));
         return $list['itemList'];
@@ -192,7 +192,7 @@ class HealthController extends AdminController
 
     //查询老人基础档案
     function getInfo($peopleId){
-        $url = 'http://192.168.1.250:8080/service/people/get/detail/'.$peopleId;
+        $url = $this->getUrl('people_detail').$peopleId;
         $res = http($url,null,'get');
         return $res['peopleBasic'];
     }
@@ -214,7 +214,7 @@ class HealthController extends AdminController
                 $trigger_arr = explode(';',$_POST['triggerTimes'][$key]);
                 $param['triggerTimes'] = array_filter($trigger_arr);
                // dump($param);
-                $url = 'http://192.168.1.250:8080/service/medication/remind/create';
+                $url = $this->getUrl('remind_add');
                 $jsonarr = json_encode($param);
                 $res = http_post_json($url,$jsonarr);
                 $msg = $res['success'];
