@@ -364,8 +364,8 @@
 }
 
 .active a span.fa {
-    text-align: right !important;
-    margin-right: 4px
+    /*text-align: right !important;*/
+    /*margin-right: 4px*/
 }
 
 .nav-sm .menu_section {
@@ -804,7 +804,7 @@ a {
 }
 
 .nav-md ul.nav.child_menu li:before {
-    background: #d90000;
+    /*background: #d90000;*/
     bottom: auto;
     content: "";
     height: 8px;

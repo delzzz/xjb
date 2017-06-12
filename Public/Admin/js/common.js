@@ -62,6 +62,8 @@
 
     //ajax post submit请求
     $('.ajax-post').click(function () {
+        //vilad();
+        //$("form").Validform();
         var target, query, form;
         var target_form = $(this).attr('target-form');
         var that = this;

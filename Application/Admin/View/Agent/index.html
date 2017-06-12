@@ -59,7 +59,7 @@
                                     <td class="a-center ">
                                     </td>
                                     <td class=" ">{:time_format($list['createTime']/1000,'Y-m-d')}</td>
-                                    <td class="">{$list.degree}级</td>
+                                    <td class="">{$list.degree|default=1}级</td>
                                     <td class=" ">{$list.orgName}</td>
                                     <td class=" ">{$list.insType_text}</td>
                                     <td class=" ">{$list.district}</td>

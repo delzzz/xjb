@@ -16,7 +16,7 @@ class NoticeController extends AdminController
 
     function del()
     {
-        $ids = I('post.noticeId');;
+        $ids = I('post.noticeId');
         $noticeId = json_encode(array_unique($ids));
         $url = $this->getUrl('notice_del');
         http_post_json($url, $noticeId);

@@ -33,7 +33,7 @@
                                 <a href="{:U('Index/index')} ">
                                     <div class="left_icon1"
                                          style="background: url('__IMG__/cishoo/sidebar-icon-1.png') no-repeat center 100%;"></div>
-                                    平台首页 <span class="fa fa-chevron-down"></span></a>
+                                    平台首页</a>
                             </li>
                             <li><a>
                                 <div class="left_icon2"
@@ -136,25 +136,6 @@
                     <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="">
-                        <a href="../../javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
-                           aria-expanded="false">
-                            <img src="__IMG__/img.jpg" alt="">{$orgName}
-                            <span class=" fa fa-angle-down"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-usermenu pull-right">
-                            <li><a href="../../javascript:;"> 签入</a></li>
-                            <li>
-                                <a href="../../javascript:;">
-                                    <!--<span class="badge bg-red pull-right">50%</span>-->
-                                    <span>签出</span>
-                                </a>
-                            </li>
-                            <li><a href="../../javascript:;">示忙</a></li>
-                            <li><a href="{:U('Public/logout')}"><i class="fa fa-sign-out pull-right"></i>退出登录</a></li>
-                        </ul>
-                    </li>
-
                     <li role="presentation" class="dropdown">
                         <a href="../../javascript:;" class="dropdown-toggle info-number pull-right"
                            data-toggle="dropdown" aria-expanded="false">
@@ -225,6 +206,46 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="">
+                        <a href="../../javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                           aria-expanded="false">
+                            <img src="__IMG__/img.jpg" alt="">{$orgName}
+                            <span class=" fa fa-angle-down"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-usermenu pull-right">
+                            <li><a href="../../javascript:;"> 签入</a></li>
+                            <li>
+                                <a href="../../javascript:;">
+                                    <!--<span class="badge bg-red pull-right">50%</span>-->
+                                    <span>签出</span>
+                                </a>
+                            </li>
+                            <li><a href="../../javascript:;">示忙</a></li>
+                            <li><a href="{:U('Public/logout')}"><i class="fa fa-sign-out pull-right"></i>退出登录</a></li>
+                        </ul>
+                    </li>
+                    <li class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="pull-right user-profile" data-toggle="" aria-expanded="false" style="margin-top: 10px;">
+                            您好！欢迎登陆 | <a class="color-red" href="{:U('Public/logout')}">退出</a>
+                            <!--<span class="fa fa-angle-down"></span>-->
+                        </div>
+                        <div class="color-red pull-right user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span>浙江医疗有限公司</span>
+                            <span>一级</span>
+                            <span>省级代理</span>
+                        </div>
+                        <ul class="dropdown-menu dropdown-usermenu pull-right">
+                            <li><a href="../../javascript:;"> 签入</a></li>
+                            <li>
+                                <a href="../../javascript:;">
+                                    <!--<span class="badge bg-red pull-right">50%</span>-->
+                                    <span>签出</span>
+                                </a>
+                            </li>
+                            <li><a href="../../javascript:;">示忙</a></li>
+                            <li><a href="{:U('Public/logout')}"><i class="fa fa-sign-out pull-right"></i>退出登录</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -232,6 +253,11 @@
         <block name="body"></block>
     </div>
 </div>
+
+<script type="text/javascript" src="http://validform.rjboy.cn/wp-content/themes/validform/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="http://validform.rjboy.cn/Validform/v5.1/Validform_v5.1_min.js"></script>
+<script type="text/javascript" src="__JS__/idcard.js"></script>
+
 <script src="__VENDOR__/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="__VENDOR__/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -246,6 +272,7 @@
 <script src="__VENDOR__/dropzone/dist/min/dropzone.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="__BUILD__/js/custom.min.js"></script>
+
 <!-- /内容区 -->
 <script type="text/javascript">
     (function () {
