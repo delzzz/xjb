@@ -525,6 +525,15 @@ function get_agent_info($agentId){
 }
 
 /**
+ * 根据机构id获取详情
+ */
+function get_ins_detail($insId){
+    $url = C('INTERFACR_API')['get_org_detail'] . $insId;
+    $res = http($url, null, 'GET');
+    return $res;
+}
+
+/**
  * @param $sourceId
  * @param $targetId
  * @return http 提交 代理商托管

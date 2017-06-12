@@ -30,7 +30,7 @@
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">代理商等级:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <select class="form-control" name="degree" value="{$info.degree}">
+                                        <select disabled="disabled" class="form-control" name="degree" value="{$info.degree}">
                                             <option value="-1">请选择</option>
                                             <option
                                             <?php if($info['degree'] == 1)echo 'selected';?> value="1">一级代理商</option>
@@ -46,13 +46,13 @@
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <div id="distpicker2" class="">
                                             <!--省-->
-                                            <select name="provinceId" class="data-province form-control"></select>
+                                            <select disabled="disabled" name="provinceId" class="data-province form-control"></select>
                                             <input type="hidden" id="hid_p" value="{$info.provinceId}"/>
                                             <!--市-->
-                                            <select name="cityId" class="data-city form-control"></select>
+                                            <select disabled="disabled" name="cityId" class="data-city form-control"></select>
                                             <input type="hidden" id="hid_c" value="{$info.cityId}"/>
                                             <!--县-->
-                                            <select name="countyId" class="data-district form-control"></select>
+                                            <select disabled="disabled" name="countyId" class="data-district form-control"></select>
                                             <input type="hidden" id="hid_co" value="{$info.countyId}"/>
                                         </div>
                                     </div>
@@ -169,7 +169,7 @@
                             <input type="hidden" id="imagePath" value="{$imgPathStr}" name="imagePath">
                             <input type="hidden" value="{$imgIdStr}" name="imgIdStr">
                         </div>
-                        <if condition="$editFlag eq 1">
+                        <div id="divOption1">
                             <!--变更页面显示-->
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="btn_edit">
                                 <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">账号托管</button>
@@ -179,7 +179,8 @@
                                 <button class="btn btn-lg btn-danger ajax-post" type="submit" target-form="form-label-left">保存页面</button>
                                 <button type="button" class="btn btn-lg btn-danger ">关闭页面</button>
                             </div>
-                            <else/>
+                        </div>
+                        <div id="divOption2">
                             <!--详情页面显示-->
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="btn_detail">
                                 <br>
@@ -189,7 +190,7 @@
                                 </button>
                                 <button type="button" class="btn btn-lg btn-danger ">导出为文档资料</button>
                             </div>
-                        </if>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -330,6 +331,7 @@
                                 <th class="column-title">设备数量</th>
                                 <th class="column-title">终端日活</th>
                                 <th class="column-title">亲属日活</th>
+                                <th class="column-title">操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -343,10 +345,11 @@
                                     <td class="column-title">200</td>
                                     <td class="column-title">2000</td>
                                     <td class="column-title">20000</td>
+                                    <td class=""><a href="{:U('agent2_detail',['insId'=>$list['institutionId']])}">查看详情</a></td>
                                 </tr>
                             </volist>
                             <tr class="page">
-                                <td colspan="8">{$_page}</td>
+                                <td colspan="9">{$_page}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -368,6 +371,7 @@
                                 <th class="column-title">设备数量</th>
                                 <th class="column-title">终端日活</th>
                                 <th class="column-title">亲属日活</th>
+                                <th class="column-title">操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -392,10 +396,11 @@
                                     <td class="column-title">5000</td>
                                     <td class="column-title">160</td>
                                     <td class="column-title">160</td>
+                                    <td class="column-title"><a href="{:U('agent_detail',['agentId'=>$agent['agentId']])}">查看详情</a></td>
                                 </tr>
                             </volist>
                             <tr class="page">
-                                <td colspan="8">{$_page2}</td>
+                                <td colspan="9">{$_page2}</td>
                             </tr>
                             <input type="hidden" id="totalPage" value="{$totalPage}"/>
                             </tbody>
@@ -432,7 +437,7 @@
         </div>
         </div>
     </form>
-    <form action="{:U('depositAgent')}" method="post" class="form-horizontal form-label-deposit">
+    <form action="{:U('index')}" method="post" class="form-horizontal form-label-deposit">
         <input type="hidden" name="agentId" value="{$agentId}"/>
         <!--弹框 托管-->
         <div class="modal fade row" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -487,7 +492,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger ajax-post" target-form="form-label-deposit">确定</button>
+                        <button type="submit" class="btn btn-danger" target-form="form-label-deposit">确定</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                     </div>
                 </div>
@@ -520,7 +525,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger col-lg-12 col-md-12 col-sm-12">确定</button>
+                    <button id="btnDailiShang" type="button" class="btn btn-danger col-lg-12 col-md-12 col-sm-12">确定</button>
                 </div>
             </div>
         </div>
@@ -528,6 +533,15 @@
 </block>
 <block name="script">
     <script>
+        //编辑页
+        $('#divOption1').hide();
+        $("#btnDailiShang").click(function () {
+            $('#f1 input:not(#logId),#f2 input,#f3 input,textarea,select').removeAttr('disabled');
+            $('.dropzone').removeAttr('disabled');
+            $('#divOption1').show();
+            $('#divOption2').hide();
+        });
+
         //返回匹配替换的字符串
         function replace_str(str, newstr) {
             var reg = /p2\/(.*?)\//;
@@ -613,15 +627,7 @@
                 }
             })
         });
-        //编辑页
-        var editFlag = $('#editFlag').val();
-        if (editFlag == 1) {
-            $('#f1 input:not(#logId)').removeAttr('disabled');
-            $('#f1 textarea').removeAttr('disabled');
-            $('#f2 input').removeAttr('disabled');
-            $('#f3 input').removeAttr('disabled');
-            $('.dropzone').removeAttr('disabled');
-        }
+
         //图片
         $(".dz-remove").click(function () {
             var pathStr = $("#imagePath").val();
