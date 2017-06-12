@@ -13,6 +13,65 @@ class AgentController extends AdminController
         if(I('get.p2')){
             $this->assign('current_p2',I('get.p2'));
         }
+        //机构托管
+        if(isset($_POST['hid_type'])){
+            $param = $_POST;
+            $insId = $param['insId'];
+            $targetId = $param['targetId'];
+            $url = $this->getUrl('get_org_detail') . $insId;
+            $info = http($url, null, 'GET');
+            $info['insType'] =  C('INS_TYPE')[$info['insType']];
+            //上级名称
+            $targetInfo = get_agent_info($info['agentId']);
+            if($param['hid_type'] == 1){
+                //托管给上级代理商
+                $targetName = $targetInfo['orgOrganization']['orgName'];
+
+            }
+            elseif ($param['hid_type'] == 2){
+                //托管给机构
+                $targetName = get_ins_detail($targetId)['orgOrganization']['orgName'];
+            }
+            //托管名称
+            $this->assign('targetName',$targetName);
+            $this->assign('agentName',$targetInfo['orgOrganization']['orgName']);
+            $this->assign('insInfo',$info);
+            $this->assign('sourceInfo',$info['orgOrganization']);
+        }
+        //代理商托管
+        if($_POST['agentId']){
+            $sourceId = $_POST['agentId'];
+            $targetId =$_POST['targetId'];
+            $sourceInfo = get_agent_info($sourceId);
+            $targetInfo = get_agent_info($targetId);
+            $area = new AreaController();
+            if($sourceInfo['degree'] == 1){
+                $sourceName = $area->getName($sourceInfo['provinceId'],0,1).'一级代理';
+            }
+            elseif ($sourceInfo['degree'] == 2){
+                $sourceName = $area->getName($sourceInfo['cityId'],$sourceInfo['provinceId'],2).'二级代理';
+            }
+            elseif($sourceInfo['degree'] == 3){
+                $sourceName = $area->getName($sourceInfo['countyId'],$sourceInfo['cityId'],3).'三级代理';
+            }
+
+            if($targetInfo['degree'] == 1){
+                $targetName = $area->getName($targetInfo['provinceId'],0,1).'一级代理';
+            }
+            elseif ($targetInfo['degree'] == 2){
+                $targetName = $area->getName($targetInfo['cityId'],$targetInfo['provinceId'],2).'二级代理';
+            }
+            elseif($targetInfo['degree'] == 3){
+                $sourceName = $area->getName($targetInfo['countyId'],$targetInfo['cityId'],3).'三级代理';
+            }
+            $this->assign('sourceName',$sourceInfo['orgOrganization']['orgName'].'('.$sourceName.')');
+            $this->assign('targetName',$targetInfo['orgOrganization']['orgName'].'('.$targetName.')');
+            //托管方的下级代理
+            $sourceAgents = $this->agentList2($sourceId);
+            $sourceIns = $this->orgList2($sourceId);
+            $this->assign('sourceAgents',$sourceAgents);
+            $this->assign('sourceIns',$sourceIns);
+        }
         $this->assign('agentList', $this->agentList());
         $this->assign('orgList', $this->orgList());
         $this->display();
@@ -22,7 +81,7 @@ class AgentController extends AdminController
     function agentList($agentId = 0)
     {
         if (empty($agentId)) {
-            $agentId = $this->agentId();
+            $agentId = $this->agentId()==''?1:$this->agentId();
         }
         $pageNo = I('get.p2', 1);
         $pageSize = C('PAGE_SIZE');
@@ -87,7 +146,6 @@ class AgentController extends AdminController
         }
         $pageNo = I('get.p', 1);
         $url = C('INTERFACR_API')['query_org'] . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
-
         $param = think_json_encode(['agentId' => $agentId]);
         $list = $this->lists($url, $param);
         foreach ($list['itemList'] as &$val) {
@@ -95,6 +153,15 @@ class AgentController extends AdminController
         }
         int_to_string($list['itemList'], ['insType' => C('INS_TYPE')]);
         return $list['itemList'];
+    }
+
+    function orgList2($agentId = 0){
+        if (empty($agentId)) {
+            $agentId = $this->agentId();
+        }
+        $list = org_list($agentId);
+        int_to_string($list, ['insType' => C('INS_TYPE')]);
+        return $list;
     }
 
     function agent()
@@ -251,39 +318,6 @@ class AgentController extends AdminController
         }
     }
 
-    //代理商托管代理商
-    function depositAgent()
-    {
-        $param = $_POST;
-        //托管
-        if (!empty($param['targetId'])) {
-            $res = deposit_agent($param['insId'], $param['targetId']);
-            if ($res['success']) {
-                $this->success('操作成功');
-            }
-            else{
-                $this->error('操作失败');
-            }
-        }
-    }
-
-    //机构托管代理商
-    function depositIns()
-    {
-        $param = $_POST;
-        //托管
-        if (!empty($param['targetId'])) {
-            $res = deposit_ins($param['insId'], $param['targetId']);
-            //dump($res);
-            if ($res['success']) {
-                $this->success('操作成功');
-            }
-            else{
-                $this->error('操作失败');
-            }
-        }
-    }
-
     function agent_detail()
     {
         if(I('get.p')){
@@ -296,19 +330,16 @@ class AgentController extends AdminController
         if ($agentId) {
             //编辑
             $this->meta_title = '代理商管理-代理商信息变更';
-            $this->assign('editFlag', 1);
+            $this->assign('agentId',$agentId);
         } else {
             //详情
             $this->meta_title = '代理商管理-代理商详情';
         }
-        //$agentId = $this->agentId();
         $info = get_agent_info($agentId);
         $this->assign('info', $info);
-        //$agentId = 4;
         $agentDetail = $this->getUrl('get_agent_detail');
         $manageInfo = http($agentDetail . $agentId, null, 'get');
         $this->assign('manageInfo', $manageInfo);
-        //dump($manageInfo);
         //图片
         $imgList = $manageInfo['orgOrganization']['imageList'];
         $imgPath = '';
@@ -331,15 +362,10 @@ class AgentController extends AdminController
         $this->assign('imgPathStr', $imgPath);
         $this->assign('imgIdStr', $imgIdStr);
         //当前机构
-        //$orgList = org_list($agentId);
-        //int_to_string($orgList, ['insType' => C('INS_TYPE')]);
         $this->assign('orgList', $this->orgList($agentId));
         //下级代理商                 agentId
         $agentChild = $this->agentList($agentId);
-        //dump($agentList);
         $this->assign('agentList', $agentChild);
-        //dump($this->orgList($agentId));
-        //dump($agentList);
         //可托管的代理商-同级/父级
         $parentId = $info['parentId'];
         if (!empty($parentId)) {
@@ -375,20 +401,31 @@ class AgentController extends AdminController
         $proAgents = array_merge($arr, $siblingAgents);
         return $proAgents;
     }
+    //机构托管代理商/机构
+    function getInsCollacations($agentId){
+        $siblingIns = org_list($agentId);
+        int_to_string($siblingIns, ['insType' => C('INS_TYPE')]);
+        $agentInfo = get_agent_info($agentId);
+        $area = new AreaController();
+        $agentInfo['area'] = $area->getFullName($agentInfo['provinceId'],$agentInfo['cityId'],$agentInfo['countyId'],$agentInfo['degree']);
+        $res['agent'] = $agentInfo;
+        $res['ins'] = $siblingIns;
+        return $res;
+    }
 
     //医疗机构详情页
     function agent2_detail()
     {
         $this->meta_title = '代理机构管理-机构详情';
         $insId = I('get.insId');
-        $url = $this->getUrl('get_org_detail') . $insId;
-        $option = http($url, null, 'GET');
+        $option = get_ins_detail($insId);
         $agentId = $option['agentId'];
         $parentId = get_agent_info($agentId)['parentId'];
         $this->assign('insId', $insId);
         //可托管代理商
         if (!empty($parentId)) {
-            $proAgents = $this->getCollacations($parentId, $agentId);
+            $proAgents = $this->getInsCollacations($agentId);
+            //dump($proAgents);
             $this->assign('proAgents', $proAgents);
         }
         $imgList = $option['orgOrganization']['imageList'];

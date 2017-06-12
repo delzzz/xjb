@@ -263,8 +263,7 @@
         </div>
 
         <!--弹框 托管-->
-        <form action="{:U('depositIns')}" method="post"  class="form-horizontal form-label-deposit">
-            <input type="hidden" name="insId" value="{$insId}"/>
+        <form action="{:U('index')}" method="post"  class="form-horizontal form-label-deposit">
             <div class="modal fade row" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document" style="width: 70%;">
                 <div class="modal-content" style="">
@@ -288,35 +287,61 @@
                                         <th class="column-title">代理公司地址</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <volist name="proAgents" id="agents">
-                                        <tr class="<if condition='$key %2 ==0'>even<else/>odd</if> pointer">
-                                            <td class="a-center ">
-                                                <input type="radio" class="flat" name="targetId" value="{$agents.agentId}">
-                                            </td>
-                                            <td class=" ">
-                                                <if condition="$agents.degree eq 1">
-                                                    一级(省)
-                                                    <elseif condition="$agents.degree eq 2"/>
-                                                    二级（市）
-                                                    <elseif condition="$agents.degree eq 3"/>
-                                                    三级(县)
-                                                    <else/>
-                                                    官方
-                                                </if>代理
-                                            </td>
-                                            <td class=" ">{$agents.provinceId}{$agents.cityId}{$agents.countyId}</td>
-                                            <td class=" ">{$agents.orgName}</td>
-                                            <td class=" ">{$agents.address}</td>
-                                        </tr>
+                                    <tbody id="inst1">
+                                    <tr class="pointer">
+                                        <td class="a-center ">
+                                            <input type="radio" class="flat" name="targetId" value="{$proAgents['agent']['agentId']}">
+                                        </td>
+                                        <td class=" ">
+                                            <if condition="$proAgents['agent']['degree'] eq 1">
+                                                一级(省)
+                                                <elseif condition="$proAgents['agent']['degree'] eq 2"/>
+                                                二级（市）
+                                                <elseif condition="$proAgents['agent']['degree'] eq 3"/>
+                                                三级(县)
+                                                <else/>
+                                                官方
+                                            </if>代理
+                                        </td>
+                                        <td class=" ">{$proAgents['agent']['area']}</td>
+                                        <td class=" ">{$proAgents['agent']['orgOrganization']['orgName']}</td>
+                                        <td class=" ">{$proAgents['agent']['orgOrganization']['address']}</td>
+                                    </tr>
+                                    </tbody>
+                                    <thead>
+                                    <tr class="headings">
+                                        <th>
+                                            操作
+                                        </th>
+                                        <th class="column-title">机构名称</th>
+                                        <th class="column-title">机构性质</th>
+                                        <th class="column-title">联系电话</th>
+                                        <th class="column-title">地址</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="inst2">
+                                    <volist name="proAgents['ins']" id="ins">
+                                    <tr class="<if condition='$key %2 ==0'>even<else/>odd</if> pointer">
+                                        <td class="a-center ">
+                                            <input type="radio" class="flat" name="targetId" value="{$ins.institutionId}">
+                                        </td>
+                                        <td class=" ">
+                                            {$ins.orgName}
+                                        </td>
+                                        <td class=" ">{$ins.insType_text}</td>
+                                        <td class=" ">{$ins.telephone}</td>
+                                        <td class=" ">{$ins.address}</td>
+                                    </tr>
                                     </volist>
                                     </tbody>
+                                    <input id="hid_type" type="hidden" name="hid_type" value="0"/>
+                                    <input type="hidden" name="insId" value="{$insId}"/>
                                 </table>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger ajax-post" target-form="form-label-deposit">确定</button>
+                        <button type="submit" class="btn btn-danger" target-form="form-label-deposit">确定</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                     </div>
                 </div>
@@ -364,13 +389,13 @@
 </block>
 
 <block name="script">
-    <script type="application/javascript">
+    <script>
         $(function () {
             $("input,textarea").attr('disabled', true);
             $("#btnDailiShang").click(function () {
                 $("#divOption").removeClass('hide');
                 $("input,textarea").attr('disabled', false);
-            })
+            });
         });
         Think.setValue("insType", "{$orgInfo.orgType}");
         $(".dz-remove").click(function () {
@@ -391,6 +416,12 @@
                 }
             })
             $(this).parent().remove();
+        });
+        $('#inst1 .flat').click(function(){
+            $('#hid_type').val(1);
+        });
+        $('#inst2 .flat').click(function(){
+            $('#hid_type').val(2);
         });
     </script>
 </block>
