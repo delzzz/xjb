@@ -281,7 +281,7 @@ class AgentController extends AdminController
             'userInfo' => ['password' => $param['password']]
         ];
         $orgAgent = [
-            'parentId' => $param['agentId'],
+            'parentId' => $this->agentId()==''?1:$this->agentId(),
             'degree' => $param['degree'],
             'provinceId' => $param['provinceId'],
             'cityId' => $param['cityId'],
@@ -305,6 +305,7 @@ class AgentController extends AdminController
             }
         }
         $res = json_encode($info);
+
         //编辑or创建
         if ($agentId) {
             $jsonData = http_post_json(C('INTERFACR_API')['agent_update'], $res);

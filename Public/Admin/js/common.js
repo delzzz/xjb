@@ -65,8 +65,8 @@
     $('.ajax-post').click(function () {
         var result = vilad();
         if (!result) {
-            return;
-        }
+           return;
+       }
         var target, query, form;
         var target_form = $(this).attr('target-form');
         var that = this;

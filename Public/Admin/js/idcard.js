@@ -5,7 +5,7 @@ $("form").Validform({
     tiptype: function (msg, o, cssctl) {
         var objtip = $("input[name='tele_phone'],input[name='telephone']");
         cssctl(objtip, o.type);
-        objtip.after("<div class='error color-red' style='font-size: 12px;'>" + msg + "</div>");
+        o.obj.after("<div class='error color-red' style='font-size: 12px;'>" + msg + "</div>");
     }
 }).addRule([
     {
@@ -18,10 +18,15 @@ $("form").Validform({
         datatype: "m",
         nullmsg: "请输入手机号码！",
         errormsg: "手机号码格式不正确"
+    }, {
+        ele: "input[name='mobile[]']",
+        datatype: "m",
+        nullmsg: "请输入手机号码！",
+        errormsg: "手机号码格式不正确"
     }
 ]);
 
-function IdentityCodeValid(code) {
+function IdentityCodeValid(code, obj) {
     $(".errro").remove();
     var city = {
         11: "北京",
@@ -97,8 +102,8 @@ function IdentityCodeValid(code) {
         }
     }
     if (!pass) {
-        $("input[name='idNumber']").parent("div").append("<div class='color-red error' style='font-size: 12px;'>" + tip + "</div>");
-// alert(tip);
+        // alert(pass);
+         obj.parent("div").append("<div class='color-red error' style='font-size: 12px;'>" + tip + "</div>");
     }
 
     return pass;
@@ -109,22 +114,22 @@ function IdentityCodeValid(code) {
 
 function IdCard(UUserCard, num) {
     if (num == 1) {
-//获取出生日期
+    //获取出生日期
         var birth = UUserCard.substring(6, 10) + "-" + UUserCard.substring(10, 12) + "-" + UUserCard.substring(12, 14);
         return birth;
     }
     if (num == 2) {
-//获取性别
+        //获取性别
         if (parseInt(UUserCard.substr(16, 1)) % 2 == 1) {
-//男
+        //男
             return "男";
         } else if (parseInt(UUserCard.substr(16, 1)) % 2 == 0) {
-//女
+            //女
             return "女";
         }
     }
     if (num == 3) {
-//获取年龄
+        //获取年龄
         var myDate = new Date();
         var month = myDate.getMonth() + 1;
         var day = myDate.getDate();
@@ -139,23 +144,28 @@ function IdCard(UUserCard, num) {
 $("input").focus(function () {
     $(this).next(".error").remove();
 })
-$("input[name='idNumber']").blur(function () {
+$("input[name='idNumber'],input[name='idNo[]']").blur(function () {
+    var obj = $(this);
     $(this).next(".error").remove();
     var val = $(this).val();
-    var num = IdentityCodeValid(val);
+    var num = IdentityCodeValid(val, obj);
     if (num) {
-        alert(IdCard(val, 1) + IdCard(val, 2) + IdCard(val, 3));
+       // alert(IdCard(val, 1) + IdCard(val, 2) + IdCard(val, 3));
     }
 });
 //验证方法入口
 function vilad() {
     var result = true;
     //验证身份证
-    $("input").each(function () {
+    $("input").each(function (i,item) {
+        // console.log(item);
         var name = $(this).attr("name");
         var val = $(this).val();
-        if (name == "idNumber") {
-            result = IdentityCodeValid(val);
+
+        if (name == "idNumber" || name == "idNo[]") {
+            var obj=$(this).eq(i);
+
+            result = IdentityCodeValid(val,obj);
             if (!result) {
                 $(this).next("span").remove();
                 $(this).parent().append("<span class='color-red error' style='font-size: 12px'>" + name + "身份证格式错误</span>")
@@ -174,7 +184,6 @@ function vilad() {
         var sel_val = $(this).val();
         if (sel_name != null && sel_name != undefined) {
             if (sel_val == -1 || sel_val == null) {
-                alert(sel_name + 'sel');
                 $(this).next("span").remove();
                 $(this).parent().append("<span class='color-red error'style='font-size: 12px'>" + sel_name + "此项为必选项</span>")
                 result = false;

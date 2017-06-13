@@ -428,7 +428,6 @@
                 url: "{:U('Area/getArea')}",
                 success: function (data) {
                     //console.log(data);
-                    console.log(Page.supplier_area);
                     data = eval('(' + data + ')');
                     var options = '<option value="0" selected="selected">--省--</option>';
                     for (var i = 0; i < data.length; i++) {
@@ -472,6 +471,9 @@
                     parentId: id
                 },
                 success: function (data) {
+                    if(data==null){
+                        return;
+                    }
                     for (var i = 0; i < data.length; i++) {
                         if (data[i].regionId == Page.hid_c || data[i].regionId == Page.hid_co) {
                             options += '<option value=' + data[i].regionId + ' selected="selected">' + data[i].name + '</option>';
@@ -486,6 +488,8 @@
         }
     }
     //代理商等级更改，地区联动更改
+    $('select[name="cityId"]').css('display','none');
+    $('select[name="countyId"]').css('display','none');
     function hide_area(degree){
         if(degree==1){
             $('select[name="provinceId"]').css('display','block');
