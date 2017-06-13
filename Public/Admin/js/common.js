@@ -61,14 +61,17 @@
     });
 
     //ajax post submit请求
+
     $('.ajax-post').click(function () {
-        //vilad();
-        //$("form").Validform();
+        var result = vilad();
+        if (!result) {
+            return;
+        }
         var target, query, form;
         var target_form = $(this).attr('target-form');
         var that = this;
         var nead_confirm = false;
-        if (($(this).attr('type') == 'submit') || (target = $(this).attr('href')) || (target = $(this).attr('url'))) {
+        if (($(this).attr('type') == 'submit') || ($(this).attr('type') == 'button') || (target = $(this).attr('href')) || (target = $(this).attr('url'))) {
             form = $('.' + target_form);
             if ($(this).attr('hide-data') === 'true') {//无数据时也可以使用的功能
                 form = $('.hide-data');
