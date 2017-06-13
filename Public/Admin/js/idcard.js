@@ -12,7 +12,7 @@ $("form").Validform({
         ele: "input[name='tele_phone']",
         datatype: "m",
         nullmsg: "请输入手机号码！",
-        errormsg: "手机号码格式不正确??"
+        errormsg: "手机号码格式不正确"
     }, {
         ele: "input[name='telephone']",
         datatype: "m",
@@ -147,12 +147,20 @@ $("input[name='idNumber']").blur(function () {
         alert(IdCard(val, 1) + IdCard(val, 2) + IdCard(val, 3));
     }
 });
-//身份证信息获取
+//验证方法入口
 function vilad() {
     var result = true;
+    //验证身份证
     $("input").each(function () {
         var name = $(this).attr("name");
         var val = $(this).val();
+        if (name == "idNumber") {
+            result = IdentityCodeValid(val);
+            if (!result) {
+                $(this).next("span").remove();
+                $(this).parent().append("<span class='color-red error' style='font-size: 12px'>" + name + "身份证格式错误</span>")
+            }
+        }
         if (name != null && name != undefined) {
             if (val == '') {
                 $(this).next("span").remove();
@@ -177,9 +185,6 @@ function vilad() {
 }
 
 $("input").blur(function () {
-    // alert($(this+"[name='name']").val(""));
-    // if($(this+":text").attr("name")!='idNumber'&& $("input:text").attr("name")!='tele_phone'&& $("input:text").attr("name")!='telephone'){
-    //     $(this).next(".error").remove();
     if ($(this).val() == '') {
         $(this).next(".error").remove();
         $(this).parent().append("<span class='color-red error' style='font-size: 12px'>此项为必填项</span>");
