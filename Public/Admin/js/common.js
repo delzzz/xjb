@@ -1,5 +1,5 @@
 //dom加载完成后执行的js
-;$(function () {
+$(function () {
 
     //全选的实现
     $(".check-all").click(function () {
@@ -112,7 +112,7 @@
             }
             $(that).addClass('disabled').attr('autocomplete', 'off').prop('disabled', true);
             $.post(target, query).success(function (data) {
-                console.log(data);
+                //data = eval('(' + data + ')');//转json
                 if (data.status == 1) {
                     if (data.url) {
                         alert(data.info);
