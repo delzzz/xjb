@@ -198,7 +198,8 @@
                                         <volist name="hobby" id="l">
                                             <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                                                 <label>
-                                                    <input type="checkbox" value="{$key}" {$l.checked} class="flat" name="hobby[]">
+                                                    <input type="checkbox" value="{$key}" {$l.checked} class="flat"
+                                                           name="hobby[]">
                                                     {$l.name}
                                                 </label>
                                             </div>
@@ -206,7 +207,8 @@
                                         <div class="checkbox col-md-12 col-sm-12 col-xs-12">
                                             <br>
                                             <label>
-                                                <input type="text" name="hobbyOtherDesc" value="{$peopleDetail.hobbyOtherDesc}" class="flat form-control"
+                                                <input type="text" name="hobbyOtherDesc"
+                                                       value="{$peopleDetail.hobbyOtherDesc}" class="flat form-control"
                                                        placeholder="其他">
                                             </label>
                                         </div>
@@ -278,7 +280,9 @@
                                                 <table class="table table-bordered text-center table-hover">
                                                     <thead class="bg-info ">
                                                     <tr>
-                                                        <th class="text-center">设备ID</th>
+                                                        <if condition="!empty($peopleBasic['peopleId'])">
+                                                            <th class="text-center">设备ID</th>
+                                                        </if>
                                                         <th class="text-center">名称</th>
                                                         <th class="text-center">设备编号</th>
                                                         <th class="text-center">安装日期</th>
@@ -287,12 +291,17 @@
                                                     <tbody class="tab2">
                                                     <volist name="peopleDeviceList" id="d">
                                                         <tr>
-                                                            <td><input type="text" name="peopleDeviceId[]"
-                                                                       class="flat form-control" value="{$d.peopleDeviceId}"></td>
+                                                            <if condition="!empty($peopleBasic['peopleId'])">
+                                                                <td><input type="text" name="peopleDeviceId[]"
+                                                                           class="flat form-control"
+                                                                           value="{$d.peopleDeviceId}"></td>
+                                                            </if>
                                                             <td><input type="text" name="deviceName[]"
-                                                                       class="flat form-control" value="{$d.deviceName}"></td>
+                                                                       class="flat form-control"
+                                                                       value="{$d.deviceName}"></td>
                                                             <td><input type="text" name="deviceIdentifier[]"
-                                                                       class="flat form-control" value="{$d.deviceIdentifier}"></td>
+                                                                       class="flat form-control"
+                                                                       value="{$d.deviceIdentifier}"></td>
                                                             <td>
                                                                 <input type="text" name="deviceInstallDate[]"
                                                                        class="form-control has-feedback-left"
@@ -349,7 +358,11 @@
         Think.setValue('economy', {$peopleBasic.economy});
         Think.setValue('healthStatus', {$peopleBasic.healthStatus});
         $(function () {
-            $(".has-feedback-left").datetimepicker();
+            $(".has-feedback-left").daterangepicker({singleDatePicker: !0,
+                singleClasses: "picker_4",
+                locale: {format: 'YYYY-MM-DD'}},function (a, b, c) {
+                console.log(a.toISOString(), b.toISOString(), c)
+            });
             Page.init();
         });
         $(".new_add").click(function () {
@@ -362,12 +375,17 @@
             return false;
         });
         $(".new_add2").click(function () {
-            $(".tab2").append('<tr><td>' +
-                    '<input type="text" name="peopleDeviceId[]" class="flat form-control"  value="" placeholder=""></td>' +
+            $(".tab2").append('<tr>' +
+                    '<if condition="!empty($peopleBasic['peopleId'])"><td><input type="text" name="peopleDeviceId[]" disabled="disabled" ignore="1" class="flat form-control"  value="" placeholder=""></td></if>' +
                     '<td><input type="text" name="deviceName[]" class="flat form-control"  value="" placeholder=""></td>' +
                     '<td><input type="text" name="deviceIdentifier[]" class="flat form-control"  value="" placeholder=""></td>' +
                     '<td><input type="text" name="deviceInstallDate[]" class="form-control has-feedback-left"  value="" placeholder=""></td>' +
                     '</tr>');
+            $(".has-feedback-left").daterangepicker({singleDatePicker: !0,
+                singleClasses: "picker_4",
+                locale: {format: 'YYYY-MM-DD'}},function (a, b, c) {
+                console.log(a.toISOString(), b.toISOString(), c)
+            });
             return false;
         });
         $("#image").on('change', function () {
