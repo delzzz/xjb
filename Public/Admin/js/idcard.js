@@ -154,10 +154,10 @@ $("input[name='idNumber'],input[name='idNo[]']").blur(function () {
     }
 });
 //验证方法入口
-function vilad() {
+function vilad(target_form) {
     var result = true;
     //验证身份证
-    $("input").each(function (i, item) {
+    $("."+target_form+" input").each(function (i, item) {
         // console.log(item);
         var name = $(this).attr("name");
         var val = $(this).val();
@@ -180,7 +180,7 @@ function vilad() {
             }
         }
     });
-    $("select").each(function () {
+    $("."+target_form+" select").each(function () {
         var sel_name = $(this).attr("name");
         var msgs = $(this).attr('ignore');
         var sel_val = $(this).val();

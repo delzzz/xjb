@@ -63,12 +63,12 @@ $(function () {
     //ajax post submit请求
 
     $('.ajax-post').click(function () {
-        var result = vilad();
-        if (!result) {
-           return;
-       }
         var target, query, form;
         var target_form = $(this).attr('target-form');
+        var result = vilad(target_form);
+        if (!result) {
+            return;
+        }
         var that = this;
         var nead_confirm = false;
         if (($(this).attr('type') == 'submit') || ($(this).attr('type') == 'button') || (target = $(this).attr('href')) || (target = $(this).attr('url'))) {

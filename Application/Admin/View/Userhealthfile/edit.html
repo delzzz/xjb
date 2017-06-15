@@ -164,8 +164,8 @@
                                 <input type="hidden" name="entryUserId" value="{$basic.entryUserId}"/>
 
                                 <button id="edit_btn" type="button" class="btn btn-lg btn-danger">编辑</button>
-                                <button id="sub" target-form="form-label-left" type="submit" class="btn btn-lg btn-danger ajax-post">保存</button>
-                                <button type="button" class="btn btn-lg btn-danger">关闭页面</button>
+                                <button id="sub" target-form="form-label-left" type="button" class="btn btn-lg btn-danger ajax-post">保存</button>
+                                <a href="{:U('health_list')}" class="btn btn-lg btn-danger">关闭页面</a>
                             </div>
                         </form>
                     </div>
@@ -1134,16 +1134,16 @@
         });
         //保存基础档案
         $('#sub').click(function () {
-            $.ajax({
-                url: "{:U('editFile')}",
-                type: 'POST',
-                async: true,
-                success: function (data) {
-                    $('#edit_btn').show();
-                    $('#sub').hide();
-                    $('#basic_file input,#basic_file textarea,#basic_file select').not("#entryTime,#name,#gender,#age,#orgName,#peopleIdentifier,#entryPeople").attr('disabled', 'disabled');
-                }
-            });
+//            $.ajax({
+//                url: "{:U('editFile')}",
+//                type: 'POST',
+//                async: true,
+//                success: function (data) {
+//                    $('#edit_btn').show();
+//                    $('#sub').hide();
+//                    $('#basic_file input,#basic_file textarea,#basic_file select').not("#entryTime,#name,#gender,#age,#orgName,#peopleIdentifier,#entryPeople").attr('disabled', 'disabled');
+//                }
+//            });
         });
         //新增咨询记录
         $('#consult_btn').click(function () {
