@@ -369,7 +369,6 @@ class AgentController extends AdminController
         } else {
             $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
         }
-        echo $agentId;
        if ($jsonData['success']) {
             $this->success('保存成功');
         }

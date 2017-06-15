@@ -171,8 +171,9 @@ function vilad() {
             }
         }
         if (name != null && name != undefined) {
+            var inputs_type = $(this).attr('type');
             var msgs = $(this).attr('ignore');
-            if (val == '' && msgs != 1) {
+            if (val == '' && msgs != 1 && inputs_type!='hidden') {
                 $(this).next("span").remove();
                 $(this).parent().append("<span class='color-red error' style='font-size: 12px'>" + name + "此项为必填项</span>")
                 result = false;
