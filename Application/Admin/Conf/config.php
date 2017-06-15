@@ -7,6 +7,7 @@
 // | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.thinkphp.cn>
 // +----------------------------------------------------------------------
 
+define('HOST', '192.168.1.250:8080');
 /**
  * 前台配置文件
  * 所有除开系统级别的前台配置
@@ -298,72 +299,84 @@ return array(
             '类型2',
         ],
 
+
+
     /*接口配置*/
     'INTERFACR_API' => array(
-        'agent_create' => 'http://192.168.1.250:8080/service/org/agent/create',//创建代理商
-        'agent_update' => 'http://192.168.1.250:8080/service/org/agent/update',//更新代理商
-        'get_agent_detail' => 'http://192.168.1.250:8080/service/org/agent/detail/',//获取代理商详情
-        'ins_create' => 'http://192.168.1.250:8080/service/org/ins/create', //创建机构
 
-        'ins_update' => 'http://192.168.1.250:8080/service/org/ins/update',//更新机构
-        'get_agent' => 'http://192.168.1.250:8080/service/org/agent/',//根据代理商ID获取代理商详情
-        'agent_collocation' => 'http://192.168.1.250:8080/service/org/agent/collocation/create',//代理商托管
-        'ins_collocation' => 'http://192.168.1.250:8080/service/org/ins/collocation',//机构托管
-
-        'get_user' => 'http://192.168.1.250:8080/service/user/get', //获取系统用户信息
-        'get_org_agent' => 'http://192.168.1.250:8080/service/org/agent/get',//获取代理商
-        'query_org' => 'http://192.168.1.250:8080/service/org/ins/query',//查询机构
-        'query_agent' => 'http://192.168.1.250:8080/service/org/agent/query',//查询代理商
-        'get_org_detail' => 'http://192.168.1.250:8080/service/org/ins/detail/', //获取机构详情
-        'del_pic' => 'http://192.168.1.250:8080/service/image/delete/',//删除图片
-
-        'zuoxi_detail' => 'http://192.168.1.250:8080/service/org/cs/',//获坐席息详情
-        'zuoxi_create' => 'http://192.168.1.250:8080/service/org/cs/create',//创建坐席
-        'zuoxi_query' => 'http://192.168.1.250:8080/service/org/cs/query',// 查询坐席
-        'zuoxi_update' => 'http://192.168.1.250:8080/service/org/cs/update',//更新坐席
-        'zuoxi_del' => 'http://192.168.1.250:8080/service/org/cs/delete/',//更新坐席
-
-        'get_area' => 'http://192.168.1.250:8080/service/region/get',//获取行政区域
-
-        'notice_query' => 'http://192.168.1.250:8080/service/notice/org/query',//查询代理通知
-        'notice_del' => 'http://192.168.1.250:8080/service/notice/org/delete',//删除通知
-
-        'health_query' => 'http://192.168.1.250:8080/service/health/breath/get/page',//健康监控
-        'history' => 'http://192.168.1.250:8080/service/health/breath/get/history/',  //历史数据
-
-        'people_query' => 'http://192.168.1.250:8080/service/people/get/basic/page', //老人基础档案分页查询
-        'people_save_edit' => 'http://192.168.1.250:8080/service/people/saveOrUpdate/detail', //新增/更新老人基础档案
-        'people_detail' => 'http://192.168.1.250:8080/service/people/get/detail/',//获取老人基础信息
-
-        'warning_list' => 'http://192.168.1.250:8080/service/device/alarm/get/page',//设备报警分页
-        'warning_detail' => 'http://192.168.1.250:8080/service/device/alarm/get/detail/',//获取设备详情
-        'warning_history' => 'http://192.168.1.250:8080/service/device/alarm/get/history/page', //设备历史报警
-        'warning_add_deal' => 'http://192.168.1.250:8080/service/device/alarm/process/create',//新增报警处理记录
-        'warning_deal' => 'http://192.168.1.250:8080/service/device/alarm/update',//报警处理
+        'agent_create' => 'http://'.HOST.'/service/org/agent/create',//创建代理商
+        'agent_update' => 'http://'.HOST.'/service/org/agent/update',//更新代理商
+        'get_agent_detail' => 'http://'.HOST.'/service/org/agent/detail/',//获取代理商详情
+        'ins_create' => 'http://'.HOST.'/service/org/ins/create', //创建机构
 
 
-        'health_medication_query'=>'http://192.168.1.250:8080/service/medication/remind/get/page',//用药提醒列表
-        'health_medication_detail'=>'http://192.168.1.250:8080/service/medication/remind/get/detail/',//用药提醒详情
-        'remind_add'=>'http://192.168.1.250:8080/service/medication/remind/create',//添加提醒用药
-        'close_remind'=>'http://192.168.1.250:8080/service/medication/remind/close/',//关闭提醒
-        'userhealth_query'=>'http://192.168.1.250:8080/service/health/get/page',//健康档案列表
-        'userhealth_detail'=>'http://192.168.1.250:8080/service/health/get/detail/',//健康档案详情
-        'userhealth_edit'=>'http://192.168.1.250:8080/service/health/saveOrUpdate/basic',//编辑健康档案
-        'consultant_add'=>'http://192.168.1.250:8080/service/health/consult/saveOrUpdate',//添加咨询
-        'breathe_add'=>'http://192.168.1.250:8080/service/health/breath/saveOrUpdate',//添加修改呼吸心率
-        'breathe_history'=>'http://192.168.1.250:8080/service/health/breath/get/all/',//呼吸心率历史
-        'breathe_del'=>'http://192.168.1.250:8080/service/health/breath/delete/',//删除呼吸
-        'pressure_add'=>'http://192.168.1.250:8080/service/health/bloodPressure/saveOrUpdate',//添加修改血压
-        'pressure_history'=>'http://192.168.1.250:8080/service/health/bloodPressure/get/all/',//血压历史
-        'pressure_del'=>'http://192.168.1.250:8080/service/health/bloodPressure/delete/',//删除血压
-        'glucose_add'=>'http://192.168.1.250:8080/service/health/bloodGlucose/saveOrUpdate',//血糖添加修改
-        'glucose_hisotory'=>'http://192.168.1.250:8080/service/health/bloodGlucose/get/all/',//血糖历史
-        'glucose_del'=>'http://192.168.1.250:8080/service/health/bloodGlucose/delete/',//血糖删除
-        'oxygen_add'=>'http://192.168.1.250:8080/service/health/bloodOxygen/saveOrUpdate',//添加修改血氧
-        'oxygen_history'=>'http://192.168.1.250:8080/service/health/bloodOxygen/get/all/',//血氧历史
-        'oxygen_del'=>'http://192.168.1.250:8080/service/health/bloodOxygen/delete/',//血氧删除
-        'bmi_add'=>'http://192.168.1.250:8080/service/health/bmi/saveOrUpdate',//bmi添加修改
-        'bmi_history'=>'http://192.168.1.250:8080/service/health/bmi/get/all/',//bmi历史
-        'bmi_del'=>'http://192.168.1.250:8080/service/health/bmi/delete/',//bmi删除
+        'ins_update' => 'http://'.HOST.'/service/org/ins/update',//更新机构
+        'get_agent' => 'http://'.HOST.'/service/org/agent/',//根据代理商ID获取代理商详情
+        'agent_collocation' => 'http://'.HOST.'/service/org/agent/collocation/create',//代理商托管
+        'ins_collocation' => 'http://'.HOST.'/service/org/ins/collocation',//机构托管
+
+
+        'get_user' => 'http://'.HOST.'/service/user/get', //获取系统用户信息
+        'get_org_agent' => 'http://'.HOST.'/service/org/agent/get',//获取代理商
+        'query_org' => 'http://'.HOST.'/service/org/ins/query',//查询机构
+        'query_agent' => 'http://'.HOST.'/service/org/agent/query',//查询代理商
+        'get_org_detail' => 'http://'.HOST.'/service/org/ins/detail/', //获取机构详情
+        'del_pic' => 'http://'.HOST.'/service/image/delete/',//删除图片
+
+
+        'zuoxi_detail' => 'http://'.HOST.'/service/org/cs/',//获坐席息详情
+        'zuoxi_create' => 'http://'.HOST.'/service/org/cs/create',//创建坐席
+        'zuoxi_query' => 'http://'.HOST.'/service/org/cs/query',// 查询坐席
+        'zuoxi_update' => 'http://'.HOST.'/service/org/cs/update',//更新坐席
+        'zuoxi_del' => 'http://'.HOST.'/service/org/cs/delete/',//更新坐席
+
+
+        'get_area' => 'http://'.HOST.'/service/region/get',//获取行政区域
+
+
+        'notice_query' => 'http://'.HOST.'/service/notice/org/query',//查询代理通知
+        'notice_del' => 'http://'.HOST.'/service/notice/org/delete',//删除通知
+
+
+        'health_query' => 'http://'.HOST.'/service/health/breath/get/page',//健康监控
+        'history' => 'http://'.HOST.'/service/health/breath/get/history/',  //历史数据
+
+
+        'people_query' => 'http://'.HOST.'/service/people/get/basic/page', //老人基础档案分页查询
+        'people_save_edit' => 'http://'.HOST.'/service/people/saveOrUpdate/detail', //新增/更新老人基础档案
+        'people_detail' => 'http://'.HOST.'/service/people/get/detail/',//获取老人基础信息
+
+
+        'warning_list' => 'http://'.HOST.'/service/device/alarm/get/page',//设备报警分页
+        'warning_detail' => 'http://'.HOST.'/service/device/alarm/get/detail/',//获取设备详情
+        'warning_history' => 'http://'.HOST.'/service/device/alarm/get/history/page', //设备历史报警
+        'warning_add_deal' => 'http://'.HOST.'/service/device/alarm/process/create',//新增报警处理记录
+        'warning_deal' => 'http://'.HOST.'/service/device/alarm/update',//报警处理
+
+
+
+        'health_medication_query' => 'http://'.HOST.'/service/medication/remind/get/page',//用药提醒列表
+        'health_medication_detail' => 'http://'.HOST.'/service/medication/remind/get/detail/',//用药提醒详情
+        'remind_add' => 'http://'.HOST.'/service/medication/remind/create',//添加提醒用药
+        'close_remind' => 'http://'.HOST.'/service/medication/remind/close/',//关闭提醒
+        'userhealth_query' => 'http://'.HOST.'/service/health/get/page',//健康档案列表
+        'userhealth_detail' => 'http://'.HOST.'/service/health/get/detail/',//健康档案详情
+        'userhealth_edit' => 'http://'.HOST.'/service/health/saveOrUpdate/basic',//编辑健康档案
+        'consultant_add' => 'http://'.HOST.'/service/health/consult/saveOrUpdate',//添加咨询
+        'breathe_add' => 'http://'.HOST.'/service/health/breath/saveOrUpdate',//添加修改呼吸心率
+        'breathe_history' => 'http://'.HOST.'/service/health/breath/get/all/',//呼吸心率历史
+        'breathe_del' => 'http://'.HOST.'/service/health/breath/delete/',//删除呼吸
+        'pressure_add' => 'http://'.HOST.'/service/health/bloodPressure/saveOrUpdate',//添加修改血压
+        'pressure_history' => 'http://'.HOST.'/service/health/bloodPressure/get/all/',//血压历史
+        'pressure_del' => 'http://'.HOST.'/service/health/bloodPressure/delete/',//删除血压
+        'glucose_add' => 'http://'.HOST.'/service/health/bloodGlucose/saveOrUpdate',//血糖添加修改
+        'glucose_hisotory' => 'http://'.HOST.'/service/health/bloodGlucose/get/all/',//血糖历史
+        'glucose_del' => 'http://'.HOST.'/service/health/bloodGlucose/delete/',//血糖删除
+        'oxygen_add' => 'http://'.HOST.'/service/health/bloodOxygen/saveOrUpdate',//添加修改血氧
+        'oxygen_history' => 'http://'.HOST.'/service/health/bloodOxygen/get/all/',//血氧历史
+        'oxygen_del' => 'http://'.HOST.'/service/health/bloodOxygen/delete/',//血氧删除
+        'bmi_add' => 'http://'.HOST.'/service/health/bmi/saveOrUpdate',//bmi添加修改
+        'bmi_history' => 'http://'.HOST.'/service/health/bmi/get/all/',//bmi历史
+        'bmi_del' => 'http://'.HOST.'/service/health/bmi/delete/',//bmi删除
     ),
 );

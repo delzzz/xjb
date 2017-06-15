@@ -8,6 +8,7 @@
 // +----------------------------------------------------------------------
 namespace Admin\Controller;
 
+use Admin\Model\FileModel;
 use Think\Upload\Driver\Qiniu\QiniuStorage;
 
 /**
@@ -20,7 +21,7 @@ class FileController extends AdminController
     /* 文件上传 */
     public function upload()
     {
-        $File = D('File');
+        $File = new FileModel();
         $info = $File->upload(
             $_FILES,
             C('DOWNLOAD_UPLOAD'),

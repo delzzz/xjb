@@ -16,24 +16,8 @@ use Think\Upload;
  * 文件模型
  * 负责文件的下载和上传
  */
-class FileModel extends Model
+class FileModel
 {
-    /**
-     * 文件模型自动完成
-     * @var array
-     */
-    protected $_auto = array(
-        array('create_time', NOW_TIME, self::MODEL_INSERT),
-    );
-
-    /**
-     * 文件模型字段映射
-     * @var array
-     */
-    protected $_map = array(
-        'type' => 'mime',
-    );
-
     /**
      * 文件上传
      * @param  array $files 要上传的文件列表（通常是$_FILES数组）

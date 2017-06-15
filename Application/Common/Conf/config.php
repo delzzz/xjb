@@ -40,12 +40,12 @@ return array(
     /* 数据库配置 */
     'DB_TYPE'   => 'mysqli', // 数据库类型
 //    'DB_HOST'   => '192.168.3.243', // 服务器地址
-    'DB_HOST'   => '127.0.0.1', // 服务器地址
-    'DB_NAME'   => 'webvr', // 数据库名
-    'DB_USER'   => 'root', // 用户名
-    'DB_PWD'    => 'admin',  // 密码
-    'DB_PORT'   => '3306', // 端口
-    'DB_PREFIX' => 'cishoo_', // 数据库表前缀
+    'DB_HOST'   => '', // 服务器地址
+    'DB_NAME'   => '', // 数据库名
+    'DB_USER'   => '', // 用户名
+    'DB_PWD'    => '',  // 密码
+    'DB_PORT'   => '', // 端口
+    'DB_PREFIX' => '', // 数据库表前缀
 
     /* 文档模型配置 (文档模型核心配置，请勿更改) */
     'DOCUMENT_MODEL_TYPE' => array(2 => '主题', 1 => '目录', 3 => '段落'),
