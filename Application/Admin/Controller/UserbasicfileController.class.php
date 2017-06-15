@@ -114,6 +114,7 @@ class UserbasicfileController extends AdminController
             'peopleDeviceList' => $peopleDeviceList
         ];
         $request = think_json_encode($data);
+        echo $request;die();
         $url = $this->getUrl('people_save_edit');
         $response = http_post_json($url, $request);
         if ($response) {

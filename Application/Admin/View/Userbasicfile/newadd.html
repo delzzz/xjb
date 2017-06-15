@@ -173,8 +173,8 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                     <img id="head_img" src="{$impage.imagePath|default='__IMG__/user.png'}">
-                                    <input type="hidden" name="imageId" value="{$impage.imageId}">
-                                    <input type="hidden" name="imagePath" value="{$impage.imagePath}">
+                                    <input type="hidden" ignore="1" name="imageId" value="{$impage.imageId}">
+                                    <input type="hidden" ignore="1" name="imagePath" value="{$impage.imagePath}">
 
                                     <div>
                                         <br>
@@ -236,7 +236,7 @@
                                                     <tbody class="tab1">
                                                     <volist name="peopleRelativeList" id="r">
                                                         <tr>
-                                                            <input type="hidden" name="relativeId[]"
+                                                            <input type="hidden" ignore="1" name="relativeId[]"
                                                                    value="{$r.relativeId}">
                                                             <td><input type="text" name="name[]"
                                                                        class="flat form-control"
@@ -321,10 +321,10 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
                                         <br>
-                                        <input type="hidden" value="{$peopleBasic.peopleId}" name="peopleId">
-                                        <input type="hidden" value="{$peopleDetail.peopleDetailId}"
+                                        <input type="hidden" ignore="1" value="{$peopleBasic.peopleId}" name="peopleId">
+                                        <input type="hidden" ignore="1" value="{$peopleDetail.peopleDetailId}"
                                                name="peopleDetailId">
-                                        <button type="submit" class="btn btn-danger ajax-post"
+                                        <button type="button" class="btn btn-danger ajax-post"
                                                 target-form="form-label-left">保存
                                         </button>
                                         <button class="btn btn-lg btn-danger"
@@ -353,7 +353,7 @@
             Page.init();
         });
         $(".new_add").click(function () {
-            $(".tab1").append('<tr><td>  <input type="hidden" name="relativeId[]">' +
+            $(".tab1").append('<tr><td>  <input type="hidden" ignore="1" name="relativeId[]">' +
                     '<input type="text" name="name[]" class="flat form-control"  value="" placeholder=""></td>' +
                     '<td><input type="text" name="telephone[]" class="flat form-control"  value="" placeholder=""></td>' +
                     '<td><input type="text" name="relation[]" class="flat form-control"  value="" placeholder=""></td>' +
