@@ -307,7 +307,7 @@ return array(
 
         'ins_update' => 'http://192.168.1.250:8080/service/org/ins/update',//更新机构
         'get_agent' => 'http://192.168.1.250:8080/service/org/agent/',//根据代理商ID获取代理商详情
-        'agent_collocation' => 'http://192.168.1.250:8080/service/org/agent/collocation',//代理商托管
+        'agent_collocation' => 'http://192.168.1.250:8080/service/org/agent/collocation/create',//代理商托管
         'ins_collocation' => 'http://192.168.1.250:8080/service/org/ins/collocation',//机构托管
 
         'get_user' => 'http://192.168.1.250:8080/service/user/get', //获取系统用户信息

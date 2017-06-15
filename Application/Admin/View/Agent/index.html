@@ -108,6 +108,7 @@
                                 <th class="column-title">设备数量</th>
                                 <th class="column-title">终端日活</th>
                                 <th class="column-title">亲属日活</th>
+                                <th class="column-title">状态</th>
                                 <th class="column-title">操作</th>
                             </tr>
                             </thead>
@@ -138,6 +139,7 @@
                                     <td class=" ">100台</td>
                                     <td class="a-right a-right ">5584</td>
                                     <td class=" ">160</td>
+                                    <td class=" ">{$agent['c_status']==true?托管中:正常}</td>
                                     <td class=""><a href="{:U('agent_detail',['agentId'=>$agent['agentId']])}">查看详情</a></td>
                                 </tr>
                                 <if condition="$agent['child'] neq ''">
@@ -198,7 +200,7 @@
                                 </if>
                             </volist>
                             <tr class="page">
-                                <td colspan="10">{$_page2}</td>
+                                <td colspan="11">{$_page2}</td>
                             </tr>
                             <input type="hidden" id="totalPage" value="{$totalPage}"/>
                             </tbody>
@@ -211,20 +213,21 @@
             </div>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <if condition="$sourceName neq null">
+            <if condition="$collocationInfo neq null">
+                <volist name="collocationInfo" id="cInfo">
                 <!--托管信息 如果未托管则隐藏-->
                 <div class="x_panel">
                     <div class="page-title bg-success" style="height: 60px;padding: 0">
                         <div class="title_left " style="">
                             <h3 style="margin: 0;line-height: 60px;">
-                                <div class="col-md-2 col-sm-2 ">{$sourceName}</div>
+                                <div class="col-md-3 col-sm-2 ">{$cInfo.sourceName}</div>
                                 <div class="col-md-1 col-sm-1 ">托管至</div>
-                                <div class="col-md-2 col-sm-2 "> {$targetName}</div>
+                                <div class="col-md-3 col-sm-2 "> {$cInfo.targetName}</div>
                             </h3>
                         </div>
                     </div>
                     <!--托管代理商的下级机构-->
-                    <if condition="$sourceIns neq null">
+                    <if condition="$cInfo['sourceIns'] neq null">
                         <div class="x_content clear">
                             <div class=""></div>
                             <br>
@@ -244,13 +247,13 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <volist name="sourceIns" id="sourceIns">
+                                    <volist name="cInfo['sourceIns']" id="sourceIns">
                                         <tr class="even pointer">
                                             <td class="column-title">{:time_format($sourceIns['createTime']/1000,'Y-m-d')}</td>
-                                            <td class="column-title">{$sourceIns.orgName}</td>
-                                            <td class="column-title">{$sourceIns.insType_text}</td>
-                                            <td class="column-title">{$sourceIns.address}</td>
-                                            <td class="column-title">{$sourceIns.telephone}</td>
+                                            <td class="column-title">{$sourceIns['orgName']}</td>
+                                            <td class="column-title">{$sourceIns['insType_text']}</td>
+                                            <td class="column-title">{$sourceIns['address']}</td>
+                                            <td class="column-title">{$sourceIns['telephone']}</td>
                                             <td class="column-title"></td>
                                             <td class="column-title"></td>
                                             <td class="column-title"></td>
@@ -264,7 +267,7 @@
                     </if>
                     <!--如果是代理托管则显示其下属代理、机构，如果是机构托管则隐藏下属代理、机构-->
                     <!--托管代理商的下级代理商-->
-                    <if condition="$sourceAgents neq null">
+                    <if condition="$cInfo['sourceAgents'] neq null">
                         <div class="x_content clear">
                             <div class="x_title">下属代理公司信息</div>
                             <br>
@@ -284,7 +287,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <volist name="sourceAgents" id="sourceAgents">
+                                    <volist name="cInfo['sourceAgents']" id="sourceAgents">
                                         <tr class="even pointer">
                                             <td class="column-title">{$sourceAgents.createTime|date='Y-m-d',###}</td>
                                             <td class="column-title">
@@ -311,77 +314,82 @@
                                 </table>
                             </div>
                         </div>
-                        <a href="">
-                            <button class="btn btn-sm btn-danger">确认托管</button>
-                        </a>
-                        <a href="">
-                            <button class="btn btn-sm btn-danger">重新托管</button>
-                        </a>
-                        <a href="">
-                            <button class="btn btn-sm btn-danger">取消托管</button>
-                        </a>
+                    </if>
+                    <if condition="$cInfo['type'] eq 1">
+                    <a href="{:U('confirmCollocation',array('collocationId'=>$cInfo['collocationId']))}">
+                        <button onclick="if(confirm('确认托管后，信息将无法变更，确定该操作吗?')==false)return false;" class="btn btn-sm btn-danger">确认托管</button>
+                    </a>
+                    <a href="{:U('agent_detail',array('agentId'=>$cInfo['sourceId'],'collocationId'=>$cInfo['collocationId'],'targetId'=>$cInfo['targetId']))}">
+                        <button onclick="if(confirm('是否重新托管?')==false)return false;" class="btn btn-sm btn-danger">重新托管</button>
+                    </a>
+                    <a href="{:U('cancelCollocation',array('collocationId'=>$cInfo['collocationId']))}">
+                        <button onclick="if(confirm('是否取消托管?')==false)return false;" class="btn btn-sm btn-danger">取消托管</button>
+                    </a>
                     </if>
                 </div>
+                </volist>
             </if>
-            <if condition="$sourceInfo neq null">
-                <div class="x_panel">
-                    <div class="x_content clear">
-                        <div class="page-title bg-success" style="height: 60px;padding: 0">
-                            <div class="title_left " style="">
-                                <h3 style="margin: 0;line-height: 60px;">
-                                    <div class="col-md-2 col-sm-2 ">{$sourceInfo.orgName}</div>
-                                    <div class="col-md-1 col-sm-1 ">托管至</div>
-                                    <div class="col-md-2 col-sm-2 "> {$targetName}</div>
-                                </h3>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="table-responsive">
-                            <table class="table table-striped jambo_table bulk_action" style="line-height: 54px;">
-                                <thead>
-                                <tr class="headings">
-                                    <th class="column-title">日期</th>
-                                    <th class="column-title">机构名称</th>
-                                    <th class="column-title">所属上级代理</th>
-                                    <th class="column-title">机构性质</th>
-                                    <th class="column-title">地址</th>
-                                    <th class="column-title">联系电话</th>
-                                    <th class="column-title">设备数量</th>
-                                    <th class="column-title">终端用户</th>
-                                    <th class="column-title">终端日活</th>
-                                    <th class="column-title">亲属日活</th>
-                                    <th class="column-title">操作</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr class="even pointer">
-                                    <td class="column-title">{:time_format($sourceInfo['createTime']/1000,'Y-m-d')}</td>
-                                    <td class="column-title">{$sourceInfo.orgName}</td>
-                                    <td class="column-title">{$agentName}</td>
-                                    <td class="column-title">{$insInfo.insType}</td>
-                                    <td class="column-title">{$sourceInfo.address}</td>
-                                    <td class="column-title">{$sourceInfo.telephone}</td>
-                                    <td class="column-title"></td>
-                                    <td class="column-title"></td>
-                                    <td class="column-title"></td>
-                                    <td class="column-title"></td>
-                                    <td class=""><a href="{:U('agent2_detail',['insId'=>$insInfo['institutionId']])}">查看详情</a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <a href="">
-                                <button class="btn btn-sm btn-danger">确认托管</button>
-                            </a>
-                            <a href="">
-                                <button class="btn btn-sm btn-danger">重新托管</button>
-                            </a>
-                            <a href="">
-                                <button class="btn btn-sm btn-danger">取消托管</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </if>
+
+            <!--机构托管-->
+            <!--<if condition="$sourceInfo neq null">-->
+                <!--<div class="x_panel">-->
+                    <!--<div class="x_content clear">-->
+                        <!--<div class="page-title bg-success" style="height: 60px;padding: 0">-->
+                            <!--<div class="title_left " style="">-->
+                                <!--<h3 style="margin: 0;line-height: 60px;">-->
+                                    <!--<div class="col-md-2 col-sm-2 ">{$sourceInfo.orgName}</div>-->
+                                    <!--<div class="col-md-1 col-sm-1 ">托管至</div>-->
+                                    <!--<div class="col-md-2 col-sm-2 "> {$targetName}</div>-->
+                                <!--</h3>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<br>-->
+                        <!--<div class="table-responsive">-->
+                            <!--<table class="table table-striped jambo_table bulk_action" style="line-height: 54px;">-->
+                                <!--<thead>-->
+                                <!--<tr class="headings">-->
+                                    <!--<th class="column-title">日期</th>-->
+                                    <!--<th class="column-title">机构名称</th>-->
+                                    <!--<th class="column-title">所属上级代理</th>-->
+                                    <!--<th class="column-title">机构性质</th>-->
+                                    <!--<th class="column-title">地址</th>-->
+                                    <!--<th class="column-title">联系电话</th>-->
+                                    <!--<th class="column-title">设备数量</th>-->
+                                    <!--<th class="column-title">终端用户</th>-->
+                                    <!--<th class="column-title">终端日活</th>-->
+                                    <!--<th class="column-title">亲属日活</th>-->
+                                    <!--<th class="column-title">操作</th>-->
+                                <!--</tr>-->
+                                <!--</thead>-->
+                                <!--<tbody>-->
+                                <!--<tr class="even pointer">-->
+                                    <!--<td class="column-title">{:time_format($sourceInfo['createTime']/1000,'Y-m-d')}</td>-->
+                                    <!--<td class="column-title">{$sourceInfo.orgName}</td>-->
+                                    <!--<td class="column-title">{$agentName}</td>-->
+                                    <!--<td class="column-title">{$insInfo.insType}</td>-->
+                                    <!--<td class="column-title">{$sourceInfo.address}</td>-->
+                                    <!--<td class="column-title">{$sourceInfo.telephone}</td>-->
+                                    <!--<td class="column-title"></td>-->
+                                    <!--<td class="column-title"></td>-->
+                                    <!--<td class="column-title"></td>-->
+                                    <!--<td class="column-title"></td>-->
+                                    <!--<td class=""><a href="{:U('agent2_detail',['insId'=>$insInfo['institutionId']])}">查看详情</a></td>-->
+                                <!--</tr>-->
+                                <!--</tbody>-->
+                            <!--</table>-->
+                            <!--<a href="">-->
+                                <!--<button class="btn btn-sm btn-danger">确认托管</button>-->
+                            <!--</a>-->
+                            <!--<a href="">-->
+                                <!--<button class="btn btn-sm btn-danger">重新托管</button>-->
+                            <!--</a>-->
+                            <!--<a href="">-->
+                                <!--<button class="btn btn-sm btn-danger">取消托管</button>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</if>-->
             <div class="x_panel">
                 <div class="row tile_count text-center">
                     <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
