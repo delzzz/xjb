@@ -332,6 +332,13 @@
         }
     });
     +function () {
+        /*日期控件*/
+        $(".has-feedback-left").daterangepicker({singleDatePicker: !0,
+            singleClasses: "picker_4",
+            locale: {format: 'YYYY-MM-DD'}},function (a, b, c) {
+            console.log(a.toISOString(), b.toISOString(), c)
+        });
+
         $("li").removeClass('active');
         $(".child_menu").css('display', 'none');
         var $window = $(window), $subnav = $("#subnav"), url;

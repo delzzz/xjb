@@ -358,11 +358,6 @@
         Think.setValue('economy', {$peopleBasic.economy});
         Think.setValue('healthStatus', {$peopleBasic.healthStatus});
         $(function () {
-            $(".has-feedback-left").daterangepicker({singleDatePicker: !0,
-                singleClasses: "picker_4",
-                locale: {format: 'YYYY-MM-DD'}},function (a, b, c) {
-                console.log(a.toISOString(), b.toISOString(), c)
-            });
             Page.init();
         });
         $(".new_add").click(function () {
