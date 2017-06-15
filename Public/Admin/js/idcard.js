@@ -103,7 +103,7 @@ function IdentityCodeValid(code, obj) {
     }
     if (!pass) {
         // alert(pass);
-         obj.parent("div").append("<div class='color-red error' style='font-size: 12px;'>" + tip + "</div>");
+        obj.parent("div").append("<div class='color-red error' style='font-size: 12px;'>" + tip + "</div>");
     }
 
     return pass;
@@ -114,14 +114,14 @@ function IdentityCodeValid(code, obj) {
 
 function IdCard(UUserCard, num) {
     if (num == 1) {
-    //获取出生日期
+        //获取出生日期
         var birth = UUserCard.substring(6, 10) + "-" + UUserCard.substring(10, 12) + "-" + UUserCard.substring(12, 14);
         return birth;
     }
     if (num == 2) {
         //获取性别
         if (parseInt(UUserCard.substr(16, 1)) % 2 == 1) {
-        //男
+            //男
             return "男";
         } else if (parseInt(UUserCard.substr(16, 1)) % 2 == 0) {
             //女
@@ -150,29 +150,29 @@ $("input[name='idNumber'],input[name='idNo[]']").blur(function () {
     var val = $(this).val();
     var num = IdentityCodeValid(val, obj);
     if (num) {
-       // alert(IdCard(val, 1) + IdCard(val, 2) + IdCard(val, 3));
+        // alert(IdCard(val, 1) + IdCard(val, 2) + IdCard(val, 3));
     }
 });
 //验证方法入口
 function vilad() {
     var result = true;
     //验证身份证
-    $("input").each(function (i,item) {
+    $("input").each(function (i, item) {
         // console.log(item);
         var name = $(this).attr("name");
         var val = $(this).val();
 
         if (name == "idNumber" || name == "idNo[]") {
-            var obj=$(this).eq(i);
-
-            result = IdentityCodeValid(val,obj);
+            var obj = $(this).eq(i);
+            result = IdentityCodeValid(val, obj);
             if (!result) {
                 $(this).next("span").remove();
                 $(this).parent().append("<span class='color-red error' style='font-size: 12px'>" + name + "身份证格式错误</span>")
             }
         }
         if (name != null && name != undefined) {
-            if (val == '') {
+            var msgs = $(this).attr('ignore');
+            if (val == '' && msgs != 1) {
                 $(this).next("span").remove();
                 $(this).parent().append("<span class='color-red error' style='font-size: 12px'>" + name + "此项为必填项</span>")
                 result = false;
@@ -181,8 +181,9 @@ function vilad() {
     });
     $("select").each(function () {
         var sel_name = $(this).attr("name");
+        var msgs = $(this).attr('ignore');
         var sel_val = $(this).val();
-        if (sel_name != null && sel_name != undefined) {
+        if (sel_name != null && sel_name != undefined && msgs != 1) {
             if (sel_val == -1 || sel_val == null) {
                 $(this).next("span").remove();
                 $(this).parent().append("<span class='color-red error'style='font-size: 12px'>" + sel_name + "此项为必选项</span>")
