@@ -196,19 +196,14 @@ function vilad(target_form) {
 }
 
 $("input").blur(function () {
-    if ($(this).val() == '') {
+    var msgs = $(this).attr('ignore');
+    if ($(this).val() == '' && msgs != 1) {
         $(this).next(".error").remove();
         $(this).parent().append("<span class='color-red error' style='font-size: 12px'>此项为必填项</span>");
     }
-    //
-    // }
 });
 
 $("input").focus(function () {
     $(this).next(".error").remove();
 });
-//$("button[type='button']").click(function () {
-//    vilad();
-//    $("form").Validform();
-//});
 // 表单非空校验

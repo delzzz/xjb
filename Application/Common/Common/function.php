@@ -32,6 +32,15 @@ function is_login()
 }
 
 /**
+ * @return 获取当前用户信息
+ */
+function get_user_auth()
+{
+    $user = session('user_auth');
+    return $user;
+}
+
+/**
  * 检测当前用户是否为管理员
  * @return boolean true-管理员，false-非管理员
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>

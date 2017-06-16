@@ -300,7 +300,6 @@ return array(
         ],
 
 
-
     /*接口配置*/
     'INTERFACR_API' => array(
 
@@ -330,17 +329,13 @@ return array(
         'zuoxi_update' => 'http://'.HOST.'/service/org/cs/update',//更新坐席
         'zuoxi_del' => 'http://'.HOST.'/service/org/cs/delete/',//更新坐席
 
-
         'get_area' => 'http://'.HOST.'/service/region/get',//获取行政区域
-
 
         'notice_query' => 'http://'.HOST.'/service/notice/org/query',//查询代理通知
         'notice_del' => 'http://'.HOST.'/service/notice/org/delete',//删除通知
 
-
         'health_query' => 'http://'.HOST.'/service/health/breath/get/page',//健康监控
         'history' => 'http://'.HOST.'/service/health/breath/get/history/',  //历史数据
-
 
         'people_query' => 'http://'.HOST.'/service/people/get/basic/page', //老人基础档案分页查询
         'people_save_edit' => 'http://'.HOST.'/service/people/saveOrUpdate/detail', //新增/更新老人基础档案
@@ -354,37 +349,37 @@ return array(
         'warning_deal' => 'http://'.HOST.'/service/device/alarm/update',//报警处理
 
 
+        'health_medication_query' => 'http://' . HOST . '/service/medication/remind/get/page',//用药提醒列表
+        'health_medication_detail' => 'http://' . HOST . '/service/medication/remind/get/detail/',//用药提醒详情
+        'remind_add' => 'http://' . HOST . '/service/medication/remind/create',//添加提醒用药
+        'close_remind' => 'http://' . HOST . '/service/medication/remind/close/',//关闭提醒
+        'userhealth_query' => 'http://' . HOST . '/service/health/get/page',//健康档案列表
+        'userhealth_detail' => 'http://' . HOST . '/service/health/get/detail/',//健康档案详情
+        'userhealth_edit' => 'http://' . HOST . '/service/health/saveOrUpdate/basic',//编辑健康档案
+        'consultant_add' => 'http://' . HOST . '/service/health/consult/saveOrUpdate',//添加咨询
+        'breathe_add' => 'http://' . HOST . '/service/health/breath/saveOrUpdate',//添加修改呼吸心率
+        'breathe_history' => 'http://' . HOST . '/service/health/breath/get/all/',//呼吸心率历史
+        'breathe_del' => 'http://' . HOST . '/service/health/breath/delete/',//删除呼吸
+        'pressure_add' => 'http://' . HOST . '/service/health/bloodPressure/saveOrUpdate',//添加修改血压
+        'pressure_history' => 'http://' . HOST . '/service/health/bloodPressure/get/all/',//血压历史
+        'pressure_del' => 'http://' . HOST . '/service/health/bloodPressure/delete/',//删除血压
+        'glucose_add' => 'http://' . HOST . '/service/health/bloodGlucose/saveOrUpdate',//血糖添加修改
+        'glucose_hisotory' => 'http://' . HOST . '/service/health/bloodGlucose/get/all/',//血糖历史
+        'glucose_del' => 'http://' . HOST . '/service/health/bloodGlucose/delete/',//血糖删除
+        'oxygen_add' => 'http://' . HOST . '/service/health/bloodOxygen/saveOrUpdate',//添加修改血氧
+        'oxygen_history' => 'http://' . HOST . '/service/health/bloodOxygen/get/all/',//血氧历史
+        'oxygen_del' => 'http://' . HOST . '/service/health/bloodOxygen/delete/',//血氧删除
+        'bmi_add' => 'http://' . HOST . '/service/health/bmi/saveOrUpdate',//bmi添加修改
+        'bmi_history' => 'http://' . HOST . '/service/health/bmi/get/all/',//bmi历史
+        'bmi_del' => 'http://' . HOST . '/service/health/bmi/delete/',//bmi删除
 
-        'health_medication_query' => 'http://'.HOST.'/service/medication/remind/get/page',//用药提醒列表
-        'health_medication_detail' => 'http://'.HOST.'/service/medication/remind/get/detail/',//用药提醒详情
-        'remind_add' => 'http://'.HOST.'/service/medication/remind/create',//添加提醒用药
-        'close_remind' => 'http://'.HOST.'/service/medication/remind/close/',//关闭提醒
-        'userhealth_query' => 'http://'.HOST.'/service/health/get/page',//健康档案列表
-        'userhealth_detail' => 'http://'.HOST.'/service/health/get/detail/',//健康档案详情
-        'userhealth_edit' => 'http://'.HOST.'/service/health/saveOrUpdate/basic',//编辑健康档案
-        'consultant_add' => 'http://'.HOST.'/service/health/consult/saveOrUpdate',//添加咨询
-        'breathe_add' => 'http://'.HOST.'/service/health/breath/saveOrUpdate',//添加修改呼吸心率
-        'breathe_history' => 'http://'.HOST.'/service/health/breath/get/all/',//呼吸心率历史
-        'breathe_del' => 'http://'.HOST.'/service/health/breath/delete/',//删除呼吸
-        'pressure_add' => 'http://'.HOST.'/service/health/bloodPressure/saveOrUpdate',//添加修改血压
-        'pressure_history' => 'http://'.HOST.'/service/health/bloodPressure/get/all/',//血压历史
-        'pressure_del' => 'http://'.HOST.'/service/health/bloodPressure/delete/',//删除血压
-        'glucose_add' => 'http://'.HOST.'/service/health/bloodGlucose/saveOrUpdate',//血糖添加修改
-        'glucose_hisotory' => 'http://'.HOST.'/service/health/bloodGlucose/get/all/',//血糖历史
-        'glucose_del' => 'http://'.HOST.'/service/health/bloodGlucose/delete/',//血糖删除
-        'oxygen_add' => 'http://'.HOST.'/service/health/bloodOxygen/saveOrUpdate',//添加修改血氧
-        'oxygen_history' => 'http://'.HOST.'/service/health/bloodOxygen/get/all/',//血氧历史
-        'oxygen_del' => 'http://'.HOST.'/service/health/bloodOxygen/delete/',//血氧删除
-        'bmi_add' => 'http://'.HOST.'/service/health/bmi/saveOrUpdate',//bmi添加修改
-        'bmi_history' => 'http://'.HOST.'/service/health/bmi/get/all/',//bmi历史
-        'bmi_del' => 'http://'.HOST.'/service/health/bmi/delete/',//bmi删除
+        'get_right' => 'http://' . HOST . '/service/perm/modules/',//获取某个用户所有权限
 
         'is_collocation'=>'http://'.HOST.'/service/org/agent/collocation/isCollocation',//查询代理商是否托管
         'target_collocation'=>'http://'.HOST.'/service/org/agent/collocation/queryTarget',//查询被托管代理商
         'source_collocation'=>'http://'.HOST.'/service/org/agent/collocation/querySource',//查询托管代理商
         'confirm_collocation'=>'http://'.HOST.'/service/org/agent/collocation/confirm',//确认托管
         'update_collocation'=>'http://'.HOST.'/service/org/agent/collocation/update',//重新托管
-        'cancel_collocation'=>'http:/'.HOST.'/service/org/agent/collocation/cancel',//取消托管
-
+        'cancel_collocation'=>'http://'.HOST.'/service/org/agent/collocation/cancel',//取消托管
     ),
 );
