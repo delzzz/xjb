@@ -1,4 +1,12 @@
 <extend name="Public/base"/>
+<block name='style'>
+    <style>
+    .table{
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+    </style>
+</block>
 <block name="body">
     <div class="right_col" role="main">
         <div class="col-md-12 col-xs-12">
@@ -164,8 +172,8 @@
                                 <input type="hidden" name="entryUserId" value="{$basic.entryUserId}"/>
 
                                 <button id="edit_btn" type="button" class="btn btn-lg btn-danger">编辑</button>
-                                <button id="sub" target-form="form-label-left" type="submit" class="btn btn-lg btn-danger ajax-post">保存</button>
-                                <button type="button" class="btn btn-lg btn-danger">关闭页面</button>
+                                <button id="sub" target-form="form-label-left" type="button" class="btn btn-lg btn-danger ajax-post">保存</button>
+                                <a href="{:U('health_list')}" class="btn btn-lg btn-danger">返回</a>
                             </div>
                         </form>
                     </div>
@@ -500,6 +508,7 @@
     </div>
     <!--增加记录-->
     <div class="modal fade" id="myModal" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <form method="post" action="{:U('addConsult')}" class="form-horizontal form-consult">
         <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
             <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
                 <div class="modal-header">
@@ -511,31 +520,33 @@
                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">录入人员:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input id="entryUserName" value="{$consultRecorder}" type="text" class="form-control"/>
+                            <input name="entryUserName" id="entryUserName" value="{$consultRecorder}" type="text" class="form-control"/>
                         </div>
                     </div>
                     <br>
                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">说明:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input id="consultingDesc" type="text" class="form-control" placeholder="">
+                            <input name="consultingDesc" id="consultingDesc" type="text" class="form-control" placeholder="">
                         </div>
                     </div>
                     <br>
                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">咨询记录:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input id="remark" type="text" class="form-control" placeholder="">
+                            <input name="remark" id="remark" type="text" class="form-control" placeholder="">
                         </div>
                     </div>
                     <br>
                 </div>
                 <div class="modal-footer">
+                    <input type="hidden" name='healthId' value="{$basic.healthId}"/>
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button id="consult_btn" type="button" class="btn btn-danger">保存</button>
+                    <button target-form="form-consult"  id="consult_btn" type="button" class="btn btn-danger ajax-post">保存</button>
                 </div>
             </div>
         </div>
+        </form>
     </div>
     <!--呼吸睡眠心率-->
     <div class="modal fade" id="myModal1" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -544,7 +555,7 @@
             <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel2">呼吸心率</h4>
+                    <h4 class="modal-title" id="myModalLabel2">老人呼吸、心率、睡眠</h4>
                     <br>
                     <input type="hidden" name='healthId' value="{$basic.healthId}"/>
                     <input type="hidden" name="breatheId" id="breatheId" value="{$breathe.breatheId}"/>
@@ -610,7 +621,7 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                     <!--<button id="breathe_btn" type="button" class="btn btn-danger">保存</button>-->
                     <!--<button id="edit_breathe_btn" type="button" class="btn btn-danger">保存</button>-->
-                    <button id="add_breathe" type="button" target-form="form-breathe" class="btn btn-lg btn-danger ajax-post">保存</button>
+                    <button id="add_breathe" type="button" target-form="form-breathe" class="btn btn-danger ajax-post">保存</button>
                 </div>
             </div>
         </div>
@@ -685,7 +696,7 @@
                         <input id="hid_datasrc2" value="{$pressure.dataSrc}" type="hidden"/>
                         <input id="hid_measureTime" value="{:time_format($pressure['measureTime']/1000,'Y-m-d')}" type="hidden"/>
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button id="sub_pressure" type="button" target-form="form-pressure" class="btn btn-lg btn-danger ajax-post">保存</button>
+                        <button id="sub_pressure" type="button" target-form="form-pressure" class="btn btn-danger ajax-post">保存</button>
                     </div>
                 </div>
             </div>
@@ -767,7 +778,7 @@
                     <input id="hid_measureTime2" value="{:time_format($glucose['measureTime']/1000,'Y-m-d')}" type="hidden"/>
                     <input id="hid_statusDesc" value="{$glucose['statusDesc']}" type="hidden"/>
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="submit" target-form="form-glucose" class="btn btn-lg btn-danger ajax-post">保存</button>
+                    <button type="button" target-form="form-glucose" class="btn btn-danger ajax-post">保存</button>
                 </div>
             </div>
         </div>
@@ -819,7 +830,7 @@
                     <input id="hid_datasrc4" value="{$oxygen.dataSrc}" type="hidden"/>
                     <input id="hid_measureTime3" value="{:time_format($oxygen['measureTime']/1000,'Y-m-d')}" type="hidden"/>
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="submit" target-form="form-oxygen" class="btn btn-lg btn-danger ajax-post">保存</button>
+                    <button type="button" target-form="form-oxygen" class="btn btn-danger ajax-post">保存</button>
                 </div>
             </div>
         </div>
@@ -895,7 +906,7 @@
                     <input id="hid_datasrc5" value="{$bmi.dataSrc}" type="hidden"/>
                     <input id="hid_measureTime4" value="{:time_format($bmi['measureTime']/1000,'Y-m-d')}" type="hidden"/>
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="submit" target-form="form-bmi" class="btn btn-lg btn-danger ajax-post">保存</button>
+                    <button type="button" target-form="form-bmi" class="btn btn-danger ajax-post">保存</button>
                 </div>
             </div>
         </div>
@@ -1134,44 +1145,46 @@
         });
         //保存基础档案
         $('#sub').click(function () {
-            $.ajax({
-                url: "{:U('editFile')}",
-                type: 'POST',
-                async: true,
-                success: function (data) {
-                    $('#edit_btn').show();
-                    $('#sub').hide();
-                    $('#basic_file input,#basic_file textarea,#basic_file select').not("#entryTime,#name,#gender,#age,#orgName,#peopleIdentifier,#entryPeople").attr('disabled', 'disabled');
-                }
-            });
+//            $.ajax({
+//                url: "{:U('editFile')}",
+//                type: 'POST',
+//                async: true,
+//                success: function (data) {
+//                    $('#edit_btn').show();
+//                    $('#sub').hide();
+//                    $('#basic_file input,#basic_file textarea,#basic_file select').not("#entryTime,#name,#gender,#age,#orgName,#peopleIdentifier,#entryPeople").attr('disabled', 'disabled');
+//                }
+//            });
         });
         //新增咨询记录
-        $('#consult_btn').click(function () {
-            $.ajax({
-                url: "{:U('addConsult')}",
-                data: {
-                    'healthId': $('#healthId').val(),
-                    'consultingDesc': $('#consultingDesc').val(),
-                    'remark': $('#remark').val(),
-                    'entryUserName': $('#entryUserName').val(),
-                },
-                type: 'POST',
-                success: function (data) {
-                    if (data == 1) {
-                        alert('添加咨询记录成功！');
-                        window.location.reload(true);
-                    }
-                    else {
-                        alert('添加失败！')
-                    }
-                }
-            });
-        });
+//        $('#consult_btn').click(function () {
+//            $.ajax({
+//                url: "{:U('addConsult')}",
+//                data: {
+//                    'healthId': $('#healthId').val(),
+//                    'consultingDesc': $('#consultingDesc').val(),
+//                    'remark': $('#remark').val(),
+//                    'entryUserName': $('#entryUserName').val(),
+//                },
+//                type: 'POST',
+//                success: function (data) {
+//                    if (data == 1) {
+//                        alert('添加咨询记录成功！');
+//                        window.location.reload(true);
+//                    }
+//                    else {
+//                        alert('添加失败！')
+//                    }
+//                }
+//            });
+//        });
 
-        //按钮隐藏显示
+        //呼吸心率按钮隐藏显示
         if ($('#breatheId').val() == '') {
             $('#breathe_edit').attr('disabled', 'disabled');
             $('#breathe_del').attr('disabled', 'disabled');
+            $('#breathe_del').removeAttr('href');
+            $('#breathe_del').removeAttr('onclick');
         }
 
         //判断新增还是修改呼吸心率
@@ -1203,6 +1216,8 @@
         if ($('#bloodPressureId').val() == '') {
             $('#pressure_edit').attr('disabled', 'disabled');
             $('#pressure_del').attr('disabled', 'disabled');
+            $('#pressure_del').removeAttr('href');
+            $('#pressure_del').removeAttr('onclick');
         }
         $('#add_pressure,#pressure_edit').each(function (i, item) {
             $(this).bind("click", function () {
@@ -1253,6 +1268,8 @@
         if ($('#bloodGlucoseId').val() == '') {
             $('#glucose_edit').attr('disabled', 'disabled');
             $('#glucose_del').attr('disabled', 'disabled');
+            $('#glucose_del').removeAttr('href');
+            $('#glucose_del').removeAttr('onclick');
         }
         $('#add_glucose,#glucose_edit').each(function (i, item) {
             $(this).bind("click", function () {
@@ -1307,6 +1324,8 @@
         if ($('#bloodOxygenId').val() == '') {
             $('#edit_oxygen').attr('disabled', 'disabled');
             $('#oxygen_del').attr('disabled', 'disabled');
+            $('#oxygen_del').removeAttr('href');
+            $('#oxygen_del').removeAttr('onclick');
         }
         $('#add_oxygen,#edit_oxygen').each(function (i, item) {
             $(this).bind("click", function () {
@@ -1325,9 +1344,11 @@
             });
         });
         //判断新增还是修改bmi
-        if ($('#bloodOxygenId').val() == '') {
+        if ($('#bmiId').val() == '') {
             $('#edit_bmi').attr('disabled', 'disabled');
             $('#bmi_del').attr('disabled', 'disabled');
+            $('#bmi_del').removeAttr('href');
+            $('#bmi_del').removeAttr('onclick');
         }
         $('#add_bmi,#edit_bmi').each(function (i, item) {
             $(this).bind("click", function () {
@@ -1359,8 +1380,6 @@
             }
             var bmi =getBmi();
             $('#myModal5 input[name="dataBmiValue"]').val(bmi);
-            var statusDesc = $('#myModal5 input[name="statusDesc"]').val();
-            if(statusDesc==''){
                 if(bmi<18.5){
                     $('#myModal5 input[name="statusDesc"]').val('过轻');
                 }
@@ -1376,7 +1395,6 @@
                 else{
                     $('#myModal5 input[name="statusDesc"]').val('正常');
                 }
-            }
         });
         //计算bmi
         function getBmi(){

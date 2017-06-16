@@ -86,13 +86,12 @@ class UserhealthfileController extends AdminController
             $param = $_POST;
             $url=$this->getUrl('consultant_add');
             $param['consultingId'] = null;
-            //dump($param);exit();
             $res = http_post_json($url,json_encode($param));
             if($res['success']){
-                echo 1;exit();
+                $this->success('添加咨询成功!');
             }
             else{
-                echo 2;exit();
+                $this->error('添加咨询失败!');
             }
         }
     }

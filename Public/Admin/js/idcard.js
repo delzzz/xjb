@@ -154,10 +154,10 @@ $("input[name='idNumber'],input[name='idNo[]']").blur(function () {
     }
 });
 //验证方法入口
-function vilad() {
+function vilad(target_form) {
     var result = true;
     //验证身份证
-    $("input").each(function (i, item) {
+    $("."+target_form+" input").each(function (i, item) {
         // console.log(item);
         var name = $(this).attr("name");
         var val = $(this).val();
@@ -171,15 +171,16 @@ function vilad() {
             }
         }
         if (name != null && name != undefined) {
+            var inputs_type = $(this).attr('type');
             var msgs = $(this).attr('ignore');
-            if (val == '' && msgs != 1) {
+            if (val == '' && msgs != 1 && inputs_type!='hidden') {
                 $(this).next("span").remove();
                 $(this).parent().append("<span class='color-red error' style='font-size: 12px'>" + name + "此项为必填项</span>")
                 result = false;
             }
         }
     });
-    $("select").each(function () {
+    $("."+target_form+" select").each(function () {
         var sel_name = $(this).attr("name");
         var msgs = $(this).attr('ignore');
         var sel_val = $(this).val();
