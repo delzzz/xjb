@@ -378,5 +378,13 @@ return array(
         'bmi_add' => 'http://'.HOST.'/service/health/bmi/saveOrUpdate',//bmi添加修改
         'bmi_history' => 'http://'.HOST.'/service/health/bmi/get/all/',//bmi历史
         'bmi_del' => 'http://'.HOST.'/service/health/bmi/delete/',//bmi删除
+
+        'is_collocation'=>'http://'.HOST.'/service/org/agent/collocation/isCollocation',//查询代理商是否托管
+        'target_collocation'=>'http://'.HOST.'/service/org/agent/collocation/queryTarget',//查询被托管代理商
+        'source_collocation'=>'http://'.HOST.'/service/org/agent/collocation/querySource',//查询托管代理商
+        'confirm_collocation'=>'http://'.HOST.'/service/org/agent/collocation/confirm',//确认托管
+        'update_collocation'=>'http://'.HOST.'/service/org/agent/collocation/update',//重新托管
+        'cancel_collocation'=>'http:/'.HOST.'/service/org/agent/collocation/cancel',//取消托管
+
     ),
 );

@@ -559,8 +559,7 @@ function deposit_ins($insId,$agentId){
  * @return bool 查询代理商是否托管
  */
 function is_collocation($agentId){
-    //$url = C('INTERFACR_API')['is_collocation'];
-    $url = 'http://192.168.1.250:8080/service/org/agent/collocation/isCollocation';
+    $url = C('INTERFACR_API')['is_collocation'];
     $res = http($url,['agentId'=>$agentId],'get');
     return $res;
 }
@@ -570,8 +569,7 @@ function is_collocation($agentId){
  * @return array 查询被托管代理商
  */
 function get_queryTarget($agentId){
-    //$url = C('INTERFACR_API')['target_collocation'];
-    $url = 'http://192.168.1.250:8080/service/org/agent/collocation/queryTarget';
+    $url = C('INTERFACR_API')['target_collocation'];
     $res = http($url,['agentId'=>$agentId],'get');
     return $res;
 }
@@ -581,8 +579,7 @@ function get_queryTarget($agentId){
  * @return array 查询托管代理商
  */
 function get_querySource($agentId){
-    //$url = C('INTERFACR_API')['source_collocation'];
-    $url = 'http://192.168.1.250:8080/service/org/agent/collocation/querySource';
+    $url = C('INTERFACR_API')['source_collocation'];
     $res = http($url,['agentId'=>$agentId],'get');
     return $res;
 }
@@ -592,8 +589,7 @@ function get_querySource($agentId){
  * @return array 确认托管
  */
 function confirm_collocation($collocationId){
-    //$url = C('INTERFACR_API')['confirm_collocation'];
-    $url = 'http://192.168.1.250:8080/service/org/agent/collocation/confirm';
+    $url = C('INTERFACR_API')['confirm_collocation'];
     $res = http($url,['collocationId'=>$collocationId],'get');
     return $res;
 }
@@ -603,8 +599,7 @@ function confirm_collocation($collocationId){
  * @return array 重新托管
  */
 function update_collocation($collocationId,$targetId){
-    //$url = C('INTERFACR_API')['update_collocation'];
-    $url = 'http://192.168.1.250:8080/service/org/agent/collocation/update';
+    $url = C('INTERFACR_API')['update_collocation'];
     $res = http($url,['collocationId'=>$collocationId,'targetId'=>$targetId],'get');
     return $res;
 }
@@ -614,8 +609,7 @@ function update_collocation($collocationId,$targetId){
  * @return array 取消托管
  */
 function cancel_collocation($collocationId){
-    //$url = C('INTERFACR_API')['confirm_collocation'];
-    $url = 'http://192.168.1.250:8080/service/org/agent/collocation/cancel';
+    $url = C('INTERFACR_API')['cancel_collocation'];
     $res = http($url,['collocationId'=>$collocationId],'get');
     return $res;
 }
