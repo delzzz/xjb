@@ -225,6 +225,7 @@ class AgentController extends AdminController
     function agent()
     {
         $this->meta_title = "保存代理商信息";
+        $this->getDeviceauth();
         $this->display('agent');
     }
 
@@ -564,6 +565,14 @@ class AgentController extends AdminController
         else{
             $this->error('取消托管失败!');
         }
+    }
+
+    //获取设备权限
+    function getDeviceauth(){
+        //$userType = $_SESSION['onethink_admin']['user_auth']['userType'];
+        $userType=1;
+        $res = get_device_auth($userType);
+        dump($res);
     }
 
 }

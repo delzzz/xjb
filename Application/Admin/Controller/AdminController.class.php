@@ -38,7 +38,6 @@ class AdminController extends Controller
 
     protected function agentId()
     {
-        return 7;
         return $this->orgAgent()['agentId'];
     }
 

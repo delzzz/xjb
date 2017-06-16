@@ -1372,8 +1372,6 @@
             }
             var bmi =getBmi();
             $('#myModal5 input[name="dataBmiValue"]').val(bmi);
-            var statusDesc = $('#myModal5 input[name="statusDesc"]').val();
-            if(statusDesc==''){
                 if(bmi<18.5){
                     $('#myModal5 input[name="statusDesc"]').val('过轻');
                 }
@@ -1389,7 +1387,6 @@
                 else{
                     $('#myModal5 input[name="statusDesc"]').val('正常');
                 }
-            }
         });
         //计算bmi
         function getBmi(){

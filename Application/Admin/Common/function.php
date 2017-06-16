@@ -613,3 +613,10 @@ function cancel_collocation($collocationId){
     $res = http($url,['collocationId'=>$collocationId],'get');
     return $res;
 }
+
+//获取设备权限
+function get_device_auth($role){
+    $url='http://192.168.1.250:8080/service/perm/modules/support/'.$role;
+    $res = http($url,null,'get');
+    return $res;
+}
