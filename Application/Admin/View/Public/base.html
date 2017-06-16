@@ -29,84 +29,25 @@
                     <div class="menu_section">
                         <!--<h3>General</h3>-->
                         <ul class="nav side-menu">
-                            <li>
-                                <a href="{:U('Index/index')} ">
-                                    <div class="left_icon1"
-                                         style="background: url('__IMG__/cishoo/sidebar-icon-1.png') no-repeat center 100%;"></div>
-                                    平台首页</a>
-                            </li>
-                            <li><a>
-                                <div class="left_icon2"
-                                     style="background: url('__IMG__/cishoo/sidebar-icon-2.png') no-repeat center 100%;"></div>
-                                数据统计 <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="{:U('Statistics/add')}">新增统计</a></li>
-                                    <li><a href="{:U('Statistics/silent')}">沉默用户</a></li>
-                                    <li><a href="{:U('Statistics/index')}">基本数据</a></li>
-                                </ul>
-                            </li>
-                            <li><a>
-                                <div class="left_icon3"
-                                     style="background: url('__IMG__/cishoo/sidebar-icon-3.png') no-repeat center 100%;"></div>
-                                老人基础档案 <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="{:U('Userbasicfile/basicfile')}">老人基础档案</a></li>
-                                    <li><a href="{:U('Userhealthfile/health_list')}">老人健康档案</a></li>
-                                </ul>
-                            </li>
-                            <li><a>
-                                <div class="left_icon4"
-                                     style="background: url('__IMG__/cishoo/sidebar-icon-4.png') no-repeat center 100%;"></div>
-                                设备报警 <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="{:U('Warning/warning_history')}">历史报警查询</a></li>
-                                </ul>
-                            </li>
-                            <li><a>
-                                <div class="left_icon5"
-                                     style="background: url('__IMG__/cishoo/sidebar-icon-5.png') no-repeat center 100%;"></div>
-                                健康管理 <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="{:U('Health/medication')}">用药提醒</a></li>
-                                    <li><a href="{:U('Health/index')}">健康监控</a></li>
-                                </ul>
-                            </li>
-                            <li><a>
-                                <div class="left_icon6"
-                                     style="background: url('__IMG__/cishoo/sidebar-icon-6.png') no-repeat center 100%;"></div>
-                                通知管理<span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="{:U('Notice/notice_fm')}">消息推送</a></li>
-                                    <li><a href="{:U('Notice/notice_agent')}">代理通知</a></li>
-                                    <li><a href="{:U('Notice/feedback')}">意见反馈</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="menu_section">
-                        <!--<h3>代理商管理</h3>-->
-                        <ul class="nav side-menu">
-                            <li><a>
-                                <div class="left_icon7"
-                                     style="background: url('__IMG__/cishoo/sidebar-icon-7.png') no-repeat center 100%;"></div>
-                                代理商/机构管理<span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="{:U('Agent/agent')}">添加代理商</a></li>
-                                    <li><a href="{:U('Agent/agent2')}">添加机构平台</a></li>
-                                    <li><a href="{:U('Agent/index')}">代理商管理</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a>
-                                <div class="left_icon8"
-                                     style="background: url('__IMG__/cishoo/sidebar-icon-8.png') no-repeat center 100%;"></div>
-                                账号管理<span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="{:U('Usermanage/user_manage')}">当前账号管理</a></li>
-                                    <li><a href="{:U('Usermanage/user_list')}">坐席管理</a></li>
-                                </ul>
-                            </li>
-
+                            <volist name="menu" id="m">
+                                <li>
+                                    <a <if condition="empty($m['childs'])">href="{:U($m['moduleUrl'])}"</if>>
+                                        <div class="left_icon1"
+                                             style="background: url('__IMG__/cishoo/{$m.iconPath}.png') no-repeat center 100%;"></div>
+                                        {$m.moduleName}
+                                        <if condition="!empty($m['childs'])">
+                                            <span class="fa fa-chevron-down"></span>
+                                        </if>
+                                    </a>
+                                    <if condition="!empty($m['childs'])">
+                                        <ul class="nav child_menu">
+                                            <volist name="m['childs']" id="child">
+                                                <li><a href="{:U($child['moduleUrl'])}">{$child.moduleName}</a></li>
+                                            </volist>
+                                        </ul>
+                                    </if>
+                                </li>
+                            </volist>
                         </ul>
                     </div>
                 </div>
@@ -225,11 +166,13 @@
                         </ul>
                     </li>
                     <li class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="pull-right user-profile" data-toggle="" aria-expanded="false" style="margin-top: 10px;">
+                        <div class="pull-right user-profile" data-toggle="" aria-expanded="false"
+                             style="margin-top: 10px;">
                             您好！欢迎登陆 | <a class="color-red" href="{:U('Public/logout')}">退出</a>
                             <!--<span class="fa fa-angle-down"></span>-->
                         </div>
-                        <div class="color-red pull-right user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <div class="color-red pull-right user-profile dropdown-toggle" data-toggle="dropdown"
+                             aria-expanded="false">
                             <span>浙江医疗有限公司</span>
                             <span>一级</span>
                             <span>省级代理</span>
@@ -254,7 +197,8 @@
     </div>
 </div>
 
-<script type="text/javascript" src="http://validform.rjboy.cn/wp-content/themes/validform/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript"
+        src="http://validform.rjboy.cn/wp-content/themes/validform/js/jquery-1.6.2.min.js"></script>
 <script type="text/javascript" src="http://validform.rjboy.cn/Validform/v5.1/Validform_v5.1_min.js"></script>
 <script type="text/javascript" src="__JS__/idcard.js?v=1"></script>
 
@@ -333,9 +277,11 @@
     });
     +function () {
         /*日期控件*/
-        $(".has-feedback-left").daterangepicker({singleDatePicker: !0,
+        $(".has-feedback-left").daterangepicker({
+            singleDatePicker: !0,
             singleClasses: "picker_4",
-            locale: {format: 'YYYY-MM-DD'}},function (a, b, c) {
+            locale: {format: 'YYYY-MM-DD'}
+        }, function (a, b, c) {
             console.log(a.toISOString(), b.toISOString(), c)
         });
 
@@ -478,7 +424,7 @@
                     parentId: id
                 },
                 success: function (data) {
-                    if(data==null){
+                    if (data == null) {
                         return;
                     }
                     for (var i = 0; i < data.length; i++) {
@@ -495,23 +441,23 @@
         }
     }
     //代理商等级更改，地区联动更改
-    $('select[name="cityId"]').css('display','none');
-    $('select[name="countyId"]').css('display','none');
-    function hide_area(degree){
-        if(degree==1){
-            $('select[name="provinceId"]').css('display','block');
-            $('select[name="cityId"]').css('display','none');
-            $('select[name="countyId"]').css('display','none');
+    $('select[name="cityId"]').css('display', 'none');
+    $('select[name="countyId"]').css('display', 'none');
+    function hide_area(degree) {
+        if (degree == 1) {
+            $('select[name="provinceId"]').css('display', 'block');
+            $('select[name="cityId"]').css('display', 'none');
+            $('select[name="countyId"]').css('display', 'none');
         }
-        else if(degree==2){
-            $('select[name="provinceId"]').css('display','block');
-            $('select[name="cityId"]').css('display','block');
-            $('select[name="countyId"]').css('display','none');
+        else if (degree == 2) {
+            $('select[name="provinceId"]').css('display', 'block');
+            $('select[name="cityId"]').css('display', 'block');
+            $('select[name="countyId"]').css('display', 'none');
         }
-        else if(degree==3){
-            $('select[name="provinceId"]').css('display','block');
-            $('select[name="cityId"]').css('display','block');
-            $('select[name="countyId"]').css('display','block');
+        else if (degree == 3) {
+            $('select[name="provinceId"]').css('display', 'block');
+            $('select[name="cityId"]').css('display', 'block');
+            $('select[name="countyId"]').css('display', 'block');
         }
     }
 </script>

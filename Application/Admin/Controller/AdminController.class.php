@@ -28,7 +28,19 @@ class AdminController extends Controller
         if (!UID) {// 还没登录 跳转到登录页面
             $this->redirect('Public/login');
         }
+        $right = $this->getRight();
+//        print_r($right);die();
+        $this->assign('menu', $right);
         $this->assign('orgName', $this->orgName());
+    }
+
+    //获取当前用户权限
+    protected function getRight()
+    {
+        $url = $this->getUrl('get_right') . is_login();
+        $response = http($url, null, 'GET');
+        return $response;
+
     }
 
     protected function orgName($orgId = 0)
@@ -380,7 +392,7 @@ class AdminController extends Controller
             $listRows = C('PAGE_SIZE');
         }
         $page2 = new \Think\Page($total, $listRows, $REQUEST);
-        $page2->p="p2";
+        $page2->p = "p2";
         if ($total > $listRows) {
             $page2->setConfig('theme', '%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
         }
