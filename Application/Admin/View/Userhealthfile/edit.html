@@ -544,7 +544,7 @@
             <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel2">老人呼吸心率睡眠</h4>
+                    <h4 class="modal-title" id="myModalLabel2">老人呼吸、心率、睡眠</h4>
                     <br>
                     <input type="hidden" name='healthId' value="{$basic.healthId}"/>
                     <input type="hidden" name="breatheId" id="breatheId" value="{$breathe.breatheId}"/>
@@ -1168,10 +1168,12 @@
             });
         });
 
-        //按钮隐藏显示
+        //呼吸心率按钮隐藏显示
         if ($('#breatheId').val() == '') {
             $('#breathe_edit').attr('disabled', 'disabled');
             $('#breathe_del').attr('disabled', 'disabled');
+            $('#breathe_del').removeAttr('href');
+            $('#breathe_del').removeAttr('onclick');
         }
 
         //判断新增还是修改呼吸心率
@@ -1203,6 +1205,8 @@
         if ($('#bloodPressureId').val() == '') {
             $('#pressure_edit').attr('disabled', 'disabled');
             $('#pressure_del').attr('disabled', 'disabled');
+            $('#pressure_del').removeAttr('href');
+            $('#pressure_del').removeAttr('onclick');
         }
         $('#add_pressure,#pressure_edit').each(function (i, item) {
             $(this).bind("click", function () {
@@ -1253,6 +1257,8 @@
         if ($('#bloodGlucoseId').val() == '') {
             $('#glucose_edit').attr('disabled', 'disabled');
             $('#glucose_del').attr('disabled', 'disabled');
+            $('#glucose_del').removeAttr('href');
+            $('#glucose_del').removeAttr('onclick');
         }
         $('#add_glucose,#glucose_edit').each(function (i, item) {
             $(this).bind("click", function () {
@@ -1307,6 +1313,8 @@
         if ($('#bloodOxygenId').val() == '') {
             $('#edit_oxygen').attr('disabled', 'disabled');
             $('#oxygen_del').attr('disabled', 'disabled');
+            $('#oxygen_del').removeAttr('href');
+            $('#oxygen_del').removeAttr('onclick');
         }
         $('#add_oxygen,#edit_oxygen').each(function (i, item) {
             $(this).bind("click", function () {
@@ -1325,9 +1333,11 @@
             });
         });
         //判断新增还是修改bmi
-        if ($('#bloodOxygenId').val() == '') {
+        if ($('#bmiId').val() == '') {
             $('#edit_bmi').attr('disabled', 'disabled');
             $('#bmi_del').attr('disabled', 'disabled');
+            $('#bmi_del').removeAttr('href');
+            $('#bmi_del').removeAttr('onclick');
         }
         $('#add_bmi,#edit_bmi').each(function (i, item) {
             $(this).bind("click", function () {
