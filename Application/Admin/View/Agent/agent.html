@@ -278,7 +278,7 @@
                             <volist name="auth" id="auth">
                                 <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                                     <label>
-                                        <input checked <if condition="$auth['isOptional'] eq 0">disabled="disabled"</if>  type="checkbox" class="flat">
+                                        <input value="{$auth.id}" name="roleModuleIds[]" checked <if condition="$auth['isOptional'] eq 0">onclick="return false"</if>  type="checkbox" class="flat">
                                         {$auth['module']['moduleName']}
                                     </label>
                                 </div>
