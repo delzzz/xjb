@@ -500,6 +500,7 @@
     </div>
     <!--增加记录-->
     <div class="modal fade" id="myModal" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <form method="post" action="{:U('addConsult')}" class="form-horizontal form-consult">
         <div class="modal-dialog" role="document" style="width: 50%;line-height: 2.54">
             <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
                 <div class="modal-header">
@@ -511,31 +512,33 @@
                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">录入人员:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input id="entryUserName" value="{$consultRecorder}" type="text" class="form-control"/>
+                            <input name="entryUserName" id="entryUserName" value="{$consultRecorder}" type="text" class="form-control"/>
                         </div>
                     </div>
                     <br>
                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">说明:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input id="consultingDesc" type="text" class="form-control" placeholder="">
+                            <input name="consultingDesc" id="consultingDesc" type="text" class="form-control" placeholder="">
                         </div>
                     </div>
                     <br>
                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">咨询记录:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input id="remark" type="text" class="form-control" placeholder="">
+                            <input name="remark" id="remark" type="text" class="form-control" placeholder="">
                         </div>
                     </div>
                     <br>
                 </div>
                 <div class="modal-footer">
+                    <input type="hidden" name='healthId' value="{$basic.healthId}"/>
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button id="consult_btn" type="button" class="btn btn-danger">保存</button>
+                    <button target-form="form-consult"  id="consult_btn" type="button" class="btn btn-danger ajax-post">保存</button>
                 </div>
             </div>
         </div>
+        </form>
     </div>
     <!--呼吸睡眠心率-->
     <div class="modal fade" id="myModal1" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -767,7 +770,7 @@
                     <input id="hid_measureTime2" value="{:time_format($glucose['measureTime']/1000,'Y-m-d')}" type="hidden"/>
                     <input id="hid_statusDesc" value="{$glucose['statusDesc']}" type="hidden"/>
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="submit" target-form="form-glucose" class="btn btn-lg btn-danger ajax-post">保存</button>
+                    <button type="button" target-form="form-glucose" class="btn btn-lg btn-danger ajax-post">保存</button>
                 </div>
             </div>
         </div>
@@ -819,7 +822,7 @@
                     <input id="hid_datasrc4" value="{$oxygen.dataSrc}" type="hidden"/>
                     <input id="hid_measureTime3" value="{:time_format($oxygen['measureTime']/1000,'Y-m-d')}" type="hidden"/>
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="submit" target-form="form-oxygen" class="btn btn-lg btn-danger ajax-post">保存</button>
+                    <button type="button" target-form="form-oxygen" class="btn btn-lg btn-danger ajax-post">保存</button>
                 </div>
             </div>
         </div>
@@ -895,7 +898,7 @@
                     <input id="hid_datasrc5" value="{$bmi.dataSrc}" type="hidden"/>
                     <input id="hid_measureTime4" value="{:time_format($bmi['measureTime']/1000,'Y-m-d')}" type="hidden"/>
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="submit" target-form="form-bmi" class="btn btn-lg btn-danger ajax-post">保存</button>
+                    <button type="button" target-form="form-bmi" class="btn btn-lg btn-danger ajax-post">保存</button>
                 </div>
             </div>
         </div>
@@ -1146,27 +1149,27 @@
 //            });
         });
         //新增咨询记录
-        $('#consult_btn').click(function () {
-            $.ajax({
-                url: "{:U('addConsult')}",
-                data: {
-                    'healthId': $('#healthId').val(),
-                    'consultingDesc': $('#consultingDesc').val(),
-                    'remark': $('#remark').val(),
-                    'entryUserName': $('#entryUserName').val(),
-                },
-                type: 'POST',
-                success: function (data) {
-                    if (data == 1) {
-                        alert('添加咨询记录成功！');
-                        window.location.reload(true);
-                    }
-                    else {
-                        alert('添加失败！')
-                    }
-                }
-            });
-        });
+//        $('#consult_btn').click(function () {
+//            $.ajax({
+//                url: "{:U('addConsult')}",
+//                data: {
+//                    'healthId': $('#healthId').val(),
+//                    'consultingDesc': $('#consultingDesc').val(),
+//                    'remark': $('#remark').val(),
+//                    'entryUserName': $('#entryUserName').val(),
+//                },
+//                type: 'POST',
+//                success: function (data) {
+//                    if (data == 1) {
+//                        alert('添加咨询记录成功！');
+//                        window.location.reload(true);
+//                    }
+//                    else {
+//                        alert('添加失败！')
+//                    }
+//                }
+//            });
+//        });
 
         //呼吸心率按钮隐藏显示
         if ($('#breatheId').val() == '') {
