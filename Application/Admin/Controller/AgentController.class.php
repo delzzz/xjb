@@ -86,6 +86,8 @@ class AgentController extends AdminController
         }
         $this->assign('collocationInfo',$collocationInfo);
         $this->assign('agentList', $this->agentList());
+        echo $agentId;
+        dump($this->agentList());
         $this->assign('orgList', $this->orgList());
         $this->display();
     }
@@ -225,7 +227,9 @@ class AgentController extends AdminController
     function agent()
     {
         $this->meta_title = "保存代理商信息";
-        $this->getDeviceauth();
+        $auth = $this->getAuth();
+        $this->assign('auth',$auth);
+        dump($auth);
         $this->display('agent');
     }
 
@@ -567,12 +571,13 @@ class AgentController extends AdminController
         }
     }
 
-    //获取设备权限
-    function getDeviceauth(){
-        //$userType = $_SESSION['onethink_admin']['user_auth']['userType'];
-        $userType=1;
-        $res = get_device_auth($userType);
-        dump($res);
+    //获取权限
+    function getAuth(){
+        //dump($_SESSION);
+        $userType=$_SESSION['onethink_admin']['user_auth']['userType'];
+        //$userType=1;
+        $res = get_auth($userType);
+        return $res;
     }
 
 }
