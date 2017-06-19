@@ -14,9 +14,10 @@
                             <div class="title_right">
                                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="搜索...">
+                                        <input type="text" class="form-control" id="key" value="{$name}" ignore="1"
+                                               placeholder="请输入姓名">
                                     <span class="input-group-btn">
-                      <button class="clf btn btn-danger" type="button" style="color: #fff;">查询</button>
+                      <button class="clf btn btn-danger" id="search" url="{:U('user_list')}" style="color: #fff;">查询</button>
                     </span>
                                     </div>
                                 </div>
@@ -66,8 +67,14 @@
             </div>
         </div>
     </div>
+</block>
 
+<block name="script">
     <script>
-        $("#distpicker2").distpicker();
+        $("#search").click(function () {
+            var url = $(this).attr("url");
+            var key = $("#key").val();
+            location.href = url + "?name=" + key;
+        })
     </script>
 </block>
