@@ -7,11 +7,14 @@ class UsermanageController extends AdminController
     {
         $this->meta_title = "坐席列表";
         $pageNo = I('get.p', 1);
+        $name = I('get.name');
+//        echo $name;die();
         $url = $this->getUrl('zuoxi_query') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
-        $param = think_json_encode(['orgId' => $this->orgId()]);
+        $param = think_json_encode(['orgId' => $this->orgId(), 'name' => $name]);
         $list = $this->lists($url, $param);
         int_to_string($list['itemList'], ['sex' => ['0' => "女", '1' => "男"]]);
         $this->assign('list', $list['itemList']);
+        $this->assign('name', $name);
         $this->display();
     }
 
@@ -33,7 +36,7 @@ class UsermanageController extends AdminController
         $csId = I('get.csId');
         $url = $this->getUrl('zuoxi_del') . $csId;
         http($url, null, 'GET');
-        $this->success('删除成功',U('user_list'));
+        $this->success('删除成功', U('user_list'));
     }
 
     function write()
