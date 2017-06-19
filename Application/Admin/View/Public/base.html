@@ -372,6 +372,10 @@
             Page.city_obj.unbind('change');
             Page.province_obj.change(this.selectChange);
             Page.city_obj.change(this.selectChange);
+            console.log(Page.city_obj.val());
+            if(Page.city_obj.val()=='北京市市辖区'){
+                Page.city_obj.val('');
+            }
         },
         fullProvince: function () {
             var province_obj = this.province_obj;

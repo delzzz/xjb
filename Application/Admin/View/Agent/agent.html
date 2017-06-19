@@ -24,7 +24,9 @@
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">代理商等级:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <select class="form-control" name="degree">
+                                        <input type="hidden" id="hid_degree" value="{$degree}" />
+                                        <input type="hidden" name="degree" value="{$degree+1}" />
+                                        <select class="form-control" id="degree">
                                             <option value="-1">请选择</option>
                                             <option value="1">一级代理商</option>
                                             <option value="2">二级代理商</option>
@@ -285,7 +287,7 @@
                             </volist>
                         </div>
                         <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12  clear" style="margin-top: 30px;">
-                            <button class="btn btn-lg btn-danger ajax-post"  type="button"
+                            <button id="btn_save" class="btn btn-lg btn-danger ajax-post"  type="button"
                                     target-form="form-label-left">保存
                             </button>
                             <button class="btn btn-lg btn-danger" onclick="javascript:history.back(-1);return false;">返回
@@ -302,14 +304,18 @@
     <script src="__JS__/distpicker.data.js"></script>
     <script src="__JS__/distpicker.js"></script>
     <script type="text/javascript">
+        //根据degree判断添加几级代理
+        var hid_degree = $('#hid_degree').val();
+        $('#degree').val(parseInt(hid_degree)+1);
+        hide_area(parseInt(hid_degree)+1);
+        $('#degree').attr('disabled','true');
         //行政区选择
         $("#distpicker2").distpicker();
         $(function () {
             Page.init();
         });
-        $('select[name="degree"]').change(function(){
-            var degree = $(this).val();
-            hide_area(degree);
+        $('#btn_save').click(function(){
+            $('#degree').removeAttr('disabled','true');
         });
     </script>
 </block>

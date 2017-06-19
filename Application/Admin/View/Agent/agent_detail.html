@@ -30,7 +30,8 @@
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">代理商等级:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <select disabled="disabled" class="form-control" name="degree" value="{$info.degree}">
+                                        <input type="hidden" value="{$info['degree']}" name="degree" />
+                                        <select disabled="disabled" class="form-control" id="degree" value="{$info.degree}">
                                             <option value="-1">请选择</option>
                                             <option
                                             <?php if($info['degree'] == 1)echo 'selected';?> value="1">一级代理商</option>
@@ -527,7 +528,7 @@
         $('#divOption1').hide();
         $("#btnDailiShang").click(function () {
             $('#f1 input:not(#logId),#f2 input,#f3 input,textarea,select').attr('disabled', false);
-           // $('.dropzone').removeAttr('disabled');
+            $('#degree').attr('disabled','disabled');
             $('#divOption1').show();
             $('#divOption2').hide();
         });
@@ -646,14 +647,7 @@
             Page.hid_co = $('#hid_co').val();
             Page.init();
         });
-
-        var d = $('select[name="degree"]').val();
+        var d = $('input[name="degree"]').val();
         hide_area(d);
-        $('select[name="degree"]').change(function () {
-            var degree = $(this).val();
-            hide_area(degree);
-        });
-
-
     </script>
 </block>

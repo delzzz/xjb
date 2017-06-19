@@ -49,7 +49,9 @@ class HealthController extends AdminController
             $this->assign('remind',$info['medicationRemindVo']);
             $this->assign('history',$info['medicationRemindHistoryVoList']);
             //后台端0/坐席端1
-            $this->assign('flag',1);
+            if($_SESSION['onethink_admin']['user_auth']['userType']==3){
+                $this->assign('flag',1);
+            }
         }
         $this->display();
     }

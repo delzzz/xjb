@@ -241,7 +241,9 @@ class AgentController extends AdminController
         $this->meta_title = "保存代理商信息";
         $auth = $this->getAuth();
         $this->assign('auth',$auth);
-        //dump($auth);
+        $orgAgent = $this->orgAgent();
+        $this->assign('degree',$orgAgent['degree']);
+        dump($this->orgAgent());
         $this->display('agent');
     }
 
