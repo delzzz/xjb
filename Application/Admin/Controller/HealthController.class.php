@@ -44,7 +44,6 @@ class HealthController extends AdminController
         $rid = I('get.rid');
         if($rid){
             $info = $this->medication_detail($rid);
-            //dump($info);
             $this->assign('medicationInfo',$info);
             $this->assign('remind',$info['medicationRemindVo']);
             $this->assign('history',$info['medicationRemindHistoryVoList']);

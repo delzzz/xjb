@@ -243,7 +243,6 @@ class AgentController extends AdminController
         $this->assign('auth',$auth);
         $orgAgent = $this->orgAgent();
         $this->assign('degree',$orgAgent['degree']);
-        dump($this->orgAgent());
         $this->display('agent');
     }
 

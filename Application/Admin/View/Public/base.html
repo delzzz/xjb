@@ -372,12 +372,12 @@
             Page.city_obj.unbind('change');
             Page.province_obj.change(this.selectChange);
             Page.city_obj.change(this.selectChange);
-            console.log(Page.city_obj.val());
+            console.log(Page.area_obj.val());
             if(Page.city_obj.val()=='北京市市辖区'){
                 Page.city_obj.val('');
             }
         },
-        fullProvince: function () {
+        fullProvince: function
             var province_obj = this.province_obj;
             $.ajax({
                 type: 'POST',
@@ -388,7 +388,7 @@
                     data = eval('(' + data + ')');
                     var options = '<option value="0" selected="selected">--省--</option>';
                     for (var i = 0; i < data.length; i++) {
-                        if (data[i].regionId == Page.hid_p) {
+                        if (data[i].regionId === Page.hid_p) {
                             options += '<option value=' + data[i].regionId + ' selected="selected">' + data[i].name + '</option>';
                         } else {
                             options += '<option value=' + data[i].regionId + '>' + data[i].name + '</option>';
@@ -411,10 +411,10 @@
             }
             var obj = '';
             var options = '';
-            if (obj_name == 'cityId') {
+            if (obj_name === 'cityId') {
                 options = '<option value="0" selected="selected">--县/区--</option>';
                 obj = Page.area_obj;
-            } else if (obj_name == 'provinceId') {
+            } else if (obj_name === 'provinceId') {
                 options = '<option value="0">--市--</option>';
                 obj = Page.city_obj;
                 Page.area_obj.empty();
@@ -432,7 +432,7 @@
                         return;
                     }
                     for (var i = 0; i < data.length; i++) {
-                        if (data[i].regionId == Page.hid_c || data[i].regionId == Page.hid_co) {
+                        if (data[i].regionId === Page.hid_c || data[i].regionId === Page.hid_co) {
                             options += '<option value=' + data[i].regionId + ' selected="selected">' + data[i].name + '</option>';
                         } else {
                             options += '<option value=' + data[i].regionId + '>' + data[i].name + '</option>';
