@@ -56,7 +56,6 @@ class AgentController extends AdminController
             //查询下级是否有托管操作
             $agentId = $this->agentId();
             $agentId = $agentId==''?1:$agentId;
-            //$agentId=1;
             $agents = $this->agentList2($agentId);
             $agentString='';
             foreach ($agents as $key=>$value){
@@ -86,6 +85,8 @@ class AgentController extends AdminController
         }
         $this->assign('collocationInfo',$collocationInfo);
         $this->assign('agentList', $this->agentList());
+        //echo $agentId;
+        //dump($this->agentList());
         $this->assign('orgList', $this->orgList());
         $this->display();
     }
@@ -149,7 +150,20 @@ class AgentController extends AdminController
         $this->assign('totalPage',$lists['totalPage']);
         $area = new AreaController();
         foreach ($agentLists as $key => &$value) {
-            $value['c_status']=is_collocation($value['agentId']);
+            if(is_collocation($value['agentId'])){
+                //托管中
+                $value['c_status']=1;
+            }
+            else{
+                if($value['userStatus']==1){
+                    //已托管
+                    $value['c_status']=2;
+                }
+                else{
+                    //未托管
+                    $value['c_status']=0;
+                }
+            }
             //date类型去除后面000
             $value['createTime'] = substr($value['createTime'], 0, strlen($value['createTime']) - 3);
             $value['updateTime'] = substr($value['updateTime'], 0, strlen($value['updateTime']) - 3);
@@ -225,7 +239,9 @@ class AgentController extends AdminController
     function agent()
     {
         $this->meta_title = "保存代理商信息";
-        $this->getDeviceauth();
+        $auth = $this->getAuth();
+        $this->assign('auth',$auth);
+        //dump($auth);
         $this->display('agent');
     }
 
@@ -306,7 +322,7 @@ class AgentController extends AdminController
         $param = $_POST;
         $orgContactList = null;
         foreach ($param as $keys => $val) {
-            if (is_array($val) && $keys != 'deviceType') {
+            if (is_array($val) && $keys != 'deviceType' && $keys != 'roleModuleIds') {
                 foreach ($val as $key => $value) {
                     $orgContactList[$key][$keys] = $value;
                     $orgContactList[$key]['contactType'] = $key;
@@ -337,7 +353,8 @@ class AgentController extends AdminController
                 'deviceType' => implode(',', $param['deviceType']),
                 'quantity' => $param['quantity']
             ],
-            'userInfo' => ['password' => $param['password']]
+            'userInfo' => ['password' => $param['password']],
+            'permInfo'=>['roleModuleIds'=> $param['roleModuleIds']],
         ];
         $orgAgent = [
             'parentId' => $this->agentId()==''?1:$this->agentId(),
@@ -362,14 +379,17 @@ class AgentController extends AdminController
                     $this->delPicture($val);
                 }
             }
+            unset($info['orgInfo']['permInfo']);
         }
         $res = json_encode($info);
+
         //编辑or创建
         if ($agentId) {
             $jsonData = http_post_json(C('INTERFACR_API')['agent_update'], $res);
         } else {
             $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
         }
+      //  exit();
        if ($jsonData['success']) {
             $this->success('保存成功');
         }
@@ -436,7 +456,11 @@ class AgentController extends AdminController
             $proAgents = $this->getCollacations($parentId, $info['agentId'],I('get.targetId'));
             $this->assign('proAgents', $proAgents);
         }
-        //dump($proAgents);
+        //权限
+        $moduleList = $manageInfo['orgOrganization']['moduleList'];
+        $auth = $this->getAuth();
+        $this->assign('moduleList',$moduleList);
+        $this->assign('auth',$auth);
         $this->display();
     }
 
@@ -456,6 +480,9 @@ class AgentController extends AdminController
                 if($value['agentId']==$targetId){
                     unset($siblingAgents[$key]);
                 }
+            }
+            if($value['userStatus']==1){
+                unset($siblingAgents[$key]);
             }
         }
         sort($siblingAgents);
@@ -567,12 +594,13 @@ class AgentController extends AdminController
         }
     }
 
-    //获取设备权限
-    function getDeviceauth(){
-        //$userType = $_SESSION['onethink_admin']['user_auth']['userType'];
-        $userType=1;
-        $res = get_device_auth($userType);
-        dump($res);
+    //获取权限
+    function getAuth(){
+        //dump($_SESSION);
+        $userType=$_SESSION['onethink_admin']['user_auth']['userType'];
+        //$userType=1;
+        $res = get_auth($userType);
+        return $res;
     }
 
 }

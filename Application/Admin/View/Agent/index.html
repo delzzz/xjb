@@ -136,10 +136,22 @@
                                     <td class=" ">{$agent.area}</td>
                                     <td class=" ">{$agent.orgName}</td>
                                     <td class=" ">{$agent.telephone}</td>
-                                    <td class=" ">100台</td>
-                                    <td class="a-right a-right ">5584</td>
-                                    <td class=" ">160</td>
-                                    <td class=" ">{$agent['c_status']==true?托管中:正常}</td>
+                                    <td class=" "></td>
+                                    <td class="a-right a-right "></td>
+                                    <td class=" "></td>
+                                    <td class=" ">
+                                        <?php
+                                        if($agent['c_status']==1){
+                                            echo '托管中';
+                                        }
+                                        else if($agent['c_status']==2){
+                                            echo '已托管';
+                                        }
+                                        else{
+                                            echo '正常';
+                                        }
+                                    ?>
+                                    </td>
                                     <td class=""><a href="{:U('agent_detail',['agentId'=>$agent['agentId']])}">查看详情</a></td>
                                 </tr>
                                 <if condition="$agent['child'] neq ''">

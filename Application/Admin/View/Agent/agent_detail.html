@@ -87,6 +87,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="checkbox form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-5 col-sm-4 col-xs-12">
+                                        <input <if condition="$info.extendFlag eq 1">checked</if> name="extendFlag" value='1' type="checkbox" class="flat">
+                                        允许发展下级代理
+                                    </label>
+                                </div>
                                 <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                     <label class="control-label col-md-2 col-sm-2 col-xs-12">
                                         备注:
@@ -265,45 +271,14 @@
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
                         <br>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <label>
-                                <input disabled="disabled" checked type="checkbox" class="flat"> 数据统计
-                            </label>
-                        </div>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <label>
-                                <input disabled="disabled" checked type="checkbox" class="flat"> 老人档案
-                            </label>
-                        </div>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <label>
-                                <input disabled="disabled" checked type="checkbox" class="flat"> 设备报警
-                            </label>
-                        </div>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <label>
-                                <input disabled="disabled" checked type="checkbox" class="flat">
-                                健康管理
-                            </label>
-                        </div>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <label>
-                                <input disabled="disabled" checked type="checkbox" class="flat">
-                                通知管理
-                            </label>
-                        </div>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <label>
-                                <input disabled="disabled" type="checkbox" class="flat">
-                                坐席管理
-                            </label>
-                        </div>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <label>
-                                <input disabled="disabled" type="checkbox" class="flat">
-                                允许发展下级代理
-                            </label>
-                        </div>
+                        <volist name="moduleList" id="moduleList">
+                            <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                <label>
+                                    <input value="$moduleList['module']['id']" checked onclick="return false" type="checkbox" class="flat">
+                                    {$moduleList['module']['moduleName']}
+                                </label>
+                            </div>
+                        </volist>
                     </div>
                 </div>
             </div>
