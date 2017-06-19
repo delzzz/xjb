@@ -17,7 +17,6 @@ use Admin\Model\AuthRuleModel;
  */
 class AdminController extends Controller
 {
-
     /**
      * 后台控制器初始化
      */
@@ -29,7 +28,6 @@ class AdminController extends Controller
             $this->redirect('Public/login');
         }
         $right = $this->getRight();
-//        print_r($right);die();
         $this->assign('menu', $right);
         $this->assign('orgName', $this->orgName());
     }
