@@ -48,9 +48,9 @@ class HealthController extends AdminController
             $this->assign('remind',$info['medicationRemindVo']);
             $this->assign('history',$info['medicationRemindHistoryVoList']);
             //后台端0/坐席端1
-            if($_SESSION['onethink_admin']['user_auth']['userType']==3){
+            //if($_SESSION['onethink_admin']['user_auth']['userType']==3){
                 $this->assign('flag',1);
-            }
+            //}
         }
         $this->display();
     }
@@ -138,8 +138,6 @@ class HealthController extends AdminController
             $url = $this->getUrl('close_remind').$rid;
             $data = json_encode(['closerId' => $_POST['closerId'], 'closeReason' => $_POST['closeReason']]);
             $info = http_post_json($url,$data);
-            //dump($info);
-            //die();
             if($info['success']){
                 echo 1;
                 exit();

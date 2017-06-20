@@ -250,7 +250,7 @@
                         <textarea id="closeReason" class="col-lg-12 col-sm-12"></textarea>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button id="btn_cancel" type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                         <button type="button" class="btn btn-danger btn-close">保存</button>
                     </div>
                 </div>
@@ -279,6 +279,9 @@
                     }
                 }
             })
+        });
+        $('#btn_cancel').click(function(){
+           $('#closeReason').val('');
         });
     </script>
 </block>
