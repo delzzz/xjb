@@ -68,6 +68,7 @@
                             </thead>
                             <volist name="medicationList" id="list">
                             <tr class="even pointer">
+                                <input type="hidden" class="mid" value="{$list.remindId}"/>
                                 <td class="">{$list.peopleName}</td>
                                 <td class=" ">{$list['peopleGnder']==0?女:男}</td>
                                 <td class=" ">{$list.peopleAge}</td>
@@ -124,7 +125,4 @@
             </div>
         </div>
     </div>
-</block>
-<block name="scirpt">
-    <script></script>
 </block>
