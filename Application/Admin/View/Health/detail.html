@@ -232,7 +232,7 @@
                             <if condition="$flag eq 1">
                                 <button type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-sm btn-danger">关闭提醒</button>
                             </if>
-                            <button onclick="javascript:history.back(-1);return false;" class="btn btn-sm btn-danger">返回</button>
+                            <a href="{:U('medication')}" class="btn btn-sm btn-danger">返回</a>
                         </div>
                     </form>
                 </div>
@@ -272,6 +272,7 @@
                     if(data==1){
                         alert('关闭提醒成功！');
                         $('#myModal1').modal('hide');
+                        window.location.reload(1);
                     }
                     else{
                         alert('关闭提醒失败！');
