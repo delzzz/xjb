@@ -271,8 +271,7 @@
                 success: function (data) {
                     if(data==1){
                         alert('关闭提醒成功！');
-                        $('#myModal1').removeClass('in');
-                        $('.modal-backdrop').css('display','none');
+                        $('#myModal1').modal('hide');
                     }
                     else{
                         alert('关闭提醒失败！');
