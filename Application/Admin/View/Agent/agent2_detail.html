@@ -232,10 +232,10 @@
                         </div>
                         <br>
                         <!--详情页面显示-->
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom ">
+                        <div id="divOption2" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom ">
                             <br>
-                            <a href="{:U('index')}" class="btn btn-lg btn-danger">返回</a>
                             <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
+                            <a href="{:U('index')}" class="btn btn-lg btn-danger">返回</a>
                             <button class="btn btn-lg btn-danger" type="button" data-toggle="modal"
                                     data-target="#myModal2">代理商信息变更
                             </button>
@@ -243,12 +243,13 @@
                         </div>
                         <!--变更页面显示-->
                         <div id="divOption" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom hide">
-                            <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">账号托管
-                            </button>
+                            <!--<button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">账号托管-->
+                            <!--</button>-->
                             <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
+                            <a href="{:U('index')}" class="btn btn-lg btn-danger">返回</a>
                             <button class="btn btn-lg btn-danger">账号停用
                             </button>
-                            <button class="btn btn-lg btn-danger ajax-post" type="submit"
+                            <button class="btn btn-lg btn-danger ajax-post" type="button"
                                     target-form="form-label-left">保存页面
                             </button>
                         </div>
@@ -391,6 +392,7 @@
             $("input,textarea").attr('disabled', true);
             $("#btnDailiShang").click(function () {
                 $("#divOption").removeClass('hide');
+                $("#divOption2").hide();
                 $("input,textarea").attr('disabled', false);
             });
         });
