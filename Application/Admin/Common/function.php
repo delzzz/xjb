@@ -629,7 +629,8 @@ function send_broadcast($userId,$userName,$content){
 }
 
 //删除广播
-function del_broadcast($msgArr){
+function del_broadcast($msgId){
+    $msgArr[] = $msgId;
     $url='http://192.168.1.250:8080/service/msg/broadcast/delete';
     $res = http_post_json($url,json_encode($msgArr));
     return $res;

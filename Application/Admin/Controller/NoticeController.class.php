@@ -30,16 +30,33 @@ class NoticeController extends AdminController
         $pageNo = I('get.p', 1);
         //C('INTERFACR_API')['query_broadcast']
         $url = 'http://192.168.1.250:8080/service/msg/broadcast/query?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
-        $param = http_post_json($url,null);
-        $list = $this->lists($url, $param);
-        dump($list);
+        $list = $this->lists($url, "{}");
+        $this->assign('list', $list['itemList']);
         $this->display();
     }
 
     //新增广播
     function addBroadcast(){
         if(isset($_POST['content'])){
-            send_broadcast(UID,,$_POST['content']);
+            if(empty($_POST['content'])){
+                $this->error('请输入广播内容!');
+            }
+            $user = get_user_auth();
+            $res = send_broadcast(UID,$user['userName'],$_POST['content']);
+            if($res['success']){
+                $this->success('发送成功!');
+            }
+            else{
+                $this->error('发送失败!');
+            }
+        }
+    }
+
+    //删除广播
+    function delBroadcast(){
+        if(I('bid')){
+            $res = del_broadcast(I('bid'));
+            $this->success('删除成功!');
         }
     }
 
