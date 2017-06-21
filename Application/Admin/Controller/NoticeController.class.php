@@ -23,9 +23,24 @@ class NoticeController extends AdminController
         $this->success('删除成功');
     }
 
+    //广播页面
     function notice_fm()
     {
+        //查询广播
+        $pageNo = I('get.p', 1);
+        //C('INTERFACR_API')['query_broadcast']
+        $url = 'http://192.168.1.250:8080/service/msg/broadcast/query?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
+        $param = http_post_json($url,null);
+        $list = $this->lists($url, $param);
+        dump($list);
         $this->display();
+    }
+
+    //新增广播
+    function addBroadcast(){
+        if(isset($_POST['content'])){
+            send_broadcast(UID,,$_POST['content']);
+        }
     }
 
     function feedback()
