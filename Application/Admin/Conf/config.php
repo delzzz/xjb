@@ -384,5 +384,7 @@ return array(
         'confirm_collocation' => 'http://' . HOST . '/service/org/agent/collocation/confirm',//确认托管
         'update_collocation' => 'http://' . HOST . '/service/org/agent/collocation/update',//重新托管
         'cancel_collocation' => 'http://' . HOST . '/service/org/agent/collocation/cancel',//取消托管
+
+        'feeback' => 'http://' . HOST . '/service/feedback/get/page',//意见反馈
     ),
 );
