@@ -143,7 +143,7 @@ function IdCard(UUserCard, num) {
 
 $("input").focus(function () {
     $(this).next(".error").remove();
-})
+});
 $("input[name='idNumber'],input[name='idNo[]']").blur(function () {
     var obj = $(this);
     $(this).next(".error").remove();
@@ -167,7 +167,8 @@ function vilad(target_form) {
             result = IdentityCodeValid(val, obj);
             if (!result) {
                 $(this).next("span").remove();
-                $(this).parent().append("<span class='color-red error' style='font-size: 12px'>身份证格式错误</span>")
+                $(this).parent().append("<span class='color-red error' style='font-size: 12px'>身份证格式错误</span>");
+                result = false;
             }
         }
         if (name != null && name != undefined) {
@@ -175,7 +176,7 @@ function vilad(target_form) {
             var msgs = $(this).attr('ignore');
             if (val == '' && msgs != 1 && inputs_type!='hidden') {
                 $(this).next("span").remove();
-                $(this).parent().append("<span class='color-red error' style='font-size: 12px'>此项为必填项</span>")
+                $(this).parent().append("<span class='color-red error' style='font-size: 12px'>此项为必填项</span>");
                 result = false;
             }
         }
@@ -203,7 +204,14 @@ $("input").blur(function () {
     }
 });
 
+$("select").change(function () {
+    var msgs = $(this).attr('ignore');
+    if ($(this).val() == '' && msgs != 1) {
+        $(this).next(".error").remove();
+        $(this).parent().append("<span class='color-red error' style='font-size: 12px'>此项为必填项</span>");
+    }
+});
+
 $("input").focus(function () {
     $(this).next(".error").remove();
 });
-// 表单非空校验

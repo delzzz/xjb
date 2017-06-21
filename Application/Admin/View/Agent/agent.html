@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="checkbox form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <label class="control-label col-md-5 col-sm-4 col-xs-12">
-                                        <input name="extendFlag" value='1' type="checkbox" class="flat">
+                                        <input ignore="1" name="extendFlag" value='1' type="checkbox" class="flat">
                                         允许发展下级代理
                                     </label>
                                 </div>
@@ -313,9 +313,6 @@
         $("#distpicker2").distpicker();
         $(function () {
             Page.init();
-        });
-        $('#btn_save').click(function(){
-            $('#degree').removeAttr('disabled','true');
         });
     </script>
 </block>
