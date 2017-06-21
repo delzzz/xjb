@@ -34,7 +34,6 @@
                         <option <?php if(I('get.status')==1)echo 'selected';?> value="{:U('Health/medication',array('status'=>1))}">已关闭</option>
                     </select>
                 </div>
-                <a href="{:U('add_reminder')}" class="btn btn-sm btn-danger">新增用药提醒</a>
             </div>
         </div>
         <br>
@@ -69,6 +68,7 @@
                             </thead>
                             <volist name="medicationList" id="list">
                             <tr class="even pointer">
+                                <input type="hidden" class="mid" value="{$list.remindId}"/>
                                 <td class="">{$list.peopleName}</td>
                                 <td class=" ">{$list['peopleGnder']==0?女:男}</td>
                                 <td class=" ">{$list.peopleAge}</td>

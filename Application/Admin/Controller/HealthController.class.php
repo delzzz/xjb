@@ -44,12 +44,13 @@ class HealthController extends AdminController
         $rid = I('get.rid');
         if($rid){
             $info = $this->medication_detail($rid);
-            //dump($info);
             $this->assign('medicationInfo',$info);
             $this->assign('remind',$info['medicationRemindVo']);
             $this->assign('history',$info['medicationRemindHistoryVoList']);
             //后台端0/坐席端1
-            $this->assign('flag',1);
+            if($_SESSION['onethink_admin']['user_auth']['userType']==3){
+                $this->assign('flag',1);
+            }
         }
         $this->display();
     }
@@ -58,16 +59,19 @@ class HealthController extends AdminController
     function medication()
     {
         $this->meta_title = '健康管理-用药提醒列表';
-        $medicationList = $this->medication_list(I('get.status'));
-        $this->assign('medicationList',$medicationList);
-        //dump($medicationList);
-
-        $this->display();
+        //后台端0/坐席端1
+        if($_SESSION['onethink_admin']['user_auth']['userType']==3){
+            $this->zuoxi_medication();
+        }
+        else{
+            $medicationList = $this->medication_list(I('get.status'));
+            $this->assign('medicationList',$medicationList);
+            $this->display('medication');
+        }
     }
 
     //坐席-用药提醒页面
     function zuoxi_medication(){
-        $this->meta_title = '健康管理-用药提醒列表';
         $medication_lists = $this->medication_list(I('get.status'));
         $current_hour = date('H:i');
         $c_arr = explode(':',$current_hour);
@@ -82,19 +86,18 @@ class HealthController extends AdminController
                 foreach ($value['triggerTimes'] as $k=>$v){
                     $v_arr = explode(':',$v);
                     $new_v = implode('',$v_arr);
-                   if($new_v > $c_hour){
-                       $value['nextTime'] = $v;
-                       break;
-                   }
-                   else{
-                       $value['nextTime'] = $value['triggerTimes'][0];
-                   }
-
+                    if($new_v > $c_hour){
+                        $value['nextTime'] = $v;
+                        break;
+                    }
+                    else{
+                        $value['nextTime'] = $value['triggerTimes'][0];
+                    }
                 }
             }
         }
         $this->assign('medicationList',$medication_lists);
-        $this->display();
+        $this->display('zuoxi_medication');
     }
 
     //用药提醒列表
@@ -137,8 +140,6 @@ class HealthController extends AdminController
             $url = $this->getUrl('close_remind').$rid;
             $data = json_encode(['closerId' => $_POST['closerId'], 'closeReason' => $_POST['closeReason']]);
             $info = http_post_json($url,$data);
-            //dump($info);
-            //die();
             if($info['success']){
                 echo 1;
                 exit();

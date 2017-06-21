@@ -167,7 +167,7 @@ function vilad(target_form) {
             result = IdentityCodeValid(val, obj);
             if (!result) {
                 $(this).next("span").remove();
-                $(this).parent().append("<span class='color-red error' style='font-size: 12px'>" + name + "身份证格式错误</span>")
+                $(this).parent().append("<span class='color-red error' style='font-size: 12px'>身份证格式错误</span>")
             }
         }
         if (name != null && name != undefined) {
@@ -175,7 +175,7 @@ function vilad(target_form) {
             var msgs = $(this).attr('ignore');
             if (val == '' && msgs != 1 && inputs_type!='hidden') {
                 $(this).next("span").remove();
-                $(this).parent().append("<span class='color-red error' style='font-size: 12px'>" + name + "此项为必填项</span>")
+                $(this).parent().append("<span class='color-red error' style='font-size: 12px'>此项为必填项</span>")
                 result = false;
             }
         }
@@ -187,7 +187,7 @@ function vilad(target_form) {
         if (sel_name != null && sel_name != undefined && msgs != 1) {
             if (sel_val == -1 || sel_val == null) {
                 $(this).next("span").remove();
-                $(this).parent().append("<span class='color-red error'style='font-size: 12px'>" + sel_name + "此项为必选项</span>")
+                $(this).parent().append("<span class='color-red error'style='font-size: 12px'>此项为必选项</span>")
                 result = false;
             }
         }
