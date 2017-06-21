@@ -45,6 +45,12 @@ class NoticeController extends AdminController
 
     function feedback()
     {
+        $this->meta_title = "意见反馈";
+        $pageNo = I('get.p', 1);
+        $url = $this->getUrl('feeback') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
+        $list = $this->lists($url, null);
+//print_r($list);die();
+
         $this->display();
     }
 }
