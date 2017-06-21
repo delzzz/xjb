@@ -143,7 +143,7 @@ function IdCard(UUserCard, num) {
 
 $("input").focus(function () {
     $(this).next(".error").remove();
-})
+});
 $("input[name='idNumber'],input[name='idNo[]']").blur(function () {
     var obj = $(this);
     $(this).next(".error").remove();
@@ -181,12 +181,12 @@ function vilad(target_form) {
         }
     });
     $("."+target_form+" select").each(function () {
+        $(this).next("span").remove();
         var sel_name = $(this).attr("name");
         var msgs = $(this).attr('ignore');
         var sel_val = $(this).val();
         if (sel_name != null && sel_name != undefined && msgs != 1) {
             if (sel_val == -1 || sel_val == null) {
-                $(this).next("span").remove();
                 $(this).parent().append("<span class='color-red error'style='font-size: 12px'>此项为必选项</span>")
                 result = false;
             }
@@ -196,14 +196,18 @@ function vilad(target_form) {
 }
 
 $("input").blur(function () {
+    $(this).next(".error").remove();
     var msgs = $(this).attr('ignore');
     if ($(this).val() == '' && msgs != 1) {
-        $(this).next(".error").remove();
         $(this).parent().append("<span class='color-red error' style='font-size: 12px'>此项为必填项</span>");
     }
 });
 
-$("input").focus(function () {
+$("select").change(function () {
     $(this).next(".error").remove();
+    var msgs = $(this).attr('ignore');
+    if ($(this).val() == '' && msgs != 1) {
+        $(this).parent().append("<span class='color-red error' style='font-size: 12px'>此项为必填项</span>");
+    }
 });
-// 表单非空校验
+

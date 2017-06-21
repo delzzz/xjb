@@ -604,9 +604,10 @@
                         <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">数据来源:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <select name="dataSrc" id="dataSrc" class="form-control">
+                                <option value="-1">-请选择-</option>
                                 <volist name="dataSrc" id="datasrc">
                                     <option
-                                    <if condition="$breathe['dataSrc'] eq $key">selected</if>
+                                    <if condition="$breathe['dataSrc'] eq $key && $breathe['dataSrc'] neq '' ">selected</if>
                                     value="{$key}">
                                     {$dataSrc[$key]}
                                     </option>
@@ -674,6 +675,7 @@
                             <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">数据来源:</label>
                             <div class="col-md-8 col-sm-8 col-xs-12">
                                 <select name="dataSrc" id="dataSrc2" class="form-control">
+                                    <option value="-1">-请选择-</option>
                                     <volist name="dataSrc" id="dasc">
                                         <option
                                         <if condition="$pressure['dataSrc'] eq $key">selected</if>
@@ -749,6 +751,7 @@
                         <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">数据来源:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <select name="dataSrc" class="form-control">
+                                <option value="-1">-请选择-</option>
                                 <volist name="dataSrc" id="dtsc">
                                     <option
                                     <if condition="$glucose['dataSrc'] eq $key">selected</if>
@@ -809,6 +812,7 @@
                         <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">数据来源:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <select name="dataSrc" class="form-control">
+                                <option value="-1">-请选择-</option>
                                 <volist name="dataSrc" id="dtsc">
                                     <option
                                     <if condition="$oxygen['dataSrc'] eq $key">selected</if>
@@ -882,6 +886,7 @@
                         <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">数据来源:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <select name="dataSrc" class="form-control">
+                                <option value="-1">-请选择-</option>
                                 <volist name="dataSrc" id="dtsc">
                                     <option
                                     <if condition="$bmi['dataSrc'] eq $key">selected</if>
@@ -1184,7 +1189,8 @@
                     $('#dataBreathValue').val('');
                     $('#dataHeartbeatValue').val('');
                     $('#breatheDate').val('');
-                    $('#myModal1 select').val(0);
+                    $('#dataSleepValue').val(0);
+                    $('#dataSrc').val(-1);
                 }
                 else {
                     $('#breatheId').val($('#hid_breatheid').val());
@@ -1213,7 +1219,7 @@
                     $('#myModal2 input[name="dataInValue"]').val('');
                     $('#myModal2 input[name="dataOutValue"]').val('');
                     $('#myModal2 input[name="dataPulseValue"]').val('');
-                    $('#myModal2 select[name="dataSrc"]').val(0);
+                    $('#myModal2 select[name="dataSrc"]').val(-1);
                     $('#myModal2 input[name="measureTime"]').val('');
                     $('#pressureCondition').val('');
                 }
@@ -1263,7 +1269,7 @@
                 if (i == 0) {
                     $('#bloodGlucoseId').val('');
                     $('#myModal3 input[name="dataValue"]').val('');
-                    $('#myModal3 select[name="dataSrc"]').val(0);
+                    $('#myModal3 select[name="dataSrc"]').val(-1);
                     $('#myModal3 select[name="measureCondition]').val(0);
                     $('#myModal3 input[name="measureTime"]').val('');
                     $('#glucose_condition').val('');
@@ -1319,7 +1325,7 @@
                 if (i == 0) {
                     $('#bloodOxygenId').val('');
                     $('#myModal4 input[name="dataValue"]').val('');
-                    $('#myModal4 select[name="dataSrc"]').val(0);
+                    $('#myModal4 select[name="dataSrc"]').val(-1);
                     $('#myModal4 input[name="measureTime"]').val('');
                 }
                 else {
@@ -1345,7 +1351,7 @@
                     $('#myModal5 input[name="dataHeightValue"]').val('');
                     $('#myModal5 input[name="dataBmiValue"]').val('');
                     $('#myModal5 input[name="statusDesc"]').val('');
-                    $('#myModal5 select[name="dataSrc"]').val(0);
+                    $('#myModal5 select[name="dataSrc"]').val(-1);
                     $('#myModal5 input[name="measureTime"]').val('');
                 }
                 else {
