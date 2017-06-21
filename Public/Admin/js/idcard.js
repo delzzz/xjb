@@ -74,7 +74,7 @@ function IdentityCodeValid(code, obj) {
     }
 
     else if (!city[code.substr(0, 2)]) {
-        tip = "地址编码错误";
+        tip = "身份证号格式错误";
         pass = false;
     }
     else {
@@ -96,7 +96,7 @@ function IdentityCodeValid(code, obj) {
             }
             var last = parity[sum % 11];
             if (parity[sum % 11] != code[17]) {
-                tip = "校验位错误";
+                tip = "身份证号格式错误";
                 pass = false;
             }
         }

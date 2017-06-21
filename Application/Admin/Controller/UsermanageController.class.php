@@ -8,7 +8,6 @@ class UsermanageController extends AdminController
         $this->meta_title = "坐席列表";
         $pageNo = I('get.p', 1);
         $name = I('get.name');
-//        echo $name;die();
         $url = $this->getUrl('zuoxi_query') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
         $param = think_json_encode(['orgId' => $this->orgId(), 'name' => $name]);
         $list = $this->lists($url, $param);
@@ -22,12 +21,16 @@ class UsermanageController extends AdminController
     {
         $this->meta_title = "坐席管理";
         $csId = I('get.csId');
-        if ($csId) {
-            $url = $this->getUrl('zuoxi_detail') . $csId;
-            $response = http($url, null, 'GET');
-            $this->assign('info', $response);
-            $this->assign('img', $response['photo']);
+        $right = get_auth(3);
+        if (empty($csId)) {
+            $right = $this->getRight();
         }
+        $url = $this->getUrl('zuoxi_detail') . $csId;
+        $response = http($url, null, 'GET');
+        $this->assign('info', $response);
+        $this->assign('img', $response['photo']);
+        $this->assign('right', $right);
+
         $this->display();
     }
 
