@@ -461,7 +461,7 @@ function http($url, $params, $method = 'POST', $header = array(), $multi = false
     $error = curl_error($ch);
     curl_close($ch);
     if ($error) throw new Exception('请求发生错误：' . $error);
-    return json_decode($data,true);
+    return json_decode($data, true);
 }
 
 /**
@@ -496,9 +496,10 @@ function think_json_encode($data)
  * @param $agentId
  * @return mixed 根据父级id获取下级代理商列表
  */
-function agent_list($agentId){
-    $url = C('INTERFACR_API')['query_agent'].'?pageNo=1&pageSize=100';
-    $param = [ 'parentId' => $agentId];
+function agent_list($agentId)
+{
+    $url = C('INTERFACR_API')['query_agent'] . '?pageNo=1&pageSize=100';
+    $param = ['parentId' => $agentId];
     $res = http_post_json($url, json_encode($param));
     return $res['itemList'];
 }
@@ -507,9 +508,10 @@ function agent_list($agentId){
  * @param $agentId
  * @return mixed 根据代理商Id获取机构列表
  */
-function org_list($agentId){
-    $url = C('INTERFACR_API')['query_org'].'?pageNo=1&pageSize=100';
-    $res = http_post_json($url,json_encode(['agentId' => $agentId]));
+function org_list($agentId)
+{
+    $url = C('INTERFACR_API')['query_org'] . '?pageNo=1&pageSize=100';
+    $res = http_post_json($url, json_encode(['agentId' => $agentId]));
     return $res['itemList'];
 }
 
@@ -517,16 +519,18 @@ function org_list($agentId){
  * @param $agentId
  * @return mixed 根据代理商Id获取信息
  */
-function get_agent_info($agentId){
+function get_agent_info($agentId)
+{
     $url = C('INTERFACR_API')['get_agent'];
-    $res = http($url.$agentId,null,'get');
+    $res = http($url . $agentId, null, 'get');
     return $res;
 }
 
 /**
  * 根据机构id获取详情
  */
-function get_ins_detail($insId){
+function get_ins_detail($insId)
+{
     $url = C('INTERFACR_API')['get_org_detail'] . $insId;
     $res = http($url, null, 'GET');
     return $res;
@@ -537,9 +541,10 @@ function get_ins_detail($insId){
  * @param $targetId
  * @return http 提交 代理商托管
  */
-function deposit_agent($sourceId,$targetId){
+function deposit_agent($sourceId, $targetId)
+{
     $url = C('INTERFACR_API')['agent_collocation'];
-    $res = http($url,['sourceId'=>$sourceId,'targetId'=>$targetId],'get');
+    $res = http($url, ['sourceId' => $sourceId, 'targetId' => $targetId], 'get');
     return $res;
 }
 
@@ -548,9 +553,10 @@ function deposit_agent($sourceId,$targetId){
  * @param $agentId
  * @return array 机构托管
  */
-function deposit_ins($insId,$agentId){
+function deposit_ins($insId, $agentId)
+{
     $url = C('INTERFACR_API')['ins_collocation'];
-    $res = http($url,['insId'=>$insId,'agentId'=>$agentId],'get');
+    $res = http($url, ['insId' => $insId, 'agentId' => $agentId], 'get');
     return $res;
 }
 
@@ -558,9 +564,10 @@ function deposit_ins($insId,$agentId){
  * @param $agentId
  * @return bool 查询代理商是否托管
  */
-function is_collocation($agentId){
+function is_collocation($agentId)
+{
     $url = C('INTERFACR_API')['is_collocation'];
-    $res = http($url,['agentId'=>$agentId],'get');
+    $res = http($url, ['agentId' => $agentId], 'get');
     return $res;
 }
 
@@ -568,9 +575,10 @@ function is_collocation($agentId){
  * @param $agentId
  * @return array 查询被托管代理商
  */
-function get_queryTarget($agentId){
+function get_queryTarget($agentId)
+{
     $url = C('INTERFACR_API')['target_collocation'];
-    $res = http($url,['agentId'=>$agentId],'get');
+    $res = http($url, ['agentId' => $agentId], 'get');
     return $res;
 }
 
@@ -578,9 +586,10 @@ function get_queryTarget($agentId){
  * @param $agentId
  * @return array 查询托管代理商
  */
-function get_querySource($agentId){
+function get_querySource($agentId)
+{
     $url = C('INTERFACR_API')['source_collocation'];
-    $res = http($url,['agentId'=>$agentId],'get');
+    $res = http($url, ['agentId' => $agentId], 'get');
     return $res;
 }
 
@@ -588,9 +597,10 @@ function get_querySource($agentId){
  * @param $collocationId
  * @return array 确认托管
  */
-function confirm_collocation($collocationId){
+function confirm_collocation($collocationId)
+{
     $url = C('INTERFACR_API')['confirm_collocation'];
-    $res = http($url,['collocationId'=>$collocationId],'get');
+    $res = http($url, ['collocationId' => $collocationId], 'get');
     return $res;
 }
 
@@ -598,9 +608,10 @@ function confirm_collocation($collocationId){
  * @param $collocationId
  * @return array 重新托管
  */
-function update_collocation($collocationId,$targetId){
+function update_collocation($collocationId, $targetId)
+{
     $url = C('INTERFACR_API')['update_collocation'];
-    $res = http($url,['collocationId'=>$collocationId,'targetId'=>$targetId],'get');
+    $res = http($url, ['collocationId' => $collocationId, 'targetId' => $targetId], 'get');
     return $res;
 }
 
@@ -608,30 +619,34 @@ function update_collocation($collocationId,$targetId){
  * @param $collocationId
  * @return array 取消托管
  */
-function cancel_collocation($collocationId){
+function cancel_collocation($collocationId)
+{
     $url = C('INTERFACR_API')['cancel_collocation'];
-    $res = http($url,['collocationId'=>$collocationId],'get');
+    $res = http($url, ['collocationId' => $collocationId], 'get');
     return $res;
 }
 
 //获取权限
-function get_auth($role){
-    $url='http://192.168.1.250:8080/service/perm/modules/support/'.$role;
-    $res = http($url,null,'get');
+function get_auth($role)
+{
+    $url = C('INTERFACR_API')['get_auth'] . $role;
+    $res = http($url, null, 'get');
     return $res;
 }
 
 //发布广播
-function send_broadcast($userId,$userName,$content){
-    $url='http://192.168.1.250:8080/service/msg/broadcast/send';
-    $res = http_post_json($url,json_encode(['userId' => $userId,'userName'=>$userName,'content'=>$content]));
+function send_broadcast($userId, $userName, $content)
+{
+    $url = C('INTERFACR_API')['send_broadcast'];
+    $res = http_post_json($url, json_encode(['userId' => $userId, 'userName' => $userName, 'content' => $content]));
     return $res;
 }
 
 //删除广播
-function del_broadcast($msgId){
+function del_broadcast($msgId)
+{
     $msgArr[] = $msgId;
-    $url='http://192.168.1.250:8080/service/msg/broadcast/delete';
-    $res = http_post_json($url,json_encode($msgArr));
+    $url = C('INTERFACR_API')['del_broadcast'];
+    $res = http_post_json($url, json_encode($msgArr));
     return $res;
 }

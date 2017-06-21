@@ -28,8 +28,8 @@ class NoticeController extends AdminController
     {
         //查询广播
         $pageNo = I('get.p', 1);
-        //C('INTERFACR_API')['query_broadcast']
-        $url = 'http://192.168.1.250:8080/service/msg/broadcast/query?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
+        //
+        $url = C('INTERFACR_API')['query_broadcast'].$pageNo.'&pageSize='.C('PAGE_SIZE');
         $list = $this->lists($url, "{}");
         $this->assign('list', $list['itemList']);
         $this->display();
