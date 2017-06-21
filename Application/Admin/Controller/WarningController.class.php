@@ -11,6 +11,7 @@ class WarningController extends AdminController
         $warning_status = C('WARNING_STATUS');
         $living_status = C('LIVINGSTATUS');
         $health_status = C('HEALTHSTATUS');
+        $process_result_type = C('PROCESS_RESULT_TYPE');
         $response['alarmType_text'] = $warning_status[$response['alarmType']];
         $response['liveStatus_text'] = $living_status[$response['livingStatus']];
         $response['healthStatus_text'] = $health_status[$response['healthStatus']];
@@ -23,7 +24,17 @@ class WarningController extends AdminController
         $base_url = $this->getUrl('warning_history') . '?pageNo=' . $pageNo . '&pageSize=' . $pageSize;
         $history_list = $this->lists($base_url, $request);
         int_to_string($history_list['itemList'], ['alarmType' => C('ALARM_TYPE'), 'processResult' => C('PROCESS_RESULT_TYPE')]);
-
+        if (!empty($response['processResult'])) {
+            $processResultAttr = explode(',', $response['processResult']);
+            foreach ($process_result_type as $key => &$value) {
+                foreach ($processResultAttr as $val) {
+                    if ($key == $val) {
+                        $value = ['name' => $value['name'], 'checked' => 'checked'];
+                    }
+                }
+            }
+        }
+        $this->assign('result_type', $process_result_type);
         $this->assign('list', $history_list['itemList']);
         $this->assign('processMode', $processList);
         $this->assign('data', $response);
@@ -45,9 +56,21 @@ class WarningController extends AdminController
         $this->display();
     }
 
-    //新增报警处理记录
-    function warning_add_deal()
+    //已处理
+    function warning_have_deal()
     {
-        $alarmId = I('');
+        $param = $_POST;
+        $processResult = null;
+        if (!empty($param['processResult'])) {
+            $processResult = implode(',', $param['processResult']);
+        }
+        $requestData = think_json_encode(['id' => $param['alarmId'], 'processUserId' => UID, 'processResult' => $processResult, 'processRemark' => $param['processRemark']]);
+        $url = $this->getUrl('warning_deal');
+        $response = http_post_json($url, $requestData);
+        if (!empty($response)) {
+            $this->success('保存成功');
+        } else {
+            $this->error('保存失败');
+        }
     }
 }

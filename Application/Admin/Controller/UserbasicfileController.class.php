@@ -114,10 +114,8 @@ class UserbasicfileController extends AdminController
             'peopleDeviceList' => $peopleDeviceList
         ];
         $request = think_json_encode($data);
-//        echo $request;die();
         $url = $this->getUrl('people_save_edit');
         $response = http_post_json($url, $request);
-//        print_r($response);die();
         if ($response) {
             $this->success("保存成功");
         } else {
@@ -145,8 +143,6 @@ class UserbasicfileController extends AdminController
                 foreach ($hobby_attr as $val) {
                     if ($val == $key) {
                         $value = ['name' => $value['name'], 'checked' => 'checked'];
-                    } else {
-                        $value = ['name' => $value['name'], 'checked' => 'false'];
                     }
                 }
             }

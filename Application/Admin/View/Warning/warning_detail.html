@@ -15,7 +15,7 @@
                         <div class="x_content row">
                             <br/>
 
-                            <form class="form-horizontal form-label-left">
+                            <form class="form-horizontal form-label-left" method="post" action="{:U('warning_have_deal')}">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">当前设备报警:</label>
@@ -92,12 +92,14 @@
                                                    disabled="disabled" placeholder="">
                                         </div>
                                     </div>
-                                    <div class="row border-bottom"></div><br><br>
+                                    <div class="row border-bottom"></div>
+                                    <br><br>
+
                                     <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">紧急联系人:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" class="form-control" value="无" disabled="disabled"
+                                            <input type="text" class="form-control" value="{$data.contactName}" disabled="disabled"
                                                    placeholder="">
                                         </div>
                                     </div>
@@ -107,7 +109,7 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">紧急联系电话:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" class="form-control" value="" disabled="disabled"
+                                            <input type="text" class="form-control" value="{$data.contactMobile}" disabled="disabled"
                                                    placeholder="">
                                         </div>
                                     </div>
@@ -115,7 +117,7 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">与老人关系:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" class="form-control" value="" disabled="disabled"
+                                            <input type="text" class="form-control" value="{$data.contactRelation}" disabled="disabled"
                                                    placeholder="">
                                         </div>
                                     </div>
@@ -175,53 +177,54 @@
                                     <button class="btn btn-sm btn-danger">视频呼叫</button>
                                     <button class="btn btn-sm btn-danger">联系老人</button>
                                     <button class="btn btn-sm btn-danger">联系亲属</button>
-                                    <button class="btn btn-sm btn-danger">已处理</button>
+                                    <button type="button" class="btn btn-sm btn-danger ajax-post"
+                                            target-form="form-label-left">已处理
+                                    </button>
+                                    <input type="hidden" name="alarmId" value="{$data.alarmId}">
                                 </div>
 
-
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                    <div class="x_title">
-                                        <br><br>
+                                        <div class="x_title">
+                                            <br><br>
 
-                                        <h2>处理结果</h2>
-                                        <ul class="nav navbar-right panel_toolbox">
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <br>
-
-                                    <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
-                                        <div class="checkbox col-md-3 col-sm-3 col-xs-12">
-                                            <label>
-                                                <input type="checkbox" class="flat">
-                                                已经通知当地医疗结构
-                                            </label>
+                                            <h2>处理结果</h2>
+                                            <ul class="nav navbar-right panel_toolbox">
+                                            </ul>
+                                            <div class="clearfix"></div>
                                         </div>
-                                        <div class="checkbox col-md-3 col-sm-3 col-xs-12">
-                                            <label>
-                                                <input type="checkbox" class="flat">
-                                                已经通知亲属、本人
-                                            </label>
-                                        </div>
-                                        <div class="checkbox col-md-6 col-sm-6 col-xs-12 text-right">
-
-                                            <label>
-                                                处理人：<span>小王</span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left">
                                         <br>
-                                        <br>
-                                        <label class="control-label col-md-1 col-sm-1 col-xs-12 text-left">
-                                            其他:
-                                        </label>
 
-                                        <div class="col-md-11 col-sm-11 col-xs-12">
-                                            <textarea class="form-control" rows="3" placeholder='备注在2000字以内'></textarea>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
+                                            <volist name="result_type" id="r">
+                                                <div class="checkbox col-md-3 col-sm-3 col-xs-12">
+                                                    <label>
+                                                        <input type="checkbox" name="processResult[]" value="{$key}" {$r.checked}
+                                                               class="flat">
+                                                        {$r.name}
+                                                    </label>
+                                                </div>
+                                            </volist>
+                                            <!--<div class="checkbox col-md-6 col-sm-6 col-xs-12 text-right">-->
+                                            <!--<label>-->
+                                            <!--处理人：<span>小王</span>-->
+                                            <!--</label>-->
+                                            <!--</div>-->
                                         </div>
-                                    </div>
+
+                                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left">
+                                            <br>
+                                            <br>
+                                            <label class="control-label col-md-1 col-sm-1 col-xs-12 text-left">
+                                                其他:
+                                            </label>
+
+                                            <div class="col-md-11 col-sm-11 col-xs-12">
+                                                <textarea name="processRemark" class="form-control" rows="3"
+                                                          placeholder='备注在2000字以内'>
+                                                    {$data.processRemark}
+                                                </textarea>
+                                            </div>
+                                        </div>
                                     <div class="x_title clear">
                                         <br>
                                         <br>
