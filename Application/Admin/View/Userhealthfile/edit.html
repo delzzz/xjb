@@ -264,7 +264,7 @@
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 <input type="hidden" id="hid_breathe_id" value="{$breathe['breatheId']}"/>
-                                <a id="breathe_del" onclick="if(confirm('确定删除?')==false)return false;" href="javascript:void(0)" class=" btn btn-sm btn-danger">删除此条数据</a>
+                                <a id="breathe_del" href="javascript:void(0)" class=" btn btn-sm btn-danger">删除此条数据</a>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 <button type="button" data-toggle="modal" data-target="#myModal6" class="btn btn-sm btn-danger">历史记录</button>
@@ -327,7 +327,7 @@
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 <input type="hidden" id="hid_pressure_id" value="{$pressure['bloodPressureId']}"/>
-                                <a id="pressure_del" onclick="if(confirm('确定删除?')==false)return false;" href="javascript:void(0)" class=" btn btn-sm btn-danger">删除此条数据</a>
+                                <a id="pressure_del" href="javascript:void(0)" class=" btn btn-sm btn-danger">删除此条数据</a>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 <button type="button" data-toggle="modal" data-target="#myModal7" class="btn btn-sm btn-danger">历史记录</button>
@@ -383,7 +383,7 @@
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 <input type="hidden" id="hid_glucose_id" value="{$glucose['bloodGlucoseId']}"/>
-                                <a id="glucose_del" onclick="if(confirm('确定删除?')==false)return false;" href="javascript:void(0)" class=" btn btn-sm btn-danger">删除此条数据</a>
+                                <a id="glucose_del" href="javascript:void(0)" class=" btn btn-sm btn-danger">删除此条数据</a>
 
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -435,7 +435,7 @@
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 <input type="hidden" id="hid_oxygen_id" value="{$oxygen['bloodOxygenId']}" />
-                                <a id="oxygen_del" onclick="if(confirm('确定删除?')==false)return false;" href="javascript:void(0)" class=" btn btn-sm btn-danger">删除此条数据</a>
+                                <a id="oxygen_del" href="javascript:void(0)" class=" btn btn-sm btn-danger">删除此条数据</a>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 <button type="button" data-toggle="modal" data-target="#myModal9" class="btn btn-sm btn-danger">历史记录</button>
@@ -499,7 +499,7 @@
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 <input type="hidden" id="hid_bmi_id" value="{$bmi['bmiId']}" />
-                                <a id="bmi_del" onclick="if(confirm('确定删除?')==false)return false;" href="javascript:void(0)" class=" btn btn-sm btn-danger">删除此条数据</a>
+                                <a id="bmi_del" href="javascript:void(0)" class=" btn btn-sm btn-danger">删除此条数据</a>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 <button type="button" data-toggle="modal" data-target="#myModal10" class="btn btn-sm btn-danger">历史记录</button>
@@ -1155,6 +1155,12 @@
         ];
         $.each($('#breathe_del,#pressure_del,#glucose_del,#oxygen_del,#bmi_del'),function(i){
             $(this).click(function(){
+                if($(this).attr('disabled')=='disabled'){
+                    return;
+                }
+                if(confirm('是否确定删除此条数据?')==false){
+                    return;
+                }
                 type = i+1;
                 id = id_arr[i];
                 $.get("{:U('delLatest')}",{'id':id,'type':type},function(data){
@@ -1180,7 +1186,6 @@
             $('#breathe_edit').attr('disabled', 'disabled');
             $('#breathe_del').attr('disabled', 'disabled');
             $('#breathe_del').removeAttr('href');
-            $('#breathe_del').removeAttr('onclick');
         }
 
         //判断新增还是修改呼吸心率
@@ -1215,7 +1220,6 @@
             $('#pressure_edit').attr('disabled', 'disabled');
             $('#pressure_del').attr('disabled', 'disabled');
             $('#pressure_del').removeAttr('href');
-            $('#pressure_del').removeAttr('onclick');
         }
         $('#add_pressure,#pressure_edit').each(function (i, item) {
             $(this).bind("click", function () {
@@ -1268,7 +1272,6 @@
             $('#glucose_edit').attr('disabled', 'disabled');
             $('#glucose_del').attr('disabled', 'disabled');
             $('#glucose_del').removeAttr('href');
-            $('#glucose_del').removeAttr('onclick');
         }
         $('#add_glucose,#glucose_edit').each(function (i, item) {
             $(this).bind("click", function () {
@@ -1325,7 +1328,6 @@
             $('#edit_oxygen').attr('disabled', 'disabled');
             $('#oxygen_del').attr('disabled', 'disabled');
             $('#oxygen_del').removeAttr('href');
-            $('#oxygen_del').removeAttr('onclick');
         }
         $('#add_oxygen,#edit_oxygen').each(function (i, item) {
             $(this).bind("click", function () {
@@ -1349,7 +1351,6 @@
             $('#edit_bmi').attr('disabled', 'disabled');
             $('#bmi_del').attr('disabled', 'disabled');
             $('#bmi_del').removeAttr('href');
-            $('#bmi_del').removeAttr('onclick');
         }
         $('#add_bmi,#edit_bmi').each(function (i, item) {
             $(this).bind("click", function () {

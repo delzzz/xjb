@@ -3,7 +3,6 @@
  */
 //var res=0;
 $("form").Validform({
-    ignore:"hidden",
     ajaxPost:true,
     showAllError:true,
     beforeSubmit:function(curform){
@@ -14,15 +13,18 @@ $("form").Validform({
         }
     },
     callback:function(data){
-        console.log(data);
+        $('.Validform_title').hide();
+        $('.Validform_info').hide();
+        //console.log(data);
         if (data.status == 1) {
-            if (data.url) {
-                alert(data.info);
-                //updateAlert(data.info + ' 页面即将自动跳转~', 'alert-success');
-            } else {
-                alert(data.info);
-                //updateAlert(data.info, 'alert-success');
-            }
+            alert(data.info);
+            // if (data.url) {
+            //     alert(data.info);
+            //     //updateAlert(data.info + ' 页面即将自动跳转~', 'alert-success');
+            // } else {
+            //     alert(data.info);
+            //     //updateAlert(data.info, 'alert-success');
+            // }
             setTimeout(function () {
                     location.reload();
             }, 1500);
@@ -40,7 +42,9 @@ $("form").Validform({
         }
     },
     tiptype: function (msg, o, cssctl) {
-        if(o.type!=2){
+        console.log(o.type);
+        //验证错误再显示
+        if(o.type==3){
             o.obj.next('.error').remove();
             o.obj.after("<div class='error color-red Validform_checktip' style='font-size: 12px;'></div>");
             var objtip = o.obj.siblings(".Validform_checktip");
@@ -49,6 +53,7 @@ $("form").Validform({
         }
     },
     datatype:{//传入自定义datatype类型【方式二】;
+        "s":"",
         "idcard":function(gets,obj,curform,datatype){
             var Wi = [ 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1 ];// 加权因子;
             var ValideCode = [ 1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2 ];// 身份证验证位值，10代表X;
