@@ -302,6 +302,16 @@ return array(
             '类型2',
         ],
 
+    'DEVICE_TYPE' => [
+        '老人终端机',
+        'SOS手腕',
+        '门磁状态检测仪',
+        '烟雾报警器',
+        '漏水检测器',
+        '呼吸心率仪',
+        '人体红外加测'
+    ],
+
 
     /*接口配置*/
     'INTERFACR_API' => array(
@@ -387,14 +397,14 @@ return array(
 
         'feeback' => 'http://' . HOST . '/service/feedback/get/page',//意见反馈
 
-        'del_feeback' => 'http://'.HOST.'/service/feedback/delete/',//删除意见反馈
+        'del_feeback' => 'http://' . HOST . '/service/feedback/delete/',//删除意见反馈
 
 
-        'get_auth'=>'http://192.168.1.250:8080/service/perm/modules/support/',//获取权限
+        'get_auth' => 'http://192.168.1.250:8080/service/perm/modules/support/',//获取权限
 
-        'send_broadcast'=>'http://192.168.1.250:8080/service/msg/broadcast/send',//发送广播
-        'del_broadcast'=>'http://192.168.1.250:8080/service/msg/broadcast/delete',//删除广播
-        'query_broadcast'=>'http://192.168.1.250:8080/service/msg/broadcast/query?pageNo=',//查询广播
+        'send_broadcast' => 'http://192.168.1.250:8080/service/msg/broadcast/send',//发送广播
+        'del_broadcast' => 'http://192.168.1.250:8080/service/msg/broadcast/delete',//删除广播
+        'query_broadcast' => 'http://192.168.1.250:8080/service/msg/broadcast/query?pageNo=',//查询广播
 
     ),
 );
