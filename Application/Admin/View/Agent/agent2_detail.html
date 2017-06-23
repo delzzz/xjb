@@ -74,21 +74,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">登录密码:</label>
-
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="password" value="" name="password" class="form-control"
-                                               placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">确认登录密码:</label>
-
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="password" name="repassword" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">公司组织机构:</label>
 
                                     <div class="col-md-8 col-sm-8 col-xs-12">
@@ -183,7 +168,7 @@
                                         <volist name="imgList" id="img">
                                             <div class="dz-preview dz-processing dz-image-preview dz-success dz-complete">
                                                 <div class="dz-image">
-                                                    <img data-dz-thumbnail="" alt="{$img.displayName}"
+                                                    <img style="width: 120px;height: 120px;max-width: 100%;" data-dz-thumbnail="" alt="{$img.displayName}"
                                                          src="{$img.imagePath}">
                                                 </div>
                                                 <a class="dz-remove" data-path="{$img.imagePath}"
@@ -199,37 +184,37 @@
                     </div>
                     <!--具备条件-->
                     <div class="x_panel">
-                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                            <div class="x_title">
-                                <h2>具备条件</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
-                                <div class="col-md-12 col-sm-12 col-xs-12 ">
-                                    <br>
+                        <!--<div class="form-group col-md-12 col-sm-12 col-xs-12">-->
+                            <!--<div class="x_title">-->
+                                <!--<h2>具备条件</h2>-->
+                                <!--<ul class="nav navbar-right panel_toolbox">-->
+                                <!--</ul>-->
+                                <!--<div class="clearfix"></div>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-12 col-sm-12 col-xs-12 border-bottom">-->
+                                <!--<div class="col-md-12 col-sm-12 col-xs-12 ">-->
+                                    <!--<br>-->
 
-                                    <div class="checkbox col-md-1 col-sm-1 col-xs-12">
-                                    </div>
-                                    <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                        <label>
-                                            <input type="checkbox" disabled="disabled" class="flat"> 医护人员
-                                        </label>
-                                    </div>
-                                    <div class="checkbox col-md-2  col-sm-2 col-xs-12">
-                                        <label>
-                                            <input type="checkbox" disabled="disabled" class="flat"> 急救设施
-                                        </label>
-                                    </div>
-                                    <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                        <label>
-                                            <input type="checkbox" disabled="disabled" class="flat"> 拥有坐席
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                    <!--<div class="checkbox col-md-1 col-sm-1 col-xs-12">-->
+                                    <!--</div>-->
+                                    <!--<div class="checkbox col-md-2 col-sm-2 col-xs-12">-->
+                                        <!--<label>-->
+                                            <!--<input type="checkbox" disabled="disabled" class="flat"> 医护人员-->
+                                        <!--</label>-->
+                                    <!--</div>-->
+                                    <!--<div class="checkbox col-md-2  col-sm-2 col-xs-12">-->
+                                        <!--<label>-->
+                                            <!--<input type="checkbox" disabled="disabled" class="flat"> 急救设施-->
+                                        <!--</label>-->
+                                    <!--</div>-->
+                                    <!--<div class="checkbox col-md-2 col-sm-2 col-xs-12">-->
+                                        <!--<label>-->
+                                            <!--<input type="checkbox" disabled="disabled" class="flat"> 拥有坐席-->
+                                        <!--</label>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
                         <br>
                         <!--详情页面显示-->
                         <div id="divOption2" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom ">
@@ -239,7 +224,6 @@
                             <button class="btn btn-lg btn-danger" type="button" data-toggle="modal"
                                     data-target="#myModal2">代理商信息变更
                             </button>
-                            <button class="btn btn-lg btn-danger ">导出为文档资料</button>
                         </div>
                         <!--变更页面显示-->
                         <div id="divOption" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom hide">

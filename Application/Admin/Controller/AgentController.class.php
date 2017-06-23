@@ -1,5 +1,6 @@
 <?php
 namespace Admin\Controller;
+
 use Admin\Controller\AreaController;
 
 class AgentController extends AdminController
@@ -7,11 +8,11 @@ class AgentController extends AdminController
     function index()
     {
         $this->meta_title = '代理商管理';
-        if(I('get.p')){
-            $this->assign('current_p',I('get.p'));
+        if (I('get.p')) {
+            $this->assign('current_p', I('get.p'));
         }
-        if(I('get.p2')){
-            $this->assign('current_p2',I('get.p2'));
+        if (I('get.p2')) {
+            $this->assign('current_p2', I('get.p2'));
         }
         //机构托管
 //        if(isset($_POST['hid_type'])){
@@ -38,52 +39,50 @@ class AgentController extends AdminController
 //            $this->assign('sourceInfo',$info['orgOrganization']);
 //        }
         //代理商托管
-        if($_POST['agentId']){
+        if ($_POST['agentId']) {
             $sourceId = $_POST['agentId'];
-            $targetId =$_POST['targetId'];
+            $targetId = $_POST['targetId'];
             //托管还是重新托管
-            if(empty($_POST['collocationId'])){
-                $collocate = deposit_agent($sourceId,$targetId);
-            }
-            else{
-                $this->updateCollocation($_POST['collocationId'],$targetId);
+            if (empty($_POST['collocationId'])) {
+                $collocate = deposit_agent($sourceId, $targetId);
+            } else {
+                $this->updateCollocation($_POST['collocationId'], $targetId);
             }
             $collocation = get_querySource($sourceId);
-            $collocationInfo[0] = $this->collocationList($sourceId,$targetId,$collocation[0]['collocationId'],1);
-            $collocationInfo[0]['targetId']=$collocation[0]['targetId'];
-        }
-        else{
+            $collocationInfo[0] = $this->collocationList($sourceId, $targetId, $collocation[0]['collocationId'], 1);
+            $collocationInfo[0]['targetId'] = $collocation[0]['targetId'];
+        } else {
             //查询下级是否有托管操作
             $agentId = $this->agentId();
-            $agentId = $agentId==''?1:$agentId;
+            $agentId = $agentId == '' ? 1 : $agentId;
             $agents = $this->agentList2($agentId);
-            $agentString='';
-            foreach ($agents as $key=>$value){
-                $agentString .= $value['agentId'].',';
+            $agentString = '';
+            foreach ($agents as $key => $value) {
+                $agentString .= $value['agentId'] . ',';
             }
-            $agentString = substr($agentString,0,strlen($agentString)-1);
-            $agent_arr = explode(',',$agentString);
-            foreach ($agent_arr as $key=>$value){
+            $agentString = substr($agentString, 0, strlen($agentString) - 1);
+            $agent_arr = explode(',', $agentString);
+            foreach ($agent_arr as $key => $value) {
                 $bool_value = is_collocation($value);
-                if($bool_value){
+                if ($bool_value) {
                     $querySourceInfo[] = get_querySource($value)[0];
                 }
             }
-            foreach ($querySourceInfo as $k=>$v){
-                $collocationInfo[] = $this->collocationList($v['sourceId'],$v['targetId'],$v['collocationId'],1);
+            foreach ($querySourceInfo as $k => $v) {
+                $collocationInfo[] = $this->collocationList($v['sourceId'], $v['targetId'], $v['collocationId'], 1);
             }
             //查询是否有代理商托管给自己
             $targetAgents = get_queryTarget($agentId);
-            foreach ($targetAgents as $key=>$value){
-                if($value['targetId']!=$agentId){
+            foreach ($targetAgents as $key => $value) {
+                if ($value['targetId'] != $agentId) {
                     unset($targetAgents[$key]);
                 }
             }
-            foreach ($targetAgents as $k=>$v){
-                $collocationInfo[] = $this->collocationList($v['sourceId'],$v['targetId'],$v['collocationId'],2);
+            foreach ($targetAgents as $k => $v) {
+                $collocationInfo[] = $this->collocationList($v['sourceId'], $v['targetId'], $v['collocationId'], 2);
             }
         }
-        $this->assign('collocationInfo',$collocationInfo);
+        $this->assign('collocationInfo', $collocationInfo);
         $this->assign('agentList', $this->agentList());
         //echo $agentId;
         //dump($this->agentList());
@@ -92,46 +91,41 @@ class AgentController extends AdminController
     }
 
     //托管信息
-    function collocationList($sourceId,$targetId,$collocationId,$type){
+    function collocationList($sourceId, $targetId, $collocationId, $type)
+    {
         $sourceInfo = get_agent_info($sourceId);
         $targetInfo = get_agent_info($targetId);
         $area = new AreaController();
-        if($sourceInfo['degree'] == 1){
-            $sourceName = $area->getName($sourceInfo['provinceId'],0,1).'一级代理';
-        }
-        elseif ($sourceInfo['degree'] == 2){
-            $sourceName = $area->getName($sourceInfo['cityId'],$sourceInfo['provinceId'],2).'二级代理';
-        }
-        elseif($sourceInfo['degree'] == 3){
-            $sourceName = $area->getName($sourceInfo['countyId'],$sourceInfo['cityId'],3).'三级代理';
-        }
-        else{
+        if ($sourceInfo['degree'] == 1) {
+            $sourceName = $area->getName($sourceInfo['provinceId'], 0, 1) . '一级代理';
+        } elseif ($sourceInfo['degree'] == 2) {
+            $sourceName = $area->getName($sourceInfo['cityId'], $sourceInfo['provinceId'], 2) . '二级代理';
+        } elseif ($sourceInfo['degree'] == 3) {
+            $sourceName = $area->getName($sourceInfo['countyId'], $sourceInfo['cityId'], 3) . '三级代理';
+        } else {
             $sourceName = '官方代理';
         }
 
-        if($targetInfo['degree'] == 1){
-            $targetName = $area->getName($targetInfo['provinceId'],0,1).'一级代理';
-        }
-        elseif ($targetInfo['degree'] == 2){
-            $targetName = $area->getName($targetInfo['cityId'],$targetInfo['provinceId'],2).'二级代理';
-        }
-        elseif($targetInfo['degree'] == 3){
-            $targetName = $area->getName($targetInfo['countyId'],$targetInfo['cityId'],3).'三级代理';
-        }
-        else{
+        if ($targetInfo['degree'] == 1) {
+            $targetName = $area->getName($targetInfo['provinceId'], 0, 1) . '一级代理';
+        } elseif ($targetInfo['degree'] == 2) {
+            $targetName = $area->getName($targetInfo['cityId'], $targetInfo['provinceId'], 2) . '二级代理';
+        } elseif ($targetInfo['degree'] == 3) {
+            $targetName = $area->getName($targetInfo['countyId'], $targetInfo['cityId'], 3) . '三级代理';
+        } else {
             $targetName = '官方代理';
         }
-        $info['sourceName']=$sourceInfo['orgOrganization']['orgName'].'('.$sourceName.')';
-        $info['targetName']=$targetInfo['orgOrganization']['orgName'].'('.$targetName.')';
+        $info['sourceName'] = $sourceInfo['orgOrganization']['orgName'] . '(' . $sourceName . ')';
+        $info['targetName'] = $targetInfo['orgOrganization']['orgName'] . '(' . $targetName . ')';
         //托管方的下级代理
         $sourceAgents = $this->agentList2($sourceId);
         $sourceIns = $this->orgList2($sourceId);
-        $info['sourceAgents']=$sourceAgents;
-        $info['sourceIns']=$sourceIns;
-        $info['sourceId']=$sourceId;
-        $info['targetId']=$targetId;
-        $info['collocationId']=$collocationId;
-        $info['type']=$type;
+        $info['sourceAgents'] = $sourceAgents;
+        $info['sourceIns'] = $sourceIns;
+        $info['sourceId'] = $sourceId;
+        $info['targetId'] = $targetId;
+        $info['collocationId'] = $collocationId;
+        $info['type'] = $type;
         return $info;
     }
 
@@ -139,35 +133,33 @@ class AgentController extends AdminController
     function agentList($agentId = 0)
     {
         if (empty($agentId)) {
-            $agentId = $this->agentId()==''?1:$this->agentId();
+            $agentId = $this->agentId() == '' ? 1 : $this->agentId();
         }
         $pageNo = I('get.p2', 1);
         $pageSize = C('PAGE_SIZE');
-        $url = C('INTERFACR_API')['query_agent'] . '?pageNo=' . $pageNo . '&pageSize=' .$pageSize ;
+        $url = C('INTERFACR_API')['query_agent'] . '?pageNo=' . $pageNo . '&pageSize=' . $pageSize;
         $param = think_json_encode(['parentId' => $agentId]);
         $lists = $this->lists2($url, $param);
         $agentLists = $lists['itemList'];
-        $this->assign('totalPage',$lists['totalPage']);
+        $this->assign('totalPage', $lists['totalPage']);
         $area = new AreaController();
         foreach ($agentLists as $key => &$value) {
-            if(is_collocation($value['agentId'])){
+            if (is_collocation($value['agentId'])) {
                 //托管中
-                $value['c_status']=1;
-            }
-            else{
-                if($value['userStatus']==1){
+                $value['c_status'] = 1;
+            } else {
+                if ($value['userStatus'] == 1) {
                     //已托管
-                    $value['c_status']=2;
-                }
-                else{
+                    $value['c_status'] = 2;
+                } else {
                     //未托管
-                    $value['c_status']=0;
+                    $value['c_status'] = 0;
                 }
             }
             //date类型去除后面000
             $value['createTime'] = substr($value['createTime'], 0, strlen($value['createTime']) - 3);
             $value['updateTime'] = substr($value['updateTime'], 0, strlen($value['updateTime']) - 3);
-            $value['area'] = $area->getFullName($value['provinceId'],$value['cityId'],$value['countyId'],$value['degree']);
+            $value['area'] = $area->getFullName($value['provinceId'], $value['cityId'], $value['countyId'], $value['degree']);
             if (agent_list($value['agentId']) != null) {
                 $value['child'] = agent_list($value['agentId']);
             }
@@ -176,7 +168,7 @@ class AgentController extends AdminController
                     //date类型去除后面000
                     $v['createTime'] = substr($v['createTime'], 0, strlen($v['createTime']) - 3);
                     $v['updateTime'] = substr($v['updateTime'], 0, strlen($v['updateTime']) - 3);
-                    $v['area'] = $area->getFullName($v['provinceId'],$v['cityId'],$v['countyId'],$v['degree']);
+                    $v['area'] = $area->getFullName($v['provinceId'], $v['cityId'], $v['countyId'], $v['degree']);
                     if (agent_list($v['agentId']) != null) {
                         $value['child'][$k]['children'] = agent_list($v['agentId']);
                     }
@@ -185,7 +177,7 @@ class AgentController extends AdminController
                             //date类型去除后面000
                             $vv['createTime'] = substr($vv['createTime'], 0, strlen($vv['createTime']) - 3);
                             $vv['updateTime'] = substr($vv['updateTime'], 0, strlen($vv['updateTime']) - 3);
-                            $vv['area'] = $area->getFullName($vv['provinceId'],$vv['cityId'],$vv['countyId'],$vv['degree']);
+                            $vv['area'] = $area->getFullName($vv['provinceId'], $vv['cityId'], $vv['countyId'], $vv['degree']);
                         }
                     }
                 }
@@ -206,7 +198,7 @@ class AgentController extends AdminController
             //date类型去除后面000
             $value['createTime'] = substr($value['createTime'], 0, strlen($value['createTime']) - 3);
             $value['updateTime'] = substr($value['updateTime'], 0, strlen($value['updateTime']) - 3);
-            $value['area'] = $area->getFullName($value['provinceId'],$value['cityId'],$value['countyId'],$value['degree']);
+            $value['area'] = $area->getFullName($value['provinceId'], $value['cityId'], $value['countyId'], $value['degree']);
         }
         return $agentLists;
     }
@@ -227,7 +219,8 @@ class AgentController extends AdminController
         return $list['itemList'];
     }
 
-    function orgList2($agentId = 0){
+    function orgList2($agentId = 0)
+    {
         if (empty($agentId)) {
             $agentId = $this->agentId();
         }
@@ -240,15 +233,19 @@ class AgentController extends AdminController
     {
         $this->meta_title = "保存代理商信息";
         $auth = $this->getAuth();
-        $this->assign('auth',$auth);
+        $this->assign('auth', $auth);
         $orgAgent = $this->orgAgent();
-        $this->assign('degree',$orgAgent['degree']);
+        $this->assign('degree', $orgAgent['degree']);
         $this->display('agent');
     }
 
     function agent2()
     {
         $this->meta_title = "保存代理机构信息";
+        $device_type = C('DEVICE_TYPE');
+        $auth = $this->getAuth();
+        $this->assign('auth', $auth);
+        $this->assign('device_type', $device_type);
         $this->display('agent2');
     }
 
@@ -258,7 +255,7 @@ class AgentController extends AdminController
         $param = $_POST;
         $orgContactList = null;
         foreach ($param as $keys => $val) {
-            if (is_array($val)) {
+            if (is_array($val) && $keys != 'deviceType' && $keys != 'roleModuleIds') {
                 foreach ($val as $key => $value) {
                     $orgContactList[$key][$keys] = $value;
                     $orgContactList[$key]['contactType'] = $key;
@@ -283,7 +280,8 @@ class AgentController extends AdminController
         ],
             'orgContactList' => $orgContactList,
             'imageList' => $imageList,
-            'orgDevice' => ['deviceType' => "0,1", 'quantity' => 100],
+            'orgDevice' => ['deviceType' =>implode(',', $param['deviceType']), 'quantity' => $param['quantity']],
+            'permInfo' => ['roleModuleIds'=>$param['roleModuleIds']],
             'userInfo' => ['password' => $param['password']]
         ];
         $orgInstitution = [
@@ -296,7 +294,7 @@ class AgentController extends AdminController
         //如果是编辑
         if ($orgId) {
             $result['orgOrganization']['orgId'] = $orgId;
-            unset($result['sysUserInfo']);
+            unset($result['userInfo']);
             unset($orgInstitution['agentId']);
             $orgInstitution['institutionId'] = I('post.institutionId');
             if (!empty($imgIdArr)) {
@@ -355,10 +353,10 @@ class AgentController extends AdminController
                 'quantity' => $param['quantity']
             ],
             'userInfo' => ['password' => $param['password']],
-            'permInfo'=>['roleModuleIds'=> $param['roleModuleIds']],
+            'permInfo' => ['roleModuleIds' => $param['roleModuleIds']],
         ];
         $orgAgent = [
-            'parentId' => $this->agentId()==''?1:$this->agentId(),
+            'parentId' => $this->agentId() == '' ? 1 : $this->agentId(),
             'degree' => $param['degree'],
             'provinceId' => $param['provinceId'],
             'cityId' => $param['cityId'],
@@ -390,32 +388,31 @@ class AgentController extends AdminController
         } else {
             $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
         }
-      //  exit();
-       if ($jsonData['success']) {
+        //  exit();
+        if ($jsonData['success']) {
             $this->success('保存成功');
-        }
-        else{
+        } else {
             $this->error('系统错误');
         }
     }
 
     function agent_detail()
     {
-        if(I('get.p')){
-            $this->assign('current_p',I('get.p'));
+        if (I('get.p')) {
+            $this->assign('current_p', I('get.p'));
         }
-        if(I('get.p2')){
-            $this->assign('current_p2',I('get.p2'));
+        if (I('get.p2')) {
+            $this->assign('current_p2', I('get.p2'));
         }
         $agentId = I('get.agentId');
         $collocationId = I('get.collocationId');
-        if(!empty($collocationId)){
-            $this->assign('collocationId',$collocationId);
+        if (!empty($collocationId)) {
+            $this->assign('collocationId', $collocationId);
         }
         if ($agentId) {
             //编辑
             $this->meta_title = '代理商管理-代理商信息变更';
-            $this->assign('agentId',$agentId);
+            $this->assign('agentId', $agentId);
         } else {
             //详情
             $this->meta_title = '代理商管理-代理商详情';
@@ -454,35 +451,35 @@ class AgentController extends AdminController
         //可托管的代理商-同级/父级
         $parentId = $info['parentId'];
         if (!empty($parentId)) {
-            $proAgents = $this->getCollacations($parentId, $info['agentId'],I('get.targetId'));
+            $proAgents = $this->getCollacations($parentId, $info['agentId'], I('get.targetId'));
             $this->assign('proAgents', $proAgents);
         }
         //权限
         $moduleList = $manageInfo['orgOrganization']['moduleList'];
         $auth = $this->getAuth();
-        $this->assign('moduleList',$moduleList);
-        $this->assign('auth',$auth);
+        $this->assign('moduleList', $moduleList);
+        $this->assign('auth', $auth);
         $this->display();
     }
 
     //可托管代理商
-    function getCollacations($parentId, $agentId,$targetId=null)
+    function getCollacations($parentId, $agentId, $targetId = null)
     {
         //同级
         $siblingAgents = $this->agentList2($parentId);
         foreach ($siblingAgents as $key => &$value) {
-            if ($value['agentId'] == $agentId){
+            if ($value['agentId'] == $agentId) {
                 unset($siblingAgents[$key]);
             }
-            if(is_collocation($value['agentId'])){
+            if (is_collocation($value['agentId'])) {
                 unset($siblingAgents[$key]);
             }
-            if(!empty($targetId)){
-                if($value['agentId']==$targetId){
+            if (!empty($targetId)) {
+                if ($value['agentId'] == $targetId) {
                     unset($siblingAgents[$key]);
                 }
             }
-            if($value['userStatus']==1){
+            if ($value['userStatus'] == 1) {
                 unset($siblingAgents[$key]);
             }
         }
@@ -496,24 +493,25 @@ class AgentController extends AdminController
         unset($parentInfo['orgOrganization']);
         //获取上级行政区域
         $area = new AreaController();
-        $parentInfo['area'] = $area->getFullName($parentInfo['provinceId'],$parentInfo['cityId'],$parentInfo['countyId'],$parentInfo['degree']);
+        $parentInfo['area'] = $area->getFullName($parentInfo['provinceId'], $parentInfo['cityId'], $parentInfo['countyId'], $parentInfo['degree']);
         $arr[] = $parentInfo;
-        if(!empty($targetId) && $targetId == $parentInfo['agentId']){
+        if (!empty($targetId) && $targetId == $parentInfo['agentId']) {
             $proAgents = $siblingAgents;
-        }
-        else{
+        } else {
             $proAgents = array_merge($arr, $siblingAgents);
 
         }
         return $proAgents;
     }
+
     //机构托管代理商/机构
-    function getInsCollacations($agentId){
+    function getInsCollacations($agentId)
+    {
         $siblingIns = org_list($agentId);
         int_to_string($siblingIns, ['insType' => C('INS_TYPE')]);
         $agentInfo = get_agent_info($agentId);
         $area = new AreaController();
-        $agentInfo['area'] = $area->getFullName($agentInfo['provinceId'],$agentInfo['cityId'],$agentInfo['countyId'],$agentInfo['degree']);
+        $agentInfo['area'] = $area->getFullName($agentInfo['provinceId'], $agentInfo['cityId'], $agentInfo['countyId'], $agentInfo['degree']);
         $res['agent'] = $agentInfo;
         $res['ins'] = $siblingIns;
         return $res;
@@ -552,6 +550,7 @@ class AgentController extends AdminController
             }
 
         }
+//        print_r($imgList);die();
         $this->assign('info', $option);
         $this->assign('orgInfo', $option['orgOrganization']);
         $this->assign('contactList', $option['orgOrganization']['contactList']);
@@ -563,42 +562,43 @@ class AgentController extends AdminController
     }
 
     //确认托管代理商
-    function confirmCollocation($collocationId){
+    function confirmCollocation($collocationId)
+    {
         $res = confirm_collocation($collocationId);
-        if($res['success']){
+        if ($res['success']) {
             $this->success('托管成功!');
-        }
-        else{
+        } else {
             $this->error('托管失败!');
         }
     }
 
     //重新托管
-    function updateCollocation($collocationId,$targetId){
-        $res = update_collocation($collocationId,$targetId);
-        if($res['success']){
-            $this->success('重新托管成功!','index');
-        }
-        else{
+    function updateCollocation($collocationId, $targetId)
+    {
+        $res = update_collocation($collocationId, $targetId);
+        if ($res['success']) {
+            $this->success('重新托管成功!', 'index');
+        } else {
             $this->error('重新托管失败!');
         }
     }
 
     //取消托管代理商
-    function cancelCollocation($collocationId){
+    function cancelCollocation($collocationId)
+    {
         $res = cancel_collocation($collocationId);
-        if($res['success']){
+        if ($res['success']) {
             $this->success('取消托管成功!');
-        }
-        else{
+        } else {
             $this->error('取消托管失败!');
         }
     }
 
     //获取权限
-    function getAuth(){
+    function getAuth()
+    {
         //dump($_SESSION);
-        $userType=$_SESSION['onethink_admin']['user_auth']['userType'];
+        $userType = $_SESSION['onethink_admin']['user_auth']['userType'];
         //$userType=1;
         $res = get_auth($userType);
         return $res;

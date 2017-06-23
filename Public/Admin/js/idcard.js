@@ -13,6 +13,7 @@ $("form").Validform({
         }
     },
     callback:function(data){
+        console.log(data);
         $('.Validform_title').hide();
         $('.Validform_info').hide();
         //console.log(data);
