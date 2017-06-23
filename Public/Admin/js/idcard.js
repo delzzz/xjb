@@ -54,7 +54,6 @@ $("form").Validform({
         }
     },
     datatype:{//传入自定义datatype类型【方式二】;
-        "s":"",
         "idcard":function(gets,obj,curform,datatype){
             var Wi = [ 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1 ];// 加权因子;
             var ValideCode = [ 1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2 ];// 身份证验证位值，10代表X;
@@ -132,7 +131,7 @@ $("form").Validform({
     }
 }).addRule([
     {
-        ele: "input:not(input[type='checkbox'],input[type='hidden'],input[ignore='1'])",
+        ele: "input:not(input[type='checkbox'],input[type='file'],input[type='hidden'],input[ignore='1'])",
         datatype:"*",
         nullmsg: "此项不能为空"
     },
