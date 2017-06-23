@@ -36,7 +36,7 @@ $("form").Validform({
                     location.href = data.url;
                 } else {
                     $('#top-alert').find('button').click();
-                    $(that).removeClass('disabled').prop('disabled', false);
+                   // $(that).removeClass('disabled').prop('disabled', false);
                 }
             }, 1500);
         }
@@ -172,7 +172,7 @@ $("form").Validform({
         errormsg:"此项为必选项",
     },
     {
-        ele:"select[name='dataSrc']",
+        ele:"select[name='dataSrc'],select[name='insType']",
         datatype:"sel",
         errormsg:"此项为必选项",
     }
