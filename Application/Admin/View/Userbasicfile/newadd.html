@@ -85,6 +85,7 @@
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <select id="ppl_ethnic_create" class="form-control" name="ethnicity">
+                                                <option value="-1">请选择</option>
                                                 <volist name="ethnicity" id="e">
                                                     <option value="{$key}">{$e}</option>
                                                 </volist>
@@ -98,6 +99,7 @@
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <div class="">
                                                 <select name="education" class="form-control">
+                                                    <option value="-1">请选择</option>
                                                     <volist name="education" id="e">
                                                         <option value="{$key}">{$e}</option>
                                                     </volist>
@@ -113,6 +115,7 @@
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <div class="">
                                                 <select name="economy" class="form-control">
+                                                    <option value="-1">请选择</option>
                                                     <volist name="economy" id="e">
                                                         <option value="{$key}">{$e}</option>
                                                     </volist>
@@ -127,6 +130,7 @@
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <div class="">
                                                 <select name="livingStatus" class="form-control">
+                                                    <option value="-1">请选择</option>
                                                     <volist name="livingStatus" id="l">
                                                         <option value="{$key}">{$l}</option>
                                                     </volist>
@@ -141,6 +145,7 @@
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <div class="">
                                                 <select name="healthStatus" class="form-control">
+                                                    <option value="-1">请选择</option>
                                                     <volist name="healthStatus" id="h">
                                                         <option value="{$key}">{$h}</option>
                                                     </volist>
@@ -357,6 +362,7 @@
         Think.setValue('education', {$peopleBasic.education|default='-1'});
         Think.setValue('economy', {$peopleBasic.economy|default='-1'});
         Think.setValue('healthStatus', {$peopleBasic.healthStatus|default='-1'});
+        Think.setValue('livingStatus', {$peopleBasic.livingStatus|default='-1'});
         $(function () {
             Page.init();
         });
