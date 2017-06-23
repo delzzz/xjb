@@ -386,5 +386,6 @@ return array(
         'cancel_collocation' => 'http://' . HOST . '/service/org/agent/collocation/cancel',//取消托管
 
         'feeback' => 'http://' . HOST . '/service/feedback/get/page',//意见反馈
+        'del_feeback' => 'http://'.HOST.'/service/feedback/delete/',//删除意见反馈
     ),
 );
