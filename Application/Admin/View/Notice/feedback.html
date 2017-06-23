@@ -8,8 +8,10 @@
                     <h2>意见反馈</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li>
-                            <i class="fa fa-trash color-red"></i>
-                            批量删除
+                            <a class="btn ajax-post confirm" url="{:U('del_feeback')}" target-form="ids">
+                                <i class="fa fa-trash color-red ajax-post confirm" url="{:U('del_feeback')}" target-form="ids"></i>
+                                批量删除
+                            </a>
                         </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -21,7 +23,7 @@
                             <thead>
                             <tr class="headings bg-success cl3">
                                 <th class="text-center">
-                                    <!--<input type="checkbox" id="check-all" class="flat">-->
+                                    <input type="checkbox" class="flat check-all">
                                 </th>
                                 <th class="column-title text-center">反馈时间</th>
                                 <th class="column-title text-center">反馈内容</th>
@@ -32,26 +34,23 @@
                             </thead>
 
                             <tbody>
-                            <tr>
-                                <td class="a-center">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">2017-3-1</td>
-                                <td class=" ">软件打不开</td>
-                                <td class=" ">小白</td>
-                                <td class=" "><a class="color-red" href="">删除</a></td>
-                            </tr>
-                            <tr class="even pointer">
-                                <td class="a-center">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">2017-3-1</td>
-                                <td class=" ">软件打不开</td>
-                                <td class=" ">小白</td>
-                                <td class=" "><a class="color-red" href="">删除</a></td>
-                            </tr>
+                            <volist name="list" id="l">
+                                <tr>
+                                    <td class="a-center">
+                                        <input type="checkbox" name="feedbackId[]" value="{$l.feedbackId}"
+                                               class="flat ids">
+                                    </td>
+                                    <td class=" ">{:time_format($l['create_time'])}</td>
+                                    <td class=" ">{$l.content}</td>
+                                    <td class=" ">{$l.userName}</td>
+                                    <td class=" ">
+                                        <a class="color-red confirm ajax-get" href="{:U('del_feeback?feedbackId='.$l['feedbackId'])}">删除</a>
+                                    </td>
+                                </tr>
+                            </volist>
                             </tbody>
                         </table>
+                        {$_page}
                     </div>
                 </div>
             </div>

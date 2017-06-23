@@ -358,9 +358,13 @@ class AdminController extends Controller
      * @return array|false
      * 返回数据集
      */
-    protected function lists($url, $params, $order = '')
+    protected function lists($url, $params, $method = 'POST', $order = '')
     {
-        $list = http_post_json($url, $params);
+        if ($method == 'POST') {
+            $list = http_post_json($url, $params);
+        } else {
+            $list = http($url,$params,'GET');
+        }
         $total = $list['totalCount'];
         $REQUEST = (array)I('request.');
         if (isset($REQUEST['r'])) {

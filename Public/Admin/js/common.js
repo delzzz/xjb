@@ -28,6 +28,7 @@ $(function () {
         }
         if ((target = $(this).attr('href')) || (target = $(this).attr('url'))) {
             $.get(target).success(function (data) {
+                console.log(data);
                 if (data.status == 1) {
                     if (data.url) {
                         alert(data.info);

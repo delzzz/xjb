@@ -64,10 +64,23 @@ class NoticeController extends AdminController
     {
         $this->meta_title = "意见反馈";
         $pageNo = I('get.p', 1);
-        $url = $this->getUrl('feeback') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
-        $list = $this->lists($url, null);
-//print_r($list);die();
-
+        $url = $this->getUrl('feeback');
+        $param = ['pageNo' => $pageNo, 'pageSize' => C('PAGE_SIZE')];
+        $list = $this->lists($url, $param, 'GET');
+        $this->assign('list', $list['itemList']);
         $this->display();
+    }
+
+    function del_feeback()
+    {
+        $ids = I('feedbackId');
+        if (IS_GET) {
+            $feedbackId = "[" . $ids . "]";
+        } else {
+            $feedbackId = json_encode($ids);
+        }
+        $url = $this->getUrl('del_feeback');
+        http_post_json($url, $feedbackId);
+        $this->success('删除成功');
     }
 }
