@@ -386,6 +386,15 @@ return array(
         'cancel_collocation' => 'http://' . HOST . '/service/org/agent/collocation/cancel',//取消托管
 
         'feeback' => 'http://' . HOST . '/service/feedback/get/page',//意见反馈
+
         'del_feeback' => 'http://'.HOST.'/service/feedback/delete/',//删除意见反馈
+
+
+        'get_auth'=>'http://192.168.1.250:8080/service/perm/modules/support/',//获取权限
+
+        'send_broadcast'=>'http://192.168.1.250:8080/service/msg/broadcast/send',//发送广播
+        'del_broadcast'=>'http://192.168.1.250:8080/service/msg/broadcast/delete',//删除广播
+        'query_broadcast'=>'http://192.168.1.250:8080/service/msg/broadcast/query?pageNo=',//查询广播
+
     ),
 );

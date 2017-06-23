@@ -47,14 +47,14 @@
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <div id="distpicker2" class="">
                                             <!--省-->
-                                            <select disabled="disabled" name="provinceId" class="data-province form-control"></select>
+                                            <select value="{$info.provinceId}" disabled="disabled"  name="provinceId" class="data-province form-control"></select>
                                             <input type="hidden" id="hid_p" value="{$info.provinceId}"/>
                                             <!--市-->
-                                            <select ignore="1" disabled="disabled" name="cityId" class="data-city form-control"></select>
-                                            <input   type="hidden" id="hid_c" value="{$info.cityId}"/>
+                                            <select value="{$info.cityId}"  disabled="disabled" name="cityId" class="data-city form-control"></select>
+                                            <input  type="hidden" id="hid_c" value="{$info.cityId}"/>
                                             <!--县-->
-                                            <select ignore="1" disabled="disabled" name="countyId" class="data-district form-control"></select>
-                                            <input   type="hidden" id="hid_co" value="{$info.countyId}"/>
+                                            <select value="{$info.countyId}"  disabled="disabled" name="countyId" class="data-district form-control"></select>
+                                            <input  type="hidden" id="hid_co" value="{$info.countyId}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -183,7 +183,7 @@
                                 <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
                                 <button title="托管后账号才可以停用或启用账号" type="button" class="btn btn-lg btn-danger">账号停用
                                 </button>
-                                <button class="btn btn-lg btn-danger ajax-post" type="button" target-form="form-label-left">保存页面</button>
+                                <button class="btn btn-lg btn-danger ajax-post" type="submit" target-form="form-label-left">保存页面</button>
                                 <a href="{:U('index')}" class="btn btn-lg btn-danger ">返回</a>
                             </div>
                         </div>
@@ -509,6 +509,8 @@
 </block>
 <block name="script">
     <script>
+        //console.log($('#hid_p').val());
+        //Page.hid_p=$('#hid_p').val();
         $('.btn-cancel').click(function(){
             if($('#collocationId').val() !== ''){
                 history.go(-1);

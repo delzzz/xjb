@@ -374,7 +374,7 @@
                     data = eval('(' + data + ')');
                     var options = '<option value="0" selected="selected">--省--</option>';
                     for (var i = 0; i < data.length; i++) {
-                        if (data[i].regionId === Page.hid_p) {
+                        if (data[i].regionId == Page.hid_p) {
                             options += '<option value=' + data[i].regionId + ' selected="selected">' + data[i].name + '</option>';
                         } else {
                             options += '<option value=' + data[i].regionId + '>' + data[i].name + '</option>';
@@ -418,7 +418,7 @@
                         return;
                     }
                     for (var i = 0; i < data.length; i++) {
-                        if (data[i].regionId === Page.hid_c || data[i].regionId === Page.hid_co) {
+                        if (data[i].regionId == Page.hid_c || data[i].regionId == Page.hid_co) {
                             options += '<option value=' + data[i].regionId + ' selected="selected">' + data[i].name + '</option>';
                         } else {
                             options += '<option value=' + data[i].regionId + '>' + data[i].name + '</option>';
