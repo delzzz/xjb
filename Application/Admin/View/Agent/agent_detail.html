@@ -1,5 +1,11 @@
 <extend name="Public/base"/>
-
+<block name="style">
+    <style>
+        .unbindclick{
+            pointer-events:none;
+        }
+    </style>
+</block>
 <block name="body">
     <form action="{:U('addAgent')}" method="post" class="form-horizontal form-label-left">
         <div class="right_col" role="main">
@@ -24,14 +30,14 @@
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">代理商名称:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input value="{$info['orgOrganization']['orgName']}" name="orgName" type="text" class="form-control" disabled="disabled" placeholder="">
+                                        <input value="{$info['orgOrganization']['orgName']}" name="orgName" type="text" class="form-control" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">代理商等级:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <input type="hidden" value="{$info['degree']}" name="degree" />
-                                        <select disabled="disabled" class="form-control" id="degree" value="{$info.degree}">
+                                        <select  class="form-control" id="degree" value="{$info.degree}">
                                             <option value="-1">请选择</option>
                                             <option
                                             <?php if($info['degree'] == 1)echo 'selected';?> value="1">一级代理商</option>
@@ -47,13 +53,13 @@
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <div id="distpicker2" class="">
                                             <!--省-->
-                                            <select value="{$info.provinceId}" disabled="disabled"  name="provinceId" class="data-province form-control"></select>
+                                            <select value="{$info.provinceId}" name="provinceId" class="data-province form-control"></select>
                                             <input type="hidden" id="hid_p" value="{$info.provinceId}"/>
                                             <!--市-->
-                                            <select value="{$info.cityId}"  disabled="disabled" name="cityId" class="data-city form-control"></select>
+                                            <select value="{$info.cityId}"  name="cityId" class="data-city form-control"></select>
                                             <input  type="hidden" id="hid_c" value="{$info.cityId}"/>
                                             <!--县-->
-                                            <select value="{$info.countyId}"  disabled="disabled" name="countyId" class="data-district form-control"></select>
+                                            <select value="{$info.countyId}"  name="countyId" class="data-district form-control"></select>
                                             <input  type="hidden" id="hid_co" value="{$info.countyId}"/>
                                         </div>
                                     </div>
@@ -63,20 +69,20 @@
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">代理商登录ID:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <input id="logId" type="text" class="form-control" value="A0001(自动生成不可编辑)"
-                                               disabled="disabled" placeholder="">
+                                                placeholder="">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">公司电话:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input name="telephone" value="{$info['orgOrganization']['telephone']}" type="text" class="form-control" disabled="disabled" placeholder="">
+                                        <input name="telephone" value="{$info['orgOrganization']['telephone']}" type="text" class="form-control"  placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">公司组织机构:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input name="orgCode" value="{$info['orgOrganization']['orgCode']}" type="text" class="form-control" disabled="disabled" placeholder="">
+                                        <input name="orgCode" value="{$info['orgOrganization']['orgCode']}" type="text" class="form-control"  placeholder="">
                                     </div>
                                 </div>
 
@@ -84,7 +90,7 @@
                                     <label class="control-label col-md-2 col-sm-2 col-xs-12">公司地址:</label>
                                     <div class="col-md-10 col-sm-10 col-xs-12">
                                         <div class="">
-                                            <input name="address" value="{$info['orgOrganization']['address']}" type="text" class="form-control" disabled="disabled" placeholder="">
+                                            <input name="address" value="{$info['orgOrganization']['address']}" type="text" class="form-control"  placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +105,7 @@
                                         公司介绍/备注:
                                     </label>
                                     <div class="col-md-10 col-sm-10 col-xs-12">
-                                        <textarea disabled="disabled" name="remark" class="form-control" rows="3" placeholder='备注在2000字以内'>{$info['orgOrganization']['remark']}</textarea>
+                                        <textarea  name="remark" class="form-control" rows="3" placeholder='备注在2000字以内'>{$info['orgOrganization']['remark']}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -127,20 +133,20 @@
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">管理人姓名:</label>
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input value="{$contact.name}" name="name[]" type="text" class="form-control" disabled="disabled" placeholder="">
+                                            <input value="{$contact.name}" name="name[]" type="text" class="form-control"  placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">手机号码:</label>
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input value="{$contact.mobile}" name="mobile[]" type="text" class="form-control" disabled="disabled" placeholder="">
+                                            <input value="{$contact.mobile}" name="mobile[]" type="text" class="form-control"  placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                         <label class="control-label col-md-2 col-sm-2 col-xs-12">身份证号:</label>
                                         <div class="col-md-10 col-sm-10 col-xs-12">
                                             <div class="">
-                                                <input value="{$contact.idNo}" name="idNo[]" type="text" class="form-control" disabled="disabled" placeholder="">
+                                                <input value="{$contact.idNo}" name="idNo[]" type="text" class="form-control"  placeholder="">
                                             </div>
                                             <input type="hidden" name="contactId[]" value="{$contact.contactId}">
                                         </div>
@@ -212,42 +218,42 @@
                     <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
                         <br>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <input disabled="disabled" id="device" type="hidden" value="{$manageInfo['orgOrganization']['orgDevice']['deviceType']}"/>
+                            <input  id="device" type="hidden" value="{$manageInfo['orgOrganization']['orgDevice']['deviceType']}"/>
                             <label>
-                                <input disabled="disabled" name="deviceType[]" value="0" type="checkbox" class="flat"> 老人终端机
+                                <input  name="deviceType[]" value="0" type="checkbox" class="flat"> 老人终端机
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input disabled="disabled" name="deviceType[]" value="1" type="checkbox" class="flat"> SOS手腕
+                                <input  name="deviceType[]" value="1" type="checkbox" class="flat"> SOS手腕
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input disabled="disabled" name="deviceType[]" value="2" type="checkbox" class="flat"> 门磁状态检测仪
+                                <input  name="deviceType[]" value="2" type="checkbox" class="flat"> 门磁状态检测仪
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input disabled="disabled" name="deviceType[]" value="3" type="checkbox" class="flat">
+                                <input  name="deviceType[]" value="3" type="checkbox" class="flat">
                                 烟雾报警器
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input disabled="disabled" name="deviceType[]" value="4" type="checkbox" class="flat">
+                                <input  name="deviceType[]" value="4" type="checkbox" class="flat">
                                 漏水检测器
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input disabled="disabled" name="deviceType[]" value="5" type="checkbox" class="flat">
+                                <input  name="deviceType[]" value="5" type="checkbox" class="flat">
                                 呼吸心率仪
                             </label>
                         </div>
                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                             <label>
-                                <input disabled="disabled" name="deviceType[]" value="6" type="checkbox" class="flat">
+                                <input  name="deviceType[]" value="6" type="checkbox" class="flat">
                                 人体红外监测
                             </label>
                         </div>
@@ -527,9 +533,14 @@
         }
         //编辑页
         $('#divOption1').hide();
+        $('input,textarea,select').attr('disabled',true);
+        $('.dropzone a').addClass('unbindclick');
         $("#btnDailiShang").click(function () {
-            $('#f1 input:not(#logId),#f2 input,#f3 input,textarea,select').attr('disabled', false);
-            $('#degree').attr('disabled','disabled');
+            $('input,textarea,select').attr('disabled', false);
+            $('#logId').attr('disabled',true);
+            $('#f4 input').attr('disabled',true);
+            $('#degree').attr('disabled',true);
+            $('.dropzone a').removeClass('unbindclick');
             $('#divOption1').show();
             $('#divOption2').hide();
         });
