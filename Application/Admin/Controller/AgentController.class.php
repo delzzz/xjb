@@ -243,7 +243,9 @@ class AgentController extends AdminController
     {
         $this->meta_title = "保存代理机构信息";
         $device_type = C('DEVICE_TYPE');
+        $org_condition = C('ORG_CONDITION');
         $auth = $this->getAuth();
+        $this->assign('org_condition', $org_condition);
         $this->assign('auth', $auth);
         $this->assign('device_type', $device_type);
         $this->display('agent2');
@@ -255,7 +257,7 @@ class AgentController extends AdminController
         $param = $_POST;
         $orgContactList = null;
         foreach ($param as $keys => $val) {
-            if (is_array($val) && $keys != 'deviceType' && $keys != 'roleModuleIds') {
+            if (is_array($val) && $keys != 'deviceType' && $keys != 'roleModuleIds' && $keys != 'orgCondition') {
                 foreach ($val as $key => $value) {
                     $orgContactList[$key][$keys] = $value;
                     $orgContactList[$key]['contactType'] = $key;
@@ -280,14 +282,16 @@ class AgentController extends AdminController
         ],
             'orgContactList' => $orgContactList,
             'imageList' => $imageList,
-            'orgDevice' => ['deviceType' =>implode(',', $param['deviceType']), 'quantity' => $param['quantity']],
-            'permInfo' => ['roleModuleIds'=>$param['roleModuleIds']],
+            'orgDevice' => ['deviceType' => implode(',', $param['deviceType']), 'quantity' => $param['quantity']],
+            'permInfo' => ['roleModuleIds' => $param['roleModuleIds']],
             'userInfo' => ['password' => $param['password']]
         ];
+        $orgCondition = implode(',',$param['orgCondition']);
         $orgInstitution = [
             'agentId' => $this->agentId()??1,
             'insType' => $param['insType'],
-            'district' => $param['district']
+            'district' => $param['district'],
+            'orgCondition' =>$orgCondition
         ];
         $orgId = I('post.orgId');
         $imgIdArr = explode(',', I('post.imgIdStr'));
@@ -550,7 +554,6 @@ class AgentController extends AdminController
             }
 
         }
-//        print_r($imgList);die();
         $this->assign('info', $option);
         $this->assign('orgInfo', $option['orgOrganization']);
         $this->assign('contactList', $option['orgOrganization']['contactList']);

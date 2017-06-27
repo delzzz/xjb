@@ -63,6 +63,14 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">所属机构:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" value="{$peopleBasic.orgName}"
+                                                   class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">电话:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
@@ -263,6 +271,7 @@
                                                     </volist>
                                                     </tbody>
                                                 </table>
+                                                <button type="button" class="btn btn-sm btn-danger pull-right new_del2">删除亲属</button>
                                                 <button type="button" class="btn btn-sm btn-danger pull-right new_add">
                                                     新增亲属
                                                 </button>
@@ -318,6 +327,7 @@
                                                     </volist>
                                                     </tbody>
                                                 </table>
+                                                <button type="button" class="btn btn-sm btn-danger pull-right new_del2">删除设备</button>
                                                 <button type="button" class="btn btn-sm btn-danger pull-right new_add2">
                                                     新增设备
                                                 </button>
@@ -357,53 +367,93 @@
 
 <block name="script">
     <script type="text/javascript">
-        Think.setValue('gender', {$peopleBasic.gender|default='1'});
-        Think.setValue('ethnicity', {$peopleBasic.ethnicity|default='-1'});
-        Think.setValue('education', {$peopleBasic.education|default='-1'});
-        Think.setValue('economy', {$peopleBasic.economy|default='-1'});
-        Think.setValue('healthStatus', {$peopleBasic.healthStatus|default='-1'});
-        Think.setValue('livingStatus', {$peopleBasic.livingStatus|default='-1'});
+        Think.setValue('gender', {$peopleBasic.gender|default= '1'});
+        Think.setValue('ethnicity', {$peopleBasic.ethnicity|default= '-1'});
+        Think.setValue('education', {$peopleBasic.education|default= '-1'});
+        Think.setValue('economy', {$peopleBasic.economy|default= '-1'});
+        Think.setValue('healthStatus', {$peopleBasic.healthStatus|default= '-1'});
+        Think.setValue('livingStatus', {$peopleBasic.livingStatus|default= '-1'});
         $(function () {
             Page.init();
         });
+
         $(".new_add").click(function () {
-            $(".tab1").append('<tr><td>  <input type="hidden" ignore="1" name="relativeId[]">' +
-                    '<input type="text" name="name[]" class="flat form-control"  value="" placeholder=""></td>' +
-                    '<td><input type="text" name="telephone[]" class="flat form-control"  value="" placeholder=""></td>' +
-                    '<td><input type="text" name="relation[]" class="flat form-control"  value="" placeholder=""></td>' +
-                    '<td><input type="text" name="address[]" class="flat form-control"  value="" placeholder=""></td>' +
-                    '</tr>');
+            var c = 1;
+            $(this).siblings("table").find("td").each(function () {
+                var a = $(this).children("input").val();
+                if (a != '') {
+                } else {
+                    c = 0;
+                }
+            });
+            if (c != 0) {
+                $(".tab1").append('<tr><td>  <input type="hidden" ignore="1" name="relativeId[]">' +
+                        '<input type="text" name="name[]" class="flat form-control"  value="" placeholder=""></td>' +
+                        '<td><input type="text" name="telephone[]" class="flat form-control"  value="" placeholder=""></td>' +
+                        '<td><input type="text" name="relation[]" class="flat form-control"  value="" placeholder=""></td>' +
+                        '<td><input type="text" name="address[]" class="flat form-control"  value="" placeholder=""></td>' +
+                        '</tr>');
+            } else {
+                alert("当前亲属信息不能为空");
+            }
             return false;
         });
+
         $(".new_add2").click(function () {
-            $(".tab2").append('<tr>' +
-                    '<if condition="!empty($peopleBasic['peopleId'])"><td><input type="text" name="peopleDeviceId[]" disabled="disabled" ignore="1" class="flat form-control"  value="" placeholder=""></td></if>' +
+                var c = 1;
+                $(this).siblings("table").find("td").each(function () {
+                    var a = $(this).children("input").val();
+                    if (a != '') {
+                    } else {
+                        c = 0;
+                    }
+                });
+                if (c != 0) {
+                    $(".tab2").append('<tr>' +
+                            '<if condition="!empty($peopleBasic['peopleId'])"><td><input type="text" name="peopleDeviceId[]" disabled="disabled" ignore="1" class="flat form-control"  value="" placeholder=""></td></if>' +
                     '<td><input type="text" name="deviceName[]" class="flat form-control"  value="" placeholder=""></td>' +
                     '<td><input type="text" name="deviceIdentifier[]" class="flat form-control"  value="" placeholder=""></td>' +
                     '<td><input type="text" name="deviceInstallDate[]" class="form-control has-feedback-left"  value="" placeholder=""></td>' +
-                    '</tr>');
-            $(".has-feedback-left").daterangepicker({singleDatePicker: !0,
-                singleClasses: "picker_4",
-                locale: {format: 'YYYY-MM-DD'}},function (a, b, c) {
-                console.log(a.toISOString(), b.toISOString(), c)
+                    '</tr>'
+                )
+                    ;
+                    $(".has-feedback-left").daterangepicker({
+                        singleDatePicker: !0,
+                        singleClasses: "picker_4",
+                        locale: {format: 'YYYY-MM-DD'}
+                    }, function (a, b, c) {
+                        console.log(a.toISOString(), b.toISOString(), c)
+                    });
+                } else {
+                    alert("当前设备信息不能为空");
+                }
+                return false;
             });
-            return false;
-        });
-        $("#image").on('change', function () {
-            var formData = new FormData();
-            formData.append('file', $("#image")[0].files[0]);
-            $.ajax({
-                url: "{:U('file/upload')}",
-                type: 'POST',
-                cache: false,
-                data: formData,
-                processData: false,
-                contentType: false
-            }).done(function (res) {
-                $("input[name='imagePath']").val(res);
-                $("#head_img").attr('src', res);
-            }).fail(function (res) {
+            $("#image").on('change', function () {
+                var formData = new FormData();
+                formData.append('file', $("#image")[0].files[0]);
+                $.ajax({
+                    url: "{:U('file/upload')}",
+                    type: 'POST',
+                    cache: false,
+                    data: formData,
+                    processData: false,
+                    contentType: false
+                }).done(function (res) {
+                    $("input[name='imagePath']").val(res);
+                    $("#head_img").attr('src', res);
+                }).fail(function (res) {
+                });
             });
+
+        $(".new_del2").click(function () {
+            var long=$(this).prev("table").find("tr").length;
+            if(long>1){
+                $(this).prev("table").find("tr").last().remove();
+            }
+
         });
+
+
     </script>
 </block>

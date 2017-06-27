@@ -313,6 +313,12 @@ return array(
     ],
 
 
+    'ORG_CONDITION' => [
+        ['name' => '医护人员'],
+        ['name' => '急救设施'],
+        ['name' => '拥有坐席']
+    ],
+
     /*接口配置*/
     'INTERFACR_API' => array(
 
@@ -405,6 +411,5 @@ return array(
         'send_broadcast' => 'http://192.168.1.250:8080/service/msg/broadcast/send',//发送广播
         'del_broadcast' => 'http://192.168.1.250:8080/service/msg/broadcast/delete',//删除广播
         'query_broadcast' => 'http://192.168.1.250:8080/service/msg/broadcast/query?pageNo=',//查询广播
-
     ),
 );
