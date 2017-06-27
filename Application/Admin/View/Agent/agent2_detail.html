@@ -1,4 +1,11 @@
 <extend name="Public/base"/>
+<block name="style">
+    <style>
+        .unbindclick{
+            pointer-events:none;
+        }
+    </style>
+</block>
 <block name="body">
     <div class="container body">
         <div class="right_col" role="main">
@@ -50,7 +57,7 @@
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">机构登录ID:</label>
 
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <input type="text" class="form-control" value="{$orgInfo.orgCode}"
+                                        <input id="logId" type="text" class="form-control" value="{$orgInfo.orgCode}"
                                                disabled="disabled" placeholder="">
                                     </div>
                                 </div>
@@ -365,14 +372,17 @@
 <block name="script">
     <script>
         $(function () {
-            $("input,textarea").attr('disabled', true);
+            $("input,textarea,select").attr('disabled', true);
+            $('.dropzone a').addClass('unbindclick');
             $("#btnDailiShang").click(function () {
                 $("#divOption").removeClass('hide');
                 $("#divOption2").hide();
-                $("input,textarea").attr('disabled', false);
+                $("input,select,textarea").attr('disabled', false);
+                $('.dropzone a').removeClass('unbindclick');
+                $('#logId').attr('disabled',true);
             });
         });
-        Think.setValue("insType", "{$orgInfo.orgType}");
+        Think.setValue("insType", "{$info.insType}");
         $(".dz-remove").click(function () {
             var pathStr = $("#imagePath").val();
             var imgId = $(this).attr("data-id");

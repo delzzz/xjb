@@ -23,8 +23,8 @@ $("form").Validform({
             //     //updateAlert(data.info, 'alert-success');
             // }
             setTimeout(function () {
-                    location.reload();
-            }, 1500);
+                location.reload();
+             }, 1500);
         } else {
             //updateAlert(data.info);
             alert(data.info);
@@ -39,7 +39,6 @@ $("form").Validform({
         }
     },
     tiptype: function (msg, o, cssctl) {
-        console.log(o.type);
         //验证错误再显示
         if(o.type==3){
             o.obj.next('.error').remove();
@@ -104,6 +103,7 @@ $("form").Validform({
         "sel_area":function(gets,obj,curform,datatype){
                 if(gets==0 || gets==''){
                     if(obj.attr('style').indexOf('display')!=-1 && obj.attr('style').indexOf('none')!=-1){
+                        obj.next('.error').remove();
                         return true;
                     }
                     else{
@@ -111,6 +111,7 @@ $("form").Validform({
                     }
                 }
                 else{
+                    obj.next('.error').remove();
                     return true;
                 }
             return false;
@@ -120,6 +121,7 @@ $("form").Validform({
                 return false;
             }
             else{
+                obj.next('.error').remove();
                 return true;
             }
             return false;
