@@ -25,11 +25,10 @@
                         </div>
                         <div class="x_title"></div>
                         <div class="row col-md-6 col-sm-6 col-xs-12">
-                            <a href="newadd.html">
+                            <a href="{:U('newadd')}">
                                 <button class="btn btn-sm btn-danger">新建老人档案</button>
                             </a>
-                            <button class="btn btn-default  btn-group-sm">批量导入</button>
-                            <button class="btn btn-default  btn-group-sm">导出数据</button>
+                            <button class="btn btn-default  btn-group-sm">批量删除</button>
                         </div>
 
                         <div class="x_content">
@@ -41,6 +40,7 @@
                                     <thead>
                                     <tr class="headings">
                                         <th>
+                                            <input type="checkbox" class="flat check-all">
                                         </th>
                                         <th class="column-title">姓名</th>
                                         <th class="column-title">老人编号</th>
@@ -60,6 +60,8 @@
                                         <a href="#">
                                             <tr class="even pointer">
                                                 <td class="a-center ">
+                                                    <input type="checkbox" name="noticeId[]" value="{$l.peopleId}"
+                                                           class="flat ids">
                                                 </td>
                                                 <td class="">{$l.name}</td>
                                                 <td class=" ">{$l.peopleIdentifier}</td>

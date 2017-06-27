@@ -27,10 +27,9 @@
                                     </div>
                                     <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">亲属电话:</label>
-
-                                        <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" class="form-control " value="{$data.telephone}"
-                                                   disabled="disabled" placeholder="">
+                                        <div class="col-md-8 col-sm-8 col-xs-12  has-feedback">
+                                            <input type="text" class="form-control" disabled="disabled" value="{$data.telephone}"  placeholder="电话">
+                                            <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -80,7 +79,7 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">心率:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" class="form-control" value="{$data.hertbeat}"
+                                            <input type="text" ignore="1" class="form-control" value="{$data.hertbeat}"
                                                    disabled="disabled" placeholder="">
                                         </div>
                                     </div>
@@ -88,7 +87,7 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">呼吸:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" class="form-control" value="{$data.breath}"
+                                            <input type="text" ignore="1" class="form-control" value="{$data.breath}"
                                                    disabled="disabled" placeholder="">
                                         </div>
                                     </div>
@@ -107,17 +106,17 @@
 
                                     <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">紧急联系电话:</label>
-
-                                        <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" class="form-control" value="{$data.contactMobile}" disabled="disabled"
-                                                   placeholder="">
+                                        <div class="col-md-8 col-sm-8 col-xs-12 form-group has-feedback">
+                                            <input type="text" class="form-control" disabled="disabled" value="{$data.contactMobile}" id="inputSuccess5" placeholder="电话">
+                                            <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
                                         </div>
                                     </div>
+
                                     <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">与老人关系:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" class="form-control" value="{$data.contactRelation}" disabled="disabled"
+                                            <input type="text" class="form-control" ignore="1" value="{$data.contactRelation}" disabled="disabled"
                                                    placeholder="">
                                         </div>
                                     </div>
@@ -180,6 +179,9 @@
                                     <button type="submit" class="btn btn-sm btn-danger ajax-post"
                                             target-form="form-label-left">已处理
                                     </button>
+                                    <button class="btn btn-sm btn-danger"
+                                            onclick="javascript:history.back(-1);return false;">关闭
+                                    </button>
                                     <input type="hidden" name="alarmId" value="{$data.alarmId}">
                                 </div>
 
@@ -196,9 +198,9 @@
 
                                         <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
                                             <volist name="result_type" id="r">
-                                                <div class="checkbox col-md-3 col-sm-3 col-xs-12">
+                                                <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                                                     <label>
-                                                        <input type="checkbox" name="processResult[]" value="{$key}" {$r.checked}
+                                                        <input type="radio" name="processResult[]" value="{$key}" {$r.checked}
                                                                class="flat">
                                                         {$r.name}
                                                     </label>
@@ -251,7 +253,7 @@
                                                         <tr>
                                                             <td>{:time_format($l['alarmTime']/1000)}</td>
                                                             <td>{$l.alarmType_text}</td>
-                                                            <td>{$l.processResult_text}</td>
+                                                            <td>{$l.processResult_text.name}</td>
                                                             <td>{$l.processUserName}</td>
                                                         </tr>
                                                     </volist>

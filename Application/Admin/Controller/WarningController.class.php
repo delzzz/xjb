@@ -47,13 +47,27 @@ class WarningController extends AdminController
         $this->meta_title = "历史报警";
         $pageNo = I('get.p', 1);
         $url = $this->getUrl('warning_list') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
-        $param = "{}";
+        $param = json_encode(['status'=>1]);
         $list = $this->lists($url, $param);
         $warning_status = C('WARNING_STATUS');
         int_to_string($list['itemList'], ['gender' => ['1' => '男', 0 => '女'], 'alarmType' => $warning_status]);
         $this->assign('warning_status', $warning_status);
         $this->assign('list', $list['itemList']);
         $this->display();
+    }
+
+    function warning_current()
+    {
+        $this->meta_title = "历史报警";
+        $pageNo = I('get.p', 1);
+        $url = $this->getUrl('warning_list') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
+        $param = json_encode(['status'=>0]);
+        $list = $this->lists($url, $param);
+        $warning_status = C('WARNING_STATUS');
+        int_to_string($list['itemList'], ['gender' => ['1' => '男', 0 => '女'], 'alarmType' => $warning_status]);
+        $this->assign('warning_status', $warning_status);
+        $this->assign('list', $list['itemList']);
+        $this->display('warning_history');
     }
 
     //已处理

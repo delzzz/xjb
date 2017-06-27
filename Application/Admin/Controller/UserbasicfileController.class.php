@@ -136,6 +136,7 @@ class UserbasicfileController extends AdminController
         if ($peopleId) {
             $url = $this->getUrl('people_detail') . $peopleId;
             $response = http($url, null, 'GET');
+            $response['peopleBasic']['orgName'] = $this->orgName();
             $this->assign('peopleBasic', $response['peopleBasic']);
             $this->assign('peopleDetail', $response['peopleDetail']);
             $hobby_attr = explode(';', $response['peopleDetail']['hobby']);

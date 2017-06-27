@@ -24,6 +24,7 @@ class UsermanageController extends AdminController
         $right = get_auth(3);
         if (empty($csId)) {
             $right = $this->getRight();
+            $csId = get_user_auth()['objectId'];
         }
         $url = $this->getUrl('zuoxi_detail') . $csId;
         $response = http($url, null, 'GET');
