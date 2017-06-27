@@ -19,25 +19,26 @@
         </div>
         <div class="page-title">
             <div class="title_left" style="width: 50%; line-height: 2.5">
-                <!--<label class="control-label col-md-2 col-sm-2 col-xs-12 text-right">老人姓名:</label>-->
-                <!--<div class="col-md-4 col-sm-4 col-xs-4">-->
-                    <!--<div class="">-->
-                        <!--<input type="text" class="form-control" placeholder="输入姓名">-->
-                    <!--</div>-->
-                <!--</div>-->
-                <a href="{:U('Health/add_reminder')}" class="btn btn-sm btn-danger">新增用药提醒</a>
-
+                <label class="control-label col-md-2 col-sm-2 col-xs-12 text-right">老人姓名:</label>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div style="float:left">
+                        <input value="{$name}" id="key" type="text" class="form-control" placeholder="请输入姓名">
+                    </div>
+                    <span class="input-group-btn" style="float:left">
+                        <a class="clf btn btn-danger" id="search" url="{:U('zuoxi_medication')}" style="color: #fff;">查询</a>
+                    </span>
+                </div>
                 <label class="control-label col-md-2 col-sm-2 col-xs-12 text-right">状态:</label>
                 <div class="col-md-4 col-sm-4 col-xs-4">
-                    <select class="form-control" onchange="window.location=this.value">
-                        <option <?php if(I('get.status')==-1||I('get.status')=='')echo 'selected';?> value="{:U('Health/zuoxi_medication',array('status'=>-1))}">所有</option>
-                        <option <?php if(I('get.status')==0)echo 'selected';?> value="{:U('Health/zuoxi_medication',array('status'=>0))}">执行中</option>
-                        <option <?php if(I('get.status')==1)echo 'selected';?> value="{:U('Health/zuoxi_medication',array('status'=>1))}">已关闭</option>
+                    <select id="sel_status" class="form-control" >
+                        <option <?php if(I('get.status')==-1 || I('get.status')=='')echo 'selected';?> value="-1">所有</option>
+                        <option <?php if(I('get.status')==0 && is_numeric(I('get.status'))  )echo 'selected';?> value="0">执行中</option>
+                        <option <?php if(I('get.status')==1)echo 'selected';?> value="1">已关闭</option>
                     </select>
                 </div>
-
-
             </div>
+            &nbsp;&nbsp;
+            <a href="{:U('Health/add_reminder')}" class="btn btn-sm btn-danger">新增用药提醒</a>
         </div>
         <br>
         <br>
@@ -121,4 +122,30 @@
             </div>
         </div>
     </div>
+</block>
+<block name="script">
+    <script>
+        $("#search").click(function () {
+            var url = $(this).attr("url");
+            var key = $("#key").val();
+            var status = $('#sel_status').val();
+            if(status!==''){
+                location.href = url + "?name=" + key + "&status="+status;
+            }
+            else{
+                location.href = url + "?name=" + key;
+            }
+        });
+        $('#sel_status').change(function(){
+            var url = $('#search').attr("url");
+            var status = $(this).val();
+            var key = $('#key').val();
+            if(key!=''){
+                location.href = url + "?name=" + key + "&status="+status;
+            }
+            else{
+                location.href = url + "?status=" + status;
+            }
+        })
+    </script>
 </block>

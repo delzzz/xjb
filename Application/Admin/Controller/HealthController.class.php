@@ -60,11 +60,14 @@ class HealthController extends AdminController
     {
         $this->meta_title = '健康管理-用药提醒列表';
         //后台端0/坐席端1
+        if(I('get.name')){
+            $this->assign('name',I('get.name'));
+        }
         if($_SESSION['onethink_admin']['user_auth']['userType']==3){
             $this->zuoxi_medication();
         }
         else{
-            $medicationList = $this->medication_list(I('get.status'));
+            $medicationList = $this->medication_list(I('get.status'),I('get.name'));
             $this->assign('medicationList',$medicationList);
             $this->display('medication');
         }
@@ -72,7 +75,10 @@ class HealthController extends AdminController
 
     //坐席-用药提醒页面
     function zuoxi_medication(){
-        $medication_lists = $this->medication_list(I('get.status'));
+        if(I('get.name')){
+            $this->assign('name',I('get.name'));
+        }
+        $medication_lists = $this->medication_list(I('get.status'),I('get.name'));
         $current_hour = date('H:i');
         $c_arr = explode(':',$current_hour);
         $c_hour = implode('',$c_arr);
@@ -101,27 +107,21 @@ class HealthController extends AdminController
     }
 
     //用药提醒列表
-    function medication_list($status){
+    function medication_list($status,$peopleName){
         $pageNo = I('get.p', 1);
         $pageSize = C('PAGE_SIZE');
-        if($status==0){
+        if($status===0){
             $status=0;
         }
         elseif($status == -1 || $status == ''){
             //所有
             $status = null;
         }
-//        elseif($status == 1){
-//            //进行中
-//            $status = 0;
-//        }
-//        elseif ($status == 2){
-//            //已关闭
-//            $status = 1;
-//        }
-        //$url = C('INTERFACR_API')['medication_list'];
+        if($peopleName==''){
+            $peopleName = null;
+        }
         $url = $this->getUrl('health_medication_query').'?pageNo='. $pageNo . '&pageSize=' .$pageSize ;
-        $param = think_json_encode(['status' => $status ]);
+        $param = think_json_encode(['status' => $status ,'peopleName'=>$peopleName]);
         $lists = $this->lists($url,$param);
         return $lists['itemList'];
     }
