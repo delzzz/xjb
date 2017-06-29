@@ -449,82 +449,83 @@
             $(this).text($(this).text() == '收起' ? '展开' : '收起');
         });
         //返回匹配替换的字符串
-        function replace_str(str, newstr) {
-            var reg = /p2\/(.*?)\//;
-            var reg2 = /p2\/(.*?)\./;
-            if (reg.test(agent_href)) {
-                return str.replace(reg, newstr);
-                //var test1 =str.match(reg);
-                //return test1[1];
-            }
-            else if (reg2.test(agent_href)) {
-                //var test2 =str.match(reg2);
-                //return test2[1];
-                return str.replace(reg2, newstr + '.');
-            }
-            else {
-                return false;
-            }
-        }
-        var current_p = $('#current_p').val();
-        var current_p2 = $('#current_p2').val();
-        //console.log(current_p);
-        // console.log(current_p2);
-        if (current_p2 != 1) {
-            var agent_href = $('#table_agent .page a').attr('href');
-            //替换span current p2 url
-            current_href = replace_str(agent_href, 'p2/' + current_p);
-            $('#table_agent .page .current').replaceWith('<a class="num" href="' + current_href + '">' + current_p + '</a>');
-            if (current_p == 1) {
-                //更改current
-                $('#table_agent .page a').eq(current_p2 - 1).replaceWith('<span class="current">' + current_p2 + '</span>');
-                var prev_href = replace_str(agent_href, 'p2/' + (current_p2 - 1));
-                //添加agent的prev
-                $('#table_agent .page .num').parent('div').prepend('<a class="prev" href="' + prev_href + '"><<</a>');
-                //更改next
-                if ($('#totalPage').val() == current_p2) {
-                    $('#table_agent .page .next').hide();
-                }
-                else {
-                    var next_href = replace_str(agent_href, 'p2/' + (parseInt(current_p2) + 1));
-                    $('#table_agent .page .next').attr('href', next_href);
-                }
-            }
-            else {
-                //更改current
-                $('#table_agent .page a').eq(current_p2).replaceWith('<span class="current">' + current_p2 + '</span>');
-                //更改agent的prev
-                var prev_href = replace_str(agent_href, 'p2/' + (current_p2 - 1) + '/');
-                $('#table_agent .page .prev').attr('href', prev_href);
-                //最后页隐藏next
-                if ($('#totalPage').val() == current_p2) {
-                    $('#table_agent .page .next').hide();
-                }
-                else {
-                    //更改agent的next
-                    var next_href = replace_str(agent_href, 'p2/' + (parseInt(current_p2) + 1) + '/');
-                    $('#table_agent .page .next').attr('href', next_href);
-                }
-
-            }
-        }
-        else {
-            //替换span current p2 url
-            var agent_href = $('#table_agent .page a').attr('href');
-            var cp2 = $('#table_agent .page .current').text();
-            agent_href = replace_str(agent_href, 'p2/' + cp2);
-            $('#table_agent .page .current').replaceWith('<a class="num" href="' + agent_href + '">' + cp2 + '</a>');
-            //更改current
-            $('#table_agent .page .num').eq(0).replaceWith('<span class="current">1</span>');
-            //隐藏agent prev
-            $('#table_agent .page .prev').hide();
-            //更改Next
-            var next_href = replace_str(agent_href, 'p2/2');
-            $('#table_agent .page .next').attr('href', next_href);
-        }
-        //        $('.openup').click(function(){
-        //            $(this).parents('tr').next('#second').removeClass('close');
-        //            $(this).parents('tr').next('#second').addClass('openup');
-        //        });
+//        function replace_str(str, newstr) {
+//            var reg = /p2\/(.*?)\//;
+//            var reg2 = /p2\/(.*?)\./;
+//            if (reg.test(agent_href)) {
+//                return str.replace(reg, newstr);
+//            }
+//            else if (reg2.test(agent_href)) {
+//                return str.replace(reg2, newstr + '.');
+//            }
+//            else {
+//                return false;
+//            }
+//        }
+//        var current_p = $('#current_p').val();
+//        var current_p2 = $('#current_p2').val();
+//        if (current_p2 != 1) {
+//            var agent_href = $('#table_agent .page a').attr('href');
+//            //替换span current p2 url
+//            current_href = replace_str(agent_href, 'p2/' + current_p);
+//            $('#table_agent .page .current').replaceWith('<a class="num" href="' + current_href + '">' + current_p + '</a>');
+//            if (current_p == 1) {
+//                //更改current
+//                $('#table_agent .page a').eq(current_p2 - 1).replaceWith('<span class="current">' + current_p2 + '</span>');
+//                var prev_href = replace_str(agent_href, 'p2/' + (current_p2 - 1));
+//                //添加agent的prev
+//                $('#table_agent .page .num').parent('div').prepend('<a class="prev" href="' + prev_href + '"><<</a>');
+//                //更改next
+//                if ($('#totalPage').val() == current_p2) {
+//                    $('#table_agent .page .next').hide();
+//                }
+//                else {
+//                    var next_href = replace_str(agent_href, 'p2/' + (parseInt(current_p2) + 1));
+//                    $('#table_agent .page .next').attr('href', next_href);
+//                }
+//            }
+//            else {
+//                //更改current
+//                var f2 = '';
+//                $('#table_agent .page a').each(function(i,item){
+//                    if($(this).html()==current_p2){
+//                        f2=i;
+//                        return;
+//                    }
+//                });
+//                $('#table_agent .page a').eq(f2).replaceWith('<span class="current">' + current_p2 + '</span>');
+//                //更改agent的prev
+//                var prev_href = replace_str(agent_href, 'p2/' + (current_p2 - 1) + '/');
+//                $('#table_agent .page .prev').attr('href', prev_href);
+//                //最后页隐藏next
+//                if ($('#totalPage').val() == current_p2) {
+//                    $('#table_agent .page .next').hide();
+//                }
+//                else {
+//                    //更改agent的next
+//                    var next_href = replace_str(agent_href, 'p2/' + (parseInt(current_p2) + 1) + '/');
+//                    $('#table_agent .page .next').attr('href', next_href);
+//                }
+//
+//            }
+//        }
+//        else {
+//            console.log(111);
+//            //替换span current p2 url
+//            var agent_href = $('#table_agent .page a').attr('href');
+//            console.log(agent_href);
+//            var cp2 = $('#table_agent .page .current').text();
+//            console.log(cp2);
+//            agent_href = replace_str(agent_href, 'p2/' + cp2);
+//            console.log(agent_href);
+//            $('#table_agent .page .current').replaceWith('<a class="num" href="' + agent_href + '">' + cp2 + '</a>');
+//            //更改current
+//            //$('#table_agent .page .num').eq(0).replaceWith('<span class="current">1</span>');
+//            //隐藏agent prev
+//            $('#table_agent .page .prev').hide();
+//            //更改Next
+//            var next_href = replace_str(agent_href, 'p2/2');
+//            $('#table_agent .page .next').attr('href', next_href);
+//        }
     </script>
 </block>

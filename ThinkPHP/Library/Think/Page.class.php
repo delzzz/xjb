@@ -19,7 +19,7 @@ class Page{
     public $rollPage   = 11;// 分页栏每页显示的页数
 	public $lastSuffix = true; // 最后一页是否显示总页数
 
-    public $p       = 'p'; //分页参数名
+    public $p       = ''; //分页参数名
     private $url     = ''; //当前链接URL
     private $nowPage = 1;
 
@@ -39,8 +39,8 @@ class Page{
      * @param array $listRows  每页显示记录数
      * @param array $parameter  分页跳转的参数
      */
-    public function __construct($totalRows, $listRows, $parameter = array()) {
-        C('VAR_PAGE') && $this->p = C('VAR_PAGE'); //设置分页参数名称
+    public function __construct($totalRows, $listRows, $parameter = array(),$pageName) {
+        $this->p = $pageName; //设置分页参数名称
         /* 基础设置 */
         $this->totalRows  = $totalRows; //设置总记录数
         $this->listRows   = $listRows;  //设置每页显示行数
