@@ -75,12 +75,10 @@
                                         <td class="over" style="">
                                             {$list.content}
                                         </td>
-                                        <form method="post" action="{:U('delBroadcast')}" class="form-horizontal form-label-del">
-                                            <input type="hidden" name="bid" value="{$list['broadcastId']}"/>
+                                            <input id="bid" type="hidden" name="bid" value="{$list['broadcastId']}"/>
                                             <td class="over">
-                                                <button onclick="if(confirm('确定删除?')==false)return false;" target-form="form-label-del" type="submit" class="btn btn-default ajax-post">删除</button>
+                                                <button target-form="form-label-del" type="button" class="btn btn-default btn_del">删除</button>
                                             </td>
-                                        </form>
                                     </tr>
                                 </volist>
                             </tbody>
@@ -97,5 +95,25 @@
             </div>
         </div>
     </div>
+</block>
+<block name="script">
+    <script>
+        $('.btn_del').click(function(){
+           var bid=$(this).parent().prev('#bid').val();
+//            if(confirm('确定删除?')==false)
+//            {
+//                return;
+//            }
+            $.ajax({
+                url: "{:U('delBroadcast',array('bid'=>"+bid+"))}",
+                data:{bid:bid},
+                type: "GET",
+                success:function(data){
+                    alert('删除成功');
+                    window.location.href="{:U('Notice/notice_fm')}";
+                },
+            });
+        });
+    </script>
 </block>
 

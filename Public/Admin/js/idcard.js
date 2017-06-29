@@ -4,15 +4,7 @@
 $("form").Validform({
     ajaxPost:true,
     showAllError:true,
-    beforeSubmit:function(curform){
-        if ($(this).hasClass('confirm')) {
-            if (!confirm('确认要执行该操作吗?')) {
-                return false;
-            }
-        }
-    },
     callback:function(data){
-        //console.log(data);
         if (data.status == 1) {
             alert(data.info);
             // if (data.url) {
