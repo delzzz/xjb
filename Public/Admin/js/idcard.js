@@ -144,6 +144,11 @@ $("form").Validform({
         errormsg: "手机号码格式不正确"
     },
     {
+        ele: "input[name='telephone[]']",
+        datatype: "m",
+        errormsg: "手机号码格式不正确"
+    },
+    {
         ele: "input[name='mobile[]']",
         datatype: "m",
         errormsg: "手机号码格式不正确"

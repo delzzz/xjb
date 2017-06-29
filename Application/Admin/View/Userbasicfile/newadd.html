@@ -389,7 +389,7 @@
             if (c != 0) {
                 $(".tab1").append('<tr><td>  <input type="hidden" ignore="1" name="relativeId[]">' +
                         '<input type="text" name="name[]" class="flat form-control"  value="" placeholder=""></td>' +
-                        '<td><input type="text" name="telephone[]" class="flat form-control"  value="" placeholder=""></td>' +
+                        '<td><input type="text" name="telephone[]" class="flat form-control"  datatype="m" nullmsg="此项不能为空" errormsg="手机号码格式不正确"  value="" placeholder=""></td>' +
                         '<td><input type="text" name="relation[]" class="flat form-control"  value="" placeholder=""></td>' +
                         '<td><input type="text" name="address[]" class="flat form-control"  value="" placeholder=""></td>' +
                         '</tr>');
@@ -415,8 +415,7 @@
                     '<td><input type="text" name="deviceIdentifier[]" class="flat form-control"  value="" placeholder=""></td>' +
                     '<td><input type="text" name="deviceInstallDate[]" class="form-control has-feedback-left"  value="" placeholder=""></td>' +
                     '</tr>'
-                )
-                    ;
+                );
                     $(".has-feedback-left").daterangepicker({
                         singleDatePicker: !0,
                         singleClasses: "picker_4",

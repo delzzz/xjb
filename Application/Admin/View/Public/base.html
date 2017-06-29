@@ -262,6 +262,27 @@
             });
         }
     });
+
+    $(document).ready(function () {
+        $(" .current").css( {
+            "border": "1px solid #e1e1e1",
+            'width': '20px',
+            'display':' inline-block',
+            'text-align': 'center',
+            'margin': '0 5px 0 5px',
+            'color': '#999999',
+        });
+        $(".num").css( {
+            "border": "1px solid #e1e1e1",
+            'width': '20px',
+            'display':' inline-block',
+            'text-align': 'center',
+            'margin': '0 5px 0 5px',
+            'color': '#333333',
+        });
+
+    });
+
     +function () {
         /*日期控件*/
         $(".has-feedback-left").daterangepicker({
