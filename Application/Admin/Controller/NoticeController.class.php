@@ -56,7 +56,6 @@ class NoticeController extends AdminController
     function delBroadcast(){
         if(I('bid')){
             $res = del_broadcast(I('bid'));
-            $this->success('删除成功!');
         }
     }
 
