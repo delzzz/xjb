@@ -372,7 +372,7 @@ class AdminController extends Controller
         } else {
             $listRows = C('PAGE_SIZE');
         }
-        $page = new \Think\Page($total, $listRows, $REQUEST);
+        $page = new \Think\Page($total, $listRows, $REQUEST,'p');
         if ($total > $listRows) {
             $page->setConfig('theme', '%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
         }
@@ -393,7 +393,7 @@ class AdminController extends Controller
         } else {
             $listRows = C('PAGE_SIZE');
         }
-        $page2 = new \Think\Page($total, $listRows, $REQUEST);
+        $page2 = new \Think\Page($total, $listRows, $REQUEST,'p2');
         $page2->p = "p2";
         if ($total > $listRows) {
             $page2->setConfig('theme', '%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
@@ -403,6 +403,8 @@ class AdminController extends Controller
         $this->assign('_total2', $total);
         return $list;
     }
+
+
 
     //获取接口
     protected function getUrl($interFace)
