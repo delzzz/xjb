@@ -179,6 +179,65 @@
                 </ul>
             </nav>
         </div>
+        <!-- 模态框（Modal） -->
+        <div class="modal fade" id="yes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width: 440px; height: 370px;">
+                <div class="modal-content">
+                    <div class="modal-header" style="height: 60px; background: #990000;">
+                        <div type="button" class="close" data-dismiss="modal" style="color: #ffffff;opacity: .9" aria-hidden="true">×</div>
+                    </div>
+                    <div class="modal-body">
+                        <br>
+                        <br>
+                        <div class="text-center " style="height: 50px; color: #66cc00;">
+                            <img class="pull-left" style="margin-left: 102px; margin-right: 5px;" src="../../images/cishoo/yes.png">
+                            <div class="pull-left title" style="font-size: 28px; line-height: 40px;">账号创建成功！</div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="text-left text" style="color: #333333;font-size: 16px;">
+                            登录账号和密码已经发送至手机号：138******214
+                            请及时查看
+                        </div>
+                        <br>
+                    </div>
+                    <div class="modal-footer " style="text-align: center;">
+                        <button type="button" class="btn btn-danger" style="text-align: center; margin: 0 auto; width: 260px; height: 40px; background: #990000; color: #ffffff; border-radius:4px;" data-dismiss="modal">返回</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <!-- 模态框（Modal） -->
+        <div class="modal fade" id="full" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width: 440px; height: 370px;">
+                <div class="modal-content">
+                    <div class="modal-header" style="height: 60px; background: #990000;">
+                        <div type="button" class="close" data-dismiss="modal" style="color: #ffffff;opacity: .9" aria-hidden="true">×</div>
+                    </div>
+                    <div class="modal-body">
+                        <br>
+                        <br>
+                        <div class="text-center" style="height: 50px; color: #990000;">
+                            <img class="pull-left" style="margin-left: 102px; margin-right: 5px;" src="../../images/cishoo/no.png">
+                            <div class="pull-left title" style="font-size: 28px; line-height: 40px;">账号创建失败！</div>
+                        </div>
+                        <br>
+
+                        <div class="text-left text" style="color: #333333;font-size: 16px;">
+                            错误原因：
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="modal-footer " style="text-align: center;">
+                        <button type="button" class="btn btn-danger" style="text-align: center; margin: 0 auto; width: 260px; height: 40px; background: #990000; color: #ffffff; border-radius:4px;" data-dismiss="modal">返回</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
         <!--page content-->
         <block name="body"></block>
     </div>
