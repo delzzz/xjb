@@ -53,7 +53,6 @@
                 <div class="x_content clear">
                     <div class=""></div>
                     <br>
-
                     <div class="table-responsive">
                         <table class="table table-striped jambo_table text-center bulk_action"
                                style="line-height: 1.54;">
@@ -77,7 +76,7 @@
                                         </td>
                                             <input id="bid" type="hidden" name="bid" value="{$list['broadcastId']}"/>
                                             <td class="over">
-                                                <button target-form="form-label-del" type="button" class="btn btn-default btn_del">删除</button>
+                                                <a href="{:U('delBroadcast?bid='.$list['broadcastId'])}" class="btn btn-default btn_del confirm ajax-get">删除</a>
                                             </td>
                                     </tr>
                                 </volist>
@@ -96,24 +95,3 @@
         </div>
     </div>
 </block>
-<block name="script">
-    <script>
-        $('.btn_del').click(function(){
-           var bid=$(this).parent().prev('#bid').val();
-//            if(confirm('确定删除?')==false)
-//            {
-//                return;
-//            }
-            $.ajax({
-                url: "{:U('delBroadcast',array('bid'=>"+bid+"))}",
-                data:{bid:bid},
-                type: "GET",
-                success:function(data){
-                    dialog(1,'删除成功','');
-                    window.location.href="{:U('Notice/notice_fm')}";
-                },
-            });
-        });
-    </script>
-</block>
-

@@ -28,9 +28,16 @@ $("form").Validform({
             //     alert(data.info);
             //     //updateAlert(data.info, 'alert-success');
             // }
+        $('.close').click(function(){
             setTimeout(function () {
                 location.reload();
              }, 1500);
+        });
+            $('#yes,#full').on('hide.bs.modal', function () {
+                setTimeout(function () {
+                    location.reload();
+                }, 1500);
+            });
         } else {
             //updateAlert(data.info);
             dialog(1,data.info,'');
