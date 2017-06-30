@@ -28,36 +28,34 @@ $(function () {
         }
         if ((target = $(this).attr('href')) || (target = $(this).attr('url'))) {
             $.get(target).success(function (data) {
-                console.log(data);
                 if (data.status == 1) {
-                    if (data.url) {
-                        alert(data.info);
-                    } else {
-                        alert(data.info);
-                    }
-                    setTimeout(function () {
-                        if (data.url) {
-                            location.href = data.url;
-                        } else if ($(that).hasClass('no-refresh')) {
-                            $('#top-alert').find('button').click();
-                            $(that).removeClass('disabled').prop('disabled', false);
-                        } else {
-                            location.reload();
-                        }
-                    }, 1500);
+                    dialog(0, data.info, '');
+                    $('#yes,#full').on('hide.bs.modal', function () {
+                        setTimeout(function () {
+                            if (data.url) {
+                                location.href = data.url;
+                            } else if ($(that).hasClass('no-refresh')) {
+                                $('#top-alert').find('button').click();
+                                $(that).removeClass('disabled').prop('disabled', false);
+                            } else {
+                                location.reload();
+                            }
+                        }, 1500);
+                    });
                 } else {
-                    alert(data.info);
-                    setTimeout(function () {
-                        if (data.url) {
-                            location.href = data.url;
-                        } else {
-                            $('#top-alert').find('button').click();
-                        }
-                    }, 1500);
+                    dialog(0, data.info, '');
+                    $('#yes,#full').on('hide.bs.modal', function () {
+                        setTimeout(function () {
+                            if (data.url) {
+                                location.href = data.url;
+                            } else {
+                                $('#top-alert').find('button').click();
+                            }
+                        }, 1500);
                 }
             });
-
         }
+    }
         return false;
     });
 
