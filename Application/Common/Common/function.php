@@ -989,7 +989,6 @@ function check_document_position($pos = 0, $contain = 0)
     if (empty($pos) || empty($contain)) {
         return false;
     }
-
     //将两个参数进行按位与运算，不为0则表示$contain属于$pos
     $res = $pos & $contain;
     if ($res !== 0) {
