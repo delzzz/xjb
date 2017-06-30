@@ -649,3 +649,17 @@ function del_broadcast($msgId)
     $res = http_post_json($url, json_encode($msgArr));
     return $res;
 }
+
+//代理商统计
+function agent_statistics($agentId){
+    $url = C('INTERFACR_API')['agent_statistics'].$agentId;
+    $res = http($url,null,'get');
+    return $res;
+}
+
+//发送短信验证码
+function send_sms($mobile){
+    $url = C('INTERFACR_API')['send_sms'];
+    $res = http($url,['mobile'=>$mobile],'get');
+    return $res;
+}

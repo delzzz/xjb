@@ -185,7 +185,9 @@
                         <div id="divOption1">
                             <!--变更页面显示-->
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="btn_edit">
-                                <button title="将其所属代理商暂时托管至其他代理商处" id="btn_collocate" type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">账号托管</button>
+                                <if condition="$agentId neq 1">
+                                    <button title="将其所属代理商暂时托管至其他代理商处" id="btn_collocate" type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">账号托管</button>
+                                </if>
                                 <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
                                 <button title="托管后账号才可以停用或启用账号" type="button" class="btn btn-lg btn-danger">账号停用
                                 </button>
@@ -481,32 +483,30 @@
     <!--弹框 代理商信息变更-->
     <div class="modal fade row" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document" style="">
-            <div class="modal-content" style="">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel2">安全验证</h4>
-                </div>
-                <div class="modal-body">
-                    <h4 class="modal-title text-center" id="">为了保护公司信息安全，需要通过本公司负责人手机验证码</h4><br>
-                    <div class="input-group col-lg-12 col-md-12 col-sm-12">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                           <button type="button" class="btn btn-danger">发送验证码</button>
-                        </span>
+                <div class="modal-content" style="">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel2">安全验证</h4>
                     </div>
-                    <div class="input-group col-lg-12 col-md-12 col-sm-12">
-                        <input type="text" class="form-control" placeholder="输入验证码">
-
+                    <div class="modal-body">
+                        <h4 class="modal-title text-center" id="">为了保护公司信息安全，需要通过本公司负责人手机验证码</h4><br>
+                        <div class="input-group col-lg-12 col-md-12 col-sm-12">
+                            <input name="mobile" id="mobile" type="text" class="form-control">
+                            <div style="height: 50px;" class="mobile_vfy"></div>
+                            <span class="input-group-btn" style="vertical-align: top;">
+                               <button  id="btn_verify" type="button" class="btn btn-danger">发送验证码</button>
+                            </span>
+                        </div>
+                        <div  class="input-group col-lg-12 col-md-12 col-sm-12">
+                            <input name="verify" id="verify" type="text" class="form-control" placeholder="输入验证码">
+                        </div>
                     </div>
-                    <div class="input-group col-lg-12 col-md-12 col-sm-12">
-                        <input type="text" class="form-control" placeholder="情况说明：例如二级代理商信息变更">
+                    <div class="modal-footer">
+                        <button id="btnDailiShang" target-form="form-label-msg" type="submit" class="btn btn-danger col-lg-12 col-md-12 col-sm-12 ajax-post">确定</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button id="btnDailiShang" type="button" class="btn btn-danger col-lg-12 col-md-12 col-sm-12">确定</button>
-                </div>
-            </div>
+            <input type="hidden" id="verifyTrue" value="{$verifyTrue}" />
         </div>
     </div>
 </block>
@@ -530,8 +530,88 @@
         //编辑页
         $('#divOption1').hide();
         $('input,textarea,select').attr('disabled',true);
+        $('#mobile,#verify').attr('disabled', false);
         $('.dropzone a').addClass('unbindclick');
+        //手机号验证
+        function verify_mobile(){
+            $('.mobile_vfy .error').remove();
+            if($('#mobile').val()==''){
+                $('.mobile_vfy').append('<div class="error color-red">请输入手机号</div>');
+                return false;
+            }
+            var myreg =/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(14[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+            if(!myreg.test($("#mobile").val()))
+            {
+                $('.mobile_vfy').append('<div class="error color-red">手机号码格式不正确</div>');
+                return false;
+            }
+            return true;
+        }
+        $('#mobile').focus(function(){
+            $('.mobile_vfy').children('error').remove();
+        });
+        $('#mobile').blur(function(){
+            if(verify_mobile()){
+                $('.mobile_vfy').children('error').remove();
+            }
+        });
+        $("#btn_verify").click(function () {
+            if(!verify_mobile()){
+                return;
+            }
+            settime($(this));
+            //发送短信验证码
+            $.ajax({
+                url: "{:U('Agent/sendVerify')}",
+                data:{'mobile':$('#mobile').val()},
+                type:"POST",
+                success: function(res){
+
+                }
+            });
+        });
+        var countdown = 60;
+        function settime(val) {
+            if (countdown == 0) {
+                val.removeAttr("disabled");
+                val.text("获取验证码");
+                countdown = 60;
+                return false;
+            } else {
+                val.attr("disabled", true);
+                val.text("剩余" + countdown + "秒");
+                countdown--;
+            }
+            setTimeout(function () {
+                settime(val)
+            }, 1000)
+        }
         $("#btnDailiShang").click(function () {
+            if(!verify_mobile()){
+                return;
+            }
+            if($('#verify').val()==''){
+                return false;
+            }
+            $.ajax({
+                url: "{:U('Agent/sendMessage')}",
+                data:{'flag':1,'verify':$('#verify').val(),'agentId':$('input[name="agentId"]').val()},
+                type:"POST",
+                success: function(res){
+                    if(res == 1){
+                        $('input,textarea,select').attr('disabled', false);
+                        $('#logId').attr('disabled',true);
+                        $('#f4 input').attr('disabled',true);
+                        $('#degree').attr('disabled',true);
+                        $('.dropzone a').removeClass('unbindclick');
+                        $('#divOption1').show();
+                        $('#divOption2').hide();
+                        $('#myModal2').modal('hide');
+                    }
+                }
+            });
+        });
+        if($('#verifyTrue').val() == $('input[name="agentId"]').val()){
             $('input,textarea,select').attr('disabled', false);
             $('#logId').attr('disabled',true);
             $('#f4 input').attr('disabled',true);
@@ -539,78 +619,10 @@
             $('.dropzone a').removeClass('unbindclick');
             $('#divOption1').show();
             $('#divOption2').hide();
-        });
-
-        //返回匹配替换的字符串
-        function replace_str(str, newstr) {
-            var reg = /p2\/(.*?)\//;
-            var reg2 = /p2\/(.*?)\./;
-            if (reg.test(agent_href)) {
-                return str.replace(reg, newstr);
-            }
-            else if (reg2.test(agent_href)) {
-                return str.replace(reg2, newstr + '.');
-            }
-            else {
-                return false;
-            }
-        }
-        var current_p = $('#current_p').val();
-        var current_p2 = $('#current_p2').val();
-        if (current_p2 != 1) {
-            var agent_href = $('#table_agent .page a').attr('href');
-            //替换span current p2 url
-            current_href = replace_str(agent_href, 'p2/' + current_p);
-            $('#table_agent .page .current').replaceWith('<a class="num" href="' + current_href + '">' + current_p + '</a>');
-            if (current_p == 1) {
-                //更改current
-                $('#table_agent .page a').eq(current_p2 - 1).replaceWith('<span class="current">' + current_p2 + '</span>');
-                var prev_href = replace_str(agent_href, 'p2/' + (current_p2 - 1));
-                //添加agent的prev
-                $('#table_agent .page .num').parent('div').prepend('<a class="prev" href="' + prev_href + '"><<</a>');
-                //更改next
-                if ($('#totalPage').val() == current_p2) {
-                    $('#table_agent .page .next').hide();
-                }
-                else {
-                    var next_href = replace_str(agent_href, 'p2/' + (parseInt(current_p2) + 1));
-                    $('#table_agent .page .next').attr('href', next_href);
-                }
-            }
-            else {
-                //更改current
-                $('#table_agent .page a').eq(current_p2).replaceWith('<span class="current">' + current_p2 + '</span>');
-                //更改agent的prev
-                var prev_href = replace_str(agent_href, 'p2/' + (current_p2 - 1)+'/');
-                $('#table_agent .page .prev').attr('href', prev_href);
-                //最后页隐藏next
-                if ($('#totalPage').val() == current_p2) {
-                    $('#table_agent .page .next').hide();
-                }
-                else {
-                    //更改agent的next
-                    var next_href = replace_str(agent_href, 'p2/' + (parseInt(current_p2) + 1)+'/');
-                    $('#table_agent .page .next').attr('href', next_href);
-                }
-
-            }
-        }
-        else {
-            //替换span current p2 url
-            var agent_href = $('#table_agent .page a').attr('href');
-            var cp2 = $('#table_agent .page .current').text();
-            agent_href = replace_str(agent_href, 'p2/' + cp2);
-            $('#table_agent .page .current').replaceWith('<a class="num" href="' + agent_href + '">' + cp2 + '</a>');
-            //更改current
-            $('#table_agent .page .num').eq(0).replaceWith('<span class="current">1</span>');
-            //隐藏agent prev
-            $('#table_agent .page .prev').hide();
-            //更改Next
-            var next_href = replace_str(agent_href, 'p2/2');
-            $('#table_agent .page .next').attr('href', next_href);
+            $('#myModal2').modal('hide');
         }
 
-        //设备多选选中
+            //设备多选选中
         var device = $('#device').val();
         var device_arr = device.split(',');
         $.each(device_arr, function (i, item) {
