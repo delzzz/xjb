@@ -14,30 +14,6 @@ class AgentController extends AdminController
         if (I('get.p2')) {
             $this->assign('current_p2', I('get.p2'));
         }
-        //机构托管
-//        if(isset($_POST['hid_type'])){
-//            $param = $_POST;
-//            $insId = $param['insId'];
-//            $targetId = $param['targetId'];
-//            $url = $this->getUrl('get_org_detail') . $insId;
-//            $info = http($url, null, 'GET');
-//            $info['insType'] =  C('INS_TYPE')[$info['insType']];
-//            //上级名称
-//            $targetInfo = get_agent_info($info['agentId']);
-//            if($param['hid_type'] == 1){
-//                //托管给上级代理商
-//                $targetName = $targetInfo['orgOrganization']['orgName'];
-//            }
-//            elseif ($param['hid_type'] == 2){
-//                //托管给机构
-//                $targetName = get_ins_detail($targetId)['orgOrganization']['orgName'];
-//            }
-//            //托管名称
-//            $this->assign('targetName',$targetName);
-//            $this->assign('agentName',$targetInfo['orgOrganization']['orgName']);
-//            $this->assign('insInfo',$info);
-//            $this->assign('sourceInfo',$info['orgOrganization']);
-//        }
         //代理商托管
         if ($_POST['agentId']) {
             $sourceId = $_POST['agentId'];
@@ -84,9 +60,12 @@ class AgentController extends AdminController
         }
         $this->assign('collocationInfo', $collocationInfo);
         $this->assign('agentList', $this->agentList());
-        //echo $agentId;
-        //dump($this->agentList());
         $this->assign('orgList', $this->orgList());
+        //代理商统计
+        $agentStatistics = agent_statistics($agentId);
+        $orgAgent = $this->orgAgent();
+        $this->assign('degree', $orgAgent['degree']);
+        $this->assign('agentStatistics', $agentStatistics);
         $this->display();
     }
 
@@ -286,12 +265,12 @@ class AgentController extends AdminController
             'permInfo' => ['roleModuleIds' => $param['roleModuleIds']],
             'userInfo' => ['password' => $param['password']]
         ];
-        $orgCondition = implode(',',$param['orgCondition']);
+        $orgCondition = implode(',', $param['orgCondition']);
         $orgInstitution = [
             'agentId' => $this->agentId()??1,
             'insType' => $param['insType'],
             'district' => $param['district'],
-            'orgCondition' =>$orgCondition
+            'orgCondition' => $orgCondition
         ];
         $orgId = I('post.orgId');
         $imgIdArr = explode(',', I('post.imgIdStr'));
@@ -463,6 +442,13 @@ class AgentController extends AdminController
         $auth = $this->getAuth();
         $this->assign('moduleList', $moduleList);
         $this->assign('auth', $auth);
+        if(isset($_SESSION['verifyTrue'])){
+            $vfyTrue = $_SESSION['verifyTrue'];
+        }
+        else{
+            $vfyTrue = 0;
+        }
+        $this->assign('verifyTrue',$vfyTrue);
         $this->display();
     }
 
@@ -567,6 +553,13 @@ class AgentController extends AdminController
         $this->assign('imgPathStr', $imgPath);
         $this->assign('imgIdStr', $imgIdStr);
         $this->assign('orgDevice', $option['orgDevice']);
+        if(isset($_SESSION['verifyTrue'])){
+            $vfyTrue = $_SESSION['verifyTrue'];
+        }
+        else{
+            $vfyTrue = 0;
+        }
+        $this->assign('verifyTrue',$vfyTrue);
         $this->display();
     }
 
@@ -606,11 +599,45 @@ class AgentController extends AdminController
     //获取权限
     function getAuth()
     {
-        //dump($_SESSION);
         $userType = $_SESSION['onethink_admin']['user_auth']['userType'];
-        //$userType=1;
         $res = get_auth($userType);
         return $res;
+    }
+
+    //发送短信验证码
+    function sendVerify()
+    {
+        if (isset($_POST['mobile'])) {
+            $res = send_sms($_POST['mobile']);
+            if($res['success']){
+                $_SESSION['verify'] = $res['data'];
+            }
+        }
+    }
+
+    function sendMessage()
+    {
+        $verify = $_POST['verify'];
+        if (isset($verify)) {
+            if ($verify == $_SESSION['verify']){
+                if($_POST['flag'] == 1){
+                    $_SESSION['verifyTrue']=$_POST['agentId'];
+                }
+                elseif ($_POST['flag'] == 2){
+                    $_SESSION['verifyTrue']=$_POST['insId'];
+                }
+                else{
+                    echo 2;exit();
+                }
+                echo 1;
+                exit();
+            }
+            else {
+                echo 2;
+                exit();
+            }
+        }
+
     }
 
 }

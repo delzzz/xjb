@@ -402,14 +402,17 @@ return array(
         'cancel_collocation' => 'http://' . HOST . '/service/org/agent/collocation/cancel',//取消托管
 
         'feeback' => 'http://' . HOST . '/service/feedback/get/page',//意见反馈
-
         'del_feeback' => 'http://' . HOST . '/service/feedback/delete/',//删除意见反馈
 
+        'get_auth' => 'http://' . HOST . '/service/perm/modules/support/',//获取权限
 
-        'get_auth' => 'http://192.168.1.250:8080/service/perm/modules/support/',//获取权限
+        'send_broadcast' => 'http://' . HOST . '/service/msg/broadcast/send',//发送广播
+        'del_broadcast' => 'http://' . HOST . '/service/msg/broadcast/delete',//删除广播
+        'query_broadcast' => 'http://' . HOST . '/service/msg/broadcast/query?pageNo=',//查询广播
 
-        'send_broadcast' => 'http://192.168.1.250:8080/service/msg/broadcast/send',//发送广播
-        'del_broadcast' => 'http://192.168.1.250:8080/service/msg/broadcast/delete',//删除广播
-        'query_broadcast' => 'http://192.168.1.250:8080/service/msg/broadcast/query?pageNo=',//查询广播
+        'agent_statistics'=>'http://' . HOST . '/service/statistics/org/agent/',//代理商统计
+
+        'send_sms'=>'http://' . HOST . '/service/sms/send',//发送短信验证码
+
     ),
 );
