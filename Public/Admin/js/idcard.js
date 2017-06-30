@@ -1,12 +1,26 @@
 /**
  * Created by wangshaohua on 2017/6/12.
  */
+function dialog(type,title,content){
+    var t=type,
+        tit=title,
+        cont=content;
+    if(t==0){
+        $("#yes").modal("show");
+        $("#yes").find(".title").html(title);
+        $("#yes").find(".text").html(content);
+    }else if(t==1){
+        $("#full").modal("show");
+        $("#full").find(".title").html(title);
+        $("#full").find(".text").html(content);
+    }
+}
 $("form").Validform({
     ajaxPost:true,
     showAllError:true,
     callback:function(data){
         if (data.status == 1) {
-            alert(data.info);
+            dialog(0,data.info,'');
             // if (data.url) {
             //     alert(data.info);
             //     //updateAlert(data.info + ' 页面即将自动跳转~', 'alert-success');
@@ -19,7 +33,7 @@ $("form").Validform({
              }, 1500);
         } else {
             //updateAlert(data.info);
-            alert(data.info);
+            dialog(1,data.info,'');
             setTimeout(function () {
                 if (data.url) {
                     location.href = data.url;
