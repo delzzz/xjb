@@ -443,6 +443,8 @@ class AgentController extends AdminController
         $auth = $this->getAuth();
         $this->assign('moduleList', $moduleList);
         $this->assign('auth', $auth);
+        $device_type = C('DEVICE_TYPE');
+        $this->assign('device_type',$device_type);
         if(isset($_SESSION['verifyTrue'])){
             $vfyTrue = $_SESSION['verifyTrue'];
         }
@@ -553,7 +555,7 @@ class AgentController extends AdminController
         $this->assign('imgList', $imgList);
         $this->assign('imgPathStr', $imgPath);
         $this->assign('imgIdStr', $imgIdStr);
-        $this->assign('orgDevice', $option['orgDevice']);
+        $this->assign('orgDevice', $option['orgOrganization']['orgDevice']);
         if(isset($_SESSION['verifyTrue'])){
             $vfyTrue = $_SESSION['verifyTrue'];
         }

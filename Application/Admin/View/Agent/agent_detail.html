@@ -219,52 +219,21 @@
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
                         <br>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <input  id="device" type="hidden" value="{$manageInfo['orgOrganization']['orgDevice']['deviceType']}"/>
-                            <label>
-                                <input  name="deviceType[]" value="0" type="checkbox" class="flat"> 老人终端机
-                            </label>
+                        <input  id="device" type="hidden" value="{$manageInfo['orgOrganization']['orgDevice']['deviceType']}"/>
+                        <volist name="device_type" id="d">
+                            <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                <label>
+                                    <input type="checkbox" value="{$key}" name="deviceType[]" class="flat"> {$d}
+                                </label>
+                            </div>
+                        </volist>
+                        <div class="checkbox col-md-12 col-sm-12 col-xs-12" style="padding-left:0px;">
+                        <br>
+                        <label>设备数量</label>
+                        <label>
+                        <input type="text" class="flat form-control" placeholder="设备数量" value="{$manageInfo['orgOrganization']['orgDevice']['quantity']}">
+                        </label>
                         </div>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <label>
-                                <input  name="deviceType[]" value="1" type="checkbox" class="flat"> SOS手腕
-                            </label>
-                        </div>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <label>
-                                <input  name="deviceType[]" value="2" type="checkbox" class="flat"> 门磁状态检测仪
-                            </label>
-                        </div>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <label>
-                                <input  name="deviceType[]" value="3" type="checkbox" class="flat">
-                                烟雾报警器
-                            </label>
-                        </div>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <label>
-                                <input  name="deviceType[]" value="4" type="checkbox" class="flat">
-                                漏水检测器
-                            </label>
-                        </div>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <label>
-                                <input  name="deviceType[]" value="5" type="checkbox" class="flat">
-                                呼吸心率仪
-                            </label>
-                        </div>
-                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                            <label>
-                                <input  name="deviceType[]" value="6" type="checkbox" class="flat">
-                                人体红外监测
-                            </label>
-                        </div>
-                        <!--<div class="checkbox col-md-12 col-sm-12 col-xs-12">-->
-                        <!--<br>-->
-                        <!--<label>-->
-                        <!--<input type="text" class="flat form-control" placeholder="设备数量">-->
-                        <!--</label>-->
-                        <!--</div>-->
                     </div>
                 </div>
             </div>
@@ -636,7 +605,7 @@
             $('#myModal2').modal('hide');
         }
 
-            //设备多选选中
+        //设备多选选中
         var device = $('#device').val();
         var device_arr = device.split(',');
         $.each(device_arr, function (i, item) {
