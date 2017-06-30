@@ -554,6 +554,12 @@ class AgentController extends AdminController
             }
 
         }
+        $device_type = C('DEVICE_TYPE');
+        $org_condition = C('ORG_CONDITION');
+        $auth = $this->getAuth();
+        $this->assign('org_condition', $org_condition);
+        $this->assign('auth', $auth);
+        $this->assign('device_type', $device_type);
         $this->assign('info', $option);
         $this->assign('orgInfo', $option['orgOrganization']);
         $this->assign('contactList', $option['orgOrganization']['contactList']);
