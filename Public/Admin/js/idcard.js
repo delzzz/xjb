@@ -117,32 +117,45 @@ $("form").Validform({
                 return true;
             }
             return false;
+        },
+        "mb":function(gets,obj,curform,datatype){
+            console.log(gets);
+            var myreg =/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(14[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+            if(!myreg.test(gets))
+            {
+                return false;
+            }
+            else{
+                obj.next('.error').remove();
+                return true;
+            }
+            return false;
         }
     }
 }).addRule([
     {
-        ele: "input:not(input[type='checkbox'],input[type='file'],input[type='hidden'],input[ignore='1'])",
+        ele: "input:not(input[type='checkbox'],input[type='file'],input[type='hidden'],input[ignore='1'],input[name='targetId'])",
         datatype:"*",
         nullmsg: "此项不能为空"
     },
     {
         ele: "input[name='tele_phone']",
-        datatype: "m",
+        datatype: "mb",
         errormsg: "手机号码格式不正确"
     },
     {
         ele: "input[name='telephone']",
-        datatype: "m",
+        datatype: "mb",
         errormsg: "手机号码格式不正确"
     },
     {
         ele: "input[name='telephone[]']",
-        datatype: "m",
+        datatype: "mb",
         errormsg: "手机号码格式不正确"
     },
     {
         ele: "input[name='mobile[]']",
-        datatype: "m",
+        datatype: "mb",
         errormsg: "手机号码格式不正确"
     },
     {

@@ -417,7 +417,6 @@
         </div>
         </div>
     </form>
-    <form action="{:U('index')}" method="post" class="form-horizontal form-label-deposit" onsubmit="return checkAgent();">
         <input type="hidden" name="agentId" value="{$agentId}"/>
         <!--弹框 托管-->
         <div class="modal fade row" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -473,13 +472,12 @@
                     </div>
                     <div class="modal-footer">
                         <input ignore="1" id="collocationId" name="collocationId" type="hidden" value="{$collocationId}" />
-                        <button type="submit" class="btn btn-danger" target-form="form-label-deposit">确定</button>
+                        <button id="btn_deposit" type="button" class="btn btn-danger" >确定</button>
                         <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">取消</button>
                     </div>
                 </div>
             </div>
         </div>
-    </form>
     <!--弹框 代理商信息变更-->
     <div class="modal fade row" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document" style="">
@@ -520,13 +518,30 @@
         if($('#collocationId').val() !== ''){
             $('#btn_collocate').click();
         }
-        function checkAgent(){
-            if(!$('input[name="targetId"]:checked').val()){
+        $('#btn_deposit').click(function(){
+            var targetId = $('input[name="targetId"]:checked').val();
+            //alert(targetId);
+            if(targetId == null || targetId =='' || targetId==undefined){
                 alert('请选择要托管的代理商!');
-                return false;
             }
-            return true;
-        }
+            else{
+                $.ajax({
+                    url: "{:U('Agent/index')}",
+                    data:{'targetId':targetId,'agentId':$('input[name="agentId"]').val(),'collocationId':$('#collocationId').val()},
+                    type:"POST",
+                    success: function(res){
+//                        if(res==1){
+//                            alert('重新托管成功');
+                            window.location.href="{:U('Agent/index')}";
+//                        }
+//                        else if(res==2){
+//                            alert('托管成功!');
+//                        }
+                    }
+                });
+            }
+        });
+
         //编辑页
         $('#divOption1').hide();
         $('input,textarea,select').attr('disabled',true);
@@ -566,7 +581,6 @@
                 data:{'mobile':$('#mobile').val()},
                 type:"POST",
                 success: function(res){
-
                 }
             });
         });

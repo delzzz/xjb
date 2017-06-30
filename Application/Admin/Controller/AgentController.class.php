@@ -27,6 +27,7 @@ class AgentController extends AdminController
             $collocation = get_querySource($sourceId);
             $collocationInfo[0] = $this->collocationList($sourceId, $targetId, $collocation[0]['collocationId'], 1);
             $collocationInfo[0]['targetId'] = $collocation[0]['targetId'];
+            echo 2;exit();
         } else {
             //查询下级是否有托管操作
             $agentId = $this->agentId();
@@ -573,9 +574,11 @@ class AgentController extends AdminController
     {
         $res = update_collocation($collocationId, $targetId);
         if ($res['success']) {
-            $this->success('重新托管成功!', 'index');
+//            $this->success('重新托管成功!', 'index');
+            echo 1;exit();
         } else {
-            $this->error('重新托管失败!');
+//            $this->error('重新托管失败!');
+            echo 9;exit();
         }
     }
 
