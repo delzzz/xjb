@@ -259,13 +259,13 @@
                             <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
                                 <div class="col-md-12 col-sm-12 col-xs-12 ">
                                     <br>
-
                                     <div class="checkbox col-md-1 col-sm-1 col-xs-12">
                                     </div>
+                                    <input type="hidden" id="orgCondition" value="{$info['orgCondition']}"/>
                                     <volist name="org_condition" id="org">
                                         <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                                             <label>
-                                                <input type="checkbox" value="{$key}" {$org.checked} name="orgCondition[]" class="flat"> {$org.name}
+                                                <input type="checkbox" value="{$key}" name="orgCondition[]" class="flat"> {$org.name}
                                             </label>
                                         </div>
                                     </volist>
@@ -517,6 +517,15 @@
         var device_arr = device.split(',');
         $.each(device_arr, function (i, item) {
             $('input[name="deviceType[]"]').each(function (j, devices) {
+                if ($(this).val() == item) {
+                    $(this).attr('checked', true);
+                }
+            })
+        });
+        var orgCondition = $('#orgCondition').val();
+        var condition_arr = orgCondition.split(',');
+        $.each(condition_arr, function (i, item) {
+            $('input[name="orgCondition[]"]').each(function () {
                 if ($(this).val() == item) {
                     $(this).attr('checked', true);
                 }
