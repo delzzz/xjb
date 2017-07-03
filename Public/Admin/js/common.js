@@ -25,7 +25,11 @@ $(function () {
             return false;
         }
         if ($(this).hasClass('confirm')) {
-            if (!confirm('确认要执行该操作吗?')) {
+            var alert_string = '确认要执行该操作吗?';
+            if($(this).attr('id')=='collocation_btn'){
+                alert_string = '确认托管后，信息将无法变更，确定该操作吗?';
+            }
+            if(!confirm(alert_string)){
                 return false;
             }
         }
