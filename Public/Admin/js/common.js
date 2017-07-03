@@ -52,10 +52,11 @@ $(function () {
                                 $('#top-alert').find('button').click();
                             }
                         }, 1500);
+                    });
                 }
+
             });
         }
-    }
         return false;
     });
 
