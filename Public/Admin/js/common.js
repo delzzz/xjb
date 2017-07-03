@@ -21,6 +21,9 @@ $(function () {
     $('.ajax-get').click(function () {
         var target;
         var that = this;
+        if($(this).attr('disabled')=='disabled'||$(this).attr('disabled')=='true'){
+            return false;
+        }
         if ($(this).hasClass('confirm')) {
             if (!confirm('确认要执行该操作吗?')) {
                 return false;
@@ -40,7 +43,7 @@ $(function () {
                             } else {
                                 location.reload();
                             }
-                        }, 1500);
+                        }, 500);
                     });
                 } else {
                     dialog(0, data.info, '');
@@ -51,7 +54,7 @@ $(function () {
                             } else {
                                 $('#top-alert').find('button').click();
                             }
-                        }, 1500);
+                        }, 500);
                     });
                 }
 

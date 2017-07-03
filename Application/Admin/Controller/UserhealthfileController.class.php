@@ -258,12 +258,10 @@ class UserhealthfileController extends AdminController
             }
             $res = http($url,null,'get');
             if($res['success']){
-                echo '删除成功!';
-                exit();
+                $this->success('删除成功!');
             }
             else{
-                echo '删除失败!';
-                exit();
+                $this->success('删除失败!');
             }
         }
     }
