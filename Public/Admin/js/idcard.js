@@ -20,11 +20,17 @@ $("form").Validform({
     showAllError: true,
     callback: function (data) {
         if (data.status == 1) {
+           $('.modal').hide();
             dialog(0, data.info, '');
             $('#yes,#full').on('hide.bs.modal', function () {
                 setTimeout(function () {
-                    location.reload();
-                }, 1500);
+                    if(data.url){
+                        location.href = data.url;
+                    }
+                    else{
+                        location.reload();
+                    }
+                }, 500);
             });
         } else {
             //updateAlert(data.info);

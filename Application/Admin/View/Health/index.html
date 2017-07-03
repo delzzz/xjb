@@ -12,9 +12,12 @@
                 <label class="control-label col-md-2 col-sm-2 col-xs-12 text-right">老人姓名:</label>
 
                 <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div class="">
-                        <input type="text" class="form-control" placeholder="输入姓名">
+                    <div style="float:left">
+                        <input value="{$name}" id="key" type="text" class="form-control" placeholder="输入姓名">
                     </div>
+                    <span class="input-group-btn" style="float:left">
+                        <a class="clf btn btn-danger" id="search" url="{:U('index')}" style="color: #fff;">查询</a>
+                    </span>
                 </div>
                 <!--<label class="control-label col-md-2 col-sm-2 col-xs-12 text-right">状态:</label>-->
 
@@ -138,6 +141,15 @@
                 }
                 ]
             })
+        });
+    </script>
+</block>
+<block name="script">
+    <script>
+        $("#search").click(function () {
+            var url = $(this).attr("url");
+            var key = $("#key").val();
+            location.href = url + "?name=" + key;
         });
     </script>
 </block>

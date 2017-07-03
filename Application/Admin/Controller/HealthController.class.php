@@ -12,6 +12,9 @@ class HealthController extends AdminController
         if (empty($name)) {
             $param = "{}";
         }
+        if($name){
+            $this->assign('name',$name);
+        }
         $url = $this->getUrl('health_query') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
         $list = $this->lists($url, $param);
         foreach ($list['itemList'] as &$val) {
