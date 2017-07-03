@@ -200,7 +200,8 @@ $("input").focus(function () {
 $(function () {
     $("input[type='text']").each(function () {
         var msgs = $(this).attr('ignore');
-        if(msgs!=1){
+        var idName = $(this).attr('id');
+        if(msgs!=1 && idName !='key'){
             $(this).parent().css('position','relative');
             $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
         }
