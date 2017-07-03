@@ -48,7 +48,7 @@ $("form").Validform({
     tiptype: function (msg, o, cssctl) {
         //验证错误再显示
         if (o.type == 3) {
-            o.obj.next('.error').remove();
+            o.obj.siblings('.error').remove();
             o.obj.after("<div class='error color-red Validform_checktip' style='font-size: 12px;'></div>");
             var objtip = o.obj.siblings(".Validform_checktip");
             cssctl(objtip, o.type);
@@ -196,4 +196,14 @@ $("form").Validform({
 ]);
 $("input").focus(function () {
     $(this).next(".error").remove();
+});
+$(function () {
+    $("input[type='text']").each(function () {
+        var msgs = $(this).attr('ignore');
+        var idName = $(this).attr('id');
+        if(msgs!=1 && idName !='key'){
+            $(this).parent().css('position','relative');
+            $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
+        }
+    });
 });
