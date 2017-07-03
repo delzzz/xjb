@@ -328,14 +328,14 @@
                         </div>
                     </if>
                     <if condition="$cInfo['type'] eq 1">
-                    <a href="{:U('confirmCollocation',array('collocationId'=>$cInfo['collocationId']))}">
-                        <button onclick="if(confirm('确认托管后，信息将无法变更，确定该操作吗?')==false)return false;" class="btn btn-sm btn-danger">确认托管</button>
+                    <a href="javascript:void(0)">
+                        <button id="collocation_btn" href="{:U('confirmCollocation',array('collocationId'=>$cInfo['collocationId']))}" class="confirm ajax-get btn btn-sm btn-danger">确认托管</button>
                     </a>
                     <a href="{:U('agent_detail',array('agentId'=>$cInfo['sourceId'],'collocationId'=>$cInfo['collocationId'],'targetId'=>$cInfo['targetId']))}">
                         <button onclick="if(confirm('是否重新托管?')==false)return false;" class="btn btn-sm btn-danger">重新托管</button>
                     </a>
-                    <a href="{:U('cancelCollocation',array('collocationId'=>$cInfo['collocationId']))}">
-                        <button onclick="if(confirm('是否取消托管?')==false)return false;" class="btn btn-sm btn-danger">取消托管</button>
+                    <a href="{:U('cancelCollocation',array('collocationId'=>$cInfo['collocationId']))}" class="ajax-get confirm btn btn-sm btn-danger">
+                        取消托管
                     </a>
                     </if>
                 </div>
