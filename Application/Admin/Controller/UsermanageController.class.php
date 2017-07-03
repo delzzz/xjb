@@ -31,7 +31,6 @@ class UsermanageController extends AdminController
         $this->assign('info', $response);
         $this->assign('img', $response['photo']);
         $this->assign('right', $right);
-
         $this->display();
     }
 
