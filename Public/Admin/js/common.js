@@ -46,7 +46,7 @@ $(function () {
                         }, 500);
                     });
                 } else {
-                    dialog(0, data.info, '');
+                    dialog(1, data.info, '');
                     $('#yes,#full').on('hide.bs.modal', function () {
                         setTimeout(function () {
                             if (data.url) {

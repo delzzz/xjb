@@ -24,7 +24,12 @@ $("form").Validform({
             dialog(0, data.info, '');
             $('#yes,#full').on('hide.bs.modal', function () {
                 setTimeout(function () {
-                    location.reload();
+                    if(data.url){
+                        location.href = data.url;
+                    }
+                    else{
+                        location.reload();
+                    }
                 }, 500);
             });
         } else {

@@ -374,7 +374,7 @@ class AgentController extends AdminController
         }
         //  exit();
         if ($jsonData['success']) {
-            $this->success('保存成功');
+            $this->success('保存成功',U('index'));
         } else {
             $this->error('系统错误');
         }
