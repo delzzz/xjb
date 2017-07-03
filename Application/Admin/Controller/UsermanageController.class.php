@@ -28,10 +28,20 @@ class UsermanageController extends AdminController
         }
         $url = $this->getUrl('zuoxi_detail') . $csId;
         $response = http($url, null, 'GET');
+        $auth = $this->getAuth();
+        $this->assign('auth', $auth);
         $this->assign('info', $response);
         $this->assign('img', $response['photo']);
         $this->assign('right', $right);
         $this->display();
+    }
+
+    //获取权限
+    function getAuth()
+    {
+        $userType = $_SESSION['onethink_admin']['user_auth']['userType'];
+        $res = get_auth($userType);
+        return $res;
     }
 
     function del()
@@ -51,9 +61,10 @@ class UsermanageController extends AdminController
         unset($ocs['password']);
         unset($ocs['repassword']);
         unset($ocs['imagePath']);
+        unset($ocs['roleModuleIds']);
         $user = ['password' => $param['password']];
         $photo = ['displayName' => '', 'imagePath' => $param['imagePath']];
-        $data = ['ocs' => $ocs, 'user' => $user, 'photo' => $photo];
+        $data = ['ocs' => $ocs, 'user' => $user, 'permInfo' =>  ['roleModuleIds' => $param['roleModuleIds']], 'photo' => $photo];
         $url = $this->getUrl('zuoxi_create');
         if ($param['csId']) {
             if ($param['imageId']) {

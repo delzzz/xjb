@@ -50,6 +50,21 @@
                                             <input type="text" class="form-control" placeholder="">
                                         </div>
                                     </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">密码:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="password" name="password" ignore="1" datatype="n6-11" errormsg="密码范围是在6~11位之间的数字！"plugin="passwordStrength"
+                                                   class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="password" name="repassword" recheck="password" errormsg="您两次输入的账号密码不一致！" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
                                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                         <label class="control-label col-md-2 col-sm-2 col-xs-12">
                                             备注:
@@ -58,21 +73,6 @@
                                         <div class="col-md-10 col-sm-10 col-xs-12">
                                             <textarea class="form-control" name="remark" rows="3"
                                                       placeholder='备注在2000字以内'>{$info.remark|default=''}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-lg-10 col-md-12 col-sm-12 col-xs-12">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">密码:</label>
-
-                                        <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="password" name="password" ignore="1" datatype="n6-11" errormsg="密码范围是在6~11位之间的数字！"plugin="passwordStrength"
-                                                   class="form-control" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-lg-10 col-md-12 col-sm-12 col-xs-12">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>
-
-                                        <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="password" name="repassword" recheck="password" errormsg="您两次输入的账号密码不一致！" class="form-control" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -102,33 +102,15 @@
                                     <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
                                         <br>
 
-                                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                            <label>
-                                                <input type="checkbox" class="flat" checked="checked"> 数据统计
-                                            </label>
-                                        </div>
-                                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                            <label>
-                                                <input type="checkbox" class="flat"> 基础档案
-                                            </label>
-                                        </div>
-                                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                            <label>
-                                                <input type="checkbox" class="flat"> 设备报警
-                                            </label>
-                                        </div>
-                                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                            <label>
-                                                <input type="checkbox" class="flat">
-                                                通知管理
-                                            </label>
-                                        </div>
-                                        <div class="checkbox col-md-2 col-sm-2 col-xs-12">
-                                            <label>
-                                                <input type="checkbox" class="flat">
-                                                代理机构管理
-                                            </label>
-                                        </div>
+                                        <volist name="auth" id="auth">
+                                            <div class="checkbox col-md-2 col-sm-2 col-xs-12">
+                                                <label>
+                                                    <input value="{$auth.module.id}" name="roleModuleIds[]" type="checkbox" class="flat">
+                                                    {$auth.module.moduleName}
+                                                </label>
+                                            </div>
+                                        </volist>
+
                                     </div>
 
                                     <div class="x_title clear">
