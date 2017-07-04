@@ -1,5 +1,11 @@
 <extend name="Public/base"/>
-
+<block name="style">
+    <style>
+        .dz-details{
+            display:none;
+        }
+    </style>
+</block>
 <block name="body">
     <form action="{:U('addAgent')}" method="post" class="form-horizontal form-label-left">
         <div class="right_col" role="main">
@@ -206,7 +212,7 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                                <div class="dropzone"></div>
+                                <div class="dropzone" id="mydropzone"></div>
                                 <input type="hidden" id="imagePath" name="imagePath"/>
                             </div>
                         </div>
