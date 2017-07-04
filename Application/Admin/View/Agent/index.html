@@ -217,7 +217,7 @@
                             <input type="hidden" id="totalPage" value="{$totalPage}"/>
                             </tbody>
                         </table>
-                        <if condition="$extendFlag eq 1">
+                        <if condition="$extendFlag eq 1 && $degree neq 3">
                         <a href="{:U('Agent/agent')}">
                             <button class="btn btn-sm btn-danger">新建代理商</button>
                         </a>
