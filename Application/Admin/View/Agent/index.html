@@ -114,7 +114,7 @@
                             </thead>
                             <tbody>
                             <volist name="agentList" id="agent">
-                                <tr class="even pointer first">
+                                <font class="even pointer first">
                                     <td class="a-center text-center">
                                         <if condition="$agent['child'] neq null">
                                             <a class="openup" href="javascript:void(0)">展开</a>
@@ -142,7 +142,7 @@
                                     <td class=" ">
                                         <?php
                                         if($agent['c_status']==1){
-                                            echo '托管中';
+                                            echo '<font color="#ff0000">托管中</font>';
                                         }
                                         else if($agent['c_status']==2){
                                             echo '已托管';
