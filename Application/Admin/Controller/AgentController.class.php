@@ -66,6 +66,7 @@ class AgentController extends AdminController
         $agentStatistics = agent_statistics($agentId);
         $orgAgent = $this->orgAgent();
         $this->assign('degree', $orgAgent['degree']);
+        $this->assign('extendFlag',$orgAgent['extendFlag']);
         $this->assign('agentStatistics', $agentStatistics);
         $this->display();
     }
