@@ -192,6 +192,11 @@ $("form").Validform({
         ele: "select[name='dataSrc'],select[name='insType'],select[name='ethnicity'],select[name='education'],select[name='economy'],select[name='livingStatus'],select[name='healthStatus']",
         datatype: "sel",
         errormsg: "此项为必选项",
+    },
+    {
+        ele: "input[name='quantity']",
+        datatype: "n",
+        errormsg: "请输入数字",
     }
 ]);
 $("input").focus(function () {
