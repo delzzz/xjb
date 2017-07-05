@@ -30,6 +30,8 @@ class AdminController extends Controller
         $right = $this->getRight();
         $this->assign('menu', $right);
         $this->assign('orgName', $this->orgName());
+        $this->assign('h_degree',$this->orgAgent()['degree']);
+        $this->assign('h_extendFlag',$this->orgAgent()['extendFlag']);
     }
 
     //获取当前用户权限

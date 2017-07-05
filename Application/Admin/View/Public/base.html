@@ -236,6 +236,8 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div>
+        <input id="h_degree"type="hidden" value="{$h_degree}"/>
+        <input id="h_extendFlag" type="hidden" value="{$h_extendFlag}"/>
         <!-- /.modal -->
 
         <!--page content-->
@@ -529,6 +531,13 @@
             $('select[name="cityId"]').css('display', 'block');
             $('select[name="countyId"]').css('display', 'block');
         }
+    }
+    if($('#h_degree').val()==3 || $('#h_extendFlag').val()==0){
+        $('#sidebar-menu ul li').each(function(item,i){
+            if($(this).children('a').text()=='添加代理商'){
+                $(this).hide();
+            }
+        });
     }
 </script>
 <block name="script"></block>
