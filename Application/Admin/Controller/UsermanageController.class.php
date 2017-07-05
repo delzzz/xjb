@@ -20,19 +20,26 @@ class UsermanageController extends AdminController
     function user_manage()
     {
         $this->meta_title = "坐席管理";
-        $csId = I('get.csId');
-        $right = get_auth(3);
-        if (empty($csId)) {
-            $right = $this->getRight();
-            $csId = get_user_auth()['objectId'];
+        $userinfo = session('user_auth');
+        if ($userinfo['userType'] == 3) {
+            $url = $this->getUrl('zuoxi_detail') . $userinfo['objectId'];
+            $response = http($url, null, 'GET');
         }
-        $url = $this->getUrl('zuoxi_detail') . $csId;
-        $response = http($url, null, 'GET');
         $auth = $this->getAuth();
         $this->assign('auth', $auth);
-        $this->assign('info', $response);
+        $this->assign('info', $userinfo);
         $this->assign('img', $response['photo']);
-        $this->assign('right', $right);
+        $this->display();
+    }
+
+    function update_user()
+    {
+        $right = get_auth(3);
+        $csId = I('get.csId');
+        $url = $this->getUrl('zuoxi_detail') . $csId;
+        $response = http($url, null, 'GET');
+        $this->assign('info', $response);
+        $this->assign('auth', $right);
         $this->display();
     }
 
@@ -64,7 +71,7 @@ class UsermanageController extends AdminController
         unset($ocs['roleModuleIds']);
         $user = ['password' => $param['password']];
         $photo = ['displayName' => '', 'imagePath' => $param['imagePath']];
-        $data = ['ocs' => $ocs, 'user' => $user, 'permInfo' =>  ['roleModuleIds' => $param['roleModuleIds']], 'photo' => $photo];
+        $data = ['ocs' => $ocs, 'user' => $user, 'permInfo' => ['roleModuleIds' => $param['roleModuleIds']], 'photo' => $photo];
         $url = $this->getUrl('zuoxi_create');
         if ($param['csId']) {
             if ($param['imageId']) {
