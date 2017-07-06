@@ -31,6 +31,10 @@ class AdminController extends Controller
         $this->assign('menu', $right);
         $this->assign('orgName', $this->orgName());
         $this->assign('h_degree',$this->orgAgent()['degree']);
+        $url = C('INTERFACR_API')['get_user'];
+        $User = http($url, ['userName' => $_SESSION['onethink_admin']['user_auth']['userName']], 'GET');
+        $this->assign('onlineStatus',$User['onlineStatus']);
+
         $this->assign('h_extendFlag',$this->orgAgent()['extendFlag']);
     }
 
