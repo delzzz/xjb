@@ -66,7 +66,7 @@ class HealthController extends AdminController
         if(I('get.name')){
             $this->assign('name',I('get.name'));
         }
-        if($_SESSION['onethink_admin']['user_auth']['userType']==3){
+        if($_SESSION['onethink_admin']['user_auth']['userType']==3 || $_SESSION['onethink_admin']['user_auth']['userId']==2){
             $this->zuoxi_medication();
         }
         else{

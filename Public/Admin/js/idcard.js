@@ -20,17 +20,15 @@ $("form").Validform({
     showAllError: true,
     callback: function (data) {
         if (data.status == 1) {
-           $('.modal').hide();
+           $('.modal').modal('hide');
             dialog(0, data.info, '');
             $('#yes,#full').on('hide.bs.modal', function () {
-                setTimeout(function () {
-                    if(data.url){
-                        location.href = data.url;
-                    }
-                    else{
-                        location.reload();
-                    }
-                }, 500);
+                if(data.url){
+                    location.href = data.url;
+                }
+                else{
+                    location.reload();
+                }
             });
         } else {
             //updateAlert(data.info);
@@ -42,7 +40,7 @@ $("form").Validform({
                     $('#top-alert').find('button').click();
                     // $(that).removeClass('disabled').prop('disabled', false);
                 }
-            }, 1500);
+            }, 500);
         }
     },
     tiptype: function (msg, o, cssctl) {
