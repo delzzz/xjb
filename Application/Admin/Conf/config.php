@@ -414,5 +414,7 @@ return array(
 
         'send_sms'=>'http://' . HOST . '/service/sms/send',//发送短信验证码
 
+        'user_update'=>'http://' . HOST . '/service/user/update',//变更用户信息
+
     ),
 );
