@@ -32,8 +32,10 @@ class UsermanageController extends AdminController
         $this->display();
     }
 
+    //修改坐席页面
     function update_user()
     {
+        $this->meta_title = '修改坐席';
         $right = get_auth(3);
         $csId = I('get.csId');
         $url = $this->getUrl('zuoxi_detail') . $csId;
@@ -59,6 +61,7 @@ class UsermanageController extends AdminController
         $this->success('删除成功', U('user_list'));
     }
 
+    //修改坐席
     function write()
     {
         $param = $_POST;
@@ -96,8 +99,10 @@ class UsermanageController extends AdminController
         }
     }
 
+    //新增坐席页面
     function add_user()
     {
+        $this->meta_title='新增坐席';
         $right = get_auth(3);
         $csId = I('get.csId');
         $url = $this->getUrl('zuoxi_detail') . $csId;
@@ -106,6 +111,7 @@ class UsermanageController extends AdminController
         $this->assign('auth', $right);
         $this->display();
     }
+    //新增坐席
     function add()
     {
         $param = $_POST;
