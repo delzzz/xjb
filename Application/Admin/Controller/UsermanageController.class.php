@@ -95,4 +95,51 @@ class UsermanageController extends AdminController
             $this->error('保存失败');
         }
     }
+
+    function add_user()
+    {
+        $right = get_auth(3);
+        $csId = I('get.csId');
+        $url = $this->getUrl('zuoxi_detail') . $csId;
+        $response = http($url, null, 'GET');
+        $this->assign('info', $response);
+        $this->assign('auth', $right);
+        $this->display();
+    }
+    function add()
+    {
+        $param = $_POST;
+        $ocs = $param;
+        $ocs['orgId'] = $this->orgId();
+        $ocs['orgType'] = $this->orgType();
+        unset($ocs['password']);
+        unset($ocs['repassword']);
+        unset($ocs['imagePath']);
+        unset($ocs['roleModuleIds']);
+        $user = ['password' => $param['password']];
+        $photo = ['displayName' => '', 'imagePath' => $param['imagePath']];
+        $data = ['ocs' => $ocs, 'user' => $user, 'permInfo' => ['roleModuleIds' => $param['roleModuleIds']], 'photo' => $photo];
+        $url = $this->getUrl('zuoxi_create');
+        if ($param['csId']) {
+            if ($param['imageId']) {
+                $data['photo']['imageId'] = $param['imageId'];
+            }
+            unset($data['ocs']['orgId']);
+            unset($data['ocs']['orgType']);
+            unset($data['user']);
+            //删除图片
+            $url = $this->getUrl('zuoxi_update');
+        } else {
+            unset($data['ocs']['csId']);
+        }
+        unset($data['ocs']['imageId']);
+        unset($data['ocs']['imagePath']);
+        $json_data = think_json_encode($data);
+        $response = http_post_json($url, $json_data);
+        if ($response['success']) {
+            $this->success('保存成功', U('user_list'));
+        } else {
+            $this->error('保存失败');
+        }
+    }
 }

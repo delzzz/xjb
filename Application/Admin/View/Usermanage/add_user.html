@@ -15,7 +15,7 @@
                         <div class="x_content row">
                             <br/>
 
-                            <form class="form-horizontal form-label-left" method="post" action="{:U('write')}">
+                            <form class="form-horizontal form-label-left" method="post" action="{:U('add')}">
                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">姓名:</label>
@@ -48,8 +48,8 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">坐席工号:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" value="{$info.userName}" class="form-control"
-                                                   placeholder="">
+                                            <input type="text" value="{$info.userName}" disabled class="form-control"
+                                                   placeholder="后台自动生成，保存后点击查看">
                                         </div>
                                     </div>
                                     <if condition="empty($info)">
