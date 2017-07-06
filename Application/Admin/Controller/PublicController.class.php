@@ -71,4 +71,12 @@ class PublicController extends \Think\Controller
         $verify->entry(1);
     }
 
+    //更改用户状态 签入 示忙
+    function changeUserstatus(){
+        $status = I('get.status');
+        $jsonData = http_post_json(C('INTERFACR_API')['user_update'], json_encode(['userId' => $_SESSION['onethink_admin']['user_auth']['userId'],'onlineStatus'=>$status]));
+        if($jsonData['success']){
+            $this->success('状态变更成功!');
+        }
+    }
 }

@@ -15,6 +15,13 @@
     <link href="__VENDOR__/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
     <link href="__BUILD__/css/custom.min.css?234" rel="stylesheet">
     <block name="style"></block>
+    <style>
+        .current_status{
+            color: #262626;
+            text-decoration: none;
+            background-color: #f5f5f5;
+        }
+    </style>
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -141,14 +148,8 @@
                             <span class=" fa fa-angle-down"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-usermenu pull-right">
-                            <li><a href="../../javascript:;"> 签入</a></li>
-                            <li>
-                                <a href="../../javascript:;">
-                                    <!--<span class="badge bg-red pull-right">50%</span>-->
-                                    <span>签出</span>
-                                </a>
-                            </li>
-                            <li><a href="../../javascript:;">示忙</a></li>
+                            <li><a class="ajax-get <if condition='$onlineStatus eq 2'>current_status</if>" href="{:U('Public/changeUserstatus',array('status'=>2))}"> 签入</a></li>
+                            <li><a class="ajax-get <if condition='$onlineStatus eq 3'>current_status</if>" href="{:U('Public/changeUserstatus',array('status'=>3))}">示忙</a></li>
                             <li><a href="{:U('Public/logout')}"><i class="fa fa-sign-out pull-right"></i>退出登录</a></li>
                         </ul>
                     </li>
@@ -160,19 +161,26 @@
                         </div>
                         <div class="color-red pull-right user-profile dropdown-toggle" data-toggle="dropdown"
                              aria-expanded="false">
-                            <span>浙江医疗有限公司</span>
-                            <span>一级</span>
-                            <span>省级代理</span>
+                            <span>{$orgName}</span>
+                            <span>
+                                <?php
+                                if($degree==0){
+                                    echo '总代理';
+                                }
+                                elseif($degree==1){
+                                    echo '一级<span>省代理</span>';
+                                }
+                                elseif($degree==2){
+                                    echo '二级<span>市代理</span>';
+                                }
+                                else{
+                                    echo '三级<span>县代理</span>';
+                                }
+                            ?>
+                            </span>
+                            <span></span>
                         </div>
                         <ul class="dropdown-menu dropdown-usermenu pull-right">
-                            <li><a href="../../javascript:;"> 签入</a></li>
-                            <li>
-                                <a href="../../javascript:;">
-                                    <!--<span class="badge bg-red pull-right">50%</span>-->
-                                    <span>签出</span>
-                                </a>
-                            </li>
-                            <li><a href="../../javascript:;">示忙</a></li>
                             <li><a href="{:U('Public/logout')}"><i class="fa fa-sign-out pull-right"></i>退出登录</a></li>
                         </ul>
                     </li>
