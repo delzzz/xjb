@@ -297,7 +297,12 @@ class AgentController extends AdminController
         if (empty($jsonData)) {
             $this->error('系统错误');
         } elseif ($jsonData['success']) {
-            $this->success('保存成功');
+            if($orgId){
+                $this->success('保存成功');
+            }
+            else{
+                $this->success(array('msg'=>'保存成功','msg2'=>'登录账号和密码已发送至手机号,请及时查看。'),U('index'));
+            }
         }
     }
 
@@ -378,7 +383,7 @@ class AgentController extends AdminController
                 $this->success('保存成功');
             }
             else{
-                $this->success('保存成功',U('index'));
+                $this->success(array('msg'=>'保存成功','msg2'=>'登录账号和密码已发送至手机号,请及时查看。'),U('index'));
             }
         } else {
             $this->error('系统错误');
