@@ -207,7 +207,7 @@
                                                         <td>{$history['status'] == 1 ? 已关闭:执行中}</td>
                                                         <td>{$history.closer}</td>
                                                         <if condition="$flag eq 1">
-                                                            <td style="max-width: 250px;">{$history.closeReason}</td>
+                                                            <td style="max-width: 250px;word-break: break-all;">{$history.closeReason}</td>
                                                         </if>
                                                     </tr>
                                                 </volist>
