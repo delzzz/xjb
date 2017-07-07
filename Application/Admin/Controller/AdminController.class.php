@@ -48,7 +48,6 @@ class AdminController extends Controller
         else{
             //坐席
             $csInfo = http( C('INTERFACR_API')['zuoxi_detail'].$_SESSION['onethink_admin']['user_auth']['objectId'], null, 'GET');
-            dump($csInfo);
             $this->assign('zxPic',$csInfo['photo']['imagePath']);
             $this->assign('zxName',$csInfo['name']);
             $this->assign('zxNum',$csInfo['userName']);
