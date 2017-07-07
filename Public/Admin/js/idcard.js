@@ -209,4 +209,8 @@ $(function () {
             $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
         }
     });
+    $("input[type='password']").each(function () {
+            $(this).parent().css('position','relative');
+            $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
+    });
 });
