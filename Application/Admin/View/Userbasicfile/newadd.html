@@ -66,7 +66,7 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">所属机构:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" value="{$peopleBasic.orgName}"
+                                            <input id="basicOrg" type="text" value="{$peopleBasic.orgName|default=$orgName}"
                                                    class="form-control" placeholder="">
                                         </div>
                                     </div>

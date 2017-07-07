@@ -15,13 +15,20 @@ function dialog(type, title, content) {
         $("#full").find(".text").html(content);
     }
 }
+
 $("form").Validform({
     ajaxPost: true,
     showAllError: true,
     callback: function (data) {
         if (data.status == 1) {
            $('.modal').modal('hide');
-            dialog(0, data.info, '');
+           // console.log(data['info']['msg']);return;
+            if(data['info']['msg']!='' && data['info']['msg']!=undefined){
+                dialog(0,data['info']['msg'],data['info']['msg2'])
+            }
+            else{
+                dialog(0, data.info, '');
+            }
             $('#yes,#full').on('hide.bs.modal', function () {
                 if(data.url){
                     location.href = data.url;
@@ -133,7 +140,6 @@ $("form").Validform({
             return false;
         },
         "mb": function (gets, obj, curform, datatype) {
-            console.log(gets);
             var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(14[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
             if (!myreg.test(gets)) {
                 return false;
@@ -147,7 +153,8 @@ $("form").Validform({
     }
 }).addRule([
     {
-        ele: "input:not(input[type='checkbox'],input[type='file'],input[type='hidden'],input[ignore='1'],input[name='targetId'])",
+        ele: "input:not(input[type='checkbox'],input[type='file'],input[type='hidden'],input[ignore='1'],input[name='targetId']," +
+        "input[disabled='disabled'],input[name='age'],input[name='peopleIdentifier'],input[id='basicOrg'],input[name='nativePlace'])",
         datatype: "*",
         nullmsg: "此项不能为空"
     },
@@ -204,7 +211,9 @@ $(function () {
     $("input[type='text']").each(function () {
         var msgs = $(this).attr('ignore');
         var idName = $(this).attr('id');
-        if(msgs!=1 && idName !='key'){
+        var dsbd = $(this).attr('disabled');
+        var name = $(this).attr('name');
+        if(msgs!=1 && idName !='key' && dsbd!='disabled' && name!='peopleIdentifier' && name!='nativePlace' && idName!='basicOrg'){
             $(this).parent().css('position','relative');
             $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
         }
