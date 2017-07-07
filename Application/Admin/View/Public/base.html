@@ -141,49 +141,57 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="">
-                        <a href="../../javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
-                           aria-expanded="false">
-                            <img src="__IMG__/img.jpg" alt="">{$orgName}
-                            <span class=" fa fa-angle-down"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-usermenu pull-right">
-                            <li><a class="ajax-get <if condition='$onlineStatus eq 2'>current_status</if>" href="{:U('Public/changeUserstatus',array('status'=>2))}"> 签入</a></li>
-                            <li><a class="ajax-get <if condition='$onlineStatus eq 3'>current_status</if>" href="{:U('Public/changeUserstatus',array('status'=>3))}">示忙</a></li>
-                            <li><a href="{:U('Public/logout')}"><i class="fa fa-sign-out pull-right"></i>退出登录</a></li>
-                        </ul>
-                    </li>
-                    <li class="col-lg-5 col-md-4 col-sm-6">
+                    <if condition="$userType eq 3">
+                        <li class="">
+                            <a href="javascript:void(0)" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                               aria-expanded="false">
+                                <if condition="$zxPic neq null">
+                                    <img src="{$zxPic}" alt="">
+                                    <else/>
+                                    <img src="__IMG__/img.jpg" alt="">
+                                </if>
+                                {$zxName}(工号{$zxNum})
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li><a class="ajax-get <if condition='$onlineStatus eq 2'>current_status</if>" href="{:U('Public/changeUserstatus',array('status'=>2))}"> 签入</a></li>
+                                <li><a class="ajax-get <if condition='$onlineStatus eq 3'>current_status</if>" href="{:U('Public/changeUserstatus',array('status'=>3))}">示忙</a></li>
+                                <li><a href="{:U('Public/logout')}"><i class="fa fa-sign-out pull-right"></i>退出登录</a></li>
+                            </ul>
+                        </li>
+                    </if>
+                    <if condition="$userType eq 1 || $userType eq 2">
+                    <li class="col-lg-8 col-md-4 col-sm-6">
                         <div class="pull-right user-profile" data-toggle="" aria-expanded="false"
                              style="margin-top: 10px;">
                             您好！欢迎登陆 | <a class="color-red" href="{:U('Public/logout')}">退出</a>
                             <!--<span class="fa fa-angle-down"></span>-->
                         </div>
                         <div class="color-red pull-right user-profile dropdown-toggle" data-toggle="dropdown"
-                             aria-expanded="false">
+                             aria-expanded="false" style="min-width: 120px;">
                             <span>{$orgName}</span>
-                            <span>
+                            <if condition="$userType eq 1">
                                 <?php
-                                if($degree==0){
-                                    echo '总代理';
-                                }
-                                elseif($degree==1){
-                                    echo '一级<span>省代理</span>';
-                                }
-                                elseif($degree==2){
-                                    echo '二级<span>市代理</span>';
-                                }
-                                else{
-                                    echo '三级<span>县代理</span>';
-                                }
-                            ?>
-                            </span>
-                            <span></span>
+                                if($h_degree==0){
+                                   echo '<span>总代理</span>';
+                                    }
+                                    elseif($h_degree==1){
+                                        echo '<span>一级</span><span>省代理</span>';
+                                    }
+                                    elseif($h_degree==2){
+                                        echo '<span>二级</span><span>市代理</span>';
+                                    }
+                                    else{
+                                        echo '<span>三级</span><span>县代理</span>';
+                                    }
+                                ?>
+                            </if>
                         </div>
                         <ul class="dropdown-menu dropdown-usermenu pull-right">
                             <li><a href="{:U('Public/logout')}"><i class="fa fa-sign-out pull-right"></i>退出登录</a></li>
                         </ul>
                     </li>
+                   </if>
                 </ul>
             </nav>
         </div>
