@@ -42,6 +42,7 @@ class UsermanageController extends AdminController
         $response = http($url, null, 'GET');
         $this->assign('info', $response);
         $this->assign('auth', $right);
+        $this->assign('img', $response['photo']);
         $this->display();
     }
 
