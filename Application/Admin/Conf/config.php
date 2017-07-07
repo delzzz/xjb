@@ -325,22 +325,30 @@ return array(
         'agent_create' => 'http://' . HOST . '/service/org/agent/create',//创建代理商
         'agent_update' => 'http://' . HOST . '/service/org/agent/update',//更新代理商
         'get_agent_detail' => 'http://' . HOST . '/service/org/agent/detail/',//获取代理商详情
-        'ins_create' => 'http://' . HOST . '/service/org/ins/create', //创建机构
-
-
-        'ins_update' => 'http://' . HOST . '/service/org/ins/update',//更新机构
         'get_agent' => 'http://' . HOST . '/service/org/agent/',//根据代理商ID获取代理商详情
         'agent_collocation' => 'http://' . HOST . '/service/org/agent/collocation/create',//代理商托管
+        'get_org_agent' => 'http://' . HOST . '/service/org/agent/get',//获取代理商
+        'query_agent' => 'http://' . HOST . '/service/org/agent/query',//查询代理商
+        'is_collocation' => 'http://' . HOST . '/service/org/agent/collocation/isCollocation',//查询代理商是否托管
+        'target_collocation' => 'http://' . HOST . '/service/org/agent/collocation/queryTarget',//查询被托管代理商
+        'source_collocation' => 'http://' . HOST . '/service/org/agent/collocation/querySource',//查询托管代理商
+        'confirm_collocation' => 'http://' . HOST . '/service/org/agent/collocation/confirm',//确认托管
+        'update_collocation' => 'http://' . HOST . '/service/org/agent/collocation/update',//重新托管
+        'cancel_collocation' => 'http://' . HOST . '/service/org/agent/collocation/cancel',//取消托管
+        'agent_statistics'=>'http://' . HOST . '/service/statistics/org/agent/',//代理商统计
+
+        'ins_create' => 'http://' . HOST . '/service/org/ins/create', //创建机构
+        'ins_update' => 'http://' . HOST . '/service/org/ins/update',//更新机构
         'ins_collocation' => 'http://' . HOST . '/service/org/ins/collocation',//机构托管
+        'query_org' => 'http://' . HOST . '/service/org/ins/query',//查询机构
+        'get_org_detail' => 'http://' . HOST . '/service/org/ins/detail/', //获取机构详情
+        'get_org_ins' => 'http://' . HOST . '/service/org/ins/get', //根据objectid获取机构详情
 
 
         'get_user' => 'http://' . HOST . '/service/user/get', //获取系统用户信息
-        'get_org_agent' => 'http://' . HOST . '/service/org/agent/get',//获取代理商
-        'query_org' => 'http://' . HOST . '/service/org/ins/query',//查询机构
-        'query_agent' => 'http://' . HOST . '/service/org/agent/query',//查询代理商
-        'get_org_detail' => 'http://' . HOST . '/service/org/ins/detail/', //获取机构详情
-        'del_pic' => 'http://' . HOST . '/service/image/delete/',//删除图片
+        'user_update'=>'http://' . HOST . '/service/user/update',//变更用户信息
 
+        'del_pic' => 'http://' . HOST . '/service/image/delete/',//删除图片
 
         'zuoxi_detail' => 'http://' . HOST . '/service/org/cs/',//获坐席息详情
         'zuoxi_create' => 'http://' . HOST . '/service/org/cs/create',//创建坐席
@@ -360,13 +368,11 @@ return array(
         'people_save_edit' => 'http://' . HOST . '/service/people/saveOrUpdate/detail', //新增/更新老人基础档案
         'people_detail' => 'http://' . HOST . '/service/people/get/detail/',//获取老人基础信息
 
-
         'warning_list' => 'http://' . HOST . '/service/device/alarm/get/page',//设备报警分页
         'warning_detail' => 'http://' . HOST . '/service/device/alarm/get/detail/',//获取设备详情
         'warning_history' => 'http://' . HOST . '/service/device/alarm/get/history/page', //设备历史报警
         'warning_add_deal' => 'http://' . HOST . '/service/device/alarm/process/create',//新增报警处理记录
         'warning_deal' => 'http://' . HOST . '/service/device/alarm/close',//报警处理
-
 
         'health_medication_query' => 'http://' . HOST . '/service/medication/remind/get/page',//用药提醒列表
         'health_medication_detail' => 'http://' . HOST . '/service/medication/remind/get/detail/',//用药提醒详情
@@ -393,28 +399,17 @@ return array(
         'bmi_del' => 'http://' . HOST . '/service/health/bmi/delete/',//bmi删除
 
         'get_right' => 'http://' . HOST . '/service/perm/modules/',//获取某个用户所有权限
-
-        'is_collocation' => 'http://' . HOST . '/service/org/agent/collocation/isCollocation',//查询代理商是否托管
-        'target_collocation' => 'http://' . HOST . '/service/org/agent/collocation/queryTarget',//查询被托管代理商
-        'source_collocation' => 'http://' . HOST . '/service/org/agent/collocation/querySource',//查询托管代理商
-        'confirm_collocation' => 'http://' . HOST . '/service/org/agent/collocation/confirm',//确认托管
-        'update_collocation' => 'http://' . HOST . '/service/org/agent/collocation/update',//重新托管
-        'cancel_collocation' => 'http://' . HOST . '/service/org/agent/collocation/cancel',//取消托管
+        'get_auth' => 'http://' . HOST . '/service/perm/modules/support/',//获取权限
 
         'feeback' => 'http://' . HOST . '/service/feedback/get/page',//意见反馈
         'del_feeback' => 'http://' . HOST . '/service/feedback/delete/',//删除意见反馈
-
-        'get_auth' => 'http://' . HOST . '/service/perm/modules/support/',//获取权限
 
         'send_broadcast' => 'http://' . HOST . '/service/msg/broadcast/send',//发送广播
         'del_broadcast' => 'http://' . HOST . '/service/msg/broadcast/delete',//删除广播
         'query_broadcast' => 'http://' . HOST . '/service/msg/broadcast/query?pageNo=',//查询广播
 
-        'agent_statistics'=>'http://' . HOST . '/service/statistics/org/agent/',//代理商统计
-
         'send_sms'=>'http://' . HOST . '/service/sms/send',//发送短信验证码
 
-        'user_update'=>'http://' . HOST . '/service/user/update',//变更用户信息
 
     ),
 );
