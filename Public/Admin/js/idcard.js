@@ -154,7 +154,7 @@ $("form").Validform({
 }).addRule([
     {
         ele: "input:not(input[type='checkbox'],input[type='file'],input[type='hidden'],input[ignore='1'],input[name='targetId']," +
-        "input[disabled='disabled'],input[name='age'],input[name='peopleIdentifier'],input[id='basicOrg'],input[name='nativePlace'])",
+        "input[disabled='disabled'],input[name='age'],input[name='peopleIdentifier'],input[id='basicOrg'],input[name='nativePlace'],input[name='hobbyOtherDesc'])",
         datatype: "*",
         nullmsg: "此项不能为空"
     },
@@ -213,7 +213,7 @@ $(function () {
         var idName = $(this).attr('id');
         var dsbd = $(this).attr('disabled');
         var name = $(this).attr('name');
-        if(msgs!=1 && idName !='key' && dsbd!='disabled' && name!='peopleIdentifier' && name!='nativePlace' && idName!='basicOrg'){
+        if(msgs!=1 && idName !='key' && dsbd!='disabled' && name!='peopleIdentifier' && name!='nativePlace' && idName!='basicOrg' && name!='hobbyOtherDesc'){
             $(this).parent().css('position','relative');
             $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
         }
