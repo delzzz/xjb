@@ -81,7 +81,7 @@
                                     <td class=" ">{$list.dose}{$list.doseUnit}</td>
                                     <td>{$list.nextTime}</td>
                                     <td class=" ">{$list['status']==1?已关闭:执行中}</td>
-                                    <td>{$list.remark}</td>
+                                    <td style="text-overflow: ellipsis;width:160px;max-width: 160px;overflow: hidden;height: 30px;white-space: nowrap;">{$list.remark}</td>
                                     <td class=" ">{:time_format($list['startDate']/1000,'Y-m-d')}</td>
                                     <td class=" ">{:time_format($list['endDate']/1000,'Y-m-d')}</td>
                                     <td class="pointer">

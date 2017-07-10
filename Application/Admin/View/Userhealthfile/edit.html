@@ -5,6 +5,9 @@
         margin-top:10px;
         margin-bottom:10px;
     }
+    #table_consult tr td{
+        vertical-align: middle;
+    }
     </style>
 </block>
 <block name="body">
@@ -194,7 +197,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel clear">
                                 <div class="x_content">
-                                    <table class="table table-bordered text-center table-hover">
+                                    <table id="table_consult" class="table table-bordered text-center table-hover">
                                         <thead class="bg-info ">
                                         <tr>
                                             <th class="text-center">录入时间</th>
@@ -209,7 +212,7 @@
                                                 <td>{:time_format($consultings['createTime']/1000,'Y-m-d')}</td>
                                                 <td>{$consultings.entryUserName}</td>
                                                 <td>{$consultings.consultingDesc}</td>
-                                                <td>{$consultings.remark}</td>
+                                                <td style="width: 890px;max-width: 890px;">{$consultings.remark}</td>
                                             </tr>
                                         </volist>
                                         </tbody>
