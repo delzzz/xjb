@@ -181,10 +181,7 @@
                                                 <th class="text-center">用药备注</th>
                                                 <th class="text-center">提醒状态</th>
                                                 <th class="text-center">操作人</th>
-                                                <if condition="$flag eq 1">
-                                                    <!--坐席端显示-->
-                                                    <th class="text-center">关闭原因</th>
-                                                </if>
+                                                <th class="text-center">关闭原因</th>
                                             </tr>
                                             </thead>
                                             <tbody id="history_table">
@@ -212,9 +209,7 @@
                                                         <td>{$history.remark}</td>
                                                         <td>{$history['status'] == 1 ? 已关闭:执行中}</td>
                                                         <td>{$history.closer}</td>
-                                                        <if condition="$flag eq 1">
-                                                            <td style="max-width: 250px;word-break: break-all;">{$history.closeReason}</td>
-                                                        </if>
+                                                        <td style="max-width: 250px;word-break: break-all;">{$history.closeReason}</td>
                                                     </tr>
                                                 </volist>
                                             </tbody>
