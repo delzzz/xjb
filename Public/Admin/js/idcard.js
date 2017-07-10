@@ -1,6 +1,11 @@
-/**
- * Created by wangshaohua on 2017/6/12.
- */
+function checkEndTime(startTime,endTime){
+    var start=new Date(startTime.replace("-", "/").replace("-", "/"));
+    var end=new Date(endTime.replace("-", "/").replace("-", "/"));
+    if(end<start){
+        return false;
+    }
+    return true;
+}
 function dialog(type, title, content) {
     var t = type,
         tit = title,
@@ -149,6 +154,22 @@ $("form").Validform({
                 return true;
             }
             return false;
+        },
+        "cpdate":function(gets,obj,curform,datatype){
+            var start_date =obj.parents().parents().prev('div').children('div').find('input').val();
+            var date1 = new Date(start_date);
+            var date2 = new Date(gets);
+            if(gets=='年/月/日' || gets==''){
+                return false;
+            }
+            else if(!checkEndTime(start_date,gets)){
+                return false;
+            }
+            else{
+                obj.next('.error').remove();
+                return true;
+            }
+            return false;
         }
     }
 }).addRule([
@@ -202,7 +223,13 @@ $("form").Validform({
         ele: "input[name='quantity']",
         datatype: "n",
         errormsg: "请输入数字",
-    }
+    },
+    {
+        ele:"input[name='endDate[]']",
+        datatype:"cpdate",
+        errormsg:"结束服药日期必须大于开始服药日期",
+        nullmsg: "此项不能为空"
+    },
 ]);
 $("input").focus(function () {
     $(this).next(".error").remove();
