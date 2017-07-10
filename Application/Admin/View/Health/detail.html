@@ -1,5 +1,11 @@
 <extend name="Public/base"/>
-
+<block name="style">
+    <style>
+        #history_table tr td{
+            vertical-align: middle;
+        }
+    </style>
+</block>
 <block name="body">
     <div class="right_col" role="main" >
         <div class="col-md-12 col-xs-12">
@@ -181,7 +187,7 @@
                                                 </if>
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="history_table">
                                                 <volist name="history" id="history">
                                                     <tr>
                                                         <td>{:time_format($history['createTime']/1000,'Y-m-d')}</td>

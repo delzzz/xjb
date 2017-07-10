@@ -217,6 +217,9 @@ class AgentController extends AdminController
         $this->assign('auth', $auth);
         $orgAgent = $this->orgAgent();
         $this->assign('degree', $orgAgent['degree']);
+        $this->assign('provinceId',$orgAgent['provinceId']);
+        $this->assign('cityId',$orgAgent['cityId']);
+        $this->assign('countyId',$orgAgent['countyId']);
         $this->display('agent');
     }
 
@@ -345,6 +348,7 @@ class AgentController extends AdminController
             'userInfo' => ['password' => $param['password']],
             'permInfo' => ['roleModuleIds' => $param['roleModuleIds']],
         ];
+        $agentId = I('post.agentId');
         $orgAgent = [
             'parentId' => $this->agentId() == '' ? 1 : $this->agentId(),
             'degree' => $param['degree'],
@@ -354,7 +358,6 @@ class AgentController extends AdminController
             'extendFlag' => !$param['extendFlag'] ? 0 : 1
         ];
         $info = ['orgInfo' => $orgInfo, 'orgAgent' => $orgAgent];
-        $agentId = I('post.agentId');
         $imgIdArr = explode(',', I('post.imgIdStr'));
         //编辑
         if ($agentId) {
@@ -370,14 +373,23 @@ class AgentController extends AdminController
             }
             unset($info['orgInfo']['permInfo']);
         }
+        else{
+            if($param['degree']==2){
+                $info['orgAgent']['provinceId'] = $param['hid_province'];
+            }
+            elseif ($param['degree']==3){
+                $info['orgAgent']['provinceId'] = $param['hid_province'];
+                $info['orgAgent']['cityId'] = $param['hid_city'];
+            }
+        }
         $res = json_encode($info);
-
         //编辑or创建
         if ($agentId) {
             $jsonData = http_post_json(C('INTERFACR_API')['agent_update'], $res);
         } else {
             $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
         }
+        //dump($jsonData);exit();
         if ($jsonData['success']) {
             if($agentId){
                 $this->success('保存成功');

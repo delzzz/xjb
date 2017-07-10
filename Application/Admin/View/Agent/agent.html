@@ -297,6 +297,9 @@
                             </volist>
                         </div>
                         <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12  clear" style="margin-top: 30px;">
+                            <input name="hid_province" type="hidden" id="hid_province" value="{$provinceId}"/>
+                            <input name="hid_city" type="hidden" id="hid_city" value="{$cityId}"/>
+                            <input type="hidden" id="hid_county" value="{$countyId}"/>
                             <button id="btn_save" class="btn btn-lg btn-danger ajax-post"  type="submit"
                                     target-form="form-label-left">保存
                             </button>
@@ -322,7 +325,23 @@
         //行政区选择
         $("#distpicker2").distpicker();
         $(function () {
+            if(hid_degree==1){
+                Page.hid_p=$('#hid_province').val();
+                $('select[name="provinceId"]').attr('disabled',true);
+            }
+            else if(hid_degree==2){
+                Page.hid_p=$('#hid_province').val();
+                Page.hid_c=$('#hid_city').val();
+                $('select[name="provinceId"]').attr('disabled',true);
+                $('select[name="cityId"]').attr('disabled',true);
+            }
             Page.init();
         });
+        //$('#btn_save').click(function(){
+            //var len = $('.Validform_error').length;
+          //  console.log(len);
+            //$('select[name="provinceId"]').removeAttr('disabled');
+            //$('select[name="cityId"]').removeAttr('disabled');
+        //})
     </script>
 </block>
