@@ -14,7 +14,7 @@ define('HOST', '192.168.1.250:8080');
  */
 return array(
     /*页面显示条数*/
-    'PAGE_SIZE' => '2',
+    'PAGE_SIZE' => '15',
     /* 数据缓存设置 */
     'DATA_CACHE_PREFIX' => 'onethink_', // 缓存前缀
     'DATA_CACHE_TYPE' => 'File', // 数据缓存类型

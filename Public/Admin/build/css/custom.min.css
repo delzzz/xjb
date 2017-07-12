@@ -4911,3 +4911,13 @@ ul.notifications {
     vertical-align: middle;
     height: 250px;
 }
+.big_btn {
+    display: inline-block;
+    height: 100px;
+    line-height: 80px;
+    margin-top: 50px;
+    margin-left: 5%;
+
+}.pointer{
+     cursor: pointer;
+ }

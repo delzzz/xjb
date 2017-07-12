@@ -466,6 +466,8 @@ class AgentController extends AdminController
         $this->assign('auth', $auth);
         $device_type = C('DEVICE_TYPE');
         $this->assign('device_type',$device_type);
+        $agentStatistics = agent_statistics($agentId);
+        $this->assign('agentStatistics',$agentStatistics);
         if(isset($_SESSION['verifyTrue'])){
             $vfyTrue = $_SESSION['verifyTrue'];
         }

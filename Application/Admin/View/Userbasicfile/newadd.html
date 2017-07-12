@@ -39,7 +39,7 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">编号:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" value="{$peopleBasic.peopleIdentifier}"
+                                            <input type="text" value="{$peopleBasic.peopleIdentifier|default=$identifier}"
                                                    name="peopleIdentifier" class="form-control"
                                                    placeholder="">
                                         </div>

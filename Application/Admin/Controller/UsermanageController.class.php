@@ -20,7 +20,6 @@ class UsermanageController extends AdminController
     function user_manage()
     {
         $this->meta_title = "当前账号管理";
-        $userinfo = session('user_auth');
         $auth = $this->getAuth();
         $this->assign('auth', $auth);
         $url = C('INTERFACR_API')['get_user'];
@@ -42,13 +41,14 @@ class UsermanageController extends AdminController
             //坐席
             $url = $this->getUrl('zuoxi_detail') . $userinfo['objectId'];
             $response = http($url, null, 'GET');
-            $moduleStr = '';
+//            $moduleStr = '';
             $this->assign('img', $response['photo']);
             $this->assign('res',$response);
-            foreach ($response['moduleList'] as $key=>$value){
-                $moduleStr .= $value['roleModuleId'].',';
-            }
-            $this->assign('moduleStr',$moduleStr);
+//            foreach ($response['moduleList'] as $key=>$value){
+//                $moduleStr .= $value['roleModuleId'].',';
+//            }
+//            $this->assign('moduleStr',$moduleStr);
+            $this->assign('moduleList',$response['moduleList']);
             $this->display();
         }
     }
@@ -158,6 +158,7 @@ class UsermanageController extends AdminController
         $url = $this->getUrl('zuoxi_detail') . $csId;
         $response = http($url, null, 'GET');
         $this->assign('info', $response);
+        $this->assign('moduleList',$response['moduleList']);
         $this->assign('auth', $right);
         $this->assign('img', $response['photo']);
         $this->display();
@@ -229,9 +230,6 @@ class UsermanageController extends AdminController
         $this->meta_title='新增坐席';
         $right = get_auth(3);
         $csId = I('get.csId');
-        $url = $this->getUrl('zuoxi_detail') . $csId;
-        $response = http($url, null, 'GET');
-        $this->assign('info', $response);
         $this->assign('auth', $right);
         $this->display();
     }
@@ -250,18 +248,7 @@ class UsermanageController extends AdminController
         $photo = ['displayName' => '', 'imagePath' => $param['imagePath']];
         $data = ['ocs' => $ocs, 'user' => $user, 'permInfo' => ['roleModuleIds' => $param['roleModuleIds']], 'photo' => $photo];
         $url = $this->getUrl('zuoxi_create');
-        if ($param['csId']) {
-            if ($param['imageId']) {
-                $data['photo']['imageId'] = $param['imageId'];
-            }
-            unset($data['ocs']['orgId']);
-            unset($data['ocs']['orgType']);
-            unset($data['user']);
-            //删除图片
-            $url = $this->getUrl('zuoxi_update');
-        } else {
-            unset($data['ocs']['csId']);
-        }
+        unset($data['ocs']['csId']);
         unset($data['ocs']['imageId']);
         unset($data['ocs']['imagePath']);
         $json_data = think_json_encode($data);
