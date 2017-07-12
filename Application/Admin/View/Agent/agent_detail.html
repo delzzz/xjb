@@ -366,26 +366,35 @@
                 </div>
             </div>
             <div class="x_panel">
-                <div class="row tile_count text-center">
+                <div class="row tile_count text-center" id="totalStatistics">
+                    <input type="hidden" id="hid_degree" value="{$info.degree}"/>
                     <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
                         <span class="count_top">直接管理机构</span>
-                        <div class="count">2</div>
-                        <span class="count_bottom">设备数量：<i class="color-red">300</i></span>
+                        <div class="count">{$agentStatistics.insCount}</div>
+                        <span class="count_bottom">设备数量：
+                            <i class="color-red">
+                                {$agentStatistics.insDevCount}
+                            </i>
+                        </span>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
-                        <span class="count_top">下属二级代理</span>
-                        <div class="count">2</div>
-                        <span class="count_bottom">设备数量：<i class="color-red">300</i></span>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
-                        <span class="count_top">下属三级代理</span>
-                        <div class="count">2</div>
-                        <span class="count_bottom">设备数量：<i class="color-red">300</i></span>
-                    </div>
+                    <if condition="($info['degree'] eq 0) or ($info['degree'] eq 1)">
+                        <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+                            <span class="count_top">下属二级代理</span>
+                            <div class="count">{$agentStatistics.agentCount2}</div>
+                            <span class="count_bottom">设备数量：<i class="color-red">{$agentStatistics.agentDevCount2}</i></span>
+                        </div>
+                    </if>
+                    <if condition="($info['degree'] eq 0) or ($info['degree'] eq 1) or ($degree eq 2)">
+                        <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+                            <span class="count_top">下属三级代理</span>
+                            <div class="count">{$agentStatistics.agentCount3}</div>
+                            <span class="count_bottom">设备数量：<i class="color-red">{$agentStatistics.agentDevCount3}</i></span>
+                        </div>
+                    </if>
                     <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
                         <span class="count_top">总代理机构总数量</span>
-                        <div class="count">2</div>
-                        <span class="count_bottom">设备数量：<i class="color-red">300</i></span>
+                        <div class="count">{$agentStatistics.totalCount}</div>
+                        <span class="count_bottom">设备数量：<i class="color-red">{$agentStatistics.totalDevCount}</i></span>
                     </div>
                 </div>
             </div>
@@ -485,6 +494,16 @@
 </block>
 <block name="script">
     <script>
+        var degree = $('#hid_degree').val();
+        if(degree == 0){
+            $('#totalStatistics .col-md-3').css('width','20%');
+        }
+        else if(degree == 2){
+            $('#totalStatistics .col-md-3').css('width','33.3%');
+        }
+        else if(degree == 3){
+            $('#totalStatistics .col-md-3').css('width','50%');
+        }
         $('select[name="extendFlag"]').val($('#hid_extend').val());
         $('.btn-cancel').click(function(){
             if($('#collocationId').val() !== ''){
