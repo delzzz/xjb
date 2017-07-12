@@ -109,6 +109,16 @@ class AgentController extends AdminController
         $info['type'] = $type;
         return $info;
     }
+    function agent_if()
+    {
+        $agentId = $this->agentId();
+        $agentId = $agentId == '' ? 1 : $agentId;
+
+        //查询是否有代理商托管给自己
+        $targetAgents = get_queryTarget($agentId);
+
+        echo count($targetAgents);
+    }
 
     //下级代理商
     function agentList($agentId = 0)

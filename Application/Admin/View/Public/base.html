@@ -560,7 +560,7 @@
     $.post('{:U('notice/count')}',{},function(data){
         if(parseInt(data)>0)
         {
-            console.log('开始');
+
             $('#notice_agent_ico').append('<span class="badge bg-green">'+data+'</span>')
 
             $('.menu_section .side-menu li a').each(function(index){
@@ -573,6 +573,27 @@
             $('.child_menu li a').each(function(index){
                 if($(this).text().indexOf('代理通知')>-1){
                     $(this).append('<div style="width: 6px; height: 6px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #FF0000;margin-top: 10px;float:right;margin-right:110px;margin-top:5px"></div>');
+                }
+            })
+
+        }
+    });
+    $.post('{:U('agent/agent_if')}',{},function(data){
+        if(parseInt(data)>0)
+        {
+
+
+
+            $('.menu_section .side-menu li a').each(function(index){
+
+                if($(this).text().indexOf('机构管理')>-1){
+                    $(this).append('<div style="width: 6px; height: 6px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #FF0000;margin-top: 10px;float:right;margin-right:50px;margin-top:-13px"></div>');
+                }
+            })
+
+            $('.child_menu li a').each(function(index){
+                if($(this).text().indexOf('代理商管理')>-1){
+                    $(this).append('<div style="width: 6px; height: 6px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #FF0000;margin-top: 10px;float:right;margin-right:100px;margin-top:5px"></div>');
                 }
             })
 
