@@ -56,7 +56,7 @@ $("form").Validform({
     },
     tiptype: function (msg, o, cssctl) {
         //验证错误再显示
-        if (o.type == 3) {
+        if (o.type == 3&&!o.obj.is("form")) {
             o.obj.siblings('.error').remove();
             o.obj.after("<div class='error color-red Validform_checktip' style='font-size: 12px;'></div>");
             var objtip = o.obj.siblings(".Validform_checktip");
