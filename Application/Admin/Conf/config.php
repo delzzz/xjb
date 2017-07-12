@@ -410,6 +410,10 @@ return array(
 
         'send_sms'=>'http://' . HOST . '/service/sms/send',//发送短信验证码
 
+        'notice_set_read'=>'http://'.HOST.'/service/notice/org/setread',//通知设置阅读状态
+
+        'notice_get_count'=>'http://'.HOST.'/service/notice/org/get/count',//获取通知未读数量
+
 
     ),
 );

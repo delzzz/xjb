@@ -640,7 +640,12 @@ function send_broadcast($userId, $userName, $content)
     $res = http_post_json($url, json_encode(['userId' => $userId, 'userName' => $userName, 'content' => $content]));
     return $res;
 }
-
+//设置通知已读
+function set_read_notice($ids)
+{
+    $url=C('INTERFACR_API')['notice_set_read'];
+    http_post_json($url,$ids);
+}
 //删除广播
 function del_broadcast($msgId)
 {

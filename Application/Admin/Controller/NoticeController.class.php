@@ -8,10 +8,28 @@ class NoticeController extends AdminController
         $this->meta_title = "代理通知";
         $pageNo = I('get.p', 1);
         $url = $this->getUrl('notice_query') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
-        $param = "{}";
+        $param = "{\"agentId\":".$this->agentId()."}";
         $list = $this->lists($url, $param);
+
         $this->assign('list', $list['itemList']);
         $this->display();
+    }
+
+    /**
+     * 设置已读接口
+     */
+    function notice_read()
+    {
+        $sids=I('post.ids');
+        set_read_notice($sids);
+    }
+    function count()
+    {
+        $param="{\"agentId\":".$this->agentId().",\"readFlag\":0}";
+        $url=$this->getUrl('notice_get_count');
+
+        echo http_post_json($url,$param);
+
     }
 
     function del()

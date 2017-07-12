@@ -72,17 +72,17 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li role="presentation">
-                        <a href="../../javascript:;" class="dropdown-toggle info-number pull-right"
-                           data-toggle="dropdown" aria-expanded="false">
+                        <a id="notice_agent_ico" href="{:U('notice/notice_agent')}" class="dropdown-toggle info-number pull-right"
+                           data-toggle="" aria-expanded="false">
                             <i class="fa fa-envelope-o"></i>
-                            <span class="badge bg-green">6</span>
+
                         </a>
-                        <a href="../../javascript:;" class="dropdown-toggle info-number pull-right"
-                           data-toggle="dropdown" aria-expanded="false">
+                        <!--<a href="../../javascript:;" class="dropdown-toggle info-number pull-right"
+                           data-toggle="" aria-expanded="false">
                             <i class="fa fa-bell-o color-red"></i>
                             <span class="badge bg-red">6</span>
-                        </a>
-                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                        </a>-->
+                       <!-- <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                             <li>
                                 <a>
                                     <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image"/></span>
@@ -139,7 +139,7 @@
                                     </a>
                                 </div>
                             </li>
-                        </ul>
+                        </ul>-->
                     </li>
                     <if condition="$userType eq 3">
                         <li class="">
@@ -556,6 +556,28 @@
             }
         });
     }
+
+    $.post('{:U('notice/count')}',{},function(data){
+        if(parseInt(data)>0)
+        {
+            console.log('开始');
+            $('#notice_agent_ico').append('<span class="badge bg-green">'+data+'</span>')
+
+            $('.menu_section .side-menu li a').each(function(index){
+
+                if($(this).text().indexOf('通知管理')>-1){
+                    $(this).append('<div style="width: 6px; height: 6px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #FF0000;margin-top: 10px;float:right;margin-right:60px;margin-top:7px"></div>');
+                }
+            })
+
+            $('.child_menu li a').each(function(index){
+                if($(this).text().indexOf('代理通知')>-1){
+                    $(this).append('<div style="width: 6px; height: 6px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #FF0000;margin-top: 10px;float:right;margin-right:110px;margin-top:5px"></div>');
+                }
+            })
+
+        }
+    });
 </script>
 <block name="script"></block>
 </body>
