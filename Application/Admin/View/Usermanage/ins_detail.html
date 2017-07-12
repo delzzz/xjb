@@ -12,7 +12,7 @@
 <block name="body">
     <div class="container body">
         <div class="right_col" role="main">
-            <form action="{:U('AddOrg')}" method="post" class="form-horizontal form-label-left">
+            <form action="{:U('Agent/AddOrg')}" method="post" class="form-horizontal form-label-left">
                 <div class="col-md-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
@@ -37,7 +37,7 @@
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">机构性质:</label>
 
                                     <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <select name="insType" class="form-control">
+                                        <select name="insType" class="form-control unbindclick">
                                             <option value="-1">请选择</option>
                                             <option value="0">医院</option>
                                             <option value="1">生活小区</option>
@@ -58,7 +58,6 @@
 
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">机构登录ID:</label>
-
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <input id="logId" type="text" class="form-control" value="{$uinfo.userName}"
                                                disabled="disabled" placeholder="">
@@ -174,7 +173,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <div action="#" class="dropzone">
+                                    <div action="#" class="dropzone unbindclick">
                                         <volist name="imgList" id="img">
                                             <div class="dz-preview dz-processing dz-image-preview dz-success dz-complete">
                                                 <div class="dz-image">
@@ -231,13 +230,20 @@
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
                                 <br>
-                                <volist name="auth" id="auth">
+                                <input id="moduleStr" type="hidden" value="{$moduleStr}"/>
+                                <!--<volist name="auth" id="auth">-->
+                                    <!--<div class="checkbox col-md-2 col-sm-2 col-xs-12">-->
+                                        <!--<label>-->
+                                            <!--<input value="{$auth.module.id}" name="roleModuleIds[]" type="checkbox" class="flat">-->
+                                            <!--{$auth['module']['moduleName']}-->
+                                        <!--</label>-->
+                                    <!--</div>-->
+                                <!--</volist>-->
+                                <volist name="moduleList" id="moduleList">
                                     <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                                         <label>
-                                            <input value="{$auth.id}" name="roleModuleIds[]" checked
-                                            <if condition="$auth['isOptional'] eq 0">onclick="return false"</if>
-                                            type="checkbox" class="flat">
-                                            {$auth['module']['moduleName']}
+                                            <input value="$moduleList['module']['id']" checked onclick="return false" type="checkbox" class="flat">
+                                            {$moduleList['module']['moduleName']}
                                         </label>
                                     </div>
                                 </volist>
@@ -282,7 +288,7 @@
                             <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
                             <a href="{:U('index')}" class="btn btn-lg btn-danger">返回</a>
                             <button class="btn btn-lg btn-danger" type="button" data-toggle="modal"
-                                    data-target="#myModal2">机构信息变更
+                                    data-target="#myModal2">编辑
                             </button>
                         </div>
                         <!--变更页面显示-->
@@ -291,10 +297,11 @@
                             <!--</button>-->
                             <!--在账号启用状态显示账号停用按钮 在账号停用状态显示启用按钮-->
                             <a href="{:U('index')}" class="btn btn-lg btn-danger">返回</a>
-                            <button class="btn btn-lg btn-danger">账号停用
-                            </button>
                             <button class="btn btn-lg btn-danger ajax-post" type="submit"
                                     target-form="form-label-left">保存页面
+                            </button>
+                            <button type="button" class="btn btn-lg btn-danger" data-toggle="modal"
+                                    data-target="#myModal">修改密码
                             </button>
                         </div>
                     </div>
@@ -303,94 +310,6 @@
                 <input type="hidden" name="orgId" value="{$info.orgId}">
             </form>
         </div>
-
-        <!--弹框 托管-->
-        <form action="{:U('index')}" method="post" class="form-horizontal form-label-deposit">
-            <div class="modal fade row" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document" style="width: 70%;">
-                    <div class="modal-content" style="">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">托管至代理商</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="x_content">
-                                <div class="table-responsive">
-                                    <table class="table table-striped jambo_table bulk_action">
-                                        <thead>
-                                        <tr class="headings">
-                                            <th>
-                                                操作
-                                            </th>
-                                            <th class="column-title">代理商等级</th>
-                                            <th class="column-title">代理区域</th>
-                                            <th class="column-title">代理公司名称</th>
-                                            <th class="column-title">代理公司地址</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="inst1">
-                                        <tr class="pointer">
-                                            <td class="a-center ">
-                                                <input type="radio" class="flat" name="targetId" value="{$proAgents['agent']['agentId']}">
-                                            </td>
-                                            <td class=" ">
-                                                <if condition="$proAgents['agent']['degree'] eq 1">
-                                                    一级(省)
-                                                    <elseif condition="$proAgents['agent']['degree'] eq 2"/>
-                                                    二级（市）
-                                                    <elseif condition="$proAgents['agent']['degree'] eq 3"/>
-                                                    三级(县)
-                                                    <else/>
-                                                    官方
-                                                </if>
-                                                代理
-                                            </td>
-                                            <td class=" ">{$proAgents['agent']['area']}</td>
-                                            <td class=" ">{$proAgents['agent']['orgOrganization']['orgName']}</td>
-                                            <td class=" ">{$proAgents['agent']['orgOrganization']['address']}</td>
-                                        </tr>
-                                        </tbody>
-                                        <thead>
-                                        <tr class="headings">
-                                            <th>
-                                                操作
-                                            </th>
-                                            <th class="column-title">机构名称</th>
-                                            <th class="column-title">机构性质</th>
-                                            <th class="column-title">联系电话</th>
-                                            <th class="column-title">地址</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="inst2">
-                                        <volist name="proAgents['ins']" id="ins">
-                                            <tr class="<if condition='$key %2 ==0'>even<else/>odd</if> pointer">
-                                                <td class="a-center ">
-                                                    <input type="radio" class="flat" name="targetId" value="{$ins.institutionId}">
-                                                </td>
-                                                <td class=" ">
-                                                    {$ins.orgName}
-                                                </td>
-                                                <td class=" ">{$ins.insType_text}</td>
-                                                <td class=" ">{$ins.telephone}</td>
-                                                <td class=" ">{$ins.address}</td>
-                                            </tr>
-                                        </volist>
-                                        </tbody>
-                                        <input id="hid_type" type="hidden" name="hid_type" value="0"/>
-                                        <input type="hidden" name="insId" value="{$insId}"/>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger" target-form="form-label-deposit">确定</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
         <!--弹框 代理商信息变更-->
         <div class="modal fade row" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document" style="">
@@ -420,6 +339,56 @@
                 <input type="hidden" id="verifyTrue" value="{$verifyTrue}"/>
             </div>
         </div>
+        <input type="hidden" name="insId" value="{$insId}"/>
+        <!--弹框 end-->
+        <!--弹框 修改密码-->
+        <div class="modal fade row" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document" style="width: 50%;">
+                <form method="post" action="{:U('Public/changePassword')}">
+                    <div class="modal-content" style="">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+                        </div>
+                        <div class="modal-body" style="height: 260px;">
+                            <div class="x_content">
+                                <div class="form-group col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">原始密码:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input id="oldpwd" type="hidden" value="{$uinfo.password}">
+                                        <input type="password" name="oldpassword" class="form-control"
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">重置密码:</label>
+
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="password" name="userpassword" ignore="1" datatype="n6-11"
+                                               errormsg="密码范围是在6~11位之间的数字！" plugin="passwordStrength"
+                                               class="form-control" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">确认密码:</label>
+
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="password" name="repassword" recheck="userpassword"
+                                               errormsg="您两次输入的账号密码不一致！" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger">确定</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <!--弹框 end-->
     </div>
     </div>
@@ -427,9 +396,10 @@
 
 <block name="script">
     <script>
-        $("input,textarea,select").attr('disabled', true);
-        $('.dropzone a').addClass('unbindclick');
-        $('#mobile,#verify').attr('disabled', false);
+        $('input,textarea,select').attr('readonly',true);
+        $('#myModal input').removeAttr('readonly');
+        $('#mobile,#verify').removeAttr('readonly');
+        $('input[type="checkbox"]').attr('onclick','return false;');
         //手机号验证
         function verify_mobile() {
             $('.mobile_vfy .error').remove();
@@ -497,8 +467,10 @@
                     if (res == 1) {
                         $("#divOption").removeClass('hide');
                         $("#divOption2").hide();
-                        $("input,select,textarea").attr('disabled', false);
-                        $('.dropzone a').removeClass('unbindclick');
+                        $("input[name='address'],textarea").removeAttr('readonly');
+                        $("input[name='name[]']").eq(0).removeAttr('readonly');
+                        $("input[name='mobile[]']").eq(0).removeAttr('readonly');
+                        $("input[name='idNo[]']").eq(0).removeAttr('readonly');
                         $('#logId').attr('disabled', true);
                         $('#f4 input').attr('disabled', true);
                         $('#myModal2').modal('hide');
@@ -509,8 +481,10 @@
         if ($('#verifyTrue').val() == $('input[name="insId"]').val()) {
             $("#divOption").removeClass('hide');
             $("#divOption2").hide();
-            $("input,select,textarea").attr('disabled', false);
-            $('.dropzone a').removeClass('unbindclick');
+            $("input[name='address'],textarea").removeAttr('readonly');
+            $("input[name='name[]']").eq(0).removeAttr('readonly');
+            $("input[name='mobile[]']").eq(0).removeAttr('readonly');
+            $("input[name='idNo[]']").eq(0).removeAttr('readonly');
             $('#logId').attr('disabled', true);
             $('#f4 input').attr('disabled', true);
             $('#myModal2').modal('hide');
@@ -525,6 +499,16 @@
                 }
             })
         });
+        //权限选中
+//        var moduleStr = $('#moduleStr').val();
+//        var module_arr = moduleStr.split(',');
+//        $.each(module_arr, function (i, item) {
+//            $('input[name="roleModuleIds[]"]').each(function (j, devices) {
+//                if ($(this).val() == item) {
+//                    $(this).attr('checked', true);
+//                }
+//            })
+//        });
         var orgCondition = $('#orgCondition').val();
         var condition_arr = orgCondition.split(',');
         $.each(condition_arr, function (i, item) {

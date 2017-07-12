@@ -31,23 +31,24 @@ class AdminController extends Controller
         $this->assign('menu', $right);
         $this->assign('h_degree',$this->orgAgent()['degree']);
         $url = C('INTERFACR_API')['get_user'];
-        $User = http($url, ['userName' => $_SESSION['onethink_admin']['user_auth']['userName']], 'GET');
+        $userinfo = session('user_auth');
+        $User = http($url, ['userName' => $userinfo['userName']], 'GET');
         $this->assign('onlineStatus',$User['onlineStatus']);
         $this->assign('h_extendFlag',$this->orgAgent()['extendFlag']);
         //坐席代理商机构判断
-        $this->assign('userType',$_SESSION['onethink_admin']['user_auth']['userType']);
-        if($_SESSION['onethink_admin']['user_auth']['userType']==1){
+        $this->assign('userType',$userinfo['userType']);
+        if($userinfo['userType']==1){
             //代理商
             $this->assign('orgName', $this->orgName());
         }
-        elseif ($_SESSION['onethink_admin']['user_auth']['userType']==2){
+        elseif ($userinfo['userType']==2){
             //机构
-            $insInfo = http(C('INTERFACR_API')['get_org_ins'], ['orgId' => $_SESSION['onethink_admin']['user_auth']['objectId']], 'GET');
+            $insInfo = $this->orgIns();
             $this->assign('orgName',$insInfo['orgOrganization']['orgName']);
         }
         else{
             //坐席
-            $csInfo = http( C('INTERFACR_API')['zuoxi_detail'].$_SESSION['onethink_admin']['user_auth']['objectId'], null, 'GET');
+            $csInfo = http( C('INTERFACR_API')['zuoxi_detail'].$userinfo['objectId'], null, 'GET');
             $this->assign('zxPic',$csInfo['photo']['imagePath']);
             $this->assign('zxName',$csInfo['name']);
             $this->assign('zxNum',$csInfo['userName']);
@@ -94,6 +95,15 @@ class AdminController extends Controller
             return $orgAgent[$fild];
         }
         return $orgAgent;
+    }
+
+    protected function orgIns($orgId = 0){
+        $User = session('user_auth');
+        if (empty($orgId)) {
+            $orgId = $User['objectId'];
+        }
+        $orgIns = http(C('INTERFACR_API')['get_org_ins'], ['orgId' => $orgId], 'GET');
+        return $orgIns;
     }
 
     protected function delPicture($imgId)

@@ -15,45 +15,40 @@
                         <div class="x_content row">
                             <br/>
 
-                            <form class="form-horizontal form-label-left" method="post" action="{:U('write')}">
+                            <form id="fm_manage" class="form-horizontal form-label-left" method="post" action="{:U('write')}">
                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">姓名:</label>
-
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" name="name" value="{$info.userName|default=''}"
+                                            <input type="text" name="name" value="{$res.name|default=''}"
                                                    class="form-control" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">性别:</label>
-
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <select name="sex" class="form-control">
-                                                <option value="1">男</option>
-                                                <option value="0">女</option>
-                                            </select>
+                                            <input name="sex" type="hidden" value="{$res.sex}">
+                                            <input type="text" value="<if condition="$res['sex'] eq 0">男<else/>女</if>"
+                                                   class="form-control" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">电话:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" name="telephone" value="{$info.mobile|default=''}"
+                                            <input type="text" name="telephone" value="{$res.telephone|default=''}"
                                                    class="form-control" placeholder="">
                                         </div>
                                     </div>
-                                    <if condition="$info.userType eq 3">
                                         <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                             <label class="control-label col-md-4 col-sm-4 col-xs-12">坐席工号:</label>
 
                                             <div class="col-md-8 col-sm-8 col-xs-12">
-                                                <input type="text" value="{$info.userName}" class="form-control"
+                                                <input type="text" value="{$uinfo.userName}" class="form-control"
                                                        placeholder="">
                                             </div>
                                         </div>
-                                    </if>
-                                    <if condition="empty($info)">
+                                    <if condition="empty($uinfo)">
                                         <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                             <label class="control-label col-md-4 col-sm-4 col-xs-12">密码:</label>
 
@@ -79,11 +74,11 @@
 
                                         <div class="col-md-10 col-sm-10 col-xs-12">
                                             <textarea class="form-control" name="remark" rows="3"
-                                                      placeholder='备注在2000字以内'>{$info.remark|default=''}</textarea>
+                                                      placeholder='备注在2000字以内'>{$res.remark|default=''}</textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <if condition="$info.userType eq 3">
+                                <if condition="$uinfo.userType eq 3">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                         <img id="head_img" src="{$img.imagePath|default='__IMG__/user.png'}">
                                         <input type="hidden" ignore="1" name="imageId" value="{$img.imageId}">
@@ -110,7 +105,7 @@
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
                                         <br>
-
+                                        <input id="moduleStr" type="hidden" value="{$moduleStr}" />
                                         <volist name="auth" id="auth">
                                             <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                                                 <label>
@@ -120,7 +115,6 @@
                                                 </label>
                                             </div>
                                         </volist>
-
                                     </div>
 
                                     <div class="x_title clear">
@@ -134,7 +128,8 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
                                         <br>
-                                        <input type="hidden" ignore="1" name="csId" value="{$info.csId|default=0}">
+                                        <input type="hidden" name="flag" value="1"/>
+                                        <input type="hidden" ignore="1" name="csId" value="{$res.csId|default=0}">
                                         <button type="submit" class="btn btn-lg btn-danger ajax-post"
                                                 target-form="form-label-left">
                                             保存
@@ -154,7 +149,7 @@
                 <!--弹框 修改密码-->
                 <div class="modal fade row" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document" style="width: 50%;">
-                        <form>
+                        <form method="post" action="{:U('Public/changePassword')}">
                             <div class="modal-content" style="">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -165,8 +160,8 @@
                                     <div class="x_content">
                                         <div class="form-group col-lg-10 col-md-12 col-sm-12 col-xs-12">
                                             <label class="control-label col-md-4 col-sm-4 col-xs-12">原始密码:</label>
-
                                             <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <input id="oldpwd" type="hidden" value="{$uinfo.password}">
                                                 <input type="password" name="oldpassword" class="form-control"
                                                        placeholder="">
                                             </div>
@@ -213,7 +208,6 @@
 <block name="script">
     <script>
         $(function () {
-            Think.setValue('sex', "{$info.sex}");
             $("#image").on('change', function () {
                 var formData = new FormData();
                 formData.append('file', $("#image")[0].files[0]);
@@ -231,5 +225,20 @@
                 });
             });
         });
+        //权限选中
+        var moduleStr = $('#moduleStr').val();
+        var module_arr = moduleStr.split(',');
+        $.each(module_arr, function (i, item) {
+            $('input[name="roleModuleIds[]"]').each(function (j, devices) {
+                if ($(this).val() == item) {
+                    $(this).attr('checked', true);
+                }
+            })
+        });
+       $('input:not(input[id="image"],input[name="telephone"])').attr('readonly',true);
+        $('input[type="checkbox"]').attr('disabled',true);
+        $('input[name="oldpassword"]').removeAttr('readonly');
+        $('input[name="userpassword"]').removeAttr('readonly');
+        $('input[name="repassword"]').removeAttr('readonly');
     </script>
 </block>

@@ -74,9 +74,19 @@ class PublicController extends \Think\Controller
     //更改用户状态 签入 示忙
     function changeUserstatus(){
         $status = I('get.status');
-        $jsonData = http_post_json(C('INTERFACR_API')['user_update'], json_encode(['userId' => $_SESSION['onethink_admin']['user_auth']['userId'],'onlineStatus'=>$status]));
+        $jsonData = http_post_json(C('INTERFACR_API')['user_update'], json_encode(['userId' => session('user_auth')['userId'],'onlineStatus'=>$status]));
         if($jsonData['success']){
             $this->success('状态变更成功!');
+        }
+    }
+
+    //修改密码
+    function changePassword(){
+        if(isset($_POST['repassword'])){
+            $jsonData = http_post_json(C('INTERFACR_API')['user_update'], json_encode(['userId' => session('user_auth')['userId'],'password'=>md5($_POST['repassword'])]));
+            if($jsonData['success']){
+                $this->success('密码更改成功!');
+            }
         }
     }
 }

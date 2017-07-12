@@ -389,7 +389,6 @@ class AgentController extends AdminController
         } else {
             $jsonData = http_post_json(C('INTERFACR_API')['agent_create'], $res);
         }
-        //dump($jsonData);exit();
         if ($jsonData['success']) {
             if($agentId){
                 $this->success('保存成功');
@@ -541,6 +540,7 @@ class AgentController extends AdminController
         $agentId = $option['agentId'];
         $parentId = get_agent_info($agentId)['parentId'];
         $this->assign('insId', $insId);
+        $this->assign('uinfo',session('user_auth'));
         //可托管代理商
         if (!empty($parentId)) {
             $proAgents = $this->getInsCollacations($agentId);
@@ -626,7 +626,7 @@ class AgentController extends AdminController
     //获取权限
     function getAuth()
     {
-        $userType = $_SESSION['onethink_admin']['user_auth']['userType'];
+        $userType = session('user_auth')['userType'];
         $res = get_auth($userType);
         return $res;
     }

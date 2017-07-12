@@ -27,7 +27,6 @@ $("form").Validform({
     callback: function (data) {
         if (data.status == 1) {
            $('.modal').modal('hide');
-           // console.log(data['info']['msg']);return;
             if(data['info']['msg']!='' && data['info']['msg']!=undefined){
                 dialog(0,data['info']['msg'],data['info']['msg2'])
             }
@@ -170,6 +169,16 @@ $("form").Validform({
                 return true;
             }
             return false;
+        },
+        "pwdvfy":function(gets,obj,curform,datatype){
+            var oldpwd = $.md5(gets);
+            if(oldpwd==obj.prev('#oldpwd').val()){
+                return true;
+            }
+            else{
+                return false;
+            }
+            return false;
         }
     }
 }).addRule([
@@ -230,6 +239,12 @@ $("form").Validform({
         errormsg:"结束服药日期必须大于开始服药日期",
         nullmsg: "此项不能为空"
     },
+    {
+        ele:"input[name='oldpassword']",
+        datatype:"pwdvfy",
+        errormsg:"输入密码不正确",
+        nullmsg: "此项不能为空"
+    }
 ]);
 $("input").focus(function () {
     $(this).next(".error").remove();
@@ -240,7 +255,7 @@ $(function () {
         var idName = $(this).attr('id');
         var dsbd = $(this).attr('disabled');
         var name = $(this).attr('name');
-        if(msgs!=1 && idName !='key' && dsbd!='disabled' && name!='peopleIdentifier' && name!='nativePlace' && idName!='basicOrg' && name!='hobbyOtherDesc'){
+        if(msgs!=1 && idName !='key' && dsbd!='disabled' && name!='peopleIdentifier' && name!='nativePlace' && idName!='basicOrg' && name!='hobbyOtherDesc' && name!='age'){
             $(this).parent().css('position','relative');
             $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
         }
