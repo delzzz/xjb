@@ -105,13 +105,13 @@
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
                                         <br>
-                                        <input id="moduleStr" type="hidden" value="{$moduleStr}" />
-                                        <volist name="auth" id="auth">
+                                        <!--<input id="moduleStr" type="hidden" value="{$moduleStr}" />-->
+                                        <volist name="moduleList" id="moduleList">
                                             <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                                                 <label>
-                                                    <input value="{$auth.module.id}" name="roleModuleIds[]"
+                                                    <input value="{$moduleList.module.id}" checked onclick="return false" name="roleModuleIds[]"
                                                            type="checkbox" class="flat">
-                                                    {$auth.module.moduleName}
+                                                    {$moduleList['module']['moduleName']}
                                                 </label>
                                             </div>
                                         </volist>
@@ -226,15 +226,15 @@
             });
         });
         //权限选中
-        var moduleStr = $('#moduleStr').val();
-        var module_arr = moduleStr.split(',');
-        $.each(module_arr, function (i, item) {
-            $('input[name="roleModuleIds[]"]').each(function (j, devices) {
-                if ($(this).val() == item) {
-                    $(this).attr('checked', true);
-                }
-            })
-        });
+//        var moduleStr = $('#moduleStr').val();
+//        var module_arr = moduleStr.split(',');
+//        $.each(module_arr, function (i, item) {
+//            $('input[name="roleModuleIds[]"]').each(function (j, devices) {
+//                if ($(this).val() == item) {
+//                    $(this).attr('checked', true);
+//                }
+//            })
+//        });
        $('input:not(input[id="image"],input[name="telephone"])').attr('readonly',true);
         $('input[type="checkbox"]').attr('disabled',true);
         $('input[name="oldpassword"]').removeAttr('readonly');
