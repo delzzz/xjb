@@ -230,9 +230,6 @@ class UsermanageController extends AdminController
         $this->meta_title='新增坐席';
         $right = get_auth(3);
         $csId = I('get.csId');
-        $url = $this->getUrl('zuoxi_detail') . $csId;
-        $response = http($url, null, 'GET');
-        $this->assign('info', $response);
         $this->assign('auth', $right);
         $this->display();
     }
@@ -251,18 +248,7 @@ class UsermanageController extends AdminController
         $photo = ['displayName' => '', 'imagePath' => $param['imagePath']];
         $data = ['ocs' => $ocs, 'user' => $user, 'permInfo' => ['roleModuleIds' => $param['roleModuleIds']], 'photo' => $photo];
         $url = $this->getUrl('zuoxi_create');
-        if ($param['csId']) {
-            if ($param['imageId']) {
-                $data['photo']['imageId'] = $param['imageId'];
-            }
-            unset($data['ocs']['orgId']);
-            unset($data['ocs']['orgType']);
-            unset($data['user']);
-            //删除图片
-            $url = $this->getUrl('zuoxi_update');
-        } else {
-            unset($data['ocs']['csId']);
-        }
+        unset($data['ocs']['csId']);
         unset($data['ocs']['imageId']);
         unset($data['ocs']['imagePath']);
         $json_data = think_json_encode($data);

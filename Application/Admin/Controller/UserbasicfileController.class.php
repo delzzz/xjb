@@ -117,12 +117,7 @@ class UserbasicfileController extends AdminController
         $url = $this->getUrl('people_save_edit');
         $response = http_post_json($url, $request);
         if ($response) {
-            if ($peopleId) {
-                $this->success("保存成功");
-            }
-            else{
-                $this->success("保存成功",U('basicfile'));
-            }
+            $this->success("保存成功",U('basicfile'));
         } else {
             $this->error("保存失败");
         }
