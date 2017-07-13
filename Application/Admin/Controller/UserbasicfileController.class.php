@@ -40,13 +40,15 @@ class UserbasicfileController extends AdminController
     {
         $param = $_POST;
         $peopleId = $param['peopleId'];
+        $birth = strlen($param['idNumber'])==15 ? ('19' . substr($param['idNumber'], 6, 6)) : substr($param['idNumber'], 6, 8);
+        $birthDate = substr($birth,0,4).'-'.substr($birth,4,2).'-'.substr($birth,6,2);
         $peopleBasic = [
             'peopleIdentifier' => $param['peopleIdentifier'],
             'orgId' => $param['orgId'],
             'name' => $param['pel_name'],
             'age' => $param['age'],
             'gender' => $param['gender'],
-            'birthDate' => '',
+            'birthDate' => $birthDate,
             'idNumber' => $param['idNumber'],
             'telephone' => $param['tele_phone'],
             'nativePlace' => $param['nativePlace'],
@@ -59,15 +61,15 @@ class UserbasicfileController extends AdminController
         ];
         $hobby = '';
         if (!empty($param['hobby'])) {
-            foreach ($param['hobby'] as $value) {
-                $hobby = $value . ';';
+            foreach ($param['hobby'] as $key=>$value) {
+                $hobby .= $value . ';';
             }
             $hobby = substr($hobby, 0, strlen($hobby) - 1);
         }
         $peopleDetail = [
             'hobby' => $hobby,
             'hobbyOtherDesc' => $param['hobbyOtherDesc'],
-            'remark' => '',
+            'remark' => $param['remark'],
         ];
         $impage = [
             'displayName' => '',
@@ -116,6 +118,7 @@ class UserbasicfileController extends AdminController
         $request = think_json_encode($data);
         $url = $this->getUrl('people_save_edit');
         $response = http_post_json($url, $request);
+        //dump($data);exit();
         if ($response) {
             $this->success("保存成功",U('basicfile'));
         } else {

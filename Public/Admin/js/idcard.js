@@ -42,7 +42,7 @@ $("form").Validform({
                 }
             });
         } else {
-            //updateAlert(data.info);
+            $('.modal').modal('hide');
             dialog(1, data.info, '');
             setTimeout(function () {
                 if (data.url) {
