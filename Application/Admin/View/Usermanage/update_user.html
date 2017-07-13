@@ -14,8 +14,9 @@
                         </div>
                         <div class="x_content row">
                             <br/>
-
                             <form class="form-horizontal form-label-left" method="post" action="{:U('write')}">
+                                <input name="orgId" type="hidden" value="{$orgId}"/>
+                                <input name="orgType" type="hidden" value="{$orgType}"/>
                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">姓名:</label>
@@ -28,8 +29,8 @@
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">性别:</label>
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input name="sex" type="hidden" value="{$res.sex}">
-                                            <input type="text" value="<if condition="$res['sex'] eq 0">男<else/>女</if>"
+                                            <input name="sex" type="hidden" value="{$info.sex}">
+                                            <input type="text" value="<if condition="$info['sex'] eq 1">女<else/>男</if>"
                                             class="form-control" placeholder="">
                                         </div>
                                     </div>

@@ -40,11 +40,15 @@ class AdminController extends Controller
         if($userinfo['userType']==1){
             //代理商
             $this->assign('orgName', $this->orgName());
+            $this->assign('orgId',$this->orgId());
+            $this->assign('orgType',$this->orgType());
         }
         elseif ($userinfo['userType']==2){
             //机构
             $insInfo = $this->orgIns();
             $this->assign('orgName',$insInfo['orgOrganization']['orgName']);
+            $this->assign('orgId',$insInfo['orgOrganization']['orgId']);
+            $this->assign('orgType',$insInfo['orgOrganization']['orgType']);
         }
         else{
             //坐席
@@ -52,6 +56,9 @@ class AdminController extends Controller
             $this->assign('zxPic',$csInfo['photo']['imagePath']);
             $this->assign('zxName',$csInfo['name']);
             $this->assign('zxNum',$csInfo['userName']);
+            $this->assign('orgName',$csInfo['orgOrganization']['orgName']);
+            $this->assign('orgId',$csInfo['orgOrganization']['orgId']);
+            $this->assign('orgType',$csInfo['orgOrganization']['orgType']);
         }
     }
 

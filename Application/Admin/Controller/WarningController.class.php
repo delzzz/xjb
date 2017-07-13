@@ -50,7 +50,7 @@ class WarningController extends AdminController
         $param = json_encode(['status'=>1]);
         $list = $this->lists($url, $param);
         $warning_status = C('WARNING_STATUS');
-        int_to_string($list['itemList'], ['gender' => ['1' => '男', 0 => '女'], 'alarmType' => $warning_status]);
+        int_to_string($list['itemList'], ['gender' => ['1' => '女', 0 => '男'], 'alarmType' => $warning_status]);
         $this->assign('warning_status', $warning_status);
         $this->assign('list', $list['itemList']);
         $this->display();
@@ -64,7 +64,7 @@ class WarningController extends AdminController
         $param = json_encode(['status'=>0]);
         $list = $this->lists($url, $param);
         $warning_status = C('WARNING_STATUS');
-        int_to_string($list['itemList'], ['gender' => ['1' => '男', 0 => '女'], 'alarmType' => $warning_status]);
+        int_to_string($list['itemList'], ['gender' => ['1' => '女', 0 => '男'], 'alarmType' => $warning_status]);
         $this->assign('warning_status', $warning_status);
         $this->assign('list', $list['itemList']);
         $this->display('warning_history');

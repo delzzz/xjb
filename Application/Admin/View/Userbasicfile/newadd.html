@@ -14,12 +14,11 @@
                         </div>
                         <div class="x_content row">
                             <br/>
-
                             <form action="{:U('write')}" method="post" class="form-horizontal form-label-left">
+                                <input name="orgId" type="hidden" value="{$orgId}"/>
                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">老人姓名:</label>
-
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <input type="text" name="pel_name" value="{$peopleBasic.name}"
                                                    class="form-control" placeholder="">
@@ -30,8 +29,8 @@
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <select name="gender" class="form-control">
-                                                <option value="1">男</option>
-                                                <option value="0">女</option>
+                                                <option value="0">男</option>
+                                                <option value="1">女</option>
                                             </select>
                                         </div>
                                     </div>
