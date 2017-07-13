@@ -189,6 +189,11 @@ $("form").Validform({
         nullmsg: "此项不能为空"
     },
     {
+      ele:"textarea[id='closeReason']",
+        datatype:"*",
+        nullmsg:"此项不能为空"
+    },
+    {
         ele: "input[name='tele_phone']",
         datatype: "mb",
         errormsg: "手机号码格式不正确"
@@ -246,7 +251,7 @@ $("form").Validform({
         nullmsg: "此项不能为空"
     }
 ]);
-$("input").focus(function () {
+$("input,textarea").focus(function () {
     $(this).next(".error").remove();
 });
 $(function () {

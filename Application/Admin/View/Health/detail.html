@@ -1,13 +1,13 @@
 <extend name="Public/base"/>
 <block name="style">
     <style>
-        #history_table tr td,#info_table tr td{
+        #history_table tr td, #info_table tr td {
             vertical-align: middle;
         }
     </style>
 </block>
 <block name="body">
-    <div class="right_col" role="main" >
+    <div class="right_col" role="main">
         <div class="col-md-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
@@ -99,16 +99,22 @@
                                             <th class="text-center">用药单位</th>
                                             <?php
                                            foreach($remind['triggerTimes'] as $key=>$value){
-                                                    if($key==0){
-                                                        echo '<th class="text-center">第一次</th>';
-                                                    }
-                                                    elseif($key==1){
-                                                        echo '<th class="text-center">第二次</th>';
-                                                    }
-                                                    elseif($key==2){
-                                                         echo '<th class="text-center">第三次</th>';
-                                                    }
-                                                }
+                                            if($key==0){
+                                            echo '
+                                            <th class="text-center">第一次</th>
+                                            ';
+                                            }
+                                            elseif($key==1){
+                                            echo '
+                                            <th class="text-center">第二次</th>
+                                            ';
+                                            }
+                                            elseif($key==2){
+                                            echo '
+                                            <th class="text-center">第三次</th>
+                                            ';
+                                            }
+                                            }
                                             ?>
                                             <th class="text-center">用药备注</th>
                                         </tr>
@@ -138,9 +144,11 @@
                                             </td>
                                             <?php
                                            foreach($remind['triggerTimes'] as $key=>$value){
-                                                    echo '<td>'.$value.'</td>';
-                                                }
-                                             ?>
+                                            echo '
+                                            <td>'.$value.'</td>
+                                            ';
+                                            }
+                                            ?>
                                             <td style="max-width: 250px;word-break: break-all;">{$remind.remark}</td>
                                         </tr>
                                         </tbody>
@@ -155,10 +163,10 @@
                                 <br>
                                 <h2>
                                     <if condition="$flag eq 1">
-                                    <!--坐席端显示-->
+                                        <!--坐席端显示-->
                                         操作记录
-                                    <else/>
-                                    <!--后台端显示-->
+                                        <else/>
+                                        <!--后台端显示-->
                                         历史用药
                                     </if>
                                 </h2>
@@ -185,33 +193,33 @@
                                             </tr>
                                             </thead>
                                             <tbody id="history_table">
-                                                <volist name="history" id="history">
-                                                    <tr>
-                                                        <td>{:time_format($history['createTime']/1000,'Y-m-d')}</td>
-                                                        <td>
-                                                            {$history.adder}
-                                                        </td>
-                                                        <td>{$history.drugName}</td>
-                                                        <td>{$history.dose}</td>
-                                                        <td>
-                                                                <if condition="$history.doseUnit eq 0">粒
-                                                                    <elseif condition="$history.doseUnit eq 1" />
-                                                                    片
-                                                                    <elseif condition="$history.doseUnit eq 2" />
-                                                                    袋
-                                                                    <elseif condition="$history.doseUnit eq 3" />
-                                                                    颗
-                                                                    <elseif condition="$history.doseUnit eq 4" />
-                                                                    瓶
-                                                                </if>
-                                                        </td>
-                                                        <td>{$history.timeStr}</td>
-                                                        <td>{$history.remark}</td>
-                                                        <td>{$history['status'] == 1 ? 已关闭:执行中}</td>
-                                                        <td>{$history.closer}</td>
-                                                        <td style="max-width: 250px;word-break: break-all;">{$history.closeReason}</td>
-                                                    </tr>
-                                                </volist>
+                                            <volist name="history" id="history">
+                                                <tr>
+                                                    <td>{:time_format($history['createTime']/1000,'Y-m-d')}</td>
+                                                    <td>
+                                                        {$history.adder}
+                                                    </td>
+                                                    <td>{$history.drugName}</td>
+                                                    <td>{$history.dose}</td>
+                                                    <td>
+                                                        <if condition="$history.doseUnit eq 0">粒
+                                                            <elseif condition="$history.doseUnit eq 1"/>
+                                                            片
+                                                            <elseif condition="$history.doseUnit eq 2"/>
+                                                            袋
+                                                            <elseif condition="$history.doseUnit eq 3"/>
+                                                            颗
+                                                            <elseif condition="$history.doseUnit eq 4"/>
+                                                            瓶
+                                                        </if>
+                                                    </td>
+                                                    <td>{$history.timeStr}</td>
+                                                    <td>{$history.remark}</td>
+                                                    <td>{$history['status'] == 1 ? 已关闭:执行中}</td>
+                                                    <td>{$history.closer}</td>
+                                                    <td style="max-width: 250px;word-break: break-all;">{$history.closeReason}</td>
+                                                </tr>
+                                            </volist>
                                             </tbody>
                                         </table>
                                     </div>
@@ -228,8 +236,6 @@
                         </div>
                         <br>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
-                            <input type="hidden" id="remindId" value="{$remind.remindId}" />
-                            <input type="hidden" id="closerId" value="2" />
                             <if condition="$flag eq 1 && $remind['status'] eq 0">
                                 <button type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-sm btn-danger">关闭提醒</button>
                             </if>
@@ -241,20 +247,24 @@
         </div>
         <div class="modal fade" id="myModal1" style="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document" style="width: 600px;height:500px;line-height: 2.54">
-                <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <form method="post" action="{:U('Health/closeRemind')}">
+                    <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="myModalLabel2">关闭提醒</h4>
-                        <br>
-                        关闭原因：
-                        <br>
-                        <textarea id="closeReason" class="col-lg-12 col-sm-12" placeholder="最多可输入255个字符"></textarea>
+                            <br>
+                            关闭原因：
+                            <br>
+                            <textarea name="closeReason" id="closeReason" class="col-lg-12 col-sm-12" placeholder="最多可输入255个字符"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn_cancel" type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <input type="hidden" name="remindId" value="{$remind.remindId}"/>
+                            <input type="hidden" name="closerId" value="{$userId}"/>
+                            <button type="submit" class="btn btn-danger btn-close ajax-post">保存</button>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button id="btn_cancel" type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-danger btn-close">保存</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
 
@@ -264,25 +274,25 @@
 
 <block name="script">
     <script>
-        $('.btn-close').click(function(){
-            $.ajax({
-                url: "{:U('Health/closeRemind')}",
-                type: 'POST',
-                data:{'remindId':$('#remindId').val(),'closerId':$('#closerId').val(),'closeReason':$('#closeReason').val()},
-                success: function (data) {
-                    if(data==1){
-                        alert('关闭提醒成功！');
-                        $('#myModal1').modal('hide');
-                        window.location.reload(true);
-                    }
-                    else{
-                        alert('关闭提醒失败！');
-                    }
-                }
-            })
-        });
-        $('#btn_cancel').click(function(){
-           $('#closeReason').val('');
+//        $('.btn-close').click(function () {
+//            $.ajax({
+//                url: "{:U('Health/closeRemind')}",
+//                type: 'POST',
+//                data: {'remindId': $('#remindId').val(), 'closerId': $('#closerId').val(), 'closeReason': $('#closeReason').val()},
+//                success: function (data) {
+//                    if (data == 1) {
+//                        alert('关闭提醒成功！');
+//                        $('#myModal1').modal('hide');
+//                        window.location.reload(true);
+//                    }
+//                    else {
+//                        alert('关闭提醒失败！');
+//                    }
+//                }
+//            })
+//        });
+        $('#btn_cancel').click(function () {
+            $('#closeReason').val('');
         });
     </script>
 </block>

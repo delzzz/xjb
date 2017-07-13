@@ -51,10 +51,11 @@ class HealthController extends AdminController
             $this->assign('remind',$info['medicationRemindVo']);
             $this->assign('history',$info['medicationRemindHistoryVoList']);
             //后台端0/坐席端1
-            if($_SESSION['onethink_admin']['user_auth']['userType']==3){
+            if(session('user_auth')['userType']==3){
                 $this->assign('flag',1);
             }
         }
+        $this->assign('userId',session('user_auth')['userId']);
         $this->display();
     }
 
@@ -66,7 +67,7 @@ class HealthController extends AdminController
         if(I('get.name')){
             $this->assign('name',I('get.name'));
         }
-        if($_SESSION['onethink_admin']['user_auth']['userType']==3 || $_SESSION['onethink_admin']['user_auth']['userId']==2){
+        if($_SESSION['onethink_admin']['user_auth']['userType']==3 || session('user_auth')['userId']==2){
             $this->zuoxi_medication();
         }
         else{
@@ -144,12 +145,10 @@ class HealthController extends AdminController
             $data = json_encode(['closerId' => $_POST['closerId'], 'closeReason' => $_POST['closeReason']]);
             $info = http_post_json($url,$data);
             if($info['success']){
-                echo 1;
-                exit();
+                $this->success('关闭提醒成功');
             }
             else{
-                echo 2;
-                exit();
+                $this->success('关闭提醒失败');
             }
         }
     }
