@@ -26,6 +26,8 @@
                                     <th class="text-center">
                                         <input type="checkbox" class="flat check-all">
                                     </th>
+                                    <th class="column-title text-center">
+                                    </th>
                                     <th class="column-title text-center">时间</th>
                                     <th class="column-title text-center">代理公司名称</th>
                                     <th class="column-title text-center">当前代理商等级</th>
@@ -40,6 +42,12 @@
                                         <td class="a-center">
                                             <input type="checkbox" name="noticeId[]" value="{$notice.noticeId}"
                                                    class="flat ids">
+                                        </td>
+                                        <td class="mesread" dataid="{$notice.noticeId}">
+                                            <?php if ($notice['readFlag']==0) {?>
+                                                <div style="width: 5px; height: 5px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #ff0000;margin-top: 10px; "></div>
+                                            <?php }?>
+
                                         </td>
                                         <td>{:time_format($notice['create_time'],'Y-m-d')}</td>
                                         <td>{$notice.agentName}</td>
@@ -60,4 +68,25 @@
         </div>
 
     </div>
+</block>
+<block name="script">
+  <script>
+
+      var ids="";
+     $(".mesread div").each(function(index){
+         if($(".mesread div").length==index+1)
+         {
+             ids+=$(this).parent().attr("dataid");
+         }else {
+             ids+=$(this).parent().attr("dataid")+";";
+         }
+
+     })
+      if(ids!='')
+      {
+
+          $.post("{:U('notice_read')}",{ids:ids},function(){})
+      }
+
+  </script>
 </block>

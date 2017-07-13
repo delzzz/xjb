@@ -473,6 +473,10 @@
         else if(degree == 3){
             $('#totalStatistics .col-md-3').css('width','50%');
         }
+        if($("#collocation_btn").length>0)
+        {
+            dialog(0,"代理商变化","<div class='text-center'>请注意查看</div>")
+        }
         //返回匹配替换的字符串
 //        function replace_str(str, newstr) {
 //            var reg = /p2\/(.*?)\//;
