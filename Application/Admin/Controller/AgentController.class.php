@@ -567,7 +567,6 @@ class AgentController extends AdminController
         //可托管代理商
         if (!empty($parentId)) {
             $proAgents = $this->getInsCollacations($agentId);
-            //dump($proAgents);
             $this->assign('proAgents', $proAgents);
         }
         $imgList = $option['orgOrganization']['imageList'];
