@@ -224,7 +224,7 @@ class HealthController extends AdminController
                 $msg = $res['success'];
             }
              if($msg){
-                 $this->success('添加成功');
+                 $this->success('添加成功',U('medication'));
              }
              else{
                  $this->error('添加失败');
