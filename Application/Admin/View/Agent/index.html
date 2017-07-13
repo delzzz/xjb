@@ -234,9 +234,9 @@
                     <div class="page-title bg-success" style="height: 60px;padding: 0">
                         <div class="title_left " style="">
                             <h3 style="margin: 0;line-height: 60px;">
-                                <div class="col-md-3 col-sm-2 ">{$cInfo.sourceName}</div>
+                                <div class="col-md-5 col-sm-5 ">{$cInfo.sourceName}</div>
                                 <div class="col-md-1 col-sm-1 ">托管至</div>
-                                <div class="col-md-3 col-sm-2 "> {$cInfo.targetName}</div>
+                                <div class="col-md-5 col-sm-5 "> {$cInfo.targetName}</div>
                             </h3>
                         </div>
                     </div>
@@ -473,10 +473,11 @@
         else if(degree == 3){
             $('#totalStatistics .col-md-3').css('width','50%');
         }
-        if($("#collocation_btn").length>0)
-        {
-            dialog(0,"代理商变化","<div class='text-center'>请注意查看</div>")
-        }
+
+        <if condition="$change">
+                dialog(0,"代理商变化","<div class='text-center'>请注意查看</div>")
+                </if>
+
         //返回匹配替换的字符串
 //        function replace_str(str, newstr) {
 //            var reg = /p2\/(.*?)\//;

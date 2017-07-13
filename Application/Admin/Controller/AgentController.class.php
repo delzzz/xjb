@@ -50,10 +50,15 @@ class AgentController extends AdminController
             }
             //查询是否有代理商托管给自己
             $targetAgents = get_queryTarget($agentId);
+
             foreach ($targetAgents as $key => $value) {
                 if ($value['targetId'] != $agentId) {
                     unset($targetAgents[$key]);
                 }
+            }
+
+            if(count($targetAgents)>0){
+                  $this->assign('change',1);
             }
             foreach ($targetAgents as $k => $v) {
                 $collocationInfo[] = $this->collocationList($v['sourceId'], $v['targetId'], $v['collocationId'], 2);
@@ -116,8 +121,14 @@ class AgentController extends AdminController
 
         //查询是否有代理商托管给自己
         $targetAgents = get_queryTarget($agentId);
-
+        foreach ($targetAgents as $key => $value) {
+            if ($value['targetId'] != $agentId) {
+                unset($targetAgents[$key]);
+            }
+        }
         echo count($targetAgents);
+
+        //echo $count;
     }
 
     //下级代理商
