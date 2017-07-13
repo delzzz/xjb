@@ -35,11 +35,11 @@
                                 <div class="col-md-8 col-sm-8 col-xs-12">
                                     <select id="gender" value="{$info.gender}" class="form-control" disabled="disabled">
                                         <option
-                                        <if condition="$info['gender']==0">selected</if>
-                                        value="0">女</option>
-                                        <option
                                         <if condition="$info['gender']==1">selected</if>
-                                        value="1">男</option>
+                                        value="1">女</option>
+                                        <option
+                                        <if condition="$info['gender']==0">selected</if>
+                                        value="0">男</option>
                                     </select>
                                 </div>
                             </div>
@@ -1150,6 +1150,8 @@
         //资讯按钮点击
         $('#consult_add').click(function(){
             $('#myModal .Validform_wrong').remove();
+            $('#consultingDesc').val('');
+            $('#remark').val('');
         });
 
         //呼吸心率按钮隐藏显示

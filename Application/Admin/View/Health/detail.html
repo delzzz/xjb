@@ -1,7 +1,7 @@
 <extend name="Public/base"/>
 <block name="style">
     <style>
-        #history_table tr td{
+        #history_table tr td,#info_table tr td{
             vertical-align: middle;
         }
     </style>
@@ -29,7 +29,7 @@
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">性别:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control " value="{$medicationInfo['peopleGnder'] == 1?男:女}" disabled="disabled" placeholder="">
+                                    <input type="text" class="form-control " value="{$medicationInfo['peopleGnder'] == 1?女:男}" disabled="disabled" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -91,7 +91,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel clear">
                                 <div class="x_content">
-                                    <table class="table table-bordered text-center table-hover">
+                                    <table id="info_table" class="table table-bordered text-center table-hover">
                                         <thead class="bg-info ">
                                         <tr>
                                             <th class="text-center">药品名称</th>
@@ -141,7 +141,7 @@
                                                     echo '<td>'.$value.'</td>';
                                                 }
                                              ?>
-                                            <td>{$remind.remark}</td>
+                                            <td style="max-width: 250px;word-break: break-all;">{$remind.remark}</td>
                                         </tr>
                                         </tbody>
                                     </table>

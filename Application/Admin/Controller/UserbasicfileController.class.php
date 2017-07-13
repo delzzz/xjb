@@ -14,7 +14,7 @@ class UserbasicfileController extends AdminController
         }
         $url = $this->getUrl('people_query') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
         $response = $this->lists($url, $request);
-        int_to_string($response['itemList'], ['gender' => [0 => '女', 1 => '男'], 'livingStatus' => C('LIVINGSTATUS'), 'economy' => C('ECONOMY')]);
+        int_to_string($response['itemList'], ['gender' => [0 => '男', 1 => '女'], 'livingStatus' => C('LIVINGSTATUS'), 'economy' => C('ECONOMY')]);
         foreach ($response['itemList'] as &$value) {
             if (!empty($value['deviceIdentifiers'])) {
                 foreach ($value['deviceIdentifiers'] as $val) {
@@ -42,7 +42,7 @@ class UserbasicfileController extends AdminController
         $peopleId = $param['peopleId'];
         $peopleBasic = [
             'peopleIdentifier' => $param['peopleIdentifier'],
-            'orgId' => $this->orgId(),
+            'orgId' => $param['orgId'],
             'name' => $param['pel_name'],
             'age' => $param['age'],
             'gender' => $param['gender'],
@@ -123,30 +123,24 @@ class UserbasicfileController extends AdminController
         }
     }
     //随机数
-    function GetRandStr($len)
+    function GetRandStr()
     {
-        $chars = array(
-            "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
-            "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
-            "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G",
-            "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
-            "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2",
-            "3", "4", "5", "6", "7", "8", "9"
-        );
-        $charsLen = count($chars) - 1;
+        $chars = array("A", "B", "C", "D", "E", "F", "G","H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R","S", "T", "U", "V", "W", "X", "Y", "Z");
+        $nums = array("0", "1", "2","3", "4", "5", "6", "7", "8", "9");
+        shuffle($nums);
         shuffle($chars);
         $output = "";
-        for ($i=0; $i<$len; $i++)
+        for ($i=0; $i<4; $i++)
         {
-            $output .= $chars[mt_rand(0, $charsLen)];
+            $output .= $nums[mt_rand(0, 3)];
         }
-        return $output;
+        return $chars[0].$output;
     }
 
     function newadd()
     {
         $this->meta_title = "老人健康档案信息";
-        $identifier = $this->GetRandStr(4);
+        $identifier = $this->GetRandStr();
         $this->assign('identifier',$identifier);
         $ethnicity = C('ETHNICITY');
         $education = C('EDUCATION');
@@ -158,7 +152,6 @@ class UserbasicfileController extends AdminController
         if ($peopleId) {
             $url = $this->getUrl('people_detail') . $peopleId;
             $response = http($url, null, 'GET');
-            $response['peopleBasic']['orgName'] = $this->orgName();
             $this->assign('peopleBasic', $response['peopleBasic']);
             $this->assign('peopleDetail', $response['peopleDetail']);
             $hobby_attr = explode(';', $response['peopleDetail']['hobby']);

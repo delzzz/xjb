@@ -16,6 +16,8 @@
                             <br/>
 
                             <form class="form-horizontal form-label-left" method="post" action="{:U('add')}">
+                                <input name="orgId" type="hidden" value="{$orgId}"/>
+                                <input name="orgType" type="hidden" value="{$orgType}"/>
                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">姓名:</label>
@@ -29,8 +31,8 @@
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <select name="sex" class="form-control">
-                                                <option value="1">男</option>
-                                                <option value="0">女</option>
+                                                <option value="0">男</option>
+                                                <option value="1">女</option>
                                             </select>
                                         </div>
                                     </div>

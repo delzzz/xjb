@@ -11,7 +11,7 @@ class UsermanageController extends AdminController
         $url = $this->getUrl('zuoxi_query') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
         $param = think_json_encode(['orgId' => $this->orgId(), 'name' => $name]);
         $list = $this->lists($url, $param);
-        int_to_string($list['itemList'], ['sex' => ['0' => "女", '1' => "男"]]);
+        int_to_string($list['itemList'], ['sex' => ['0' => "男", '1' => "女"]]);
         $this->assign('list', $list['itemList']);
         $this->assign('name', $name);
         $this->display();
@@ -185,8 +185,8 @@ class UsermanageController extends AdminController
     {
         $param = $_POST;
         $ocs = $param;
-        $ocs['orgId'] = $this->orgId();
-        $ocs['orgType'] = $this->orgType();
+        $ocs['orgId'] = $param['orgId'];
+        $ocs['orgType'] = $param['orgType'];
         unset($ocs['password']);
         unset($ocs['repassword']);
         unset($ocs['imagePath']);
@@ -238,8 +238,8 @@ class UsermanageController extends AdminController
     {
         $param = $_POST;
         $ocs = $param;
-        $ocs['orgId'] = $this->orgId();
-        $ocs['orgType'] = $this->orgType();
+        $ocs['orgId'] = $param['orgId'];
+        $ocs['orgType'] = $param['orgType'];
         unset($ocs['password']);
         unset($ocs['repassword']);
         unset($ocs['imagePath']);
