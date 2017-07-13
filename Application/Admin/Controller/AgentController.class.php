@@ -56,6 +56,10 @@ class AgentController extends AdminController
                     unset($targetAgents[$key]);
                 }
             }
+
+            if(count($targetAgents)>0){
+                  $this->assign('change',1);
+            }
             foreach ($targetAgents as $k => $v) {
                 $collocationInfo[] = $this->collocationList($v['sourceId'], $v['targetId'], $v['collocationId'], 2);
             }
