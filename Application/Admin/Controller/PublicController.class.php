@@ -33,7 +33,11 @@ class PublicController extends \Think\Controller
 
             $url = C('INTERFACR_API')['get_user'];
             $User = http($url, ['userName' => $username], 'GET');
-            if ($username === $User['userName'] && md5($password) === $User['password']) { //UC登录成功
+            if($User['userStatus']==1)
+            {
+                $this->error('账号已停用');
+            }
+            elseif ($username === $User['userName'] && md5($password) === $User['password']) { //UC登录成功
                 session('user_auth', $User);
                 session('user_auth_sign', data_auth_sign($User));
                 $this->success('登录成功！', U('Index/index'));

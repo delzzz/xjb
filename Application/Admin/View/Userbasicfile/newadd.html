@@ -348,11 +348,19 @@
                                         <input type="hidden" ignore="1" value="{$peopleBasic.peopleId}" name="peopleId">
                                         <input type="hidden" ignore="1" value="{$peopleDetail.peopleDetailId}"
                                                name="peopleDetailId">
+
+                                        <button type="button" id="editdangan" notdis="1" class="btn btn-danger btn-sm ">编辑档案
+                                        </button>
+                                        <button type="button" id="videoBtn" notdis="1" class="btn btn-danger btn-sm ">视频呼叫
+                                        </button>
+                                        <button type="button" id="printBtn" notdis="1" class="btn btn-danger btn-sm ">打印
+                                        </button>
+
                                         <button type="submit" class="btn btn-danger btn-sm ajax-post "
                                                 target-form="form-label-left">保存
                                         </button>
-                                        <button class="btn btn-lg btn-danger btn-sm"
-                                                onclick="javascript:history.back(-1);return false;">返回
+                                        <button notdis="1" id="backBtn" class="btn btn-lg btn-danger btn-sm"
+                                                >返回
                                         </button>
                                     </div>
                                 </div>
@@ -394,7 +402,7 @@
                         '<td><input type="text" name="address[]" class="flat form-control"  value="" placeholder=""></td>' +
                         '</tr>');
             } else {
-                alert("当前信息不能为空");
+                dialog('1',"亲属信息不能为空","");
             }
             return false;
         });
@@ -411,8 +419,8 @@
                 if (c != 0) {
                     $(".tab2").append('<tr>' +
                             '<if condition="!empty($peopleBasic['peopleId'])"><td><input type="text" name="peopleDeviceId[]" disabled="disabled" ignore="1" class="flat form-control"  value="设备ID为系统自动分配" placeholder=""></td></if>' +
-                    '<td><input type="text" name="deviceName[]" class="flat form-control"  value="" placeholder=""></td>' +
-                    '<td><input type="text" name="deviceIdentifier[]" class="flat form-control"  value="" placeholder=""></td>' +
+                    '<td><input type="text" name="deviceName[]" class="flat form-control" datatype="*" errmsg="设备名称不能为空" nullmsg="设备名称不能为空"  value="" placeholder=""></td>' +
+                    '<td><input type="text" name="deviceIdentifier[]" class="flat form-control" datatype="*" errmsg="设备编号不能为空" nullmsg="设备编号不能为空"  value="" placeholder=""></td>' +
                     '<td><input type="text" name="deviceInstallDate[]" class="form-control has-feedback-left"  value="" placeholder=""></td>' +
                     '</tr>'
                 );
@@ -424,7 +432,7 @@
                         console.log(a.toISOString(), b.toISOString(), c)
                     });
                 } else {
-                    alert("当前设备信息不能为空");
+                    dialog(1,"设备信息不能为空","");
                 }
                 return false;
             });
@@ -478,9 +486,44 @@
             }
             $('input[name="age"]').val(age);
         });
+        if({:I("get.id")})
+        {
+            $('input,select,textarea,button').each(function (index)
+            {
+                if(!$(this).isDisabled&&$(this).attr("notdis")!='1')
+                {
+                    $(this).attr("Disabled","Disabled");
+                    $(this).attr("useredit","1");
+                }
+            })
 
 
 
+        }else{
+            $("#editdangan,#printBtn,#videoBtn").remove();
+        }
+        $("#editdangan").click(function(){
+            $('input,select,textarea,button').each(function(index){
+                if($(this).attr("useredit")=="1")
+                {
+                    $(this).removeAttr('Disabled');
+                    $(this).removeAttr('useredit');
+                }
+            });
+            $("#editdangan,#printBtn,#videoBtn").remove()
+        })
+        $("#backBtn").click(function(){
+
+
+            var nid={:I("get.id")};
+            if(nid==1 && $("#editdangan").html()==undefined)
+            {
+                location.reload()
+            }else{
+                history.back(-1);return false;
+            }
+
+        })
 
     </script>
 </block>
