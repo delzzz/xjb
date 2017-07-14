@@ -45,6 +45,9 @@ class PublicController extends \Think\Controller
                 if (empty($User)) {
                     $error = "登陆失败";
                 }
+                else{
+                    $error="密码错误";
+                }
                 $this->error($error);
             }
         } else {
