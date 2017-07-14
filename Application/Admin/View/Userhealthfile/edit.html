@@ -211,8 +211,8 @@
                                             <tr>
                                                 <td>{:time_format($consultings['createTime']/1000,'Y-m-d')}</td>
                                                 <td>{$consultings.entryUserName}</td>
-                                                <td>{$consultings.consultingDesc}</td>
-                                                <td style="width: 890px;max-width: 890px;word-wrap: break-word;">{$consultings.remark}</td>
+                                                <td style="max-width: 300px;word-wrap: break-word;">{$consultings.consultingDesc}</td>
+                                                <td style="max-width: 300px;word-wrap: break-word;">{$consultings.remark}</td>
                                             </tr>
                                         </volist>
                                         </tbody>
@@ -529,7 +529,7 @@
                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">说明:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input name="consultingDesc" id="consultingDesc" type="text" class="form-control" placeholder="">
+                            <input name="consultingDesc" id="consultingDesc" type="text" class="form-control" placeholder="最多可输入255个字符">
                         </div>
                     </div>
                     <br>
