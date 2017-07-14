@@ -66,6 +66,7 @@ class UserbasicfileController extends AdminController
             }
             $hobby = substr($hobby, 0, strlen($hobby) - 1);
         }
+        //dump($hobby);exit();
         $peopleDetail = [
             'hobby' => $hobby,
             'hobbyOtherDesc' => $param['hobbyOtherDesc'],
@@ -157,15 +158,17 @@ class UserbasicfileController extends AdminController
             $response = http($url, null, 'GET');
             $this->assign('peopleBasic', $response['peopleBasic']);
             $this->assign('peopleDetail', $response['peopleDetail']);
-            $hobby_attr = explode(';', $response['peopleDetail']['hobby']);
-            foreach ($hobby as $key => &$value) {
-                foreach ($hobby_attr as $val) {
-                    if ($val == $key) {
-                        $value = ['name' => $value['name'], 'checked' => 'checked'];
+            if(!empty($response['peopleDetail']['hobby'])){
+                $hobby_attr = explode(';', $response['peopleDetail']['hobby']);
+                foreach ($hobby as $key => &$value) {
+                    foreach ($hobby_attr as $val) {
+                        if ($val == $key) {
+                            $value = ['name' => $value['name'], 'checked' => 'checked'];
+                        }
                     }
                 }
+                $this->assign('hobby', $hobby_attr);
             }
-            $this->assign('hobby', $hobby_attr);
             $this->assign('impage', $response['impage']);
             $this->assign('peopleRelativeList', $response['peopleRelativeList']);
             $this->assign('peopleDeviceList', $response['peopleDeviceList']);
