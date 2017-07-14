@@ -76,7 +76,9 @@ class HealthController extends AdminController
 
     //坐席-用药提醒页面
     function zuoxi_medication(){
+
         $medication_lists = $this->medication_list();
+
         $current_hour = date('H:i');
         $c_arr = explode(':',$current_hour);
         $c_hour = implode('',$c_arr);
