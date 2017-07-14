@@ -82,7 +82,7 @@ class WarningController extends AdminController
         $url = $this->getUrl('warning_deal');
         $response = http_post_json($url, $requestData);
         if (!empty($response)) {
-            $this->success('保存成功');
+            $this->success('保存成功',U('warning_history'));
         } else {
             $this->error('保存失败');
         }
