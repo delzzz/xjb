@@ -64,14 +64,11 @@ class HealthController extends AdminController
     {
         $this->meta_title = '健康管理-用药提醒列表';
         //后台端0/坐席端1
-        if(I('get.name')){
-            $this->assign('name',I('get.name'));
-        }
         if($_SESSION['onethink_admin']['user_auth']['userType']==3 || session('user_auth')['userId']==2){
             $this->zuoxi_medication();
         }
         else{
-            $medicationList = $this->medication_list(I('get.status'),I('get.name'));
+            $medicationList = $this->medication_list();
             $this->assign('medicationList',$medicationList);
             $this->display('medication');
         }
@@ -79,11 +76,9 @@ class HealthController extends AdminController
 
     //坐席-用药提醒页面
     function zuoxi_medication(){
-        if(I('get.name')){
-            $this->assign('name',I('get.name'));
 
-        }
-        $medication_lists = $this->medication_list(I('get.status'),I('get.name'));
+        $medication_lists = $this->medication_list();
+
         $current_hour = date('H:i');
         $c_arr = explode(':',$current_hour);
         $c_hour = implode('',$c_arr);
@@ -112,7 +107,10 @@ class HealthController extends AdminController
     }
 
     //用药提醒列表
-    function medication_list($status,$peopleName){
+    function medication_list(){
+        $name = I('get.name');
+        $status = I('get.status');
+        $this->assign('name',$name);
         $pageNo = I('get.p', 1);
         $pageSize = C('PAGE_SIZE');
         if($status===0){
@@ -122,11 +120,8 @@ class HealthController extends AdminController
             //所有
             $status = null;
         }
-        if($peopleName==''){
-            $peopleName = null;
-        }
         $url = $this->getUrl('health_medication_query').'?pageNo='. $pageNo . '&pageSize=' .$pageSize ;
-        $param = think_json_encode(['status' => $status ,'peopleName'=>$peopleName]);
+        $param = think_json_encode(['status' => $status ,'peopleName'=>$name]);
         $lists = $this->lists($url,$param);
         return $lists['itemList'];
     }
