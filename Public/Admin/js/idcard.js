@@ -229,7 +229,7 @@ $("form").Validform({
         errormsg: "此项为必选项",
     },
     {
-        ele: "select[name='dataSrc'],select[name='insType'],select[name='ethnicity'],select[name='education'],select[name='economy'],select[name='livingStatus'],select[name='healthStatus']",
+        ele: "select[name='dataSrc'],select[name='insType']",
         datatype: "sel",
         errormsg: "此项为必选项",
     },
@@ -260,7 +260,8 @@ $(function () {
         var idName = $(this).attr('id');
         var dsbd = $(this).attr('disabled');
         var name = $(this).attr('name');
-        if(msgs!=1 && idName !='key' && dsbd!='disabled' && name!='peopleIdentifier' && name!='nativePlace' && idName!='basicOrg' && name!='hobbyOtherDesc' && name!='age'){
+        var nored = $(this).attr('nored');
+        if(msgs!=1 && idName !='key' && nored!='1' ){
             $(this).parent().css('position','relative');
             $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
         }

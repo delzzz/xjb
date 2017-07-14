@@ -39,7 +39,7 @@
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <input type="text" value="{$peopleBasic.peopleIdentifier|default=$identifier}"
-                                                   name="peopleIdentifier" class="form-control"
+                                                   name="peopleIdentifier" class="form-control" nored="1"
                                                    placeholder="">
                                         </div>
                                     </div>
@@ -58,7 +58,7 @@
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <input type="text" value="{$peopleBasic.age}" name="age"
-                                                   class="form-control" placeholder="">
+                                                   class="form-control" placeholder="" nored="1">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -66,7 +66,7 @@
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <input id="basicOrg" type="text" value="{$peopleBasic.orgName|default=$orgName}"
-                                                   class="form-control" placeholder="">
+                                                   class="form-control" placeholder="" nored="1">
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -82,8 +82,7 @@
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <div id="distpicker2" class="">
-                                                <input type="text" value="{$peopleBasic.nativePlace}" name="nativePlace"
-                                                       class="form-control">
+                                                <input type="text" value="{$peopleBasic.nativePlace}" name="nativePlace" nored="1"  class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -221,7 +220,7 @@
                                             <label>
                                                 <input type="text" name="hobbyOtherDesc"
                                                        value="{$peopleDetail.hobbyOtherDesc}" class="flat form-control"
-                                                       placeholder="其他">
+                                                       placeholder="其他" nored="1">
                                             </label>
                                         </div>
                                     </div>
@@ -255,17 +254,17 @@
                                                             <td><input type="text" name="name[]"
                                                                        class="flat form-control"
                                                                        value="{$r.name}"
-                                                                       placeholder=""></td>
+                                                                       placeholder="" nored="1"></td>
                                                             <td><input type="text" class="flat form-control"
                                                                        name="telephone[]" value="{$r.telephone}"
-                                                                       placeholder=""></td>
+                                                                       placeholder="" nored="1"></td>
                                                             <td><input type="text" name="relation[]"
                                                                        class="flat form-control" value="{$r.relation}"
-                                                                       placeholder=""></td>
+                                                                       placeholder="" nored="1"></td>
                                                             <td><input type="text" name="address[]"
                                                                        class="flat form-control"
                                                                        value="{$r.address}"
-                                                                       placeholder=""></td>
+                                                                       placeholder="" nored="1"></td>
                                                         </tr>
                                                     </volist>
                                                     </tbody>
@@ -308,20 +307,20 @@
                                                                 <td><input type="text" name="peopleDeviceId[]"
                                                                            class="flat form-control"
                                                                            readonly="readonly"
-                                                                           value="{$d.peopleDeviceId}"></td>
+                                                                           value="{$d.peopleDeviceId}" nored="1"></td>
                                                             </if>
                                                             <td><input type="text" name="deviceName[]"
                                                                        class="flat form-control"
-                                                                       value="{$d.deviceName}"></td>
+                                                                       value="{$d.deviceName}" nored="1"></td>
                                                             <td><input type="text" name="deviceIdentifier[]"
                                                                        class="flat form-control"
-                                                                       value="{$d.deviceIdentifier}"></td>
+                                                                       value="{$d.deviceIdentifier}" nored="1"></td>
                                                             <td>
                                                                 <input type="text" name="deviceInstallDate[]"
                                                                        class="form-control has-feedback-left"
                                                                        value="{:time_format($d['createTime']/1000,'Y-m-d')}"
                                                                        placeholder="First Name"
-                                                                       aria-describedby="inputSuccess2Status">
+                                                                       aria-describedby="inputSuccess2Status" nored='1'>
                                                             </td>
                                                         </tr>
                                                     </volist>
@@ -348,14 +347,14 @@
                                         <input type="hidden" ignore="1" value="{$peopleBasic.peopleId}" name="peopleId">
                                         <input type="hidden" ignore="1" value="{$peopleDetail.peopleDetailId}"
                                                name="peopleDetailId">
-
                                         <button type="button" id="editdangan" notdis="1" class="btn btn-danger btn-sm ">编辑档案
                                         </button>
+                                        <if condition="$userType eq 3">
                                         <button type="button" id="videoBtn" notdis="1" class="btn btn-danger btn-sm ">视频呼叫
                                         </button>
                                         <button type="button" id="printBtn" notdis="1" class="btn btn-danger btn-sm ">打印
                                         </button>
-
+                                        </if>
                                         <button type="submit" class="btn btn-danger btn-sm ajax-post "
                                                 target-form="form-label-left">保存
                                         </button>
@@ -486,7 +485,7 @@
             }
             $('input[name="age"]').val(age);
         });
-        if({:I("get.id")})
+        if($('input[name="peopleId"]').val()!='')
         {
             $('input,select,textarea,button').each(function (index)
             {
@@ -496,9 +495,6 @@
                     $(this).attr("useredit","1");
                 }
             })
-
-
-
         }else{
             $("#editdangan,#printBtn,#videoBtn").remove();
         }
@@ -513,9 +509,7 @@
             $("#editdangan,#printBtn,#videoBtn").remove()
         })
         $("#backBtn").click(function(){
-
-
-            var nid={:I("get.id")};
+            var nid=$('input[name="peopleId"]').val();
             if(nid==1 && $("#editdangan").html()==undefined)
             {
                 location.reload()
