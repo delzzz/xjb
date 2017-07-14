@@ -42,6 +42,7 @@ class AdminController extends Controller
             $this->assign('orgName', $this->orgName());
             $this->assign('orgId',$this->orgId());
             $this->assign('orgType',$this->orgType());
+            $this->__set('orgId',$this->orgId());
         }
         elseif ($userinfo['userType']==2){
             //机构
@@ -49,6 +50,7 @@ class AdminController extends Controller
             $this->assign('orgName',$insInfo['orgOrganization']['orgName']);
             $this->assign('orgId',$insInfo['orgOrganization']['orgId']);
             $this->assign('orgType',$insInfo['orgOrganization']['orgType']);
+            $this->__set('orgId',$insInfo['orgOrganization']['orgId']);
         }
         else{
             //坐席
@@ -59,10 +61,27 @@ class AdminController extends Controller
             $this->assign('orgName',$csInfo['orgOrganization']['orgName']);
             $this->assign('orgId',$csInfo['orgOrganization']['orgId']);
             $this->assign('orgType',$csInfo['orgOrganization']['orgType']);
+            $this->__set('orgId',$csInfo['orgOrganization']['orgId']);
         }
     }
 
-    //获取当前用户权限
+//    private function __get($property_name)
+//    {
+//        if(isset($this->$property_name))
+//        {
+//            return($this->$property_name);
+//        }
+//        else
+//        {
+//            return(NULL);
+//        }
+//    }
+//    private function __set($property_name, $value)
+//    {
+//        $this->$property_name = $value;
+//    }
+
+//获取当前用户权限
     protected function getRight()
     {
         $url = $this->getUrl('get_right') . is_login();

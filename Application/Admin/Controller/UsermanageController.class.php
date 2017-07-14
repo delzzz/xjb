@@ -9,7 +9,7 @@ class UsermanageController extends AdminController
         $pageNo = I('get.p', 1);
         $name = I('get.name');
         $url = $this->getUrl('zuoxi_query') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
-        $param = think_json_encode(['orgId' => $this->orgId(), 'name' => $name]);
+        $param = think_json_encode(['orgId' => $this->__get('orgId'), 'name' => $name]);
         $list = $this->lists($url, $param);
         int_to_string($list['itemList'], ['sex' => ['0' => "男", '1' => "女"]]);
         $this->assign('list', $list['itemList']);
