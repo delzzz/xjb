@@ -81,6 +81,7 @@ class HealthController extends AdminController
     function zuoxi_medication(){
         if(I('get.name')){
             $this->assign('name',I('get.name'));
+
         }
         $medication_lists = $this->medication_list(I('get.status'),I('get.name'));
         $current_hour = date('H:i');
