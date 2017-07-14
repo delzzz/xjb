@@ -251,7 +251,7 @@ $("form").Validform({
         nullmsg: "此项不能为空"
     }
 ]);
-$("input,textarea").focus(function () {
+jQuery("input,textarea").live('focus',function(){
     $(this).next(".error").remove();
 });
 $(function () {
