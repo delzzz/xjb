@@ -144,18 +144,32 @@
                     <if condition="$userType eq 3">
                         <li class="">
                             <a href="javascript:void(0)" class="user-profile dropdown-toggle" data-toggle="dropdown"
-                               aria-expanded="false">
+                               aria-expanded="false" style="position:relative">
                                 <if condition="$zxPic neq null">
-                                    <img src="{$zxPic}" alt="">
+                                    <img  src="{$zxPic}" alt="">
                                     <else/>
                                     <img src="__IMG__/img.jpg" alt="">
                                 </if>
                                 {$zxName}(工号{$zxNum})
                                 <span class=" fa fa-angle-down"></span>
                             </a>
+                            <if condition='$onlineStatus eq 2'>
+                                <img style="position:absolute;top: 33px;left: 33px;" src="__IMG__/online.png" >
+                            </if>
+                            <if condition='$onlineStatus eq 3'>
+                            <img style="position:absolute;top: 33px;left: 33px;" src="__IMG__/busy.png" >
+                            </if>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a class="ajax-get <if condition='$onlineStatus eq 2'>current_status</if>" href="{:U('Public/changeUserstatus',array('status'=>2))}"> 签入</a></li>
-                                <li><a class="ajax-get <if condition='$onlineStatus eq 3'>current_status</if>" href="{:U('Public/changeUserstatus',array('status'=>3))}">示忙</a></li>
+                                <li>
+                                    <a class="ajax-get <if condition='$onlineStatus eq 2'>current_status</if>" href="{:U('Public/changeUserstatus',array('status'=>2))}">
+                                        <img src="__IMG__/online.png" >&nbsp;&nbsp;签入
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="ajax-get <if condition='$onlineStatus eq 3'>current_status</if>" href="{:U('Public/changeUserstatus',array('status'=>3))}">
+                                        <img src="__IMG__/busy.png" >&nbsp;&nbsp;示忙
+                                    </a>
+                                </li>
                                 <li><a href="{:U('Public/logout')}"><i class="fa fa-sign-out pull-right"></i>退出登录</a></li>
                             </ul>
                         </li>
