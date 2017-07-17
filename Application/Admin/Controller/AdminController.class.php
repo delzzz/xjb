@@ -37,6 +37,7 @@ class AdminController extends Controller
         $this->assign('h_extendFlag',$this->orgAgent()['extendFlag']);
         //坐席代理商机构判断
         $this->assign('userType',$userinfo['userType']);
+        $this->__set('userType',$userinfo['userType']);
         if($userinfo['userType']==1){
             //代理商
             $this->assign('orgName', $this->orgName());

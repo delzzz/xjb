@@ -9,16 +9,15 @@ class UserhealthfileController extends AdminController
         $pageNo = I('get.p', 1);
         $name = I('get.name');
         if (empty($name)) {
-            $request = "{}";
+            $request = '{}';
         } else {
             $request = think_json_encode(['name' => $name]);
         }
-        $url =$this->getUrl('userhealth_query').'?pageNo='.$pageNo. '&pageSize=' . C('PAGE_SIZE');
+        $url =$this->getUrl('userhealth_query').'?pageNo='.$pageNo. '&pageSize=' . C('PAGE_SIZE').'&id='.$this->__get('orgId').'&type='.$this->__get('userType');
         $response = $this->lists($url, $request);
         foreach ($response['itemList'] as $key=>&$value){
            $value['birthDate'] = date('Y-m',$value['birthDate']/1000);
         }
-        //dump($response['itemList']);
         $this->assign('name', $name);
         $this->assign('list', $response['itemList']);
         $this->display();

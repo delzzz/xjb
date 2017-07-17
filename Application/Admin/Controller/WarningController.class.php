@@ -17,7 +17,6 @@ class WarningController extends AdminController
         $response['healthStatus_text'] = $health_status[$response['healthStatus']];
         $processList = $response['processList'];
         int_to_string($processList, ['processMode' => C('PROCESS_MODE'), 'processResult' => C('PROCESS_RESULT')]);
-
         $pageNo = I('get.p2', 1);
         $pageSize = C('PAGE_SIZE');
         $request = '{}';
@@ -46,7 +45,7 @@ class WarningController extends AdminController
     {
         $this->meta_title = "历史报警";
         $pageNo = I('get.p', 1);
-        $url = $this->getUrl('warning_list') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
+        $url = $this->getUrl('warning_list') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE').'&id='.$this->__get('orgId').'&type='.$this->__get('userType');
         $param = json_encode(['status'=>1]);
         $list = $this->lists($url, $param);
         $warning_status = C('WARNING_STATUS');
@@ -60,7 +59,7 @@ class WarningController extends AdminController
     {
         $this->meta_title = "历史报警";
         $pageNo = I('get.p', 1);
-        $url = $this->getUrl('warning_list') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
+        $url = $this->getUrl('warning_list') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE').'&id='.$this->__get('orgId').'&type='.$this->__get('userType');
         $param = json_encode(['status'=>0]);
         $list = $this->lists($url, $param);
         $warning_status = C('WARNING_STATUS');

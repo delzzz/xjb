@@ -8,14 +8,16 @@ class HealthController extends AdminController
         $this->meta_title = "健康监控";
         $pageNo = I('get.p', 1);
         $name = I('get.name');
-        $param = think_json_encode(['name' => $name]);
         if (empty($name)) {
-            $param = "{}";
+            $param = '{}';
+        }
+        else{
+            $param = think_json_encode(['name' => $name]);
         }
         if($name){
             $this->assign('name',$name);
         }
-        $url = $this->getUrl('health_query') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
+        $url = $this->getUrl('health_query') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE').'&id='.$this->__get('orgId').'&type='.$this->__get('userType');
         $list = $this->lists($url, $param);
         foreach ($list['itemList'] as &$val) {
             foreach ($val['deviceIdentifiers'] as $value) {
@@ -78,7 +80,6 @@ class HealthController extends AdminController
     function zuoxi_medication(){
 
         $medication_lists = $this->medication_list();
-
         $current_hour = date('H:i');
         $c_arr = explode(':',$current_hour);
         $c_hour = implode('',$c_arr);
@@ -120,7 +121,7 @@ class HealthController extends AdminController
             //所有
             $status = null;
         }
-        $url = $this->getUrl('health_medication_query').'?pageNo='. $pageNo . '&pageSize=' .$pageSize ;
+        $url = $this->getUrl('health_medication_query').'?pageNo='. $pageNo . '&pageSize=' .$pageSize.'&id='.$this->__get('orgId').'&type='.$this->__get('userType');
         $param = think_json_encode(['status' => $status ,'peopleName'=>$name]);
         $lists = $this->lists($url,$param);
         return $lists['itemList'];
