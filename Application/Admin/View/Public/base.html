@@ -571,7 +571,6 @@
     }
     if($('#h_userType').val()==2){
         $('#sidebar-menu ul li').each(function(i,item){
-            console.log($(this).children('a').text());
             if($(this).children('a').text().indexOf('代理商/机构管理')>=0){
                 $(this).hide();
             }
