@@ -39,10 +39,8 @@
                             <volist name="menu" id="m">
                                 <li>
                                     <a <if condition="empty($m['childs'])">href="{:U($m['moduleUrl'])}"</if>>
-                                        <div class="left_icon1"
-                                             style="background: url('__IMG__/cishoo/{$m.iconPath}.png') no-repeat center 100%;"></div>
-                                        {$m.moduleName}
-                                        <if condition="!empty($m['childs'])">
+                                        <div class="left_icon1" style="background: url('__IMG__/cishoo/{$m.iconPath}.png') no-repeat center 100%;"></div>{$m.moduleName}
+                                    <if condition="!empty($m['childs'])">
                                             <span class="fa fa-chevron-down"></span>
                                         </if>
                                     </a>
@@ -268,6 +266,7 @@
         </div>
         <input id="h_degree"type="hidden" value="{$h_degree}"/>
         <input id="h_extendFlag" type="hidden" value="{$h_extendFlag}"/>
+        <input id="h_userType" value="{$userType}"/>
         <!-- /.modal -->
 
         <!--page content-->
@@ -564,8 +563,16 @@
     }
 
     if($('#h_degree').val()==3 || $('#h_extendFlag').val()==0){
-        $('#sidebar-menu ul li').each(function(item,i){
+        $('#sidebar-menu ul li').each(function(i,item){
             if($(this).children('a').text()=='添加代理商'){
+                $(this).hide();
+            }
+        });
+    }
+    if($('#h_userType').val()==2){
+        $('#sidebar-menu ul li').each(function(i,item){
+            console.log($(this).children('a').text());
+            if($(this).children('a').text().indexOf('代理商/机构管理')>=0){
                 $(this).hide();
             }
         });
