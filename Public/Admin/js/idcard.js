@@ -24,6 +24,7 @@ function dialog(type, title, content) {
 $("form").Validform({
     ajaxPost: true,
     showAllError: true,
+    postonce:true,
     callback: function (data) {
         if (data.status == 1) {
            $('.modal').modal('hide');

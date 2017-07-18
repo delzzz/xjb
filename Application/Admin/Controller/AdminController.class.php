@@ -37,6 +37,12 @@ class AdminController extends Controller
         $this->assign('h_extendFlag',$this->orgAgent()['extendFlag']);
         //坐席代理商机构判断
         $this->assign('userType',$userinfo['userType']);
+        if($User['userId']==2){
+            $this->__set('userType',0);
+        }
+        else{
+            $this->__set('userType',$userinfo['userType']);
+        }
         if($userinfo['userType']==1){
             //代理商
             $this->assign('orgName', $this->orgName());
@@ -64,22 +70,6 @@ class AdminController extends Controller
             $this->__set('orgId',$csInfo['orgOrganization']['orgId']);
         }
     }
-
-//    private function __get($property_name)
-//    {
-//        if(isset($this->$property_name))
-//        {
-//            return($this->$property_name);
-//        }
-//        else
-//        {
-//            return(NULL);
-//        }
-//    }
-//    private function __set($property_name, $value)
-//    {
-//        $this->$property_name = $value;
-//    }
 
 //获取当前用户权限
     protected function getRight()

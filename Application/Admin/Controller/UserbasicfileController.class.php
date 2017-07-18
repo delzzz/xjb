@@ -8,11 +8,11 @@ class UserbasicfileController extends AdminController
         $pageNo = I('get.p', 1);
         $name = I('get.name');
         if (empty($name)) {
-            $request = "{}";
+            $request = '{}';
         } else {
             $request = think_json_encode(['name' => $name]);
         }
-        $url = $this->getUrl('people_query') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
+        $url = $this->getUrl('people_query') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE').'&id='.$this->__get('orgId').'&type='.$this->__get('userType');
         $response = $this->lists($url, $request);
         int_to_string($response['itemList'], ['gender' => [0 => '男', 1 => '女'], 'livingStatus' => C('LIVINGSTATUS'), 'economy' => C('ECONOMY')]);
         foreach ($response['itemList'] as &$value) {
@@ -23,7 +23,6 @@ class UserbasicfileController extends AdminController
             } else {
                 $value['device_str'] = '';
             }
-
         }
         $this->assign('name', $name);
         $this->assign('list', $response['itemList']);

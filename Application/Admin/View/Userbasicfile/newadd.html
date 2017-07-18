@@ -40,7 +40,7 @@
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <input type="text" value="{$peopleBasic.peopleIdentifier|default=$identifier}"
                                                    name="peopleIdentifier" class="form-control" nored="1"
-                                                   placeholder="">
+                                                   placeholder="" readonly="readonly">
                                         </div>
                                     </div>
 
@@ -218,9 +218,10 @@
                                         <div class="checkbox col-md-12 col-sm-12 col-xs-12">
                                             <br>
                                             <label>
-                                                <input type="text" name="hobbyOtherDesc"
+                                                <span class="pull-left">其他：</span>
+                                                <input style="border: none;border-bottom: 1px solid #E1E1E1; background: none;" class="pull-left" type="text" name="hobbyOtherDesc"
                                                        value="{$peopleDetail.hobbyOtherDesc}" class="flat form-control"
-                                                       placeholder="其他" nored="1">
+                                                       placeholder="" nored="1">
                                             </label>
                                         </div>
                                     </div>
@@ -281,7 +282,7 @@
                                         <br>
                                         <br>
 
-                                        <h2>想家宝信息</h2>
+                                        <h2>设备信息</h2>
                                         <ul class="nav navbar-right panel_toolbox">
                                         </ul>
                                         <div class="clearfix"></div>
@@ -374,7 +375,7 @@
 
 <block name="script">
     <script type="text/javascript">
-        Think.setValue('gender', {$peopleBasic.gender|default= '1'});
+        Think.setValue('gender', {$peopleBasic.gender|default= '0'});
         Think.setValue('ethnicity', {$peopleBasic.ethnicity|default= '-1'});
         Think.setValue('education', {$peopleBasic.education|default= '-1'});
         Think.setValue('economy', {$peopleBasic.economy|default= '-1'});
