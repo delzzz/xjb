@@ -794,7 +794,7 @@ a {
 .nav.child_menu li.active, .nav.child_menu li:hover {
     /*background-color: rgba(255, 255, 255, .06)*/
     border-bottom: 1px solid #353535;
-    border-top:1px solid #353535;
+    border-top: 1px solid #353535;
     background: #990000;
 }
 
@@ -849,8 +849,8 @@ a {
 }
 
 .nav.child_menu li li .active, .nav.child_menu li li:hover {
-    border-top:1px solid #353535;
-    border-bottom:1px solid #353535;
+    border-top: 1px solid #353535;
+    border-bottom: 1px solid #353535;
     background: #cc0000;
     color: #ffffff;
 }
@@ -1882,6 +1882,7 @@ span.right {
     cursor: pointer;
     color: #ffffff;
 }
+
 .sidebar-footer a:hover {
     background: #990000;
     color: #ffffff;
@@ -4785,8 +4786,6 @@ ul.notifications {
     margin-right: 17px;
 }
 
-
-
 .box_sm img {
     margin: auto;
     position: absolute;
@@ -4851,66 +4850,76 @@ ul.notifications {
     padding-top: 20px;
     padding-bottom: 10px;
 }
-.left_icon1{
+
+.left_icon1 {
     width: 20px;
     height: 20px;
 
     float: left;
     margin-right: 20px;
 }
-.left_icon2{
+
+.left_icon2 {
     width: 20px;
     height: 20px;
 
     float: left;
     margin-right: 20px;
 }
-.left_icon3{
+
+.left_icon3 {
     width: 20px;
     height: 20px;
 
     float: left;
     margin-right: 20px;
 }
-.left_icon4{
+
+.left_icon4 {
     width: 20px;
     height: 20px;
 
     float: left;
     margin-right: 20px;
 }
-.left_icon5{
+
+.left_icon5 {
     width: 20px;
     height: 20px;
 
     float: left;
     margin-right: 20px;
 }
-.left_icon6{
+
+.left_icon6 {
     width: 20px;
     height: 20px;
 
     float: left;
     margin-right: 20px;
 }
-.left_icon7{
+
+.left_icon7 {
     width: 20px;
     height: 20px;
 
     float: left;
     margin-right: 20px;
 }
-.left_icon8{
+
+.left_icon8 {
     width: 20px;
     height: 20px;
     float: left;
     margin-right: 20px;
 }
-#head_img{
+
+#head_img {
     width: 60%;
     vertical-align: middle;
     height: 250px;
 }
+
 .big_btn {
     display: inline-block;
     height: 100px;
@@ -4918,6 +4927,36 @@ ul.notifications {
     margin-top: 50px;
     margin-left: 5%;
 
-}.pointer{
-     cursor: pointer;
- }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d9534f;
+}
+
+.bg-info {
+    background: #ffcccc;
+}
+.new_add2,.new_add{
+    background: #96d94f;
+    border: 1px solid #96d94f;
+}
+.new_add2:hover,.new_add:hover{
+    background: #84bf46;
+    border: 1px solid #84bf46;
+}
+.new_del2{
+    background: #ff0000;
+    border: 1px solid #ff0000;
+}
+tr:hover{
+    background: none;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
+background-color: #f1f1f1;
+}

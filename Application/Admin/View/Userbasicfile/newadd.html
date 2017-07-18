@@ -187,9 +187,9 @@
                                     <input type="hidden" ignore="1" name="imageId" value="{$impage.imageId}">
                                     <input type="hidden" ignore="1" name="imagePath" value="{$impage.imagePath}">
 
-                                    <div>
+                                    <div class="row text-left">
                                         <br>
-                                        <button class="btn btn-danger btn-sm col-lg-6 col-md-6 col-sm-6">
+                                        <button class="btn btn-danger" style="width: 30%;margin-left:10%;">
                                             点击替换
                                         </button>
                                         <input class="btn btn-danger btn-sm col-lg-6 col-md-6 col-sm-6" id="image"
@@ -347,18 +347,18 @@
                                         <input type="hidden" ignore="1" value="{$peopleBasic.peopleId}" name="peopleId">
                                         <input type="hidden" ignore="1" value="{$peopleDetail.peopleDetailId}"
                                                name="peopleDetailId">
-                                        <button type="button" id="editdangan" notdis="1" class="btn btn-danger btn-sm ">编辑档案
+                                        <button type="button" id="editdangan" notdis="1" class="btn btn-danger ">编辑档案
                                         </button>
                                         <if condition="$userType eq 3">
-                                        <button type="button" id="videoBtn" notdis="1" class="btn btn-danger btn-sm ">视频呼叫
+                                        <button type="button" id="videoBtn" notdis="1" class="btn btn-danger  ">视频呼叫
                                         </button>
-                                        <button type="button" id="printBtn" notdis="1" class="btn btn-danger btn-sm ">打印
+                                        <button type="button" id="printBtn" notdis="1" class="btn btn-danger  ">打印
                                         </button>
                                         </if>
-                                        <button type="submit" class="btn btn-danger btn-sm ajax-post "
+                                        <button type="submit" class="btn btn-danger  ajax-post "
                                                 target-form="form-label-left">保存
                                         </button>
-                                        <button notdis="1" id="backBtn" class="btn btn-lg btn-danger btn-sm"
+                                        <button notdis="1" id="backBtn" class="btn  btn-danger"
                                                 >返回
                                         </button>
                                     </div>
