@@ -46,10 +46,16 @@ class WarningController extends AdminController
         $this->meta_title = "历史报警";
         $pageNo = I('get.p', 1);
         $url = $this->getUrl('warning_list') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE').'&id='.$this->__get('orgId').'&type='.$this->__get('userType');
-        $param = json_encode(['status'=>1]);
+        if(I('alarmType')&&I('alarmType')!=0){
+            $param = json_encode(['status'=>1,'alarmType'=>I('alarmType')]);
+        }
+        else{
+            $param = json_encode(['status'=>1]);
+        }
         $list = $this->lists($url, $param);
         $warning_status = C('WARNING_STATUS');
         int_to_string($list['itemList'], ['gender' => ['1' => '女', 0 => '男'], 'alarmType' => $warning_status]);
+        $this->assign('status',1);
         $this->assign('warning_status', $warning_status);
         $this->assign('list', $list['itemList']);
         $this->display();
@@ -64,6 +70,7 @@ class WarningController extends AdminController
         $list = $this->lists($url, $param);
         $warning_status = C('WARNING_STATUS');
         int_to_string($list['itemList'], ['gender' => ['1' => '女', 0 => '男'], 'alarmType' => $warning_status]);
+        $this->assign('status',0);
         $this->assign('warning_status', $warning_status);
         $this->assign('list', $list['itemList']);
         $this->display('warning_history');

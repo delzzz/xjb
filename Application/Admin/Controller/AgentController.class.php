@@ -438,7 +438,6 @@ class AgentController extends AdminController
         if ($agentId) {
             //编辑
             $this->meta_title = '代理商管理-代理商信息变更';
-            $this->assign('agentId', $agentId);
         } else {
             //详情
             $this->meta_title = '代理商管理-代理商详情';
