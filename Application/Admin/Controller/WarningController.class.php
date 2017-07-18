@@ -33,6 +33,7 @@ class WarningController extends AdminController
                 }
             }
         }
+        $this->assign('status',I('status'));
         $this->assign('result_type', $process_result_type);
         $this->assign('list', $history_list['itemList']);
         $this->assign('processMode', $processList);

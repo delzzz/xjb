@@ -172,12 +172,14 @@
                                 <br>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                                    <if condition="$status eq 0">
                                     <button class="btn btn-sm btn-danger" style="">视频接通</button>
                                     <button class="btn btn-sm btn-danger" style="">联系老人</button>
                                     <button class="btn btn-sm btn-danger" style="">联系亲属</button>
                                     <button type="submit" class="btn btn-sm btn-danger ajax-post"
                                             target-form="form-label-left">已处理
                                     </button>
+                                    </if>
                                     <button class="btn btn-sm btn-danger"
                                             onclick="javascript:history.back(-1);return false;">关闭
                                     </button>
@@ -199,7 +201,7 @@
                                             <volist name="result_type" id="r">
                                                 <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                                                     <label>
-                                                        <input type="radio" name="processResult[]" value="{$key}" {$r.checked}
+                                                        <input ignore="1" type="radio" name="processResult[]" value="{$key}" {$r.checked}
                                                                class="flat">
                                                         {$r.name}
                                                     </label>
