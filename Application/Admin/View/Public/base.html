@@ -562,20 +562,23 @@
         }
     }
 
-    if($('#h_degree').val()==3 || $('#h_extendFlag').val()==0){
         $('#sidebar-menu ul li').each(function(i,item){
-            if($(this).children('a').text()=='添加代理商'){
-                $(this).hide();
+            if($('#h_degree').val()==3 || $('#h_extendFlag').val()==0){
+                if($(this).children('a').text()=='添加代理商'){
+                    $(this).hide();
+                }
+            }
+            if($('#h_userType').val()==2){
+                if($(this).children('a').text().indexOf('代理商/机构管理')>=0){
+                    $(this).hide();
+                }
+            }
+            if($('#h_userType').val()!=3 && $('#h_userType').val()!=0){
+                if($(this).children('a').text().indexOf('当前报警记录')>=0){
+                    $(this).hide();
+                }
             }
         });
-    }
-    if($('#h_userType').val()==2){
-        $('#sidebar-menu ul li').each(function(i,item){
-            if($(this).children('a').text().indexOf('代理商/机构管理')>=0){
-                $(this).hide();
-            }
-        });
-    }
 
     $.post('{:U('notice/count')}',{},function(data){
         if(parseInt(data)>0)
