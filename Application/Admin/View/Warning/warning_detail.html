@@ -202,7 +202,7 @@
                                                 <div class="checkbox col-md-2 col-sm-2 col-xs-12">
                                                     <label>
                                                         <input ignore="1" type="radio" name="processResult[]" value="{$key}" {$r.checked}
-                                                               class="flat">
+                                                               class="flat" <if condition="$status eq 1">disabled</if>>
                                                         {$r.name}
                                                     </label>
                                                 </div>
@@ -222,7 +222,7 @@
                                             </label>
 
                                             <div class="col-md-11 col-sm-11 col-xs-12">
-                                                <textarea name="processRemark" class="form-control" rows="3"
+                                                <textarea <if condition="$status eq 1">disabled</if> name="processRemark" class="form-control" rows="3"
                                                           placeholder='备注在2000字以内'>
                                                     {$data.processRemark}
                                                 </textarea>
