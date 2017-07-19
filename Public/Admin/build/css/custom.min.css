@@ -2128,9 +2128,9 @@ h4.graph_title {
 }
 
 .tile-stats .count {
-    font-size: 38px;
+    font-size: 20px;
     font-weight: 700;
-    line-height: 1.65857
+    line-height:2.5;
 }
 
 .tile-stats .count, .tile-stats h3, .tile-stats p {
@@ -2139,7 +2139,7 @@ h4.graph_title {
     /*wsh margin-left:10px;*/
     z-index: 5;
     padding: 0;
-    color: #333333;
+    color: #666;
 }
 
 .tile-stats h3 {
@@ -4392,7 +4392,7 @@ fieldset {
 
 .actionBar .buttonDisabled {
     cursor: not-allowed;
-    pointer-events: none;
+    pointer- ts: none;
     opacity: .65;
     filter: alpha(opacity=65);
     box-shadow: none
@@ -4702,8 +4702,13 @@ ul.notifications {
     overflow: auto !important
 }
 
+
 .wsh_border {
+    margin-top: 10px;
+    height: 20px;
+    line-height: 20px;
     border-right: 1px solid #d9d9d9;
+
 }
 
 .wsh_box {
@@ -4711,6 +4716,8 @@ ul.notifications {
     height: 40px;
     margin-top: 5px;
     line-height: 40px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .wsh_count {
@@ -4720,6 +4727,7 @@ ul.notifications {
 }
 
 .wsh_box span {
+    font-weight: 200;
     font-size: 20px;
 }
 
@@ -4733,10 +4741,10 @@ ul.notifications {
 
 .bd-box {
     width: 150px;
-    border: 1px solid #000000;
+    border: 1px solid #999;
     height: 30px;
     line-height: 30px;
-    background-color: #ffcccc;
+    background-color: #d9d9d9;
 }
 
 .bd-list {
@@ -4916,9 +4924,9 @@ ul.notifications {
 }
 
 #head_img {
-    width: 60%;
+    width: 180px;
     vertical-align: middle;
-    height: 250px;
+    height: 200px;
 }
 
 .big_btn {
@@ -4941,7 +4949,7 @@ ul.notifications {
 }
 
 .bg-info {
-    background: #ffcccc;
+    background: #999;
 }
 .new_add2,.new_add{
     background: #96d94f;
@@ -4964,4 +4972,59 @@ tr:hover{
 #consult_add,#add_breath,#add_pressure,#add_glucose,#add_oxygen,#add_bmi{
     background-color: #96d94f;
     border: 1px solid #96d94f;
+}
+.headings{
+    background-color: #666;
+}
+.headings:hover{
+    background-color: #999;
+}
+.bd_r_left{
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+.bd_r_right{
+    border-left: none;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.bd_active{
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d9534f;
+}
+.bd_active:hover{
+    ;
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d9534f;
+}
+td a{
+    color: #d9534f;
+}
+td a:hover{
+    color: #ff0000;
+}
+table tbody tr:hover{
+    background-color: #fff0f0;
+}
+.wsh_box span{
+    color: #d9534f;
+}
+.bold{
+    font-weight: bold;
+}
+.ft16{
+    font-size: 16px;
+}
+
+.panel-body{
+    padding-bottom: 0;
+}
+#key{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.table-striped>tbody>tr:hover{
+    background-color:#fff0f0;
 }
