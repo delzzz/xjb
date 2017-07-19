@@ -254,7 +254,8 @@ class UsermanageController extends AdminController
         $json_data = think_json_encode($data);
         $response = http_post_json($url, $json_data);
         if ($response['success']) {
-            $this->success('保存成功', U('user_list'));
+            $h_tel = substr_replace($param['telephone'],'*****',3,5);
+            $this->success(array('msg'=>'账号创建成功','msg2'=>'登录账号和密码已发送至手机号:'.$h_tel.',请及时查看。'), U('user_list'));
         } else {
             $this->error('保存失败');
         }
