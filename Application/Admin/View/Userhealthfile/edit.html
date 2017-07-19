@@ -173,10 +173,10 @@
                                 <input type="hidden" id="healthId" name="healthId" value="{$basic.healthId}"/>
                                 <input id="peopleId" type="hidden" name="peopleId" value="{$peopleId}"/>
                                 <input type="hidden" name="entryUserId" value="{$basic.entryUserId}"/>
-
-                                <button id="edit_btn" type="button" class="btn btn-lg btn-danger">编辑</button>
-                                <button id="sub" target-form="form-label-left" type="submit" class="btn btn-lg btn-danger ajax-post">保存</button>
-                                <a href="{:U('health_list')}" class="btn btn-lg btn-danger">返回</a>
+                                <br>
+                                <button id="edit_btn" type="button" class="btn  btn-danger">编辑</button>
+                                <button id="sub" target-form="form-label-left" type="submit" class="btn  btn-danger ajax-post">保存</button>
+                                <a href="{:U('health_list')}" class="btn btn-danger">返回</a>
                             </div>
                         </form>
                     </div>
@@ -259,18 +259,18 @@
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button id="add_breath" type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-sm btn-danger">录入新数据</button>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--</div>-->
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
+                            <a id="breathe_del" href="{:U('delLatest',array('id'=>$breathe['breatheId'],'type'=>1))}" class="ajax-get confirm btn btn-sm btn-danger">删除此条数据</a>
+                            <!--</div>-->
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button id="breathe_edit" type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-sm btn-danger">修改数据</button>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                <a id="breathe_del" href="{:U('delLatest',array('id'=>$breathe['breatheId'],'type'=>1))}" class="ajax-get confirm btn btn-sm btn-danger">删除此条数据</a>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--</div>-->
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button type="button" data-toggle="modal" data-target="#myModal6" class="btn btn-sm btn-danger">历史记录</button>
-                            </div>
+                            <!--</div>-->
                         </div>
                         <!--血压-->
                         <div class="x_title clear">
@@ -278,10 +278,10 @@
                             <br>
                             <h2 class="col-lg-4 col-md-4 col-sm-6">血压</h2>
                             <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div>数据来源：{$dataSrc[$pressure['dataSrc']]}</div>
-                                <div>测量时间：{:time_format($pressure['measureTime']/1000,'Y-m-d')}</div>
+                                <div class="col-lg-5 col-md-5 col-sm-12">数据来源：{$dataSrc[$pressure['dataSrc']]}</div>
+                                <div class="col-lg-5 col-md-5 col-sm-12">测量时间：{:time_format($pressure['measureTime']/1000,'Y-m-d')}</div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-2 col-sm-6 pull-right  ">
                                 <div>录入人员：{$pressure.entryUserName}</div>
                                 <div>录入时间：{:time_format($pressure['createTime']/1000,'Y-m-d')}</div>
                             </div>
@@ -303,17 +303,23 @@
                                             <td>收缩压数值</td>
                                             <td>{$pressure.dataInValue}</td>
                                             <!--有多少条数据就横跨多少行-->
-                                            <td class="pressureText" rowspan="3" style="vertical-align: middle">
+                                            <td class="pressureText" style="vertical-align: middle">
                                                 偏高
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>舒张压数值</td>
                                             <td>{$pressure.dataOutValue}</td>
+                                            <td class="pressureText" style="vertical-align: middle">
+                                                偏高
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>脉搏率</td>
                                             <td>{$pressure.dataPulseValue}</td>
+                                            <td class="pressureText" style="vertical-align: middle">
+                                                偏高
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -321,29 +327,29 @@
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button id="add_pressure" type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-sm btn-danger">录入新数据</button>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--</div>-->
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
+                            <a id="pressure_del" href="{:U('delLatest',array('id'=>$pressure['bloodPressureId'],'type'=>2))}" class="ajax-get confirm btn btn-sm btn-danger">删除此条数据</a>
+                            <!--</div>-->
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button id="pressure_edit" type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-sm btn-danger">修改数据</button>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                <a id="pressure_del" href="{:U('delLatest',array('id'=>$pressure['bloodPressureId'],'type'=>2))}" class="ajax-get confirm btn btn-sm btn-danger">删除此条数据</a>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--</div>-->
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button type="button" data-toggle="modal" data-target="#myModal7" class="btn btn-sm btn-danger">历史记录</button>
-                            </div>
+                            <!--</div>-->
                         </div>
                         <!--血糖-->
                         <div class="x_title clear">
                             <br>
                             <br>
-                            <h2 class="col-lg-4 col-md-4 col-sm-6">血糖</h2>
+                            <h2 class="col-lg-4 col-md-2 col-sm-6">血糖</h2>
                             <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div>数据来源：{$dataSrc[$glucose['dataSrc']]}</div>
-                                <div>测量时间：{:time_format($glucose['measureTime']/1000,'Y-m-d')}</div>
+                                <div class="col-lg-5 col-md-5 col-sm-12">数据来源：{$dataSrc[$glucose['dataSrc']]}</div>
+                                <div class="col-lg-5 col-md-5 col-sm-12">测量时间：{:time_format($glucose['measureTime']/1000,'Y-m-d')}</div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-2 col-sm-6 pull-right">
                                 <div>录入人员：{$glucose.entryUserName}</div>
                                 <div>录入时间：{:time_format($glucose['entryTime']/1000,'Y-m-d')}</div>
                             </div>
@@ -376,18 +382,21 @@
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button id="add_glucose" type="button" data-toggle="modal" data-target="#myModal3" class="btn btn-sm btn-danger">录入新数据</button>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--</div>-->
+
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
+                            <a id="glucose_del" href="{:U('delLatest',array('id'=>$glucose['bloodGlucoseId'],'type'=>3))}" class="ajax-get confirm btn btn-sm btn-danger">删除此条数据</a>
+                            <!--</div>-->
+
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button id="glucose_edit" type="button" data-toggle="modal" data-target="#myModal3" class="btn btn-sm btn-danger">修改数据</button>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                <a id="glucose_del" href="{:U('delLatest',array('id'=>$glucose['bloodGlucoseId'],'type'=>3))}" class="ajax-get confirm btn btn-sm btn-danger">删除此条数据</a>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--</div>-->
+
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button type="button" data-toggle="modal" data-target="#myModal8" class="btn btn-sm btn-danger">历史记录</button>
-                            </div>
+                            <!--</div>-->
                         </div>
                         <!--血氧-->
                         <div class="x_title clear">
@@ -395,10 +404,10 @@
                             <br>
                             <h2 class="col-lg-4 col-md-4 col-sm-6">血氧</h2>
                             <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div>数据来源：{$dataSrc[$oxygen['dataSrc']]}</div>
-                                <div>测量时间：{:time_format($oxygen['measureTime']/1000,'Y-m-d')}</div>
+                                <div class="col-lg-5 col-md-5 col-sm-12">数据来源：{$dataSrc[$oxygen['dataSrc']]}</div>
+                                <div class="col-lg-5 col-md-5 col-sm-12">测量时间：{:time_format($oxygen['measureTime']/1000,'Y-m-d')}</div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-2 col-sm-6 pull-right">
                                 <div>录入人员：{$oxygen.entryUserName}</div>
                                 <div>录入时间：{:time_format($oxygen['entryTime']/1000,'Y-m-d')}</div>
                             </div>
@@ -412,7 +421,6 @@
                                         <tr>
                                             <th class="text-center">小项</th>
                                             <th class="text-center">测量数据</th>
-
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -426,18 +434,19 @@
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button id="add_oxygen" type="button" data-toggle="modal" data-target="#myModal4" class="btn btn-sm btn-danger">录入新数据</button>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--</div>-->
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
+                            <a id="oxygen_del" href="{:U('delLatest',array('id'=>$oxygen['bloodOxygenId'],'type'=>4))}" class="ajax-get confirm btn btn-sm btn-danger">删除此条数据</a>
+                            <!--</div>-->
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button id="edit_oxygen" type="button" data-toggle="modal" data-target="#myModal4" class="btn btn-sm btn-danger">修改数据</button>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                <a id="oxygen_del" href="{:U('delLatest',array('id'=>$oxygen['bloodOxygenId'],'type'=>4))}" class="ajax-get confirm btn btn-sm btn-danger">删除此条数据</a>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--</div>-->
+
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button type="button" data-toggle="modal" data-target="#myModal9" class="btn btn-sm btn-danger">历史记录</button>
-                            </div>
+                            <!--</div>-->
                         </div>
                         <!--BMI-->
                         <div class="x_title clear">
@@ -445,10 +454,10 @@
                             <br>
                             <h2 class="col-lg-4 col-md-4 col-sm-6">BMI</h2>
                             <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div>数据来源：{$dataSrc[$bmi['dataSrc']]}</div>
-                                <div>测量时间：{:time_format($bmi['measureTime']/1000,'Y-m-d')}</div>
+                                <div class="col-lg-5 col-md-5 col-sm-12">数据来源：{$dataSrc[$bmi['dataSrc']]}</div>
+                                <div class="col-lg-5 col-md-5 col-sm-12">测量时间：{:time_format($bmi['measureTime']/1000,'Y-m-d')}</div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-2 col-sm-6 pull-right">
                                 <div>录入人员：{$bmi.entryUserName}</div>
                                 <div>录入时间：{:time_format($bmi['entryTime']/1000,'Y-m-d')}</div>
                             </div>
@@ -489,18 +498,19 @@
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button id="add_bmi" type="button" data-toggle="modal" data-target="#myModal5" class="btn btn-sm btn-danger">录入新数据</button>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--</div>-->
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
+                            <a id="bmi_del" href="{:U('delLatest',array('id'=>$bmi['bmiId'],'type'=>5))}" class="ajax-get confirm btn btn-sm btn-danger">删除此条数据</a>
+                            <!--</div>-->
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button id="edit_bmi" type="button" data-toggle="modal" data-target="#myModal5" class="btn btn-sm btn-danger">修改数据</button>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                <a id="bmi_del" href="{:U('delLatest',array('id'=>$bmi['bmiId'],'type'=>5))}" class="ajax-get confirm btn btn-sm btn-danger">删除此条数据</a>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <!--</div>-->
+
+                            <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">-->
                                 <button type="button" data-toggle="modal" data-target="#myModal10" class="btn btn-sm btn-danger">历史记录</button>
-                            </div>
+                            <!--</div>-->
                         </div>
                     </div>
                 </div>
@@ -1229,15 +1239,15 @@
             }
             if($('#myModal2 input[name="dataInValue"]').val()<90||$('#myModal2 input[name="dataOutValue"]').val()<60){
                 $('#pressureCondition').val('偏低');
-                $('.pressureText').text('偏低');
+                $('.pressureText').html('<span style="color:#f66401;">偏低</span>');
             }
             else if($('#myModal2 input[name="dataInValue"]').val()>140||$('#myModal2 input[name="dataOutValue"]').val()>90){
                 $('#pressureCondition').val('偏高');
-                $('.pressureText').text('偏高');
+                $('.pressureText').html('<span style="color: #fe4f32;">偏高</span>');
             }
             else{
                 $('#pressureCondition').val('正常');
-                $('.pressureText').text('正常');
+                $('.pressureText').html('<span style="#93c700">正常</span>');
             }
         }
         //判断新增血糖还是修改
@@ -1285,15 +1295,15 @@
             }
             else if(dataValue<3.6){
                 $('#glucose_condition').val('偏低');
-                $('.glucoseText').text('偏低');
+                $('.glucoseText').html('<span style="color:#f66401;">偏低</span>');
             }
             else if(dataValue>11.1 || dataValue>6.1 && $('select[name="measureCondition"]').val()==0 || dataValue>7.9 && $('select[name="measureCondition"]').val()==1){
                 $('#glucose_condition').val('偏高');
-                $('.glucoseText').text('偏高');
+                $('.glucoseText').html('<span style="color: #fe4f32;">偏高</span>');
             }
             else{
                 $('#glucose_condition').val('正常');
-                $('.glucoseText').text('正常');
+                $('.glucoseText').html('<span style="#93c700">正常</span>');
             }
         }
         //判断新增血氧还是修改
