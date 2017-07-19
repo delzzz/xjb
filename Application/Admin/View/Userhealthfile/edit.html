@@ -158,7 +158,7 @@
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">录入人员:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input name="entryUserName" value="{$basic.entryUserName}" type="text" class="form-control" disabled="disabled" placeholder="">
+                                    <input name="entryUserName" <if condition="$userType eq 3">value="{$basic.entryUserName|default=$consultRecorder}" <else/>value="{$basic.entryUserName}" </if> type="text" class="form-control" disabled="disabled" placeholder="">
                                 </div>
                             </div>
                             <div class="x_title clear">

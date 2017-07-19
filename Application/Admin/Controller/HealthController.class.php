@@ -66,7 +66,7 @@ class HealthController extends AdminController
     {
         $this->meta_title = '健康管理-用药提醒列表';
         //后台端0/坐席端1
-        if($_SESSION['onethink_admin']['user_auth']['userType']==3 || session('user_auth')['userId']==2){
+        if($_SESSION['onethink_admin']['user_auth']['userType']==3){
             $this->zuoxi_medication();
         }
         else{
