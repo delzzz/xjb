@@ -20,7 +20,6 @@ function dialog(type, title, content) {
         $("#full").find(".text").html(content);
     }
 }
-
 $("form").Validform({
     ajaxPost: true,
     showAllError: true,
@@ -275,4 +274,13 @@ $(function () {
             $(this).parent().css('position','relative');
             $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
     });
+});
+$("tr").click(function(){
+   var url=$(this).find("a").attr("href");
+   var vul=$(this).find("a").text();
+    if(vul !='删除'){
+        window.location.href=url;
+    }else {
+    }
+    //
 });
