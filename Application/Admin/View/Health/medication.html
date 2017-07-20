@@ -2,40 +2,39 @@
 
 <block name="body">
     <div class="right_col" role="main">
-        <div class="page-title">
-            <div class="title_left" style="">
-                <h3>用药提醒</h3>
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="page-title col-md-12 col-sm-12 col-xs-12">
+                <div class="title_left" style="">
+                    <h3>用药提醒</h3>
+                </div>
             </div>
-        </div>
-        <div class="page-title">
-            <div class="title_left" style="width: 50%; line-height: 2.5">
-                <label class="control-label col-md-2 col-sm-2 col-xs-12 text-right">老人姓名:</label>
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div style="float:left">
-                        <input value="{$name}" id="key" type="text" class="form-control" placeholder="请输入姓名">
-                    </div>
+            <br>
+            <div class="page-title">
+                <div class="title_left" style="width: 50%; line-height: 2.5">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="pull-left">老人姓名:</label>
+                        <div style="float:left">
+                            <input value="{$name}" id="key" type="text" class="form-control" placeholder="请输入姓名">
+                        </div>
                     <span class="input-group-btn" style="float:left">
                         <a class="clf btn btn-danger" id="search" url="{:U('medication')}" style="color: #fff;">查询</a>
                     </span>
-                </div>
-                <label class="control-label col-md-2 col-sm-2 col-xs-12 text-right">状态:</label>
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                    <select id="sel_status" class="form-control" >
-                        <option <?php if(I('get.status')==-1 || I('get.status')=='')echo 'selected';?> value="-1">所有</option>
-                        <option <?php if(I('get.status')==0 && is_numeric(I('get.status'))  )echo 'selected';?> value="0">执行中</option>
-                        <option <?php if(I('get.status')==1)echo 'selected';?> value="1">已关闭</option>
-                    </select>
+                    </div>
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12 text-right">状态:</label>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <select id="sel_status" class="form-control" >
+                            <option <?php if(I('get.status')==-1 || I('get.status')=='')echo 'selected';?> value="-1">所有</option>
+                            <option <?php if(I('get.status')==0 && is_numeric(I('get.status'))  )echo 'selected';?> value="0">执行中</option>
+                            <option <?php if(I('get.status')==1)echo 'selected';?> value="1">已关闭</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
                 </div>
             </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
-                <div class="x_title"></div>
                 <div class="x_content">
-                    <div class=""></div>
                     <div class="table-responsive">
                         <table class="table table-striped jambo_table bulk_action">
                             <thead>

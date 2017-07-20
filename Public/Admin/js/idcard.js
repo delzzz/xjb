@@ -229,6 +229,7 @@ $("form").Validform({
         errormsg: "此项为必选项",
     },
     {
+
         ele: "select[name='dataSrc'],select[name='insType'],select[name='gender'],select[name='sex']",
         datatype: "sel",
         errormsg: "此项为必选项",
@@ -282,9 +283,10 @@ $(function () {
 $("tr").click(function(){
    var url=$(this).find("a").attr("href");
    var vul=$(this).find("a").text();
-    if(vul !='删除' && vul !=''){
+
+    if(vul !='删除'&&vul !="历史数据"){
         window.location.href=url;
     }else {
     }
-    //
+    
 });

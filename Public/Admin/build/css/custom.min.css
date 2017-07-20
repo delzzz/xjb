@@ -2130,7 +2130,7 @@ h4.graph_title {
 .tile-stats .count {
     font-size: 20px;
     font-weight: 700;
-    line-height:2.5;
+    line-height: 2.5;
 }
 
 .tile-stats .count, .tile-stats h3, .tile-stats p {
@@ -4702,7 +4702,6 @@ ul.notifications {
     overflow: auto !important
 }
 
-
 .wsh_border {
     margin-top: 10px;
     height: 20px;
@@ -4951,80 +4950,143 @@ ul.notifications {
 .bg-info {
     background: #999;
 }
-.new_add2,.new_add{
+
+.new_add2, .new_add {
     background: #96d94f;
     border: 1px solid #96d94f;
 }
-.new_add2:hover,.new_add:hover,#consult_add:hover,#add_breath:hover,#add_pressure:hover,#add_glucose:hover,#add_oxygen:hover,#add_bmi:hover{
+
+.new_add2:hover, .new_add:hover, #consult_add:hover, #add_breath:hover, #add_pressure:hover, #add_glucose:hover, #add_oxygen:hover, #add_bmi:hover {
     background: #84bf46;
     border: 1px solid #84bf46;
 }
-.new_del2{
+
+.new_del2 {
     background: #ff0000;
     border: 1px solid #ff0000;
 }
-tr:hover{
+
+tr:hover {
     background: none;
 }
-.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
-   background-color: #f1f1f1;
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #f1f1f1;
 }
-#consult_add,#add_breath,#add_pressure,#add_glucose,#add_oxygen,#add_bmi{
+
+#consult_add, #add_breath, #add_pressure, #add_glucose, #add_oxygen, #add_bmi {
     background-color: #96d94f;
     border: 1px solid #96d94f;
 }
-.headings{
+
+.headings {
     background-color: #666;
 }
-.headings:hover{
-    background-color: #999;
+
+.headings:hover {
+    background-color: #666;
 }
-.bd_r_left{
+
+.bd_r_left {
     border-bottom-left-radius: 4px;
     border-top-left-radius: 4px;
 }
-.bd_r_right{
+
+.bd_r_right {
     border-left: none;
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
 }
-.bd_active{
+
+.bd_active {
     color: #fff;
     background-color: #d9534f;
     border-color: #d9534f;
 }
-.bd_active:hover{
-    ;
+
+.bd_active:hover {;
     color: #fff;
     background-color: #d9534f;
     border-color: #d9534f;
 }
-td a{
+
+td a {
     color: #d9534f;
 }
-td a:hover{
+
+td a:hover {
     color: #ff0000;
 }
-table tbody tr:hover{
+
+table tbody tr:hover {
     background-color: #fff0f0;
 }
-.wsh_box span{
+
+.wsh_box span {
     color: #d9534f;
 }
-.bold{
+
+.bold {
     font-weight: bold;
 }
-.ft16{
+
+.ft16 {
     font-size: 16px;
 }
 
-.panel-body{
+.panel-body {
     padding-bottom: 0;
 }
-#key{
+
+#key {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
 }
-.table-striped>tbody>tr:hover{
-    background-color:#fff0f0;
+
+.table-striped > tbody > tr:hover {
+    background-color: #fff0f0;
+}
+
+.current {
+    color: #ca5c54;
+}
+
+.over .btn-default {
+    margin-top: 8px;
+    height: 30px;
+    color: #d9534f;
+    background-color: #fff;
+    border-color: #d9534f;
+}
+
+.over .btn-default:hover {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.modal-footer {
+    margin-bottom: 30px;
+    padding: 15px;
+    text-align: right;
+    /* border-top: 1px solid #e5e5e5; */
+}
+
+.close {
+    text-shadow: none;
+}
+
+.modal-footer .btn-danger {
+    text-align: center;
+    margin: 0 auto;
+    width: 120px;
+    background: #cc0000;
+    color: #ffffff;
+    border-radius: 4px;
+}
+
+.modal-footer .btn-danger:hover {
+    background: #990000;
+}
+.num:hover{
+    color: #d9534f;
 }
