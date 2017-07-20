@@ -229,7 +229,8 @@ $("form").Validform({
         errormsg: "此项为必选项",
     },
     {
-        ele: "select[name='dataSrc'],select[name='insType']",
+
+        ele: "select[name='dataSrc'],select[name='insType'],select[name='gender'],select[name='sex']",
         datatype: "sel",
         errormsg: "此项为必选项",
     },
@@ -274,13 +275,18 @@ $(function () {
             $(this).parent().css('position','relative');
             $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
     });
+    $('select[name="gender"],select[name="sex"],select[name="dataSrc"]').each(function () {
+        $(this).parent().css('position','relative');
+        $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
+    });
 });
 $("tr").click(function(){
    var url=$(this).find("a").attr("href");
    var vul=$(this).find("a").text();
+
     if(vul !='删除'&&vul !="历史数据"){
         window.location.href=url;
     }else {
     }
-    //
+    
 });

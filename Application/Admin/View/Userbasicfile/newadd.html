@@ -29,6 +29,7 @@
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <select name="gender" class="form-control">
+                                                <option value="-1">请选择</option>
                                                 <option value="0">男</option>
                                                 <option value="1">女</option>
                                             </select>
@@ -193,7 +194,7 @@
                                             点击替换
                                         </button>
                                         <input class="btn btn-danger btn-sm col-lg-6 col-md-6 col-sm-6" id="image"
-                                               style="opacity:0; margin-top: -40px;position: relative;" type="file">
+                                               style="opacity: 0;margin-left: -123px;margin-top: 0px;position: relative;width: 30%;cursor:pointer;" type="file">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
@@ -375,7 +376,7 @@
 
 <block name="script">
     <script type="text/javascript">
-        Think.setValue('gender', {$peopleBasic.gender|default= '0'});
+        Think.setValue('gender', {$peopleBasic.gender|default= '-1'});
         Think.setValue('ethnicity', {$peopleBasic.ethnicity|default= '-1'});
         Think.setValue('education', {$peopleBasic.education|default= '-1'});
         Think.setValue('economy', {$peopleBasic.economy|default= '-1'});

@@ -328,12 +328,15 @@
             if(hid_degree==1){
                 Page.hid_p=$('#hid_province').val();
                 $('select[name="provinceId"]').attr('disabled',true);
+                $('select[name="provinceId"]').css('display','none');
             }
             else if(hid_degree==2){
                 Page.hid_p=$('#hid_province').val();
                 Page.hid_c=$('#hid_city').val();
                 $('select[name="provinceId"]').attr('disabled',true);
                 $('select[name="cityId"]').attr('disabled',true);
+                $('select[name="provinceId"]').css('display','none');
+                $('select[name="cityId"]').css('display','none');
             }
             Page.init();
         });

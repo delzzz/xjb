@@ -71,7 +71,7 @@
                                         <td class="over">{:time_format($list['createTime']/1000,'Y-m-d H:i:s')}</td>
                                         <td class="over">{$list.userName}</td>
                                         <td class="over">{$list.userId}</td>
-                                        <td class="over" style="">
+                                        <td style="max-width: 200px;word-wrap: break-word;">
                                             {$list.content}
                                         </td>
                                             <input id="bid" type="hidden" name="bid" value="{$list['broadcastId']}"/>

@@ -50,7 +50,7 @@ class UserhealthfileController extends AdminController
         $this->assign('dataSrc',C('DATASRC'));
         $this->assign('dataSleepValue',C('DATASLEEPVALUE'));
         $this->assign('mCondition',C('MEASURE_CONDITION'));
-        $this->assign('consultRecorder',$_SESSION['onethink_admin']['user_auth']['userName']);
+        $this->assign('consultRecorder',session('user_auth')['userName']);
         $this->assign('historyBreathe',$historyBreathe);
         $this->assign('historyPressure',$historyPressure);
         $this->assign('historyGlucose',$historyGlucose);
