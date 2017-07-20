@@ -274,7 +274,7 @@ $(function () {
             $(this).parent().css('position','relative');
             $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
     });
-    $('select[name="gender"],select[name="sex"]').each(function () {
+    $('select[name="gender"],select[name="sex"],select[name="dataSrc"]').each(function () {
         $(this).parent().css('position','relative');
         $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
     });
