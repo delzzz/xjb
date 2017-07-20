@@ -284,7 +284,7 @@ $("tr").click(function(){
    var url=$(this).find("a").attr("href");
    var vul=$(this).find("a").text();
 
-    if(vul !='删除'&&vul !="历史数据"){
+    if(vul !='删除'&&vul !="历史数据"&&vul !=""){
         window.location.href=url;
     }else {
     }
