@@ -75,14 +75,14 @@
                     <div class="nav toggle" style="width: 130px;margin-right:36px; ">
                         <a href="{:U('Warning/warning_current')}">
                             <img src="__IMG__/cishoo/baojing.gif">
-                            <label  class="color_red" style="margin-left: 5px;line-height: 35px;">设备报警 <span>（2）</span></label>
+                            <label  class="color_red" style="margin-left: 5px;line-height: 35px;">设备报警 <span></span></label>
                         </a>
                     </div>
                     <li role="presentation">
                         <a id="notice_agent_ico" href="{:U('notice/notice_agent')}" class="dropdown-toggle info-number pull-right"
                            data-toggle="" aria-expanded="false">
                             <img src="__IMG__/cishoo/icon-meaasge.png">
-                            <label style="">通知管理<span class="color_red">（2）</span></label>
+                            <label style="">通知管理<span class="color_red"></span></label>
                         </a>
                         <!--<a href="../../javascript:;" class="dropdown-toggle info-number pull-right"
                            data-toggle="" aria-expanded="false">
@@ -612,9 +612,7 @@
     $.post('{:U('notice/count')}',{},function(data){
         if(parseInt(data)>0)
         {
-
-            $('#notice_agent_ico').append('<span class="badge bg-green">'+data+'</span>')
-
+            $('#notice_agent_ico label span').text('('+data+')');
             $('.menu_section .side-menu li a').each(function(index){
 
                 if($(this).text().indexOf('通知管理')>-1){
