@@ -1972,10 +1972,10 @@ a.user-profile {
 }
 
 .user-profile img {
-    width: 29px;
-    height: 29px;
-    border-radius: 50%;
-    margin-right: 10px
+    width: 20px;
+    height: 20px;
+    /*border-radius: 50%;*/
+    margin-right: 5px
 }
 
 ul.top_profiles {
@@ -5098,3 +5098,39 @@ table tbody tr:hover {
     width: 20px;
     height: 20px;
 }
+.wsh_bd{
+    border-left:1px solid #666666;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 20px;
+    padding-left: 24px;
+}
+.log_cont{
+    margin-left: 175px; margin-right: 24px;line-height:5;
+}
+.cl6{
+    color: #666666;
+}
+#yes .close{
+    color: #ffffff;
+    font-size: 27px;
+    font-weight: 100;
+    margin-top: -7px;
+    box-shadow: none;
+    opacity: .9
+}
+no_bd{
+    border: none;
+}
+.toggle a img{
+       float: left;
+   }
+ #notice_agent_ico img{
+      float: left;
+     margin-top: 8px;
+     margin-right: 14px;
+  }
+ #notice_agent_ico label{
+     line-height: 40px;
+     margin-left:0;
+ }
