@@ -2,65 +2,56 @@
 
 <block name="body">
     <div class="right_col" role="main">
-        <div class="page-title">
-            <div class="title_left" style="">
-                <h3>健康监控</h3>
-            </div>
-        </div>
-        <div class="page-title">
-            <div class="title_left" style="width: 50%; line-height: 2.5">
-                <label class="control-label col-md-2 col-sm-2 col-xs-12 text-right">老人姓名:</label>
 
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div style="float:left">
-                        <input value="{$name}" id="key" type="text" class="form-control" placeholder="输入姓名">
-                    </div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="page-title">
+                <div class="title_left" style="">
+                    <h3>健康监控</h3>
+                </div>
+            </div>
+            <div class="page-title">
+                <div class="title_left" style="width: 50%; line-height: 2.5">
+
+
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <label class="control-label pull-left" style="margin-right: 5px;">老人姓名:</label>
+                        <div style="float:left">
+                            <input value="{$name}" id="key" type="text" class="form-control" placeholder="输入姓名">
+                        </div>
                     <span class="input-group-btn" style="float:left">
                         <a class="clf btn btn-danger" id="search" url="{:U('index')}" style="color: #fff;">查询</a>
                     </span>
+                    </div>
+
                 </div>
-                <!--<label class="control-label col-md-2 col-sm-2 col-xs-12 text-right">状态:</label>-->
-
-                <!--<div class="col-md-4 col-sm-4 col-xs-4">-->
-                    <!--<select class="form-control">-->
-                        <!--<option value="所有">所有</option>-->
-                        <!--<option value="执行中">执行中</option>-->
-                        <!--<option value="已关闭">已关闭</option>-->
-                    <!--</select>-->
-                <!--</div>-->
             </div>
-        </div>
-        <br>
-        <br>
-        <br>
-
-        <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title"></div>
                 <div class="x_content">
                     <div class=""></div>
                     <div class="table-responsive">
                         <table class="table table-striped jambo_table bulk_action">
-                            <thead>
-                            <tr class="headings">
-                                <th class="column-title">老人姓名</th>
-                                <th class="column-title">设备号</th>
-                                <th class="column-title">呼吸测量数据</th>
-                                <th class="column-title">心率测试数据</th>
-                                <th class="column-title">睡眠质量</th>
-                                <th class="column-title">测试时间</th>
-                                <th class="column-title">操作</th>
+                            <thead >
+                            <tr class="headings text-center">
+                                <th class="column-title text-center">老人姓名</th>
+                                <th class="column-title text-center">设备号</th>
+                                <th class="column-title text-center">呼吸测量数据</th>
+                                <th class="column-title text-center">心率测试数据</th>
+                                <th class="column-title text-center">睡眠质量</th>
+                                <th class="column-title text-center">测试时间</th>
+                                <th class="column-title text-center">操作</th>
                             </tr>
                             </thead>
                             <volist name="list" id="l">
-                                <tr class="even pointer">
-                                    <th class="column-title">{$l.peopleName}</th>
-                                    <th class="column-title">{$l.device_str}</th>
-                                    <th class="column-title">{$l.dataBreathValue}</th>
-                                    <th class="column-title">{$l.dataHeartbeatValue}</th>
-                                    <th class="column-title"></th>
-                                    <th class="column-title">{:time_format($l['measureTime']/1000,'Y-m-d')}</th>
-                                    <td class="pointer">
+                                <tr class="even pointer text-center">
+                                    <td class="column-title">{$l.peopleName}</td>
+                                    <td class="column-title ">{$l.device_str}</td>
+                                    <td class="column-title ">{$l.dataBreathValue}</td>
+                                    <td class="column-title ">{$l.dataHeartbeatValue}</td>
+                                    <td class="column-title "></td>
+                                    <td class="column-title ">{:time_format($l['measureTime']/1000,'Y-m-d')}</td>
+                                    <td class="pointer ">
                                         <a class="lay" data-toggle="modal" data-id="{$l.peopleId}"
                                            data-target="#myModal">历史数据</a>
                                     </td>
@@ -85,9 +76,9 @@
                 </div>
                 <div class="x_panel">
                     <div class="bd-list" style="">
-                        <div class="text-center pull-left bd-box" style="border-right: none;">呼吸测量</div>
-                        <div class="text-center pull-left bd-box" style="border-right: none;">心率测量</div>
-                        <div class="border-dark text-center pull-left bd-box" style="">睡眠质量</div>
+                        <div class="text-center pull-left bd-box bd_r_left  bd_active" style="border-right: none;">呼吸测量</div>
+                        <div class="text-center pull-left bd-box" style="">心率测量</div>
+                        <div class=" text-center pull-left bd-box  bd_r_right " style="">睡眠质量</div>
                     </div>
                     <div class="x_content col-md-6 col-sm-6 col-xs-6">
                         <div id="echart" style="height:350px;    "></div>

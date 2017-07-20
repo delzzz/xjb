@@ -172,7 +172,7 @@
                             </ul>
                         </li>
                     </if>
-                    <if condition="$userType eq 1 || $userType eq 2 || $userType eq 0">
+                    <if condition="$userType eq 1 || $userType eq 2">
                     <li class="col-lg-8 col-md-4 col-sm-6">
                         <div class="pull-right user-profile" data-toggle="" aria-expanded="false"
                              style="margin-top: 10px;">
@@ -208,29 +208,24 @@
             </nav>
         </div>
         <!-- 模态框（Modal） -->
-        <div class="modal fade" id="yes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="yes" tabindex="-1" role="dialog" style="margin-top: 120px;" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" style="width: 440px; height: 370px;">
                 <div class="modal-content">
-                    <div class="modal-header" style="height: 60px; background: #990000;">
-                        <div type="button" class="close" data-dismiss="modal" style="color: #ffffff;opacity: .9" aria-hidden="true">×</div>
+                    <div class="modal-header" style="height: 40px; background: #990000;">
+                        <div type="button" class="close" data-dismiss="modal" style="color: #ffffff;font-size: 27px;font-weight: 100; margin-top: -7px; box-shadow: none; opacity: .9" aria-hidden="true">×</div>
                     </div>
                     <div class="modal-body">
-                        <br>
-                        <br>
-                        <div class="text-center " style="height: 50px; color: #66cc00;">
+                        <div class="text-center " style="height: 50px; margin-top: 40px; color: #66cc00;">
                             <img class="pull-left" style="margin-left: 102px; margin-right: 5px;" src="__IMG__/cishoo/yes.png">
-                            <div class="pull-left title" style="font-size: 28px; line-height: 40px;">账号创建成功！</div>
+                            <div class="pull-left title" style="font-size: 20px; line-height: 40px;">账号创建成功！</div>
                         </div>
-                        <br>
-                        <br>
-                        <div class="text-left text" style="color: #333333;font-size: 16px;">
+                        <div class="text-left text" style="color: #333333; min-height: 10px; margin-top: 20px; font-size: 16px;">
                             登录账号和密码已经发送至手机号
                             请及时查看
                         </div>
-                        <br>
                     </div>
-                    <div class="modal-footer " style="text-align: center;">
-                        <button type="button" class="btn btn-danger" style="text-align: center; margin: 0 auto; width: 260px; height: 40px; background: #990000; color: #ffffff; border-radius:4px;" data-dismiss="modal">确定</button>
+                    <div class="modal-footer" style="text-align: center;border: none; padding: 0;">
+                        <button type="" class="btn btn-sm btn-danger" style="" data-dismiss="modal">确定</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -355,12 +350,14 @@
 
     $(document).ready(function () {
         $(" .current").css( {
-            "border": "1px solid #e1e1e1",
+            "border": "1px solid #d9534f",
             'width': '20px',
             'display':' inline-block',
             'text-align': 'center',
             'margin': '0 5px 0 5px',
-            'color': '#999999',
+            'color': '#fff',
+            'background': '#d9534f',
+            'border-radius':'3px',
         });
         $(".num").css( {
             "border": "1px solid #e1e1e1",
@@ -368,7 +365,30 @@
             'display':' inline-block',
             'text-align': 'center',
             'margin': '0 5px 0 5px',
-            'color': '#333333',
+            'color': '#999999',
+        });
+        $(".prev,.next").css({
+            'color': '#d9534f',
+        })
+        $(".prev,.next").hover(function() {
+            $(this).css({
+                'color': '#d9534f',
+            })
+        },function(){
+            $(this).css({
+                'color': '#999999',
+            })
+        });
+        $(".num").hover(function() {
+            $(this).css({
+                'color': '#d9534f',
+                "border": "1px solid #d9534f",
+            })
+        },function(){
+            $(this).css({
+                "border": "1px solid #e1e1e1",
+                'color': '#999999',
+            })
         });
 
     });
@@ -562,23 +582,20 @@
         }
     }
 
+    if($('#h_degree').val()==3 || $('#h_extendFlag').val()==0){
         $('#sidebar-menu ul li').each(function(i,item){
-            if($('#h_degree').val()==3 || $('#h_extendFlag').val()==0){
-                if($(this).children('a').text()=='添加代理商'){
-                    $(this).hide();
-                }
-            }
-            if($('#h_userType').val()==2){
-                if($(this).children('a').text().indexOf('代理商/机构管理')>=0){
-                    $(this).hide();
-                }
-            }
-            if($('#h_userType').val()!=3 && $('#h_userType').val()!=0){
-                if($(this).children('a').text().indexOf('当前报警记录')>=0){
-                    $(this).hide();
-                }
+            if($(this).children('a').text()=='添加代理商'){
+                $(this).hide();
             }
         });
+    }
+    if($('#h_userType').val()==2){
+        $('#sidebar-menu ul li').each(function(i,item){
+            if($(this).children('a').text().indexOf('代理商/机构管理')>=0){
+                $(this).hide();
+            }
+        });
+    }
 
     $.post('{:U('notice/count')}',{},function(data){
         if(parseInt(data)>0)
