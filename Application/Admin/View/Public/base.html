@@ -21,6 +21,12 @@
             text-decoration: none;
             background-color: #f5f5f5;
         }
+        .side-menu .active a span{
+            background: url("__IMG__/cishoo/arrow-down.png") no-repeat center;
+        }
+        li a span{
+            background: url('__IMG__/cishoo/arrow-right.png') no-repeat center;
+        }
     </style>
 </head>
 <body class="nav-md">
@@ -41,7 +47,7 @@
                                     <a <if condition="empty($m['childs'])">href="{:U($m['moduleUrl'])}"</if>>
                                         <div class="left_icon1" style="background: url('__IMG__/cishoo/{$m.iconPath}.png') no-repeat center 100%;"></div>{$m.moduleName}
                                     <if condition="!empty($m['childs'])">
-                                            <span class="fa fa-chevron-down"></span>
+                                            <span class="fa " style=""></span>
                                         </if>
                                     </a>
                                     <if condition="!empty($m['childs'])">
@@ -65,15 +71,14 @@
         <!--top-->
         <div class="nav_menu">
             <nav>
-
                 <ul class="nav navbar-nav navbar-right">
                     <div class="nav toggle">
-                        <a href="{:U('Warning/warning_current')}"><img src="__IMG__/icon-sos.png"></a>
+                        <a href="{:U('Warning/warning_current')}"><img src="__IMG__/cishoo/baojing.gif"></a>
                     </div>
                     <li role="presentation">
                         <a id="notice_agent_ico" href="{:U('notice/notice_agent')}" class="dropdown-toggle info-number pull-right"
                            data-toggle="" aria-expanded="false">
-                            <img src="__IMG__/icon-message.png">
+                            <img src="__IMG__/cishoo/icon-meaasge.png">
                         </a>
                         <!--<a href="../../javascript:;" class="dropdown-toggle info-number pull-right"
                            data-toggle="" aria-expanded="false">
@@ -173,7 +178,7 @@
                         </li>
                     </if>
                     <if condition="$userType eq 1 || $userType eq 2 || $userType eq 0">
-                    <li class="col-lg-8 col-md-4 col-sm-6">
+                        <li class="col-lg-8 col-md-4 col-sm-6">
                         <div class="pull-right user-profile" data-toggle="" aria-expanded="false"
                              style="margin-top: 10px;">
                             您好！欢迎登陆 | <a class="color-red" href="{:U('Public/logout')}">退出</a>
@@ -582,23 +587,23 @@
         }
     }
 
-        $('#sidebar-menu ul li').each(function(i,item){
-            if($('#h_degree').val()==3 || $('#h_extendFlag').val()==0){
-                if($(this).children('a').text()=='添加代理商'){
-                    $(this).hide();
-                }
+    $('#sidebar-menu ul li').each(function(i,item){
+        if($('#h_degree').val()==3 || $('#h_extendFlag').val()==0){
+            if($(this).children('a').text()=='添加代理商'){
+                $(this).hide();
             }
-            if($('#h_userType').val()==2){
-                if($(this).children('a').text().indexOf('代理商/机构管理')>=0){
-                    $(this).hide();
-                }
+        }
+        if($('#h_userType').val()==2){
+            if($(this).children('a').text().indexOf('代理商/机构管理')>=0){
+                $(this).hide();
             }
-            if($('#h_userType').val()!=3 && $('#h_userType').val()!=0){
-                if($(this).children('a').text().indexOf('当前报警记录')>=0){
-                    $(this).hide();
-                }
+        }
+        if($('#h_userType').val()!=3 && $('#h_userType').val()!=0){
+            if($(this).children('a').text().indexOf('当前报警记录')>=0){
+                $(this).hide();
             }
-        });
+        }
+    });
 
     $.post('{:U('notice/count')}',{},function(data){
         if(parseInt(data)>0)

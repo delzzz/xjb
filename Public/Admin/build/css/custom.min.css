@@ -279,6 +279,7 @@
 }
 
 .menu_section {
+    border-top: 1px solid rgba(204,102,102,0.8);
     /*margin-bottom: 35px*/
     background: #353535;
 }
@@ -357,7 +358,6 @@
 .main_menu span.fa {
     float: right;
     text-align: center;
-    margin-top: 5px;
     font-size: 10px;
     min-width: inherit;
     color: #C4CFDA
@@ -793,13 +793,15 @@ a {
 
 .nav.child_menu li.active, .nav.child_menu li:hover {
     /*background-color: rgba(255, 255, 255, .06)*/
-    border-bottom: 1px solid #353535;
-    border-top: 1px solid #353535;
-    background: #990000;
+    background: #992626;
 }
 
+.nav.child_menu .current-page {
+    padding-left: 47px;
+    background: #992626;
+}
 .nav.child_menu li {
-    padding-left: 40px;
+    padding-left: 47px;
     background: #404040;
 }
 
@@ -860,16 +862,16 @@ a {
 }
 
 .nav.side-menu > li.active > li, .nav.side-menu > li.current-page {
-    border-right: 5px solid #cc0000;
+    /*border-right: 5px solid #cc0000;*/
 }
 
 .nav li.current-page {
     /*background: rgba(255, 255, 255, .05)*/
-    background: #bf0000;
+    background: #990000;
 }
 
 .nav li li li.current-page {
-    background: 0 0
+    background:
 }
 
 .navbar-brand, .navbar-nav > li > a, .site_title {
@@ -5089,4 +5091,10 @@ table tbody tr:hover {
 }
 .num:hover{
     color: #d9534f;
+}
+.fa-right{
+}
+.main_menu span.fa{
+    width: 20px;
+    height: 20px;
 }
