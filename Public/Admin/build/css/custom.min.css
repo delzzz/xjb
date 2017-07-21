@@ -377,6 +377,7 @@
 }
 
 .nav_menu {
+    height: 58px;
     float: left;
     background: #EDEDED;
     border-bottom: 1px solid #D9DEE4;
@@ -5133,4 +5134,7 @@ no_bd{
  #notice_agent_ico label{
      line-height: 40px;
      margin-left:0;
+ }
+ label{
+     font-weight: 400;
  }
