@@ -384,7 +384,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger" target-form="form-label-deposit">确定</button>
+                            <button type="submit" class="btn btn-danger btn-default" target-form="form-label-deposit" style="width: 54px;margin-bottom: 5px;" >确定</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                         </div>
                     </div>
@@ -414,7 +414,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="btnDailiShang" target-form="form-label-msg" type="submit" class="btn btn-danger col-lg-12 col-md-12 col-sm-12 ajax-post">确定</button>
+                        <button style="width:95%;" id="btnDailiShang" target-form="form-label-msg" type="submit" class="btn btn-danger center-block ajax-post">确定</button>
                     </div>
                 </div>
                 <input type="hidden" id="verifyTrue" value="{$verifyTrue}"/>
@@ -427,35 +427,36 @@
 
 <block name="script">
     <script>
+        $('#mobile').val($('input[name="mobile[]"]').eq(1).val());
         $("input,textarea,select").attr('disabled', true);
         $('.dropzone a').addClass('unbindclick');
-        $('#mobile,#verify').attr('disabled', false);
+        $('#verify').attr('disabled', false);
         //手机号验证
-        function verify_mobile() {
-            $('.mobile_vfy .error').remove();
-            if ($('#mobile').val() == '') {
-                $('.mobile_vfy').append('<div class="error color-red">请输入手机号</div>');
-                return false;
-            }
-            var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(14[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
-            if (!myreg.test($("#mobile").val())) {
-                $('.mobile_vfy').append('<div class="error color-red">手机号码格式不正确</div>');
-                return false;
-            }
-            return true;
-        }
-        $('#mobile').focus(function () {
-            $('.mobile_vfy').children('error').remove();
-        });
-        $('#mobile').blur(function () {
-            if (verify_mobile()) {
-                $('.mobile_vfy').children('error').remove();
-            }
-        });
+//        function verify_mobile() {
+//            $('.mobile_vfy .error').remove();
+//            if ($('#mobile').val() == '') {
+//                $('.mobile_vfy').append('<div class="error color-red">请输入手机号</div>');
+//                return false;
+//            }
+//            var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(14[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+//            if (!myreg.test($("#mobile").val())) {
+//                $('.mobile_vfy').append('<div class="error color-red">手机号码格式不正确</div>');
+//                return false;
+//            }
+//            return true;
+//        }
+//        $('#mobile').focus(function () {
+//            $('.mobile_vfy').children('error').remove();
+//        });
+//        $('#mobile').blur(function () {
+//            if (verify_mobile()) {
+//                $('.mobile_vfy').children('error').remove();
+//            }
+//        });
         $("#btn_verify").click(function () {
-            if (!verify_mobile()) {
-                return;
-            }
+//            if (!verify_mobile()) {
+//                return;
+//            }
             settime($(this));
             //发送短信验证码
             $.ajax({
@@ -483,9 +484,9 @@
             }, 1000)
         }
         $("#btnDailiShang").click(function () {
-            if (!verify_mobile()) {
-                return;
-            }
+//            if (!verify_mobile()) {
+//                return;
+//            }
             if ($('#verify').val() == '') {
                 return false;
             }
