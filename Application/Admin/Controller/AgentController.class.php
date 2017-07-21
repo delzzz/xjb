@@ -349,7 +349,8 @@ class AgentController extends AdminController
                 $this->success('保存成功');
             }
             else{
-                $this->success(array('msg'=>'保存成功','msg2'=>'登录账号和密码已发送至手机号,请及时查看。'),U('index'));
+                $h_tel = substr_replace($param['mobile'][1],'*****',3,5);
+                $this->success(array('msg'=>'保存成功','msg2'=>'登录账号和密码已发送至手机号:'.$h_tel.',请及时查看。'),U('index'));
             }
         }
     }
@@ -439,7 +440,8 @@ class AgentController extends AdminController
                 $this->success('保存成功');
             }
             else{
-                $this->success(array('msg'=>'保存成功','msg2'=>'登录账号和密码已发送至手机号,请及时查看。'),U('index'));
+                $h_tel = substr_replace($param['mobile'][1],'*****',3,5);
+                $this->success(array('msg'=>'保存成功','msg2'=>'登录账号和密码已发送至手机号:'.$h_tel.',请及时查看。'),U('index'));
             }
         } else {
             $this->error('系统错误');
