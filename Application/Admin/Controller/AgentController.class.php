@@ -167,6 +167,18 @@ class AgentController extends AdminController
             }
             if ($value['child'] != null) {
                 foreach ($value['child'] as $k => &$v) {
+                    if (is_collocation($v['agentId'])) {
+                        //托管中
+                        $v['c_status'] = 1;
+                    } else {
+                        if ($v['userStatus'] == 1) {
+                            //已托管
+                            $v['c_status'] = 2;
+                        } else {
+                            //未托管
+                            $v['c_status'] = 0;
+                        }
+                    }
                     //date类型去除后面000
                     $v['createTime'] = substr($v['createTime'], 0, strlen($v['createTime']) - 3);
                     $v['updateTime'] = substr($v['updateTime'], 0, strlen($v['updateTime']) - 3);
@@ -176,6 +188,18 @@ class AgentController extends AdminController
                     }
                     if ($v['children'] != null) {
                         foreach ($v['children'] as $kk => &$vv) {
+                            if (is_collocation($vv['agentId'])) {
+                                //托管中
+                                $vv['c_status'] = 1;
+                            } else {
+                                if ($vv['userStatus'] == 1) {
+                                    //已托管
+                                    $vv['c_status'] = 2;
+                                } else {
+                                    //未托管
+                                    $vv['c_status'] = 0;
+                                }
+                            }
                             //date类型去除后面000
                             $vv['createTime'] = substr($vv['createTime'], 0, strlen($vv['createTime']) - 3);
                             $vv['updateTime'] = substr($vv['updateTime'], 0, strlen($vv['updateTime']) - 3);

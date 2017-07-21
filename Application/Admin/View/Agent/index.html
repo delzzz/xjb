@@ -177,9 +177,22 @@
                                             <td class=" ">{$child.area}</td>
                                             <td class=" ">{$child.orgName}</td>
                                             <td class=" ">{$child.telephone}</td>
-                                            <td class=" ">100台</td>
-                                            <td class="a-right a-right ">5584</td>
-                                            <td class=" ">160</td>
+                                            <td class=" "></td>
+                                            <td class="a-right a-right "></td>
+                                            <td class=" "></td>
+                                            <td>
+                                            <?php
+                                        if($child['c_status']==1){
+                                            echo '<font color="#ff0000">托管中</font>';
+                                            }
+                                            else if($child['c_status']==2){
+                                            echo '已托管';
+                                            }
+                                            else{
+                                            echo '正常';
+                                            }
+                                            ?>
+                                            </td>
                                             <td class=""><a href="{:U('agent_detail',['agentId'=>$child['agentId']])}">查看详情</a></td>
                                         </tr>
                                         <if condition="$child['children'] neq ''">
@@ -201,9 +214,22 @@
                                                     <td class=" ">{$children.area}</td>
                                                     <td class=" ">{$children.orgName}</td>
                                                     <td class=" ">{$children.telephone}</td>
-                                                    <td class=" ">100台</td>
-                                                    <td class="a-right a-right ">5584</td>
-                                                    <td class=" ">160</td>
+                                                    <td class=" "></td>
+                                                    <td class="a-right a-right "></td>
+                                                    <td class=" "></td>
+                                                    <td>
+                                                        <?php
+                                                    if($children['c_status']==1){
+                                                        echo '<font color="#ff0000">托管中</font>';
+                                                            }
+                                                            else if($children['c_status']==2){
+                                                                echo '已托管';
+                                                            }
+                                                            else{
+                                                                echo '正常';
+                                                            }
+                                                        ?>
+                                                    </td>
                                                     <td class=""><a href="{:U('agent_detail',['agentId'=>$children['agentId']])}">查看详情</a></td>
                                                 </tr>
                                             </volist>
