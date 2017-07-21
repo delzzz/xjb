@@ -199,11 +199,6 @@ $("form").Validform({
         errormsg: "手机号码格式不正确"
     },
     {
-        ele: "input[name='telephone']",
-        datatype: "mb",
-        errormsg: "手机号码格式不正确"
-    },
-    {
         ele: "input[name='telephone[]']",
         datatype: "mb",
         errormsg: "手机号码格式不正确"
@@ -264,20 +259,20 @@ $(function () {
         var nored = $(this).attr('nored');
         if(msgs!=1 && idName !='key' && nored!='1' ){
             $(this).parent().css('position','relative');
-            $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
+            $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -20px;top: 10px;'>*</span>")
         }
     });
     $('input[type="date"]').each(function(){
         $(this).parent().css('position','relative');
-        $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>");
+        $(this).after("<span class='color-red' style='font-size: 20px;position: absolute;right: -23px;top: 10px;'>*</span>");
     });
     $("input[type='password']").each(function () {
             $(this).parent().css('position','relative');
-            $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
+            $(this).after("<span class='color-red' style='font-size: 20px;position: absolute;right: -23px;top: 10px;'>*</span>")
     });
     $('select[name="gender"],select[name="sex"],select[name="dataSrc"]').each(function () {
         $(this).parent().css('position','relative');
-        $(this).after("<span class='color-red' style='font-size: 20px;position: absolute; right: -4%;top: 10px;'>*</span>")
+        $(this).after("<span class='color-red' style='font-size: 20px;position: absolute;right: -23px;top: 10px;'>*</span>")
     });
 });
 $("tr").click(function(){
