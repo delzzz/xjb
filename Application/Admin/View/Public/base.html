@@ -69,89 +69,24 @@
             </div>
         </div>
         <!--top-->
-        <div class="nav_menu">
+        <div class="nav_menu"  style="position: relative">
             <nav>
                 <ul class="nav navbar-nav navbar-right">
-                    <div class="nav toggle" style="width: 130px;margin-right:36px; ">
-                        <a href="{:U('Warning/warning_current')}">
-                            <img src="__IMG__/cishoo/baojing.gif">
-                            <label  class="color_red" style="line-height: 35px;">设备报警 <span></span></label>
+                    <div class="nav center-block" style="width: 260px;margin-bottom: 10px;  margin-right:36px;position: absolute; left: 50%;top: 10px; ">
+                        <a class="pull-left" href="{:U('Warning/warning_current')}">
+                            <img class="pull-left0"         src="__IMG__/cishoo/baojing.gif">
+                            <label  class="color_red" style="line-height: 40px; margin-left: 17px;">设备报警 <span></span></label>
                         </a>
-                    </div>
-                    <li role="presentation">
-                        <a id="notice_agent_ico" href="{:U('notice/notice_agent')}" class="dropdown-toggle info-number pull-right"
+                        <a class="pull-left" style="margin-left: 35px;" id="notice_agent_ico" href="{:U('notice/notice_agent')}" class="dropdown-toggle info-number pull-right"
                            data-toggle="" aria-expanded="false">
                             <img src="__IMG__/cishoo/icon-meaasge.png">
                             <label style="">通知管理<span class="color_red"></span></label>
                         </a>
-                        <!--<a href="../../javascript:;" class="dropdown-toggle info-number pull-right"
-                           data-toggle="" aria-expanded="false">
-                            <i class="fa fa-bell-o color-red"></i>
-                            <span class="badge bg-red">6</span>
-                        </a>-->
-                       <!-- <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                            <li>
-                                <a>
-                                    <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image"/></span>
-                                    <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                    <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image"/></span>
-                                    <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                    <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image"/></span>
-                                    <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                    <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a>
-                                    <span class="image"><img src="__IMG__/img.jpg" alt="Profile Image"/></span>
-                                    <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                    <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="text-center">
-                                    <a>
-                                        <strong>See All Alerts</strong>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>-->
-                    </li>
+                    </div>
+
                     <if condition="$userType eq 3">
                         <li class="presentation">
-                            <a href="javascript:void(0)" class="user-profile dropdown-toggle" data-toggle="dropdown"
-                               aria-expanded="false" style="position:relative">
+                            <a href="javascript:void(0)" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="position:relative">
                                 <if condition="$zxPic neq null">
                                     <img  src="{$zxPic}" alt="">
                                     <else/>
@@ -187,25 +122,33 @@
                          <a class="color-red" href="{:U('Public/logout')}">退出登录</a>
                             <!--<span class="fa fa-angle-down"></span>-->
                         </div>
-                        <div class=" cl6 pull-right user-profile dropdown-toggle " data-toggle="dropdown" aria-expanded="false" style="min-width: 120px;  margin-right: 35px;">
+                        <div class=" cl6 pull-right user-profile dropdown-toggle " data-toggle="dropdown" aria-expanded="false" style="margin-right: 35px;">
+                            <div class="pull-left wsh_text_wid2" style="">
                             <img width="20" height="20" src="__IMG__/cishoo/icon-user.png">
-                            <span class="cl6" style="">{$orgName}</span>
+                            <span class="cl6" style="" title={$orgName}>
+                                {$orgName}
+                            </span>
+                                <img class="shadow" style="" src="__IMG__/cishoo/bg_shadow.png">
+                            </div>
                             <if condition="$userType eq 1">
-                               <img style="margin-left: 35px; margin-right: 5px; width: 16px;" width="16" height="20" src="__IMG__/cishoo/icon-level.png">
-                                <?php
-                                if($h_degree==0){
-                                   echo '<span>总代理</span>';
-                                    }
-                                    elseif($h_degree==1){
-                                        echo '<span>一级</span><span>省代理</span>';
-                                    }
-                                    elseif($h_degree==2){
-                                        echo '<span>二级</span><span>市代理</span>';
-                                    }
-                                    else{
-                                        echo '<span>三级</span><span>县代理</span>';
-                                    }
-                                ?>
+                                <div class="pull-left wsh_text_wid" style="">
+                                   <img style="margin-left: 35px; margin-right: 5px; width: 16px;" width="16" height="20" src="__IMG__/cishoo/icon-level.png">
+                                    <?php
+                                    if($h_degree==0){
+                                       echo '<span>总代理</span>';
+                                        }
+                                        elseif($h_degree==1){
+                                            echo '<span>一级</span><span>省代理</span>';
+                                        }
+                                        elseif($h_degree==2){
+                                            echo '<span>二级</span><span>市代理</span><span style="margin-left: 20px;"></span>';
+                                        }
+                                        else{
+                                            echo '<span>三级</span><span>县代理</span>';
+                                        }
+                                    ?>
+                                    <img class="shadow" style="" src="__IMG__/cishoo/bg_shadow.png">
+                               </div>
                             </if>
                         </div>
                         <ul class="dropdown-menu dropdown-usermenu pull-right">

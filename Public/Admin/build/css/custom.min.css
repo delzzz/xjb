@@ -379,7 +379,7 @@
 .nav_menu {
     height: 58px;
     float: left;
-    background: #EDEDED;
+    background: #d9d9d9;
     border-bottom: 1px solid #D9DEE4;
     margin-bottom: 10px;
     width: 100%;
@@ -921,20 +921,20 @@ a {
 }
 
 .top_search .form-control {
-    box-shadow: inset 0 1px 0 rgba(0, 0, 0, .075);
+    /*box-shadow: inset 0 1px 0 #ccc;*/
     border-radius: 25px 0 0 25px;
-    padding-left: 20px;
-    border: 1px solid rgba(221, 226, 232, .49)
+    /*padding-left: 20px;*/
+    border: 1px solid #ccc ;
 }
 
 .top_search .form-control:focus {
-    border: 1px solid rgba(221, 226, 232, .49);
+    border: 1px solid #ccc ;
     border-right: 0
 }
 
 .top_search .input-group-btn button {
-    border-radius: 0 25px 25px 0;
-    border: 1px solid rgba(221, 226, 232, .49);
+    /*border-radius: 0 25px 25px 0;*/
+    border: 1px solid #ccc;
     border-left: 0;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     color: #93A2B2;
@@ -985,7 +985,7 @@ a {
 
 .panel_toolbox > li > a {
     padding: 5px;
-    color: #C5C7CB;
+    color: #666;
     font-size: 14px
 }
 
@@ -1175,7 +1175,7 @@ h2 {
     padding: 10px 17px;
     display: inline-block;
     background: #fff;
-    border: 1px solid #E6E9ED;
+    /*border: 1px solid #E6E9ED;*/
     -webkit-column-break-inside: avoid;
     -moz-column-break-inside: avoid;
     column-break-inside: avoid;
@@ -1444,14 +1444,14 @@ table.jambo_table {
 }
 
 table.jambo_table thead {
-    background: rgba(52, 73, 94, .94);
-    color: #ECF0F1
+    background: #999;
+    color: #fff;
 }
 
 table.jambo_table tbody tr:hover td {
-    background: rgba(38, 185, 154, .07);
-    border-top: 1px solid rgba(38, 185, 154, .11);
-    border-bottom: 1px solid rgba(38, 185, 154, .11)
+    /*background: rgba(38, 185, 154, .07);*/
+    /*border-top: 1px solid rgba(38, 185, 154, .11);*/
+    /*border-bottom: 1px solid rgba(38, 185, 154, .11)*/
 }
 
 table.jambo_table tbody tr.selected {
@@ -4865,7 +4865,6 @@ ul.notifications {
 .left_icon1 {
     width: 20px;
     height: 20px;
-
     float: left;
     margin-right: 20px;
 }
@@ -4957,11 +4956,22 @@ ul.notifications {
 .new_add2, .new_add {
     background: #96d94f;
     border: 1px solid #96d94f;
+    color: #ffffff;
 }
-
+.new_add2[disabled]:hover, .new_add[disabled]:hover {
+    background: #96d94f;
+    border: 1px solid #96d94f;
+    color: #ffffff;
+}
+.new_add2.focus, .new_add.focus {
+    background: #96d94f;
+    border: 1px solid #96d94f;
+    color: #ffffff;!important;
+}
 .new_add2:hover, .new_add:hover, #consult_add:hover, #add_breath:hover, #add_pressure:hover, #add_glucose:hover, #add_oxygen:hover, #add_bmi:hover {
     background: #84bf46;
     border: 1px solid #84bf46;
+    color: #ffffff;
 }
 
 .new_del2 {
@@ -4970,7 +4980,7 @@ ul.notifications {
 }
 
 tr:hover {
-    background: none;
+
 }
 
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
@@ -5049,11 +5059,9 @@ table tbody tr:hover {
 .table-striped > tbody > tr:hover {
     background-color: #fff0f0;
 }
-
 .current {
     color: #ca5c54;
 }
-
 .over .btn-default {
     margin-top: 8px;
     height: 30px;
@@ -5137,4 +5145,40 @@ no_bd{
  }
  label{
      font-weight: 400;
+ }
+ .wsh_text_wid{
+     position: relative;
+     width:250px;
+     /*text-overflow: ellipsis;*/
+     white-space:nowrap;
+     overflow:hidden;
+     /*background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(0, 128, 0, 1)), to(rgba(51, 51, 51, 1)));*/
+     /*-webkit-background-clip: text;*/
+     /*-webkit-text-fill-color: transparent;*/
+ }
+ .wsh_text_wid2{
+     position: relative;
+     width:200px;
+     /*text-overflow: ellipsis;*/
+     white-space:nowrap;
+     overflow:hidden;
+     /*background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#666666), to(#EDEDED));*/
+     /*-webkit-background-clip: text;*/
+     /*-webkit-text-fill-color: transparent;*/
+ }
+ .shadow{
+     position: absolute;
+     width: 100%;
+     right:-5px;
+     top:0;
+     height: 89%;
+ }
+ .clear{
+     clear: both;
+ }
+ thead{
+     color: #fff;
+ }
+ table tr td,table thead th{
+     text-align: center;
  }
