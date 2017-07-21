@@ -245,6 +245,12 @@ $("form").Validform({
         datatype:"pwdvfy",
         errormsg:"输入密码不正确",
         nullmsg: "此项不能为空"
+    },
+    {
+        ele:"input[name='password']",
+        datatype:"n6-11",
+        errormsg:"请输入6-11位",
+        nullmsg: "此项不能为空"
     }
 ]);
 jQuery("input,textarea").live('focus',function(){
