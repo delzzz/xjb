@@ -279,10 +279,10 @@
                             <h2 class="col-lg-4 col-md-4 col-sm-6">血压</h2>
                             <div class="col-lg-4 col-md-4 col-sm-6">
                                 <div class="col-lg-5 col-md-5 col-sm-12">数据来源：{$dataSrc[$pressure['dataSrc']]}</div>
-                                <div class="col-lg-5 col-md-5 col-sm-12">测量时间：{:time_format($pressure['measureTime']/1000,'Y-m-d')}</div>
+                                <div class="col-lg-5 col-md-5 col-sm-12">录入人员：{$pressure.entryUserName} </div>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-6 pull-right  ">
-                                <div>录入人员：{$pressure.entryUserName}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 pull-right text-right ">
+                                <div>测量时间：{:time_format($pressure['measureTime']/1000,'Y-m-d')}</div>
                                 <div>录入时间：{:time_format($pressure['createTime']/1000,'Y-m-d')}</div>
                             </div>
                             <div class="clearfix"></div>
@@ -344,13 +344,13 @@
                         <div class="x_title clear">
                             <br>
                             <br>
-                            <h2 class="col-lg-4 col-md-2 col-sm-6">血糖</h2>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="col-lg-5 col-md-5 col-sm-12">数据来源：{$dataSrc[$glucose['dataSrc']]}</div>
-                                <div class="col-lg-5 col-md-5 col-sm-12">测量时间：{:time_format($glucose['measureTime']/1000,'Y-m-d')}</div>
+                            <h2 class="col-lg-6 col-md-6 col-sm-6">血糖</h2>
+                            <div class="col-lg-4 col-md-4 col-sm-6" style="margin-top: 27px;">
+                                <div class="col-lg-4 col-md-4 col-sm-12 pull-right">数据来源：{$dataSrc[$glucose['dataSrc']]}</div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 pull-right">录入人员：{$glucose.entryUserName}</div>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-6 pull-right">
-                                <div>录入人员：{$glucose.entryUserName}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 pull-right text-right">
+                                <div>测量时间：{:time_format($glucose['measureTime']/1000,'Y-m-d')} </div>
                                 <div>录入时间：{:time_format($glucose['entryTime']/1000,'Y-m-d')}</div>
                             </div>
                             <div class="clearfix"></div>
@@ -402,13 +402,15 @@
                         <div class="x_title clear">
                             <br>
                             <br>
-                            <h2 class="col-lg-4 col-md-4 col-sm-6">血氧</h2>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="col-lg-5 col-md-5 col-sm-12">数据来源：{$dataSrc[$oxygen['dataSrc']]}</div>
-                                <div class="col-lg-5 col-md-5 col-sm-12">测量时间：{:time_format($oxygen['measureTime']/1000,'Y-m-d')}</div>
+                            <h2 class="col-lg-6 col-md-6 col-sm-6">血氧</h2>
+                            <div class="col-lg-4 col-md-4 col-sm-6" style="margin-top: 27px;">
+                                <div class="col-lg-4 col-md-4 col-sm-12 pull-right">数据来源：{$dataSrc[$oxygen['dataSrc']]}</div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 pull-right">录入人员：{$oxygen.entryUserName}</div>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-6 pull-right">
-                                <div>录入人员：{$oxygen.entryUserName}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 pull-right text-right"  style="">
+                                <div>
+                                    测量时间：{:time_format($oxygen['measureTime']/1000,'Y-m-d')}
+                                </div>
                                 <div>录入时间：{:time_format($oxygen['entryTime']/1000,'Y-m-d')}</div>
                             </div>
                             <div class="clearfix"></div>
@@ -452,13 +454,14 @@
                         <div class="x_title clear">
                             <br>
                             <br>
-                            <h2 class="col-lg-4 col-md-4 col-sm-6">BMI</h2>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="col-lg-5 col-md-5 col-sm-12">数据来源：{$dataSrc[$bmi['dataSrc']]}</div>
-                                <div class="col-lg-5 col-md-5 col-sm-12">测量时间：{:time_format($bmi['measureTime']/1000,'Y-m-d')}</div>
+                            <h2 class="col-lg-6 col-md-6 col-sm-6">BMI</h2>
+
+                            <div class="col-lg-4 col-md-4 col-sm-6" style="margin-top: 27px;">
+                                <div class="col-lg-4 col-md-4 col-sm-12 pull-right">数据来源：{$dataSrc[$bmi['dataSrc']]}</div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 pull-right">录入人员：{$bmi.entryUserName}</div>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-6 pull-right">
-                                <div>录入人员：{$bmi.entryUserName}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 pull-right text-right">
+                                <div> 测量时间：{:time_format($bmi['measureTime']/1000,'Y-m-d')}</div>
                                 <div>录入时间：{:time_format($bmi['entryTime']/1000,'Y-m-d')}</div>
                             </div>
                             <div class="clearfix"></div>

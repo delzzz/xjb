@@ -75,12 +75,12 @@
                     <div class="nav center-block" style="width: 260px;margin-bottom: 10px;  margin-right:36px;position: absolute; left: 50%;top: 10px; ">
                         <a class="pull-left" href="{:U('Warning/warning_current')}">
                             <img class="pull-left0"         src="__IMG__/cishoo/baojing.gif">
-                            <label  class="color_red" style="line-height: 40px; margin-left: 17px;">设备报警 <span></span></label>
+                            <label  class="color_red" style="line-height: 40px; margin-left: 17px;">设备报警 <span class="color-red"></span></label>
                         </a>
                         <a class="pull-left" style="margin-left: 35px;" id="notice_agent_ico" href="{:U('notice/notice_agent')}" class="dropdown-toggle info-number pull-right"
                            data-toggle="" aria-expanded="false">
                             <img src="__IMG__/cishoo/icon-meaasge.png">
-                            <label style="">通知管理<span class="color_red"></span></label>
+                            <label style="">通知管理<span class="color-red"></span></label>
                         </a>
                     </div>
 
@@ -128,7 +128,7 @@
                             <span class="cl6" style="" title={$orgName}>
                                 {$orgName}
                             </span>
-                                <img class="shadow" style="" src="__IMG__/cishoo/bg_shadow.png">
+                                <img class="shadow" style="width: 100%; height: 89%;" src="__IMG__/cishoo/bg_shadow.png">
                             </div>
                             <if condition="$userType eq 1">
                                 <div class="pull-left wsh_text_wid" style="">
@@ -147,7 +147,7 @@
                                             echo '<span>三级</span><span>县代理</span>';
                                         }
                                     ?>
-                                    <img class="shadow" style="" src="__IMG__/cishoo/bg_shadow.png">
+                                    <img class="shadow" style="width: 100%; height: 89%" src="__IMG__/cishoo/bg_shadow.png">
                                </div>
                             </if>
                         </div>
@@ -168,10 +168,10 @@
                     </div>
                     <div class="modal-body">
                         <div class="text-center " style="height: 50px; margin-top: 40px; color: #66cc00;">
-                            <img class="pull-left" style="margin-left: 102px; margin-right: 5px;" src="__IMG__/cishoo/yes.png">
-                            <div class="pull-left title" style="font-size: 20px; line-height: 40px;">账号创建成功！</div>
+                            <img class="" style=" margin-right: 5px;" src="__IMG__/cishoo/yes.png">
+                            <span class="title" style="font-size: 20px; line-height: 40px;vertical-align:-9%">账号创建成功！</span>
                         </div>
-                        <div class="text-left text" style="color: #333333; min-height: 10px; margin-top: 20px; font-size: 16px;">
+                        <div class="text-left text" style="color: #333333; margin-left: 50px; width: 80%; min-height: 10px; margin-top: 20px; font-size: 16px;">
                             登录账号和密码已经发送至手机号
                             请及时查看
                         </div>
@@ -191,16 +191,14 @@
                         <div type="button" class="close" data-dismiss="modal" style="color: #ffffff;opacity: .9" aria-hidden="true">×</div>
                     </div>
                     <div class="modal-body">
-                        <br>
-                        <br>
-                        <div class="text-center" style="height: 50px; color: #990000;">
-                            <img class="pull-left" style="margin-left: 102px; margin-right: 5px;" src="__IMG__/cishoo/no.png">
-                            <div class="pull-left title" style="font-size: 28px; line-height: 40px;">账号创建失败！</div>
-                        </div>
-                        <br>
-
-                        <div class="text-left text" style="color: #333333;font-size: 16px;">
-                            错误原因：
+                        <div class="modal-body">
+                            <div class="text-center " style="height: 50px; margin-top: 40px; color: #66cc00;">
+                                <img class="" style=" margin-right: 5px;" src="__IMG__/cishoo/no.png">
+                                <span class="title" style="font-size: 20px; line-height: 40px;vertical-align:-9%">账号创建失败！</span>
+                            </div>
+                            <div class="text-left text" style="color: #333333; margin-left: 50px; width: 80%; min-height: 10px; margin-top: 20px; font-size: 16px;">
+                                错误原因：
+                            </div>
                         </div>
                         <br>
                         <br>
@@ -560,13 +558,13 @@
             $('.menu_section .side-menu li a').each(function(index){
 
                 if($(this).text().indexOf('通知管理')>-1){
-                    $(this).append('<div style="width: 6px; height: 6px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #FF0000;margin-top: 10px;float:right;margin-right:60px;margin-top:7px"></div>');
+                    $(this).append('<div style="width: 6px; height: 6px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #FF0000;margin-top: 10px;float:right;margin-right:70px;margin-top:7px"></div>');
                 }
             })
 
             $('.child_menu li a').each(function(index){
                 if($(this).text().indexOf('代理通知')>-1){
-                    $(this).append('<div style="width: 6px; height: 6px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #FF0000;margin-top: 10px;float:right;margin-right:110px;margin-top:5px"></div>');
+                    $(this).append('<div style="width: 6px; height: 6px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #FF0000;margin-top: 10px;float:right;margin-right:100px;margin-top:5px"></div>');
                 }
             })
 
@@ -577,18 +575,16 @@
         if(parseInt(data)>0)
         {
 
-
-
             $('.menu_section .side-menu li a').each(function(index){
 
                 if($(this).text().indexOf('机构管理')>-1){
-                    $(this).append('<div style="width: 6px; height: 6px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #FF0000;margin-top: 10px;float:right;margin-right:50px;margin-top:-13px"></div>');
+                    $(this).append('<div style="width: 6px; height: 6px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #FF0000;margin-top: 10px;float:right;margin-right:20px;margin-top:5px"></div>');
                 }
             })
 
             $('.child_menu li a').each(function(index){
                 if($(this).text().indexOf('代理商管理')>-1){
-                    $(this).append('<div style="width: 6px; height: 6px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #FF0000;margin-top: 10px;float:right;margin-right:100px;margin-top:5px"></div>');
+                    $(this).append('<div style="width: 6px; height: 6px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 10px;background: #FF0000;margin-top: 10px;float:right;margin-right:80px;margin-top:5px"></div>');
                 }
             })
 
