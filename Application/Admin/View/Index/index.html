@@ -15,51 +15,51 @@
     <div class="right_col" role="main">
         <div class="box_nav" style="">
             <div class="row top_tiles">
-                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a href="{:U('Statistics/add')}" class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="box_sm text-center bg_1">
                         <img src="__IMG__/cishoo/bk-icon-1.png">
                         <div>数据统计</div>
                     </div>
-                </div>
-                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                </a>
+                <a href="{:U('Userbasicfile/basicfile')}" class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="box_sm text-center bg_2">
                         <img src="__IMG__/cishoo/bk-icon-2.png">
                         <div>老人基础档案</div>
                     </div>
-                </div>
-                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                </a>
+                <a href="{:U('Warning/warning_current')}" class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="box_sm text-center bg_3">
                         <img src="__IMG__/cishoo/bk-icon-3.png">
                         <div>设备报警</div>
                     </div>
-                </div>
-                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                </a>
+                <a href="{:U('Health/medication')}" class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="box_sm text-center bg_4">
                         <img src="__IMG__/cishoo/bk-icon-4.png">
                         <div>健康管理</div>
                     </div>
-                </div>
+                </a>
                 <if condition="$userType neq 3">
-                <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <a href="{:U('Notice/notice_fm')}" class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="box_lg text-center bg_5">
                         <img src="__IMG__/cishoo/bk-icon-5.png">
                         <div>通知管理</div>
                     </div>
-                </div>
+                </a>
                 </if>
-                <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <a href="{:U('Usermanage/user_manage')}" class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="box_lg text-center bg_6">
                         <img src="__IMG__/cishoo/bk-icon-6.png">
                         <div>账号管理</div>
                     </div>
-                </div>
+                </a>
                 <if condition="$userType neq 3 && $userType neq 2">
-                <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <a href="{:U('Agent/agent')}" class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="box_lg text-center bg_7">
                         <img src="__IMG__/cishoo/bk-icon-7.png">
                         <div>代理商/机构管理</div>
                     </div>
-                </div>
+                </a>
                 </if>
             </div>
         </div>

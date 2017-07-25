@@ -76,7 +76,7 @@ class AgentController extends AdminController
         $this->display();
     }
 
-    //托管信息
+    //托管信息{}{}
     function collocationList($sourceId, $targetId, $collocationId, $type)
     {
         $sourceInfo = get_agent_info($sourceId);
