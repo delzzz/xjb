@@ -365,36 +365,36 @@
                         <div class="row tile_count text-center" style="background: #f1f1f1; padding-top: 10px;" id="totalStatisticsnew">
                             <input type="hidden" id="hid_degree" value="{$degree}"/>
                             <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
-                                <span class="count_top">直接管理机构：<i class="clf93">{$agentStatistics.insCount}</i></span>
+                                <span class="count_top">直接管理机构：<i class="clf93">{$cInfo['statistics']['insCount']}</i></span>
 
                         <span class="count_bottom">设备数量：
                             <i class="clf93">
-                                {$agentStatistics.insDevCount}
+                                {$cInfo['statistics']['insDevCount']}
                             </i>
                         </span>
                             </div>
                             <if condition="$degree eq 0">
                                 <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
-                                    <span class="count_top">下属一级代理： <i class="clf93">{$agentStatistics.agentCount1}</i></span>
+                                    <span class="count_top">下属一级代理： <i class="clf93">{$cInfo['statistics']['agentCount1']}</i></span>
 
-                                    <span class="count_bottom">设备数量：<i class="clf93">{$agentStatistics.agentDevCount1}</i></span>
+                                    <span class="count_bottom">设备数量：<i class="clf93">{$cInfo['statistics']['agentDevCount1']}</i></span>
                                 </div>
                             </if>
                             <if condition="($degree eq 0) or ($degree eq 1)">
                                 <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
-                                    <span class="count_top">下属二级代理： <i class="clf93">{$agentStatistics.agentCount2}</i></span>
-                                    <span class="count_bottom">设备数量：<i class="clf93">{$agentStatistics.agentDevCount2}</i></span>
+                                    <span class="count_top">下属二级代理： <i class="clf93">{$cInfo['statistics']['agentCount2']}</i></span>
+                                    <span class="count_bottom">设备数量：<i class="clf93">{$cInfo['statistics']['agentDevCount2']}</i></span>
                                 </div>
                             </if>
                             <if condition="($degree eq 0) or ($degree eq 1) or ($degree eq 2)">
                                 <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
-                                    <span class="count_top">下属三级代理：<i class="clf93">{$agentStatistics.agentCount3}</i></span>
-                                    <span class="count_bottom">设备数量：<i class="clf93">{$agentStatistics.agentDevCount3}</i></span>
+                                    <span class="count_top">下属三级代理：<i class="clf93">{$cInfo['statistics']['agentCount3']}</i></span>
+                                    <span class="count_bottom">设备数量：<i class="clf93">{$cInfo['statistics']['agentDevCount3']}</i></span>
                                 </div>
                             </if>
                             <div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
-                                <span class="count_top">总代理机构总数量：<i class="clf93">{$agentStatistics.totalCount}</i></span>
-                                <span class="count_bottom">设备数量：<i class="clf93">{$agentStatistics.totalDevCount}</i></span>
+                                <span class="count_top">总代理机构总数量：<i class="clf93">{$cInfo['statistics']['totalCount']}</i></span>
+                                <span class="count_bottom">设备数量：<i class="clf93">{$cInfo['statistics']['totalDevCount']}</i></span>
                             </div>
                         </div>
                     </div>
