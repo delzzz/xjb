@@ -83,21 +83,21 @@ class AgentController extends AdminController
         $targetInfo = get_agent_info($targetId);
         $area = new AreaController();
         if ($sourceInfo['degree'] == 1) {
-            $sourceName = $area->getName($sourceInfo['provinceId'], 0, 1) . '一级代理';
+            $sourceName = $this->getName($sourceInfo['provinceId'], 0, 1) . '一级代理';
         } elseif ($sourceInfo['degree'] == 2) {
-            $sourceName = $area->getName($sourceInfo['cityId'], $sourceInfo['provinceId'], 2) . '二级代理';
+            $sourceName = $this->getName($sourceInfo['cityId'], $sourceInfo['provinceId'], 2) . '二级代理';
         } elseif ($sourceInfo['degree'] == 3) {
-            $sourceName = $area->getName($sourceInfo['countyId'], $sourceInfo['cityId'], 3) . '三级代理';
+            $sourceName = $this->getName($sourceInfo['countyId'], $sourceInfo['cityId'], 3) . '三级代理';
         } else {
             $sourceName = '官方代理';
         }
 
         if ($targetInfo['degree'] == 1) {
-            $targetName = $area->getName($targetInfo['provinceId'], 0, 1) . '一级代理';
+            $targetName = $this->getName($targetInfo['provinceId'], 0, 1) . '一级代理';
         } elseif ($targetInfo['degree'] == 2) {
-            $targetName = $area->getName($targetInfo['cityId'], $targetInfo['provinceId'], 2) . '二级代理';
+            $targetName = $this->getName($targetInfo['cityId'], $targetInfo['provinceId'], 2) . '二级代理';
         } elseif ($targetInfo['degree'] == 3) {
-            $targetName = $area->getName($targetInfo['countyId'], $targetInfo['cityId'], 3) . '三级代理';
+            $targetName = $this->getName($targetInfo['countyId'], $targetInfo['cityId'], 3) . '三级代理';
         } else {
             $targetName = '官方代理';
         }

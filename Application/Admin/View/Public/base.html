@@ -77,11 +77,13 @@
                             <img class="pull-left0"         src="__IMG__/cishoo/baojing.gif">
                             <label  class="color_red" style="line-height: 40px; margin-left: 17px;">设备报警 <span class="color-red"></span></label>
                         </a>
+                        <if condition="$userType neq 3">
                         <a class="pull-left" style="margin-left: 35px;" id="notice_agent_ico" href="{:U('notice/notice_agent')}" class="dropdown-toggle info-number pull-right"
                            data-toggle="" aria-expanded="false">
                             <img src="__IMG__/cishoo/icon-meaasge.png">
                             <label style="">通知管理<span class="color-red"></span></label>
                         </a>
+                        </if>
                     </div>
 
                     <if condition="$userType eq 3">
@@ -118,9 +120,9 @@
                     </if>
                     <if condition="$userType eq 1 || $userType eq 2 || $userType eq 0">
                         <li class="pull-right log_cont" style="">
-                        <div class="pull-right user-profile wsh_bd" data-toggle="" aria-expanded="false" style="">
-                         <a class="color-red" href="{:U('Public/logout')}">退出登录</a>
-                            <!--<span class="fa fa-angle-down"></span>-->
+                             <div class="pull-right user-profile wsh_bd" data-toggle="" aria-expanded="false" style="">
+                            <a class="color-red" href="{:U('Public/logout')}">退出登录</a>
+                                 <!-- <span class="fa fa-angle-down"></span>-->
                         </div>
                         <div class=" cl6 pull-right user-profile dropdown-toggle " data-toggle="dropdown" aria-expanded="false" style="margin-right: 35px;">
                             <div class="pull-left wsh_text_wid2" style="">
@@ -138,22 +140,22 @@
                                        echo '<span>总代理</span>';
                                         }
                                         elseif($h_degree==1){
-                                            echo '<span>一级</span><span>省代理</span>';
+                                            echo '<span>一级</span>'.$areaName.'<span>省级代理</span>';
                                         }
                                         elseif($h_degree==2){
-                                            echo '<span>二级</span><span>市代理</span><span style="margin-left: 20px;"></span>';
+                                            echo '<span>二级</span>'.$areaName.'<span>市级代理</span><span style="margin-left: 20px;"></span>';
                                         }
                                         else{
-                                            echo '<span>三级</span><span>县代理</span>';
+                                            echo '<span>三级</span>'.$areaName.'<span>县级代理</span>';
                                         }
                                     ?>
                                     <img class="shadow" style="width: 100%; height: 89%" src="__IMG__/cishoo/bg_shadow.png">
                                </div>
                             </if>
                         </div>
-                        <ul class="dropdown-menu dropdown-usermenu pull-right">
-                            <li><a href="{:U('Public/logout')}"><i class="fa fa-sign-out pull-right"></i>退出登录</a></li>
-                        </ul>
+                        <!--<ul class="dropdown-menu dropdown-usermenu pull-right">-->
+                            <!--<li><a href="{:U('Public/logout')}"><i class="fa fa-sign-out pull-right"></i>退出登录</a></li>-->
+                        <!--</ul>-->
                     </li>
                    </if>
                 </ul>
@@ -543,6 +545,11 @@
                 $(this).hide();
             }
         }
+//        if($('#h_degree').val()==3){
+//            if($(this).children('a').text().indexOf('代理商/机构管理')>=0){
+//                $(this).hide();
+//            }
+//        }
         if($('#h_userType').val()!=3 && $('#h_userType').val()!=0){
             if($(this).children('a').text().indexOf('当前报警记录')>=0){
                 $(this).hide();

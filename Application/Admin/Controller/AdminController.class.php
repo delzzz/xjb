@@ -10,6 +10,7 @@ namespace Admin\Controller;
 
 use Think\Controller;
 use Admin\Model\AuthRuleModel;
+use Admin\Controller\AreaController;
 
 /**
  * 后台首页控制器
@@ -29,12 +30,14 @@ class AdminController extends Controller
         }
         $right = $this->getRight();
         $this->assign('menu', $right);
-        $this->assign('h_degree',$this->orgAgent()['degree']);
+        $orgAgent = $this->orgAgent();
+        $degree = $orgAgent['degree'];
+        $this->assign('h_degree',$degree);
         $url = C('INTERFACR_API')['get_user'];
         $userinfo = session('user_auth');
         $User = http($url, ['userName' => $userinfo['userName']], 'GET');
         $this->assign('onlineStatus',$User['onlineStatus']);
-        $this->assign('h_extendFlag',$this->orgAgent()['extendFlag']);
+        $this->assign('h_extendFlag',$orgAgent['extendFlag']);
         //坐席代理商机构判断
         $this->assign('userType',$userinfo['userType']);
         if($User['userId']==2){
@@ -46,7 +49,21 @@ class AdminController extends Controller
         if($userinfo['userType']==1){
             //代理商
             $this->assign('orgName', $this->orgName());
-            $this->assign('orgId',$this->orgId());
+            $orgId = $this->orgId();
+            $this->assign('orgId',$orgId);
+            $provinceId = $orgAgent['provinceId'];
+            $cityId = $orgAgent['cityId'];
+            $countyId = $orgAgent['countyId'];
+            if($degree==1){
+                $areaName = $this->getName($provinceId,0,1);
+            }
+            elseif ($degree==2){
+                $areaName = $this->getName($cityId,$provinceId,2);
+            }
+            elseif ($degree==3){
+                $areaName = $this->getName($countyId,$cityId,3);
+            }
+            $this->assign('areaName',$areaName);
             $this->assign('orgType',$this->orgType());
             $this->__set('orgId',$this->orgId());
         }
@@ -459,6 +476,32 @@ class AdminController extends Controller
     protected function getUrl($interFace)
     {
         return C('INTERFACR_API')[$interFace];
+    }
+
+    //获取省/市/县名称
+    function getName($id,$parentId,$degree)
+    {
+        if($degree == 1){
+            $parentId = 0;
+            $url = $this->getUrl('get_area');
+            $param = ['parentId' => $parentId];
+            $response = http($url, $param, 'GET');
+            foreach ($response as $key => $value){
+                if($value['regionId'] == $id){
+                    return $value['name'];
+                }
+            }
+        }
+        else if($degree == 2 || $degree == 3) {
+            $url = $this->getUrl('get_area');
+            $param = ['parentId' => $parentId];
+            $response = http($url, $param, 'GET');
+            foreach ($response as $key => $value) {
+                if ($value['regionId'] == $id) {
+                    return $value['name'];
+                }
+            }
+        }
     }
 
 }

@@ -23,30 +23,30 @@ class AreaController extends AdminController
         echo think_json_encode($response);
     }
     //获取省/市/县名称
-    function getName($id,$parentId,$degree)
-    {
-        if($degree == 1){
-            $parentId = 0;
-            $url = $this->getUrl('get_area');
-            $param = ['parentId' => $parentId];
-            $response = http($url, $param, 'GET');
-            foreach ($response as $key => $value){
-                if($value['regionId'] == $id){
-                    return $value['name'];
-                }
-            }
-        }
-        else if($degree == 2 || $degree == 3) {
-            $url = $this->getUrl('get_area');
-            $param = ['parentId' => $parentId];
-            $response = http($url, $param, 'GET');
-            foreach ($response as $key => $value) {
-                if ($value['regionId'] == $id) {
-                    return $value['name'];
-                }
-            }
-        }
-    }
+//    function getName($id,$parentId,$degree)
+//    {
+//        if($degree == 1){
+//            $parentId = 0;
+//            $url = $this->getUrl('get_area');
+//            $param = ['parentId' => $parentId];
+//            $response = http($url, $param, 'GET');
+//            foreach ($response as $key => $value){
+//                if($value['regionId'] == $id){
+//                    return $value['name'];
+//                }
+//            }
+//        }
+//        else if($degree == 2 || $degree == 3) {
+//            $url = $this->getUrl('get_area');
+//            $param = ['parentId' => $parentId];
+//            $response = http($url, $param, 'GET');
+//            foreach ($response as $key => $value) {
+//                if ($value['regionId'] == $id) {
+//                    return $value['name'];
+//                }
+//            }
+//        }
+//    }
 
     //获取完整省市县名称
     function getFullName($provinceId,$cityId,$countyId,$degree){
