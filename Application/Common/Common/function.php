@@ -402,6 +402,9 @@ function addons_url($url, $param = array())
 function time_format($time = NULL, $format = 'Y-m-d H:i')
 {
     $time = $time === NULL ? NOW_TIME : intval($time);
+    if($time==''){
+        return '';
+    }
     return date($format, $time);
 }
 
