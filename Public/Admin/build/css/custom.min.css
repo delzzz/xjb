@@ -1898,7 +1898,7 @@ span.right {
 
 .tile_count .tile_stats_count {
     border-bottom: 1px solid #D9DEE4;
-    padding: 0 10px 0 20px;
+    padding: 10px 10px 0 20px;
     position: relative
 }
 
@@ -1917,9 +1917,10 @@ span.right {
     }
 
     .tile_count .tile_stats_count {
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         border-bottom: 0;
-        padding-bottom: 10px
+        padding-bottom: 10px;
+        padding-top: 10px;
     }
 
     .tile_count .tile_stats_count:first-child:before {
@@ -5181,4 +5182,15 @@ no_bd{
  }
  table tr td,table thead th{
      text-align: center;
+ }
+ #totalStatisticsnew {
+     background: #f1f1f1;
+     padding-top: 10px;
+
+     line-height: 40px;
+ }
+ .clf93{
+     color: #ff9933;
+     font-size: 24px;
+     margin-right: 15px;
  }
