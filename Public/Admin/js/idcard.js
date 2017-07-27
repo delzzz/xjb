@@ -230,7 +230,7 @@ $("form").Validform({
         errormsg: "此项为必选项",
     },
     {
-        ele: "input[name='quantity']",
+        ele: "input[name='quantity'],input[name='dataHeightValue'],input[name='dataWeightValue']",
         datatype: "n",
         errormsg: "请输入数字",
     },
