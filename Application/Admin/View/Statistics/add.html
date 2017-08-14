@@ -12,15 +12,20 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>新增用户趋势</h2>
-
+                    <ul class="nav navbar-right panel_toolbox">
+                        <select id="sel_status" class="form-control" src="{:U('Statistics/add')}">
+                            <option <?php if(I('get.status')==0 && is_numeric(I('get.status'))  )echo 'selected';?> value="0">查看7天数据</option>
+                            <option <?php if(I('get.status')==1)echo 'selected';?> value="1">查看30天数据</option>
+                        </select>
+                    </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="bd-list" style="">
-                    <div class="text-center pull-left bd-box bd_r_left bd_active" style="border-right: none;">沉默用户</div>
-                    <div class="text-center pull-left bd-box bd_r_right" style="">新增用户</div>
+                    <div class="text-center pull-left bd-box bd_r_left" style="border-right: none;">沉默用户</div>
+                    <div class="text-center pull-left bd-box bd_r_right bd_active" style="">新增用户</div>
                 </div>
                 <div class="x_content">
-                    <div id="echart_line" style="height:350px;"></div>
+                    <div id="trend" style="width:100%; height:300px;"></div>
                 </div>
             </div>
         </div>
@@ -38,7 +43,7 @@
                             <thead class="bg-info">
                             <tr class="">
                                 <th class="column-title text-center">日期</th>
-                                <th class="column-title text-center">代理公司机构名称</th>
+                                <th class="column-title text-center">代理公司/机构名称</th>
                                 <th class="column-title text-center">归属上级代理名称 </th>
                                 <th class="column-title text-center">所在区域</th>
                                 <th class="column-title text-center">新增设备(占比)</th>
@@ -49,21 +54,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="even pointer">
-                                <td class=" ">老人终端</td>
-                                <td class=" ">5526 </td>
-                                <td class=" ">32%</td>
-                                <td class=" ">230</td>
-                                <td class=" ">32%</td>
-                            </tr>
-                            <tr class="odd pointer">
-                                <td class=" ">亲属端</td>
-                                <td class=" ">8976</td>
-                                <td class=" ">56%
-                                </td>
-                                <td class=" ">480</td>
-                                <td class=" ">56%</td>
-                            </tr>
+                            <volist name="dayDetailList" id="vo">
+                                <tr class="pointer">
+                                    <td class=" ">{$vo.statsDate}</td>
+                                    <td class=" ">{$vo.orgName}</td>
+                                    <td class=" ">{$vo.parentAgentName}</td>
+                                    <td class=" ">
+                                        <if condition="$vo['orgType'] eq 1">
+                                            {$vo.district}
+                                            <else/>{$vo.area}
+                                        </if>
+                                    </td>
+                                    <td class=" "><?php echo $vo['percent']*100; ?>%</td>
+                                </tr>
+                            </volist>
                             </tbody>
                         </table>
                     </div>
@@ -72,4 +76,78 @@
         </div>
 
     </div>
+</block>
+<block name="script">
+    <script src="__VENDOR__/echarts/dist/echarts.min.js"></script>
+    <script>
+        $('#sel_status').change(function(){
+            var status = $(this).val();
+            var url = $(this).attr('src');
+            location.href = url + "?status=" + status;
+        });
+        var myChart = echarts.init(document.getElementById('trend'));
+        var start_date=[],old=[],relation=[];
+        function arrTest(){
+            $.ajax({
+                type:"post",
+                async:false,
+                url:"{:U('Statistics/getData')}",
+                data:{status:$('#sel_status').val()},
+                dataType:"json",
+                success:function(result){
+                    if (result) {
+                        for (var i = 0; i < result.length; i++) {
+                            start_date.push(result[i].statsDate);
+                            old.push(result[i].familyQuantity);
+                            relation.push(result[i].relationQuantity);
+                        }
+                    }
+                }
+            })
+            return start_date,old,relation;
+        }
+        arrTest();
+        option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['老人终端','亲属端']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: start_date
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name:'老人终端',
+                    type:'line',
+                    stack: '总量',
+                    data:old,
+                },
+                {
+                    name:'亲属端',
+                    type:'line',
+                    stack: '总量',
+                    data:relation
+                },
+            ]
+        };
+        myChart.setOption(option);
+    </script>
 </block>

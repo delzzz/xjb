@@ -411,6 +411,8 @@ return array(
 
         'notice_get_count'=>'http://'.HOST.'/service/notice/org/get/count',//获取通知未读数量
 
+        'statistics_total_users'=>'http://'.HOST.'/service/statistics/org/user/',//根据运营商ID获取用户数
+        'statistics_new_users'=>'http://'.HOST.'/service/statistics/org/user/sub/',//运营商新增用户统计
 
     ),
 );
