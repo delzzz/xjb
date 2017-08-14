@@ -147,6 +147,8 @@ class AgentController extends AdminController
         $this->assign('totalPage', $lists['totalPage']);
         $area = new AreaController();
         foreach ($agentLists as $key => &$value) {
+            $quantity = http($this->getUrl('statistics_total_users') .$value['orgId'], null, 'get');
+            $value['quantity'] = $quantity['familyQuantity'];
             if (is_collocation($value['agentId'])) {
                 //托管中
                 $value['c_status'] = 1;
@@ -168,6 +170,8 @@ class AgentController extends AdminController
             }
             if ($value['child'] != null) {
                 foreach ($value['child'] as $k => &$v) {
+                    $quantity = http($this->getUrl('statistics_total_users') .$v['orgId'], null, 'get');
+                    $v['quantity'] = $quantity['familyQuantity'];
                     if (is_collocation($v['agentId'])) {
                         //托管中
                         $v['c_status'] = 1;
@@ -189,6 +193,8 @@ class AgentController extends AdminController
                     }
                     if ($v['children'] != null) {
                         foreach ($v['children'] as $kk => &$vv) {
+                            $quantity = http($this->getUrl('statistics_total_users') .$vv['orgId'], null, 'get');
+                            $vv['quantity'] = $quantity['familyQuantity'];
                             if (is_collocation($vv['agentId'])) {
                                 //托管中
                                 $vv['c_status'] = 1;
@@ -223,6 +229,8 @@ class AgentController extends AdminController
         $area = new AreaController();
         foreach ($agentLists as $key => &$value) {
             //date类型去除后面000
+            $quantity = http($this->getUrl('statistics_total_users') .$value['orgId'], null, 'get');
+            $value['quantity'] = $quantity['familyQuantity'];
             $value['createTime'] = substr($value['createTime'], 0, strlen($value['createTime']) - 3);
             $value['updateTime'] = substr($value['updateTime'], 0, strlen($value['updateTime']) - 3);
             $value['area'] = $area->getFullName($value['provinceId'], $value['cityId'], $value['countyId'], $value['degree']);
@@ -240,7 +248,11 @@ class AgentController extends AdminController
         $param = think_json_encode(['agentId' => $agentId]);
         $list = $this->lists($url, $param);
         foreach ($list['itemList'] as &$val) {
+            $quantity = http($this->getUrl('statistics_total_users') .$val['orgId'], null, 'get');
+            $val['quantity'] = $quantity['familyQuantity'];
             $val['degree'] = $this->orgAgent($val['orgId'], 'degree');
+            $quantity = http($this->getUrl('statistics_total_users') .$val['orgId'], null, 'get');
+            $val['quantity'] = $quantity['familyQuantity'];
         }
         int_to_string($list['itemList'], ['insType' => C('INS_TYPE')]);
         return $list['itemList'];
