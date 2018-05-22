@@ -22,6 +22,7 @@ class FileController extends AdminController
     public function upload()
     {
         $File = new FileModel();
+
         $info = $File->upload(
             $_FILES,
             C('DOWNLOAD_UPLOAD'),

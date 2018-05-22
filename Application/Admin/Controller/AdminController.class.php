@@ -84,6 +84,7 @@ class AdminController extends Controller
             $this->assign('orgName',$csInfo['orgOrganization']['orgName']);
             $this->assign('orgId',$csInfo['orgOrganization']['orgId']);
             $this->assign('orgType',$csInfo['orgOrganization']['orgType']);
+            $this->assign('psd',$userinfo['password']);
             $this->__set('orgId',$csInfo['orgOrganization']['orgId']);
         }
     }

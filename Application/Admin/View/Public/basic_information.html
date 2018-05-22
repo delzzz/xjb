@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本信息</title>
+    <style>
+        body {
+            background: #f1f1f1;
+        }
+
+        .basic_information .healthInfo {
+            overflow: hidden;
+            transition: .5s;
+
+        }
+
+        .basic_information .moreBtnWrap {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .basic_information .moreBtn {
+            display: inline-block;
+            font-size: 16px;
+            line-height: 1;
+            padding: 8px 15px;
+            background: #E6E9ED;
+            border: 1px solid #c5c4c4;
+            color: #555;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .basic_information>div {
+            padding: 20px;
+            background: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .basic_information .title {
+            color: #999999;
+            margin: 20px 0 30px;
+            font-size: 18px;
+        }
+
+        .basic_information ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        .basic_information li {
+            float: left;
+            list-style: none;
+        }
+
+        .basic_information .list {
+            overflow: hidden;
+        }
+
+        .basic_information .img {
+            float: right;
+            width: 150px;
+            height: 178px;
+            overflow: hidden;
+        }
+
+        .basic_information .info {
+            overflow: hidden;
+        }
+
+        .basic_information .basicInfo>.list {
+            width: 80%;
+        }
+
+        .basic_information .info>.list {
+            width: 80%;
+            float: left;
+        }
+
+        .basic_information .list>li {
+            width: 33%;
+            float: left;
+            padding-bottom: 30px;
+        }
+
+        .basic_information .info>.list>.address {
+            width: 66%;
+        }
+
+        .basic_information .list .instructions {
+            width: 100%;
+        }
+
+        .basic_information .instructions>span {
+            vertical-align: top
+        }
+
+        .basic_information .instructions .textarea {
+            resize: none;
+            width: 80%;
+            min-height: 100px;
+            vertical-align: top;
+            font-size: 14px;
+            padding: 10px;
+            background: #f1f1f1;
+        }
+
+        .basic_information .img>img {
+            width: 100%;
+        }
+
+        .basic_information .warningMessage .list>li {
+            width: 45%;
+        }
+    </style>
+</head>
+
+<body>
+<div class="basic_information">
+    <div>
+        <div class="basicInfo">
+            <p class="title">基本信息</p>
+            <div class="info">
+                <ul class="list">
+                    <li>
+                        <span>老人姓名:</span>
+                        <span class="video_username"></span>
+                    </li>
+                    <li>
+                        <span>性 别:</span>
+                        <span class="video_gender"></span>
+                    </li>
+                    <li>
+                        <span>年 龄:</span>
+                        <span class="video_age"></span>
+                    </li>
+                    <li>
+                        <span>编 号:</span>
+                        <span class="peopleIdentifier"></span>
+                    </li>
+                    <li>
+                        <span>会员卡号:</span>
+                        <span class="peopleIdentifier"></span>
+                    </li>
+                    <li>
+                        <span>医疗保障:</span>
+                        <span class="medicalInsurance"></span>
+                    </li>
+                    <li class="address">
+                        <span>居住住址:</span>
+                        <span class="video_address"></span>
+                    </li>
+                    <li>
+                        <span>电 话:</span>
+                        <span class="video_tel"></span>
+                    </li>
+                    <li class="address">
+                        <span>所属社区服务中心:</span>
+                        <span class="orgName"></span>
+                    </li>
+                    <li>
+                        <span>服务电话:</span>
+                        <span class="service_tel"></span>
+                    </li>
+                </ul>
+                <div class="img">
+                    <img src="__IMG__/user.png" alt="">
+                </div>
+            </div>
+            <ul class="list">
+                <li>
+                    <span>紧急联系人：</span>
+                    <span class="contactName"></span>
+                </li>
+                <li>
+                    <span>关 系:</span>
+                    <span class="relation"></span>
+                </li>
+                <li>
+                    <span>紧急联系人电话:</span>
+                    <span class="urgent_tel"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="healthInfo">
+            <p class="title">健康信息</p>
+            <ul class="list">
+                <li>
+                    <span>健康状况:</span>
+                    <span class="health_situation"></span>
+                </li>
+                <li>
+                    <span>长期用药:</span>
+                    <span class="longTermMedication"></span>
+                </li>
+                <li>
+                    <span>过敏史:</span>
+                    <span class="allergy"></span>
+                </li>
+                <li>
+                    <span>血 型:</span>
+                    <span class="blood_type"></span>
+                </li>
+                <li>
+                    <span>视 力:</span>
+                    <span class="eyesight"></span>
+                </li>
+                <li>
+                    <span>听 力:</span>
+                    <span class="hearing"></span>
+                </li>
+                <li>
+                    <span>其它慢病:</span>
+                    <span class="chronicDisease"></span>
+                </li>
+                <li class="instructions">
+                    <span>用药说明:</span>
+                    <textarea class="textarea" disabled="disabled">12323432343</textarea>
+                </li>
+            </ul>
+        </div>
+        <div class="moreBtnWrap">
+        <span class="moreBtn">
+          查看更多数据
+        </span>
+        </div>
+    </div>
+    <div class="warningMessage">
+        <p class="title">最近报警信息</p>
+        <ul class="list">
+            <li>
+                <span>触发时间:</span>
+                <span class="alarmTime"></span>
+            </li>
+            <li>
+                <span>报警类型:</span>
+                <span class="alarmType"></span>
+            </li>
+            <li>
+                <span>处理结果:</span>
+                <span class="processResult"></span>
+            </li>
+            <li>
+                <span>处理人:</span>
+                <span class="processUserRealName"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+<script src="__VENDOR__/jquery/dist/jquery.min.js"></script>
+<script src="__JS__/web_demo/basic_information.js"></script>
+<script>
+     var peopleId = localStorage.getItem('peopleId')
+    $.ajax({
+        url: "{:U('Userbasicfile/getVideoInfo')}",
+        type: 'GET',
+        data: {
+            'peopleId': peopleId
+        },
+        success: function (res) {
+            var data = eval("(" + res + ")");
+            var basic = data.peopleBasic;
+            var health = data.healthBasic;
+            var org = data.orgOrganization;
+            var contact = data.contactUrgency;
+            var alarm = data.deviceAlarm;
+            if (basic['imagePath'] !== '' && typeof (basic['imagePath']) != "undefined") {
+                $('.basic_information .basicInfo .img img').attr('src', basic['imagePath']);
+            }
+            $('.video_username').text(basic['name']);
+            $(".video_username",window.parent.document).html(basic['name']);
+            var gender = basic['gender'] == 1 ? '女' : '男';
+            $('.basic_information .basicInfo .video_age').text(basic['age']);
+            $('.basic_information .basicInfo .video_gender').text(gender);
+            $('.basic_information .basicInfo .peopleIdentifier').text(basic['peopleIdentifier']);
+            medicalInsurance = ['城镇职工医疗保险', '城镇居民医疗保险', '新型农村合作医疗', '商业保险', '其它'];
+            $('.basic_information .basicInfo .medicalInsurance').text(medicalInsurance[health['medicalInsurance']]);
+            $('.basic_information .basicInfo .video_address').text(basic['adress']);
+            if(basic['imagePath']!==''){
+                $('.basic_information .basicInfo .img img').attr('src', basic['imagePath']);
+            }
+            $('.basic_information .basicInfo .video_tel').text(basic['telephone']);
+            $('.basic_information .basicInfo .orgName').text(org['orgName']);
+            $('.basic_information .basicInfo .service_tel').text(org['telephone']);
+            $('.basic_information .basicInfo .contactName').text(contact['contactName']);
+            $('.basic_information .basicInfo .relation').text(contact['relation']);
+            $('.basic_information .basicInfo .urgent_tel').text(contact['mobile']);
+            var healthStatus = ['健康', '基本健康', '不健康但能自理', '生活不能自理'];
+            $('.basic_information .healthInfo .health_situation').text(healthStatus[basic['healthStatus']]);
+            var longTermMedication = health['longTermMedication'] == 1 ? '是' : '否';
+            $('.basic_information .healthInfo .longTermMedication').text(longTermMedication);
+            $('.basic_information .healthInfo .allergy').text(health['allergy']);
+            var bloodType = ['A型', 'B型', 'AB型', 'O型'];
+            $('.basic_information .healthInfo .blood_type').text(bloodType[health['bloodType']]);
+            $('.basic_information .healthInfo .eyesight').text(health['eyesight']);
+            $('.basic_information .healthInfo .hearing').text(health['hearing']);
+            $('.basic_information .healthInfo .chronicDisease').text(health['chronicDisease']);
+            $('.basic_information .healthInfo .textarea').val(health['medicineInstruction']);
+            $('.basic_information .warningMessage .alarmTime').text(alarm['alarmTime']);
+            var alarmType = ['SOS紧急警报', '呼叫报警'];
+            $('.basic_information .warningMessage .alarmType').text(alarmType[alarm['alarmType']]);
+            var processResult = ['已经通知当地医疗结构', '已经通知亲属、本人', '误触发', '设备损坏', '其他'];
+            $('.basic_information .warningMessage .processResult').text(processResult[alarm['processResult']]);
+            $('.basic_information .warningMessage .processUserRealName').text(alarm['processUserRealName']);
+        }
+    });
+
+
+</script>
+</html>

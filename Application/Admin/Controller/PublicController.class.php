@@ -90,10 +90,11 @@ class PublicController extends \Think\Controller
     //修改密码
     function changePassword(){
         if(isset($_POST['repassword'])){
-            $jsonData = http_post_json(C('INTERFACR_API')['user_update'], json_encode(['userId' => session('user_auth')['userId'],'password'=>md5($_POST['repassword'])]));
+            $jsonData = http_post_json(C('INTERFACR_API')['user_update_password'], json_encode(['userId' => session('user_auth')['userId'],'password'=>$_POST['repassword']]));
             if($jsonData['success']){
                 $this->success('密码更改成功!');
             }
         }
     }
+
 }

@@ -1,0 +1,267 @@
+<extend name="Public/base"/>
+<block name="body">
+    <div class="container body">
+        <div class="main_container">
+            <!--content pages-->
+            <div class="right_col" role="main">
+                <div class="col-md-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2> 老人基本资料</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content row">
+                            <br/>
+                            <div class="form-horizontal form-label-left">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">当前设备报警:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control color-red" disabled="disabled" value="{$data.alarmType_text}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">姓名:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control " disabled="disabled" value="{$data.name}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">电话:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.telephone}" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">居住地址:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.adress}" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">身体情况:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.healthStatus_text}" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">心率:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.hertbeat}" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">呼吸:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.breath}" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">居住情况:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.liveStatus_text}" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">紧急联系人:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.contactName}" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">紧急联系电话:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.contactMobile}" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">与老人关系:</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control" value="{$data.contactRelation}" disabled="disabled" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="x_title clear">
+                                    <br>
+                                    <br>
+                                    <h2> 联系老人</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <button class="btn btn-lg btn-primary" id="rtCall">视频接通</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="x_panel clear">
+                                                <div class="x_content">
+                                                    <table class="table table-bordered text-center table-hover">
+                                                        <thead class="bg-info ">
+                                                        <tr>
+                                                            <th class="text-center">时间</th>
+                                                            <th class="text-center">发生事件</th>
+                                                            <th class="text-center">通话时长</th>
+                                                            <th class="text-center">操作</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <volist name="processMode" id="p">
+                                                            <tr>
+                                                                <td>{:time_format($p['processTime']/1000)}</td>
+                                                                <td>{$p.processMode_text}</td>
+                                                                <td>{$p.processDuration}</td>
+                                                                <td>{$p.processResult_text}</td>
+                                                            </tr>
+                                                        </volist>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="alarmId" value="{$data.alarmId}">
+                                <input type="hidden" name="deviceIdentifier" value="{$data.deviceIdentifier}">
+                                <input id='peopleId' data-id="{$data.peopleId}" type="hidden" value="{$data.peopleId}" name="peopleId">
+
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_title">
+                                        <br>
+                                        <br>
+                                        <h2>处理结果</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <br>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 border-bottom">
+                                        <div class=" col-md-9 col-sm-9 col-xs-12 ">
+                                            <volist name="result_type" id="r">
+                                                <div class="radio col-md-2 col-sm-3 col-xs-12">
+                                                    <label>
+                                                        <input type="radio" name="processResult[]" value="{$key}" class="flat">
+                                                        {$r.name}
+                                                    </label>
+                                                </div>
+                                            </volist>
+                                        </div>
+                                        <div class=" col-md-3 col-sm-3 col-xs-12 text-right">
+                                            <label>
+                                                处理人：
+                                                <span>{$zxNum}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left">
+                                        <br>
+                                        <br>
+                                        <label class="control-label col-md-1 col-sm-1 col-xs-12 text-left">
+                                            其他:
+                                        </label>
+                                        <div class="col-md-11 col-sm-11 col-xs-12">
+                                            <textarea name="processRemark" class="form-control" rows="3" placeholder='备注在2000字以内'></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="x_title clear">
+                                    <br>
+                                    <br>
+                                    <h2>操作</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <br>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
+                                    <button class="btn btn-sm btn-primary btn-deal">已处理</button>
+                                </div>
+
+                                <div class="x_title clear">
+                                    <br>
+                                    <br>
+                                    <h2> 历史报警记录</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel clear">
+                                        <div class="x_content">
+                                            <table class="table table-bordered text-center table-hover">
+                                                <thead class="bg-info ">
+                                                <tr>
+                                                    <th class="text-center">触发时间</th>
+                                                    <th class="text-center">报警类型</th>
+                                                    <th class="text-center">处理结果</th>
+                                                    <th class="text-center">处理人</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <volist name="list" id="l">
+                                                    <tr>
+                                                        <td>{:time_format($l['alarmTime']/1000)}</td>
+                                                        <td>{$l.alarmType_text}</td>
+                                                        <td>{$l.processResult_text.name}</td>
+                                                        <td>{$l.processUserName}</td>
+                                                    </tr>
+                                                </volist>
+                                                </tbody>
+                                            </table>
+                                            {$_page}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script>
+        $('input').attr('ignore', 1);
+        $('.btn-deal').click(function () {
+            $.ajax({
+                type: 'POST',
+                url: "{:U('warning_have_deal')}",
+                data:{
+                    'alarmId':$('input[name="alarmId"]').val(),
+                    'processResult':$('input[name="processResult[]"]:checked').val(),
+                    'processRemark':$('textarea[name="processRemark"]').val(),
+                },
+                success: function (data) {
+                    data = JSON.parse(data)
+                    if(data.code==-1){
+                        alert('保存失败！')
+                    }
+                    else{
+                        location.href='{:U("warning_history",array("alarmType"=>-1))}';
+                    }
+                }
+            });
+        })
+        $('#rtCall').click(function(){
+            localStorage.setItem('peopleId',$('#peopleId').val())
+            call($('#vc_username').val(),$('input[name="deviceIdentifier"]').val());
+        })
+    </script>
+</block>

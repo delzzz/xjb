@@ -15,7 +15,7 @@
                         <div class="x_content row">
                             <br/>
                             <form action="{:U('write')}" method="post" class="form-horizontal form-label-left">
-                                <input name="orgId" type="hidden" value="{$orgId}"/>
+                                <input name="orgId" type="hidden" value="{$peopleBasic.orgId}"/>
                                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">老人姓名:</label>
@@ -346,13 +346,13 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-bottom">
                                         <br>
-                                        <input type="hidden" ignore="1" value="{$peopleBasic.peopleId}" name="peopleId">
+                                        <input id='peopleId' data-id="{$peopleBasic.peopleId}" type="hidden" ignore="1" value="{$peopleBasic.peopleId}" name="peopleId">
                                         <input type="hidden" ignore="1" value="{$peopleDetail.peopleDetailId}"
                                                name="peopleDetailId">
                                         <button type="button" id="editdangan" notdis="1" class="btn btn-danger ">编辑档案
                                         </button>
                                         <if condition="$userType eq 3">
-                                        <button type="button" id="videoBtn" notdis="1" class="btn btn-danger  ">视频呼叫
+                                        <button type="button" id="rtCall" notdis="1" class="btn btn-danger  ">视频呼叫
                                         </button>
                                         <button type="button" id="printBtn" notdis="1" class="btn btn-danger  ">打印
                                         </button>
@@ -498,7 +498,7 @@
                 }
             })
         }else{
-            $("#editdangan,#printBtn,#videoBtn").remove();
+            $("#editdangan,#printBtn,#rtCall").remove();
         }
         $("#editdangan").click(function(){
             $('input,select,textarea,button').each(function(index){
@@ -508,7 +508,7 @@
                     $(this).removeAttr('useredit');
                 }
             });
-            $("#editdangan,#printBtn,#videoBtn").remove()
+            $("#editdangan,#printBtn,#rtCall").remove()
         })
         $("#backBtn").click(function(){
             var nid=$('input[name="peopleId"]').val();
@@ -519,7 +519,12 @@
                 history.back(-1);return false;
             }
 
-        })
+        });
+        //呼出
+        $('#rtCall').click(function(){
+            localStorage.setItem('peopleId',$('#peopleId').val())
+            call($('#vc_username').val(),$('input[name="deviceIdentifier[]"]').eq(0).val());
+        });
 
     </script>
 </block>

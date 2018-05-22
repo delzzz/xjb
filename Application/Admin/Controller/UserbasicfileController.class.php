@@ -3,6 +3,28 @@ namespace Admin\Controller;
 
 class UserbasicfileController extends AdminController
 {
+    //弹窗中信息
+    function getAlertInfo(){
+        if (isset($_GET['deviceIdentifier'])) {
+            $deviceIdentifier = $_GET['deviceIdentifier'];
+            $url = $this->getUrl('video_basic_info');
+            $response = http($url,['userName'=>$deviceIdentifier],'GET');
+            echo json_encode($response['peopleBasic']);
+            exit();
+        }
+    }
+    //视频中老人信息
+    function getVideoInfo()
+    {
+        if (isset($_GET['peopleId'])) {
+           $peopleId = $_GET['peopleId'];
+            $url = $this->getUrl('health_report_info');
+            $response = http($url,['peopleId'=>$peopleId],'GET');
+            echo json_encode($response);
+            exit();
+        }
+    }
+
     function basicfile()
     {
         $pageNo = I('get.p', 1);
@@ -12,7 +34,7 @@ class UserbasicfileController extends AdminController
         } else {
             $request = think_json_encode(['name' => $name]);
         }
-        $url = $this->getUrl('people_query') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE').'&id='.$this->__get('orgId').'&type='.$this->__get('userType');
+        $url = $this->getUrl('people_query') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE') . '&id=' . $this->__get('orgId') . '&type=' . $this->__get('userType');
         $response = $this->lists($url, $request);
         int_to_string($response['itemList'], ['gender' => [0 => '男', 1 => '女'], 'livingStatus' => C('LIVINGSTATUS'), 'economy' => C('ECONOMY')]);
         foreach ($response['itemList'] as &$value) {
@@ -39,8 +61,8 @@ class UserbasicfileController extends AdminController
     {
         $param = $_POST;
         $peopleId = $param['peopleId'];
-        $birth = strlen($param['idNumber'])==15 ? ('19' . substr($param['idNumber'], 6, 6)) : substr($param['idNumber'], 6, 8);
-        $birthDate = substr($birth,0,4).'-'.substr($birth,4,2).'-'.substr($birth,6,2);
+        $birth = strlen($param['idNumber']) == 15 ? ('19' . substr($param['idNumber'], 6, 6)) : substr($param['idNumber'], 6, 8);
+        $birthDate = substr($birth, 0, 4) . '-' . substr($birth, 4, 2) . '-' . substr($birth, 6, 2);
         $peopleBasic = [
             'peopleIdentifier' => $param['peopleIdentifier'],
             'orgId' => $param['orgId'],
@@ -60,7 +82,7 @@ class UserbasicfileController extends AdminController
         ];
         $hobby = '';
         if (!empty($param['hobby'])) {
-            foreach ($param['hobby'] as $key=>$value) {
+            foreach ($param['hobby'] as $key => $value) {
                 $hobby .= $value . ';';
             }
             $hobby = substr($hobby, 0, strlen($hobby) - 1);
@@ -120,31 +142,31 @@ class UserbasicfileController extends AdminController
         $response = http_post_json($url, $request);
         //dump($data);exit();
         if ($response) {
-            $this->success("保存成功",U('basicfile'));
+            $this->success("保存成功", U('basicfile'));
         } else {
             $this->error("保存失败");
         }
     }
+
     //随机数
     function GetRandStr()
     {
-        $chars = array("A", "B", "C", "D", "E", "F", "G","H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R","S", "T", "U", "V", "W", "X", "Y", "Z");
-        $nums = array("0", "1", "2","3", "4", "5", "6", "7", "8", "9");
+        $chars = array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
+        $nums = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
         shuffle($nums);
         shuffle($chars);
         $output = "";
-        for ($i=0; $i<4; $i++)
-        {
+        for ($i = 0; $i < 4; $i++) {
             $output .= $nums[mt_rand(0, 3)];
         }
-        return $chars[0].$output;
+        return $chars[0] . $output;
     }
 
     function newadd()
     {
         $this->meta_title = "老人健康档案信息";
         $identifier = $this->GetRandStr();
-        $this->assign('identifier',$identifier);
+        $this->assign('identifier', $identifier);
         $ethnicity = C('ETHNICITY');
         $education = C('EDUCATION');
         $economy = C('ECONOMY');
@@ -157,7 +179,7 @@ class UserbasicfileController extends AdminController
             $response = http($url, null, 'GET');
             $this->assign('peopleBasic', $response['peopleBasic']);
             $this->assign('peopleDetail', $response['peopleDetail']);
-            if(!empty($response['peopleDetail']['hobby'])){
+            if (!empty($response['peopleDetail']['hobby'])) {
                 $hobby_attr = explode(';', $response['peopleDetail']['hobby']);
                 foreach ($hobby as $key => &$value) {
                     foreach ($hobby_attr as $val) {

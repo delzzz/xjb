@@ -93,6 +93,9 @@ class Qiniu
             'fileBody' => file_get_contents($file['tmp_name'])
         );
         $config = array();
+        $config["Expires"]=3600;
+        $config["saveName"]=$upfile["fileName"];
+        $config["save_name"]=$upfile["fileName"];
         $result = $this->qiniu->upload($config, $upfile);
         $url = $this->qiniu->downlink($key);
         $file['url'] = $url;

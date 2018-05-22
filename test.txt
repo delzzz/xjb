@@ -1,1 +1,1 @@
-http://opqbvrdj2.bkt.clouddn.com/2017-05-17_591c14216218a.jpg
+{"file":{"name":"a.jpg","type":"image\/jpeg","tmp_name":"\/tmp\/phpnPoff1","error":0,"size":41561}}

@@ -137,7 +137,6 @@ return array(
     ],
     /*居住情况*/
     'LIVINGSTATUS' => [
-        '经济来源',
         '一人居',
         '二老居',
         '一人保姆居',
@@ -287,7 +286,7 @@ return array(
     'PROCESS_RESULT_TYPE' =>
         [
             ['name' => '已经通知当地医疗结构 '],
-            ['name' => '已经通知亲属、本人 '],
+            ['name' => '已经通知亲属、本人'],
             ['name' => '误触发'],
             ['name' => '设备损坏'],
             ['name' => '其它']
@@ -295,8 +294,12 @@ return array(
     /*报警类型*/
     'ALARM_TYPE' =>
         [
-            '类型1',
-            '类型2',
+            'SOS紧急警报',
+            '呼叫报警',
+            '呼吸急促',
+            '呼吸缓慢',
+            '心率过快',
+            '心率缓慢'
         ],
 
     'DEVICE_TYPE' => [
@@ -344,6 +347,7 @@ return array(
 
         'get_user' => 'http://' . HOST . '/service/user/get', //获取系统用户信息
         'user_update'=>'http://' . HOST . '/service/user/update',//变更用户信息
+        'user_update_password'=>'http://' . HOST . '/service/user/update/password',//变更用户信息
 
         'del_pic' => 'http://' . HOST . '/service/image/delete/',//删除图片
 
@@ -394,6 +398,7 @@ return array(
         'bmi_add' => 'http://' . HOST . '/service/health/bmi/saveOrUpdate',//bmi添加修改
         'bmi_history' => 'http://' . HOST . '/service/health/bmi/get/all/',//bmi历史
         'bmi_del' => 'http://' . HOST . '/service/health/bmi/delete/',//bmi删除
+        'bmi_latest'=>'http://' . HOST . '/service/health/bmi/latest/get',//最新一条BMI
 
         'get_right' => 'http://' . HOST . '/service/perm/modules/',//获取某个用户所有权限
         'get_auth' => 'http://' . HOST . '/service/perm/modules/support/',//获取权限
@@ -413,6 +418,16 @@ return array(
 
         'statistics_total_users'=>'http://'.HOST.'/service/statistics/org/user/',//根据运营商ID获取用户数
         'statistics_new_users'=>'http://'.HOST.'/service/statistics/org/user/sub/',//运营商新增用户统计
+
+        'video_basic_info'=>'http://'.HOST.'/service/people/info/get',//视频中老人信息
+
+        'health_report_info'=>'http://'.HOST.'/service/health/report/basic/data/get',//健康报告老人基础信息
+        'heart_or_breath'=>'http://'.HOST.'/service/sign/data/querySignStatistics',//心率/呼吸查询
+        'blood_oxygen'=>'http://'.HOST.'/service/health/bloodOxygen/latest/days/get',//血氧
+        'blood_pressure'=>'http://'.HOST.'/service/health/bloodPressure/latest/days/get',//血压
+        'blood_glucose'=> 'http://'.HOST.'/service/health/bloodGlucose/latest/days/get',//血糖
+        'sleep_yesterday'=> 'http://'.HOST.'/service/sign/data/querySleepData',//昨天睡眠
+        'sleep_history'=> 'http://'.HOST.'/service/sign/data/querySleepHistoryData',//历史睡眠
 
     ),
 );

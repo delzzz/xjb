@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>健康数据</title>
+  <script src="__JS__/web_demo/echarts.js"></script>
+  <link href="__BUILD__/css/health_data.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f1f1f1;
+    }
+  </style>
+
+<body>
+<div class="chartsColumn bloodPressure">
+  <div class="title">
+    <p class="name">血 压</p>
+    <select class="select">
+      <option value="7">查看最近7天数据</option>
+      <option value="30">查看最近30天数据</option>
+    </select>
+  </div>
+  <div class="header">
+    <div class="current">
+      <p>7天平均数据 ：</p>
+      <p class="shrinkage">
+        收缩压：
+        <span></span>
+        <strong>（偏高）</strong>
+      </p>
+      <p class="diastolic">
+        舒张压：
+        <span></span>
+        <strong>（偏高）</strong>
+      </p>
+    </div>
+    <ul class='legend'>
+      <li>收缩压(mmHg)</li>
+      <li>舒张压(mmHg)</li>
+    </ul>
+  </div>
+  <div id="bloodPressure" class="chart"></div>
+</div>
+<div class="chartsColumn bloodGlucose">
+  <div class="title">
+    <p class="name">血 糖</p>
+    <select class="select">
+      <option value="7">查看最近7天数据</option>
+      <option value="30">查看最近30天数据</option>
+    </select>
+  </div>
+  <div class="header">
+
+    <div class="current">
+      <p>7天平均数据 ：</p>
+      <p class="before">
+        餐前：
+        <span></span>
+        <strong>（偏高）</strong>
+      </p>
+      <p class="after">
+        餐后：
+        <span></span>
+        <strong>（偏高）</strong>
+      </p>
+    </div>
+    <ul class='legend'>
+      <li>餐前</li>
+      <li>餐后</li>
+    </ul>
+  </div>
+  <div id="bloodGlucose" class="chart"></div>
+</div>
+<div class="chartsColumn bloodOxygen">
+  <div class="title">
+    <p class="name">血 氧</p>
+    <select class="select">
+      <option value="7">查看最近7天数据</option>
+      <option value="30">查看最近30天数据</option>
+    </select>
+  </div>
+  <div class="header">
+    <div class="current">
+      <p>7天平均数据 ： </p>
+      血氧饱和度：
+      <span></span>
+      <strong></strong>
+    </div>
+  </div>
+  <div id="bloodOxygen" class="chart"></div>
+</div>
+<div class="chartsColumn bmi">
+  <div class="title">
+    <p class="name">
+      最近BMI数据(
+      <span></span> ) </p>
+    <!--<p class="status">-->
+      <!--<span>BMI指数：</span>-->
+      <!--<span></span>-->
+      <!--<strong></strong>-->
+    <!--</p>-->
+  </div>
+  <ul class="list">
+    <li class="exp">
+      <span></span>
+      <p>BMI指数：
+        <strong></strong>
+      </p>
+    </li>
+    <li class="height">
+      <span></span>
+      <i>cm</i>
+      <p>身高（厘米）</p>
+    </li>
+    <li class="weight">
+      <span></span>
+      <i>kg</i>
+      <p>体重（公斤）</p>
+    </li>
+  </ul>
+</div>
+</body>
+<script src="__VENDOR__/jquery/dist/jquery.min.js"></script>
+<script src="__JS__/web_demo/health_data.js"></script>
+<script>
+  //var peopleId = $("#peopleId",window.parent.document).data("id");
+  //if(peopleId ==''){
+  var peopleId = localStorage.getItem('peopleId');
+  //}
+  setBloodOxygen(7)
+  setBloodPressure(7)
+  setBloodGlucose(7)
+  _selects.bo.change(function(e) {
+    if (e.target.value == 30) {
+      //查看30天数据
+      _current.boD.text('30天平均数据 ：')
+    } else {
+      //查看7天数据
+      _current.boD.text('7天平均数据 ：')
+    }
+    setBloodOxygen(e.target.value)
+  })
+  _selects.bp.change(function(e) {
+    if (e.target.value == 30) {
+      //查看30天数据
+      _current.bpD.text('30天平均数据 ：')
+    } else {
+      //查看7天数据
+      _current.bpD.text('7天平均数据 ：')
+    }
+    setBloodPressure(e.target.value)
+  })
+  _selects.bg.change(function(e) {
+    if (e.target.value == 30) {
+      //查看30天数据
+      _current.bgD.text('30天平均数据 ：')
+    } else {
+      //查看7天数据
+      _current.bgD.text('7天平均数据 ：')
+    }
+    setBloodGlucose(e.target.value)
+  })
+  function setBloodOxygen(queryType){
+    if(queryType==7){
+      queryType=0;
+    }
+    else{
+      queryType=1;
+    }
+    $.ajax({
+      url: "{:U('Userhealthreport/getBloodOxygen')}",
+      type: 'GET',
+      data: {
+        'peopleId': peopleId,
+        'queryType':queryType, //0：7天数据  1：30天数据
+      },
+      success: function (res) {
+        res = JSON.parse(res)
+        var time = res.dateList|['']
+        var data = res.dataValueList
+        _setOptions.bo(time, data)
+        _setStatus2.bo(res.averageDataValue)
+      }
+    });
+  }
+  function setBloodPressure(queryType){
+    if(queryType==7){
+      queryType=0;
+    }
+    else{
+      queryType=1;
+    }
+    $.ajax({
+      url: "{:U('Userhealthreport/getBloodPressure')}",
+      type: 'GET',
+      data: {
+        'peopleId': peopleId,
+        'queryType':queryType, //0：7天数据  1：30天数据
+      },
+      success: function (res) {
+        res = JSON.parse(res)
+        var highList = res.dataInValueList
+        var lowList = res.dataOutValueList
+        var time = res.dateList|['']
+        _setOptions.bp(time, highList, lowList)
+        _setStatus2.bp(res.averageDataInValue, res.averageDataOutValue)
+      }
+    });
+  }
+  function setBloodGlucose(queryType){
+    if(queryType==7){
+      queryType=0;
+    }
+    else{
+      queryType=1;
+    }
+    $.ajax({
+      url: "{:U('Userhealthreport/getBloodGlucose')}",
+      type: 'GET',
+      data: {
+        'peopleId': peopleId,
+        'queryType':queryType, //0：7天数据  1：30天数据
+      },
+      success: function (res) {
+        res = JSON.parse(res)
+        var time = res.dateList
+        _setOptions.bg(time, res.mealBeforeValueList,res.mealAfterValueList)
+        _setStatus2.bg(res.averageMealAfterValue,res.averageMealBeforeValue)
+      }
+    });
+  }
+  $.ajax({
+    url: "{:U('Userhealthreport/getLatestBMI')}",
+    type: 'GET',
+    data: {
+      'peopleId': peopleId
+    },
+    success: function (res) {
+      var data = eval("(" + res + ")");
+      _setBMI(data.measureTime,data.statusDesc, data.dataBmiValue, data.dataHeightValue, data.dataWeightValue)
+    }
+  })
+</script>
+</html>

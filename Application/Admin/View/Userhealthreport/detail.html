@@ -1,0 +1,634 @@
+<extend name="Public/base"/>
+<block name="style">
+    <style>
+        .title_h {
+            color: #999999;
+            font-size: 28px;
+        }
+
+        .form-control {
+            margin: 10px 0
+        }
+
+        .tab1 td input {
+            text-align: center
+        }
+    </style>
+</block>
+
+<block name="body">
+    <head>
+        <!-- Bootstrap -->
+        <link href="__BUILD__/css/physical_sign_data.css" rel="stylesheet">
+        <link href="__BUILD__/css//health_data.css" rel="stylesheet">
+    </head>
+    <div class="main_container">
+        <!--content pages-->
+        <div class="right_col" role="main">
+            <div class="col-md-12 col-xs-12">
+                <h2 class="title_h">基本信息</h2>
+                <br>
+                <input id="peopleId" value="{$peopleId}" type="hidden">
+                <br>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">老人姓名:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input value="{$basic['name']}" type="text" class="form-control" disabled>
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">性 别:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$basic['gender'] == 1 ? '女' : '男'}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">年 龄:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled value="{$basic['age']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">编 号:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled value="{$basic['peopleIdentifier']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">会员卡号:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled value="{$basic['peopleIdentifier']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">医疗保障:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled value="{$health['medicalInsurance']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">居住地址:</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" class="form-control" disabled value="{$basic['adress']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">电 话:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$basic['telephone']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">紧急联系人:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$contact['contactName']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">关 系:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$contact['relation']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">联系电话:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$contact['mobile']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">所属社区服务:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$org['orgName']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">社区电话:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$org['telephone']}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <img style="width: 180px;height:200px;" src="{$basic['imagePath']|default='__IMG__/user.png'}">
+                </div>
+
+                <div class="clearfix"></div>
+                <h2 class="title_h">健康信息</h2>
+                <br>
+                <br>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">健康状况:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled placeholder="" value="<?php
+                  if($basic['healthStatus']==0)
+                    echo '健康';
+                elseif($basic['healthStatus']==1)
+                echo '基本健康';
+                elseif($basic['healthStatus']==2)
+                echo '不健康但能自理';
+                else
+                echo '生活不能自理';
+                ?>">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">长期用药:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$health['longTermMedication'] ==1?'是':'否'}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">过敏史:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$health['chronicDisease']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">血 型:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$health['bloodType']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">视 力:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled value="{$health['eyesight']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">听 力:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled value="{$health['hearing']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">其他慢病:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$health['chronicDisease']}">
+                        </div>
+                    </div>
+                    <div class="form-horizontal form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">用药说明:</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$health['medicineInstruction']}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <br>
+                    <br>
+                    <h2 class="title_h">健康咨询记录</h2>
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+                        <table class="table table-bordered text-center ">
+                            <thead class="bg-info ">
+                            <tr>
+                                <th class="text-center">录入时间</th>
+                                <th class="text-center">录入人员</th>
+                                <th class="text-center">说明</th>
+                                <th class="text-center">咨询记录</th>
+                            </tr>
+                            </thead>
+                            <tbody class="tab1">
+                            <if condition="$consulting eq null">
+                                <tr>
+                                    <td colspan='4'>
+                                        <input type="text" class="flat form-control" value="暂无记录" disabled placeholder="">
+                                    </td>
+                                </tr>
+                                <else/>
+                                <tr>
+                                    <td>
+                                        <input type="text" class="flat form-control" disabled placeholder="" value='{:time_format($consulting[' createTime']/1000)}' >
+                                    </td>
+                                    <td>
+                                        <input type="text" class="flat form-control" disabled placeholder="" value="{$consulting['entryUserName']}">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="flat form-control" disabled value="{$consulting['remark']}">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="flat form-control" disabled value="{$consulting['consultingDesc']}">
+                                    </td>
+                                </tr>
+                            </if>
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- 图表 -->
+            <div class="col-md-12 col-xs-12">
+                <div class="chartsColumn heartRate">
+                    <div class="before">
+                        <div class="title">
+                            <p class="name">心跳频率</p>
+                            <select class="select">
+                                <option value="0">查看今日数据</option>
+                                <option value="7">查看最近七天数据</option>
+                            </select>
+                        </div>
+                        <div class="header">
+                            <p class="current">
+                                <strong>今日平均心率：</strong>
+                                <span></span> 次/分
+                            </p>
+                            <p class="status">心跳频率：
+                                <span></span>
+                            </p>
+                        </div>
+                        <div id="beforeHeartRate" class="chart"></div>
+                    </div>
+                </div>
+                <div class="chartsColumn breathe">
+                    <div class="before">
+                        <div class="title">
+                            <p class="name">呼吸频率：</p>
+                            <select class="select">
+                                <option value="0">查看今日数据</option>
+                                <option value="7">查看最近七天数据</option>
+                            </select>
+                        </div>
+                        <div class="header">
+                            <p class="current">
+                                <strong>今日平均呼吸：</strong>
+                                <span></span> 次/分
+                            </p>
+                            <p class="status">呼吸频率：
+                                <span></span>
+                            </p>
+                        </div>
+                        <div id="beforeBreathe" class="chart"></div>
+                    </div>
+                </div>
+                <div class="chartsColumn sleep">
+                    <div class="title">
+                        <p class="name">睡眠分析</p>
+                        <select class="select">
+                            <option value="0">查看昨晚数据</option>
+                            <option value="7">查看最近七天数据</option>
+                            <option value="30">查看最近30天数据</option>
+                        </select>
+                    </div>
+                    <div class="header">
+                        <p class="current">
+                            <strong>昨晚睡眠评估：</strong>
+                            <span id="score"></span> 分
+                        </p>
+                        <p class="status">睡眠质量：
+                            <span id="status"></span>
+                        </p>
+                        <ul class='legend'>
+                            <li>深睡</li>
+                            <li>浅睡</li>
+                            <li>清醒</li>
+                        </ul>
+                    </div>
+                    <div id="sleep" class="chart"></div>
+                    <p class="duration">睡眠时长：<span id="sleepTime"></span></p>
+                    <p class="tip">睡眠统计注：睡眠统计的数据大概有5-10左右的误差，数据仅供参考。</p>
+                    <ul class="sleepQuality">
+                        <li>入睡时间：
+                            <span id="fallAsleepTime"></span>
+                        </li>
+                        <li>入睡时长：
+                            <span id="fallAsleepLength"></span>
+                        </li>
+                        <li>深睡时长：
+                            <span id="deepSleepTime"></span>
+                        </li>
+                        <li>浅睡时长：
+                            <span id="shallowSleep"></span>
+                        </li>
+                        <li>清醒次数：
+                            <span id="soberNo"></span>次
+                        </li>
+                        <li>体动次数：
+                            <span id="actionNo"></span>次
+                        </li>
+                    </ul>
+                </div>
+                <div class="chartsColumn bloodPressure">
+                    <div class="title">
+                        <p class="name">血 压</p>
+                        <select class="select">
+                            <option value="7">查看最近7天数据</option>
+                            <option value="30">查看最近30天数据</option>
+                        </select>
+                    </div>
+                    <div class="header">
+                        <div class="current">
+                            <p>7天平均数据 ：</p>
+                            <p class="shrinkage">
+                                收缩压：
+                                <span></span>
+                                <strong>（偏高）</strong>
+                            </p>
+                            <p class="diastolic">
+                                舒张压：
+                                <span></span>
+                                <strong>（偏高）</strong>
+                            </p>
+                        </div>
+                        <ul class='legend'>
+                            <li>收缩压(mmHg)</li>
+                            <li>舒张压(mmHg)</li>
+                        </ul>
+                    </div>
+                    <div id="bloodPressure" class="chart"></div>
+                </div>
+                <div class="chartsColumn bloodGlucose">
+                    <div class="title">
+                        <p class="name">血 糖</p>
+                        <select class="select">
+                            <option value="7">查看最近7天数据</option>
+                            <option value="30">查看最近30天数据</option>
+                        </select>
+                    </div>
+                    <div class="header">
+
+                        <div class="current">
+                            <p>7天平均数据 ：</p>
+                            <p class="before">
+                                餐前：
+                                <span></span>
+                                <strong>（偏高）</strong>
+                            </p>
+                            <p class="after">
+                                餐后：
+                                <span></span>
+                                <strong>（偏高）</strong>
+                            </p>
+                        </div>
+                        <ul class='legend'>
+                            <li>餐前</li>
+                            <li>餐后</li>
+                        </ul>
+                    </div>
+                    <div id="bloodGlucose" class="chart"></div>
+                </div>
+                <div class="chartsColumn bloodOxygen">
+                    <div class="title">
+                        <p class="name">血 氧</p>
+                        <select class="select">
+                            <option value="7">查看最近7天数据</option>
+                            <option value="30">查看最近30天数据</option>
+                        </select>
+                    </div>
+                    <div class="header">
+                        <div class="current">
+                            <p>7天平均数据 ： </p>
+                            血氧饱和度：
+                            <span></span>
+                            <strong></strong>
+                        </div>
+                    </div>
+                    <div id="bloodOxygen" class="chart"></div>
+                </div>
+                <div class="chartsColumn bmi">
+                    <div class="title">
+                        <p class="name">
+                            最近BMI数据(
+                            <span>{$latestBMI['measureTime']}</span> ) </p>
+                    </div>
+                    <ul class="list">
+                        <li class="exp">
+                            <span>{$latestBMI['dataBmiValue']}</span>
+                            <p>BMI指数：
+                                <strong>{$latestBMI['statusDesc']}</strong>
+                            </p>
+                        </li>
+                        <li class="height">
+                            <span>{$latestBMI['dataHeightValue']}</span>
+                            <i>cm</i>
+                            <p>身高（厘米）</p>
+                        </li>
+                        <li class="weight">
+                            <span>{$latestBMI['dataWeightValue']}</span>
+                            <i>kg</i>
+                            <p>体重（公斤）</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script src="__JS__/web_demo/echarts.js"></script>
+    <script src="__JS__/web_demo/health_report_details.js"></script>
+    <script src="__JS__/web_demo/health_data.js"></script>
+
+    <script>
+        _judgeState($('.bmi .exp strong').text(), $('.bmi .exp strong'))
+        setHeartorBreath(1, 0)
+        setHeartorBreath(2, 0)
+        setBloodOxygen(7)
+        setBloodPressure(7)
+        setBloodGlucose(7)
+        setSleep(0)
+        _elements.heartRateSelect.change(function (e) {
+            if (e.target.value == 7) {
+                //查看7天数据
+                _elements.heartRateS.text('7天平均数据 ：')
+            } else {
+                _elements.heartRateS.text('今天平均心率 ：')
+            }
+            setHeartorBreath(1, e.target.value)
+        })
+        _elements.breatheSelect.change(function (e) {
+            if (e.target.value == 7) {
+                //查看7天数据
+                _elements.breatheS.text('7天平均呼吸 ：')
+            } else {
+                _elements.breatheS.text('今日平均呼吸 ：')
+            }
+            setHeartorBreath(2, e.target.value)
+        })
+        _selects.bo.change(function (e) {
+            if (e.target.value == 30) {
+                //查看30天数据
+                _current.boD.text('30天平均数据 ：')
+            } else {
+                //查看7天数据
+                _current.boD.text('7天平均数据 ：')
+            }
+            setBloodOxygen(e.target.value)
+        })
+        _selects.bp.change(function (e) {
+            if (e.target.value == 30) {
+                //查看30天数据
+                _current.bpD.text('30天平均数据 ：')
+            } else {
+                //查看7天数据
+                _current.bpD.text('7天平均数据 ：')
+            }
+            setBloodPressure(e.target.value)
+        })
+        _selects.bg.change(function (e) {
+            if (e.target.value == 30) {
+                //查看30天数据
+                _current.bgD.text('30天平均数据 ：')
+            } else {
+                //查看7天数据
+                _current.bgD.text('7天平均数据 ：')
+            }
+            setBloodGlucose(e.target.value)
+        })
+        _elements.sleepSelect.change(function (e) {
+            if (e.target.value == 30) {
+                //查看7天数据
+                _elements.sleepS.text('30天平均睡眠评估 ：')
+                $('.sleepQuality').hide();
+            } else if (e.target.value == 7) {
+                //查看7天数据
+                _elements.sleepS.text('7天平均睡眠评估 ：')
+                $('.sleepQuality').hide();
+            } else {
+                _elements.sleepS.text('昨晚睡眠评估 ：')
+                $('.sleepQuality').show();
+            }
+            setSleep(e.target.value)
+        })
+        function setHeartorBreath(status, historyData) {
+            $.ajax({
+                url: "{:U('Userhealthreport/getHeartOrBreath')}",
+                type: 'GET',
+                data: {
+                    'peopleId': $('#peopleId').val(),
+                    'status': status, //1心率2呼吸
+                    'historyData': historyData   //0为当天
+                },
+                success: function (res) {
+                    res = JSON.parse(res)
+                    var xAxisData = res.data || ['']
+                    var time = res.time || ['']
+                    if (status == 1) {
+                        _setStatus.heartRate(res.average)
+                        _charts.beforeHeartRateChart.setOption(_charts.beforeHeartRate(time, xAxisData))
+                    }
+                    else {
+                        _setStatus.breathe(res.average)
+                        _charts.beforeBreatheChart.setOption(_charts.beforeBreathe(time, xAxisData))
+                    }
+                }
+            });
+        }
+        function setBloodOxygen(queryType) {
+            if (queryType == 7) {
+                queryType = 0;
+            }
+            else {
+                queryType = 1;
+            }
+            $.ajax({
+                url: "{:U('Userhealthreport/getBloodOxygen')}",
+                type: 'GET',
+                data: {
+                    'peopleId': $('#peopleId').val(),
+                    'queryType': queryType, //0：7天数据  1：30天数据
+                },
+                success: function (res) {
+                    res = JSON.parse(res)
+                    var time = res.dateList || ['']
+                    var data = res.dataValueList
+                    _setOptions.bo(time, data)
+                    _setStatus2.bo(res.averageDataValue)
+                }
+            });
+        }
+        function setBloodPressure(queryType) {
+            if (queryType == 7) {
+                queryType = 0;
+            }
+            else {
+                queryType = 1;
+            }
+            $.ajax({
+                url: "{:U('Userhealthreport/getBloodPressure')}",
+                type: 'GET',
+                data: {
+                    'peopleId': $('#peopleId').val(),
+                    'queryType': queryType, //0：7天数据  1：30天数据
+                },
+                success: function (res) {
+                    res = JSON.parse(res)
+                    var highList = res.dataInValueList
+                    var lowList = res.dataOutValueList
+                    var time = res.dateList || ['']
+                    _setOptions.bp(time, highList, lowList)
+                    _setStatus2.bp(res.averageDataInValue, res.averageDataOutValue)
+                }
+            });
+        }
+        function setBloodGlucose(queryType) {
+            if (queryType == 7) {
+                queryType = 0;
+            }
+            else {
+                queryType = 1;
+            }
+            $.ajax({
+                url: "{:U('Userhealthreport/getBloodGlucose')}",
+                type: 'GET',
+                data: {
+                    'peopleId': $('#peopleId').val(),
+                    'queryType': queryType, //0：7天数据  1：30天数据
+                },
+                success: function (res) {
+                    res = JSON.parse(res)
+                    var time = res.dateList || ['']
+                    _setOptions.bg(time, res.mealBeforeValueList, res.mealAfterValueList)
+                    _setStatus2.bg(res.averageMealAfterValue, res.averageMealBeforeValue)
+                }
+            });
+        }
+
+        function setSleep(queryType) {
+            $.ajax({
+                url: "{:U('Userhealthreport/getSleep')}",
+                type: 'GET',
+                data: {
+                    'peopleId': $('#peopleId').val(),
+                    'queryType': queryType, //0昨天
+                },
+                success: function (res) {
+                    res = JSON.parse(res)
+                    var sleepInfo = res['sleepInfo']
+                    $('#score').text(res.score)
+                    $('#status').text(res.status)
+                    $('#sleepTime').text(res.sleepTime)
+                    if (queryType > 0) {
+                        var time = _getSleepDate(sleepInfo);
+                        var deep = _getSleepDuration(sleepInfo, 'seepSleep')
+                        var simple = _getSleepDuration(sleepInfo, 'shallowSleep')
+                        var wake = _getSleepDuration(sleepInfo, 'soberSleep')
+                        _charts.sleepChart.setOption(_charts.beforeSleep(time, deep, simple, wake))
+                    }
+                    else {
+                        $('#fallAsleepLength').text(res.fallAsleepLength)
+                        $('#fallAsleepTime').text(res.fallAsleepTime)
+                        $('#deepSleepTime').text(res.deepSleepTime)
+                        $('#shallowSleep').text(res.shallowSleep)
+                        $('#soberNo').text(res.soberNo)
+                        $('#actionNo').text(res.actionNo)
+                        _charts.sleepChart.setOption(_charts.sleep(sleepInfo))
+                    }
+                }
+            });
+        }
+    </script>
+</block>

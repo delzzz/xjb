@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>体征数据</title>
+  <script src="__JS__/web_demo/socket.io.js"></script>
+  <script src="__JS__/web_demo/echarts.js"></script>
+  <link href="__BUILD__/css/physical_sign_data.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f1f1f1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="chartsColumn heartRate">
+    <div class="latest">
+      <p class="name">心跳频率</p>
+      <div class="header">
+        <p class="current">当前实时心率：
+          <span></span> 次/分
+        </p>
+        <p class="status">心率频率：
+          <span></span>
+        </p>
+      </div>
+      <div id="heartRate" class="chart"></div>
+    </div>
+
+    <div class="before">
+      <div class="header">
+        <p class="current">
+          <strong>今日平均心率：</strong>
+          <span></span> 次/分
+        </p>
+        <p class="status">心率频率：
+          <span></span>
+        </p>
+        <select class="select">
+          <option value="0">查看今日数据</option>
+          <option value="7">查看最近七天数据</option>
+        </select>
+      </div>
+      <div id="beforeHeartRate" class="chart"></div>
+    </div>
+    <div class="moreBtnWrap">
+      <span class="moreBtn">
+        查看更多数据
+      </span>
+    </div>
+  </div>
+  <div class="chartsColumn breathe">
+    <div class="latest">
+      <p class="name">呼吸频率</p>
+      <div class="header">
+        <p class="current">当前实时呼吸：
+          <span></span> 次/分
+        </p>
+        <p class="status">呼吸频率
+          <span></span>
+        </p>
+      </div>
+      <div id="breathe" class="chart"></div>
+    </div>
+    <div class="before">
+      <div class="header">
+        <p class="current">
+          <strong>今日平均呼吸：</strong>
+          <span></span> 次/分
+        </p>
+        <p class="status">心率频率：
+          <span></span>
+        </p>
+        <select class="select">
+          <option value="0">查看今日数据</option>
+          <option value="7">查看最近七天数据</option>
+        </select>
+      </div>
+      <div id="beforeBreathe" class="chart"></div>
+    </div>
+    <div class="moreBtnWrap">
+      <span class="moreBtn">
+        查看更多数据
+      </span>
+    </div>
+  </div>
+  <div class="chartsColumn sleep">
+    <div class="title">
+      <p class="name">睡眠分析</p>
+      <select class="select">
+        <option value="0">查看昨晚数据</option>
+        <option value="7">查看最近七天数据</option>
+        <option value="30">查看最近30天数据</option>
+      </select>
+    </div>
+    <div class="header">
+      <p class="current">
+        <strong>昨晚睡眠评估：</strong>
+        <span id="score"></span> 分
+      </p>
+      <p class="status">睡眠质量：
+        <span id="status"></span>
+      </p>
+      <ul class='legend'>
+        <li>深睡</li>
+        <li>浅睡</li>
+        <li>清醒</li>
+      </ul>
+    </div>
+    <div id="sleep" class="chart"></div>
+    <p class="duration">睡眠时长：<span id="sleepTime"></span></p>
+    <p class="tip">睡眠统计注：睡眠统计的数据大概有5-10左右的误差，数据仅供参考。</p>
+    <ul class="sleepQuality">
+      <li>入睡时间：
+        <span id="fallAsleepTime"></span>
+      </li>
+      <li>入睡时长：
+        <span id="fallAsleepLength"></span>
+      </li>
+      <li>深睡时长：
+        <span id="deepSleepTime"></span>
+      </li>
+      <li>浅睡时长：
+        <span id="shallowSleep"></span>
+      </li>
+      <li>清醒次数：
+        <span id="soberNo"></span>次
+      </li>
+      <li>体动次数：
+        <span id="actionNo"></span>次
+      </li>
+    </ul>
+  </div>
+</body>
+<script src="__VENDOR__/jquery/dist/jquery.min.js"></script>
+<script src="__JS__/web_demo/physical_sign_data.js"></script>
+<script src="__JS__/web_demo/physical_scoket.js"></script>
+<script>
+  //var peopleId = $("#peopleId",window.parent.document).data("id");
+  //if(peopleId ==''){
+   var peopleId = localStorage.getItem('peopleId');
+  //}
+  setHeartorBreath(1,0)
+  setHeartorBreath(2,0)
+  setSleep(0)
+  _elements.heartRateSelect.change(function(e) {
+    if (e.target.value == 7) {
+      //查看7天数据
+      _elements.heartRateS.text('7天平均数据 ：')
+    } else {
+      _elements.heartRateS.text('今天平均心率 ：')
+    }
+    setHeartorBreath(1,e.target.value)
+  })
+
+  _elements.breatheSelect.change(function(e) {
+    if (e.target.value == 7) {
+      //查看7天数据
+      _elements.breatheS.text('7天平均呼吸 ：')
+    } else {
+      _elements.breatheS.text('今日平均呼吸 ：')
+    }
+    setHeartorBreath(2,e.target.value)
+  })
+  _elements.sleepSelect.change(function (e) {
+    if (e.target.value == 30) {
+      //查看7天数据
+      _elements.sleepS.text('30天平均睡眠评估 ：')
+      $('.sleepQuality').hide();
+    } else if (e.target.value == 7) {
+      //查看7天数据
+      _elements.sleepS.text('7天平均睡眠评估 ：')
+      $('.sleepQuality').hide();
+    } else {
+      _elements.sleepS.text('昨晚睡眠评估 ：')
+      $('.sleepQuality').show();
+    }
+    setSleep(e.target.value)
+  })
+  function setHeartorBreath(status,historyData){
+    $.ajax({
+      url: "{:U('Userhealthreport/getHeartOrBreath')}",
+      type: 'GET',
+      data: {
+        'peopleId': peopleId,
+        'status':status, //1心率2呼吸
+        'historyData': historyData   //0为当天
+      },
+      success: function (res) {
+        res = JSON.parse(res)
+        var xAxisData = res.data
+        var time = res.time
+        if(status==1){
+          _setStatus.heartRate(res.average)
+          _charts.beforeHeartRateChart.setOption(_charts.beforeHeartRate(time, xAxisData))
+        }
+        else {
+          _setStatus.breathe(res.average)
+          _charts.beforeBreatheChart.setOption(_charts.beforeBreathe(time, xAxisData))
+        }
+      }
+    });
+  }
+  function setSleep(queryType) {
+    $.ajax({
+      url: "{:U('Userhealthreport/getSleep')}",
+      type: 'GET',
+      data: {
+        'peopleId': peopleId,
+        'queryType': queryType, //0昨天
+      },
+      success: function (res) {
+        res = JSON.parse(res)
+        var sleepInfo = res['sleepInfo']
+        $('#score').text(res.score)
+        $('#status').text(res.status)
+        $('#sleepTime').text(res.sleepTime)
+        if (queryType > 0) {
+          var time = _getSleepDate(sleepInfo);
+          var deep = _getSleepDuration(sleepInfo, 'seepSleep')
+          var simple = _getSleepDuration(sleepInfo, 'shallowSleep')
+          var wake = _getSleepDuration(sleepInfo, 'soberSleep')
+          _charts.sleepChart.setOption(_charts.beforeSleep(time, deep, simple, wake))
+        }
+        else {
+          $('#fallAsleepLength').text(res.fallAsleepLength)
+          $('#fallAsleepTime').text(res.fallAsleepTime)
+          $('#deepSleepTime').text(res.deepSleepTime)
+          $('#shallowSleep').text(res.shallowSleep)
+          $('#soberNo').text(res.soberNo)
+          $('#actionNo').text(res.actionNo)
+          console.log(_charts)
+          _charts.sleepChart.setOption(_charts.sleep(sleepInfo))
+        }
+      }
+    });
+  }
+</script>
+</html>

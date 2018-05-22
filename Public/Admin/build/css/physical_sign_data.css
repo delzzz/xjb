@@ -1,0 +1,169 @@
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.chartsColumn {
+  padding: 20px;
+  border: 1px solid #f2f2f2;
+  margin-bottom: 20px;
+  background: #ffffff;
+}
+
+.chartsColumn .chart {
+  width: 100%;
+  height: 300px;
+}
+
+.chartsColumn .name {
+  font-size: 16px;
+  color: #999999;
+  margin: 0;
+}
+
+.chartsColumn .title {
+  overflow: hidden;
+}
+
+.chartsColumn .title .name {
+  float: left;
+}
+
+.chartsColumn .title .select {
+  float: right;
+  margin-top: 0px;
+}
+
+.chartsColumn .select {
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+.chartsColumn > .before {
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.chartsColumn .header {
+  overflow: hidden;
+}
+.chartsColumn .header .select {
+  float: right;
+}
+.chartsColumn .header > p {
+  float: left;
+  width: 37%;
+}
+
+.chartsColumn .header span {
+  font-size: 30px;
+  color: #999999;
+}
+
+.chartsColumn .header strong {
+  font-weight: normal;
+}
+
+.chartsColumn .moreBtnWrap {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.chartsColumn .moreBtn {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1;
+  padding: 8px 15px;
+  background: #e6e9ed;
+  border: 1px solid #c5c4c4;
+  color: #555;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.heartRate .header .nomal {
+  color: rgba(51, 153, 255, 1);
+}
+
+.heartRate .header .warning {
+  color: rgba(255, 204, 0, 1);
+}
+
+.heartRate .header .danger {
+  color: rgba(255, 102, 0, 1);
+}
+
+.breathe .header .nomal {
+  color: rgba(51, 204, 153, 1);
+}
+
+.breathe .header .warning {
+  color: rgba(255, 204, 0, 1);
+}
+
+.breathe .header .danger {
+  color: rgba(255, 102, 0, 1);
+}
+
+.sleep .legend {
+  float: right;
+  margin-top: 30px;
+  margin-right: 10px;
+}
+
+.sleep .legend > li {
+  display: inline-block;
+}
+
+.sleep .legend > li::before {
+  content: '';
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+}
+
+.sleep .legend > li:nth-of-type(1):before {
+  background: rgba(102, 153, 153, 1);
+}
+
+.sleep .legend > li:nth-of-type(2):before {
+  background: rgba(102, 204, 255, 1);
+}
+
+.sleep .legend > li:nth-of-type(3):before {
+  background: rgba(102, 255, 255, 1);
+}
+
+.sleep .header .status > span {
+  color: #6699ff;
+}
+
+.sleep .header .duration {
+  font-size: 20px;
+}
+
+.sleep .tip {
+  color: #999999;
+}
+
+.sleep .duration {
+  font-size: 20px;
+}
+
+.sleepQuality {
+  overflow: hidden;
+}
+
+.sleepQuality > li {
+  float: left;
+  padding-right: 30px;
+  margin-bottom: 10px;
+}
+
+.sleepQuality > li > span {
+  display: inline-block;
+  font-size: 22px;
+}

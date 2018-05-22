@@ -15,7 +15,7 @@
                         <div class="x_content row">
                             <br/>
 
-                            <form class="form-horizontal form-label-left" method="post" action="{:U('warning_have_deal')}">
+                            <div class="form-horizontal form-label-left">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">当前设备报警:</label>
@@ -69,7 +69,7 @@
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">居住地址:</label>
 
                                         <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <input type="text" class="form-control" value="上海" disabled="disabled"
+                                            <input type="text" class="form-control" value="{$data.adress}" disabled="disabled"
                                                    placeholder="">
                                         </div>
                                     </div>
@@ -176,8 +176,7 @@
                                     <button class="btn btn-sm btn-danger" style="">视频接通</button>
                                     <button class="btn btn-sm btn-danger" style="">联系老人</button>
                                     <button class="btn btn-sm btn-danger" style="">联系亲属</button>
-                                    <button type="submit" class="btn btn-sm btn-danger ajax-post"
-                                            target-form="form-label-left">已处理
+                                    <button type="submit" class="btn btn-sm btn-danger btn-deal">已处理
                                     </button>
                                     </if>
                                     <button class="btn btn-sm btn-danger"
@@ -223,9 +222,7 @@
 
                                             <div class="col-md-11 col-sm-11 col-xs-12">
                                                 <textarea <if condition="$status eq 1">disabled</if> name="processRemark" class="form-control" rows="3"
-                                                          placeholder='备注在2000字以内'>
-                                                    {$data.processRemark}
-                                                </textarea>
+                                                          placeholder='备注在2000字以内'>{$data.processRemark}</textarea>
                                             </div>
                                         </div>
                                     <div class="x_title clear">
@@ -265,12 +262,36 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
+</block>
+<block name="script">
+    <script>
+        $('input').attr('ignore', 1);
+        $('.btn-deal').click(function () {
+            $.ajax({
+                type: 'POST',
+                url: "{:U('warning_have_deal')}",
+                data:{
+                    'alarmId':$('input[name="alarmId"]').val(),
+                    'processResult':$('input[name="processResult[]"]:checked').val(),
+                    'processRemark':$('textarea[name="processRemark"]').val(),
+                },
+                success: function (data) {
+                    data = JSON.parse(data)
+                    if(data.code==-1){
+                        alert('保存失败！')
+                    }
+                    else{
+                        location.href='{:U("warning_history")}';
+                    }
+                }
+            });
+        })
+    </script>
 </block>

@@ -11,6 +11,7 @@ class QiniuStorage
 
     public function __construct($config)
     {
+
         $this->sk = $config['secrectKey'];
         $this->ak = $config['accessKey'];
         $this->domain = $config['domain'];
@@ -75,7 +76,9 @@ class QiniuStorage
 
     public function upload($config, $file)
     {
+
         $uploadToken = $this->UploadToken($this->sk, $this->ak, $config);
+
 
         $url = "{$this->QINIU_UP_HOST}";
         $mimeBoundary = md5(microtime());
@@ -87,7 +90,7 @@ class QiniuStorage
             'key' => $config['saveName'] ? $config['save_name'] : $file['fileName'],
         );
 
-        if (is_array($config['custom_fields']) && $config['custom_fields'] !== array()) {
+        if (isset($config['custom_fields']) && $config['custom_fields'] !== array()) {
             $fields = array_merge($fields, $config['custom_fields']);
         }
 
@@ -108,9 +111,9 @@ class QiniuStorage
         array_push($data, 'Content-Type: application/octet-stream');
         array_push($data, '');
         array_push($data, $fileBody);
-
         array_push($data, '--' . $mimeBoundary . '--');
         array_push($data, '');
+
 
         $body = implode("\r\n", $data);
         $response = $this->request($url, 'POST', $header, $body);
