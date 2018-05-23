@@ -1,8 +1,7 @@
 'use strict'
 var DEVICE_CODE = localStorage.getItem('DEVICE_CODE')
-// var DEVICE_CODE = 'N1705JY25874E'
-// DEVICE_CODE = 'SIGN_DATA'
-//var socket = io.connect('http://192.168.1.107:3001')
+//DEVICE_CODE = 'N1705JY25874E'
+//var socket = io.connect('http://127.0.0.1:3001')
 var socket = io.connect('http://192.168.1.245:877')
 var _socketCharts = {}
 _socketCharts.max = 10
@@ -124,11 +123,6 @@ _socketCharts.breatheOption = {
   legend: {
     data: ['']
   },
-  dataZoom: {
-    show: false,
-    start: 0,
-    end: 100
-  },
   xAxis: [
     {
       type: 'category',
@@ -217,16 +211,21 @@ _socketCharts.breatheOption = {
 }
 
 socket.on('/push/cishuo/' + DEVICE_CODE, function(res) {
+  console.log(res)
+
   var res = JSON.parse(res)
+
   heartRateStatus(_socketCharts.heartRateStatus, _socketCharts.heartRateCurrent)
+
+  breatheStatus(_socketCharts.breatheStatus, _socketCharts.breatheCurrent)
+  if (res.breathing == 0) res.breathing = 2
+
+  if (res.heartRate == 0) res.heartRate = 2
 
   shift(_socketCharts.heartRateXAxisData, _socketCharts.heartRateTime)
   _socketCharts.heartRateXAxisData.push(res.heartRate)
   _socketCharts.heartRateTime.push(res.timeStr)
   _socketCharts.heartRateChart.setOption(_socketCharts.heartRateOption)
-
-  breatheStatus(_socketCharts.breatheStatus, _socketCharts.breatheCurrent)
-
   shift(_socketCharts.breatheXAxisData, _socketCharts.breatheTime)
   _socketCharts.breatheXAxisData.push(res.breathing)
   _socketCharts.breatheTime.push(res.timeStr)
@@ -239,7 +238,7 @@ socket.on('/push/cishuo/' + DEVICE_CODE, function(res) {
     }
   }
   function heartRateStatus(status, current) {
-    if (res.breathing == 0) {
+    if (res.heartRate == 0) {
       current.attr('class', '')
       status.attr('class', '')
       status.text('-')

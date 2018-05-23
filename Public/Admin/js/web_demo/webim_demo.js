@@ -91,7 +91,7 @@ if (userType == 3) {
               localStorage.setItem('peopleId',data['peopleId'])
               $('.inBound .alarm_username').text(data['name'])
               $('.inBound .video_age').text(data['age'])
-              if(basic['imagePath'] !== '' && typeof (basic['imagePath']) != "undefined"){
+              if(data['imagePath'] !== '' && typeof (data['imagePath']) != "undefined"){
                 $('.inBound .usePic').attr('src',data['imagePath'])
               }
             }
