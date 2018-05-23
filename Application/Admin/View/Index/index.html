@@ -27,7 +27,7 @@
                         <div>老人基础档案</div>
                     </div>
                 </a>
-                <a href="{:U('Warning/warning_current')}" class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a href="{:U('Warning/warning_history')}" class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="box_sm text-center bg_3">
                         <img src="__IMG__/cishoo/bk-icon-3.png">
                         <div>设备报警</div>
@@ -64,4 +64,19 @@
             </div>
         </div>
     </div>
+</block>
+<block name="script">
+    <script>
+        $('.top_tiles a').hide();
+        $("#sidebar-menu .side-menu li").each(function(i,item){
+            var title = $(this).find('a font').text()
+
+            $('.top_tiles a').each(function(i,item){
+                var ttl = $(this).find('.box_sm div').text()
+                if(title==ttl){
+                    $(this).show()
+                }
+            })
+        });
+    </script>
 </block>

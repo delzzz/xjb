@@ -48,7 +48,8 @@
                             <volist name="menu" id="m">
                                 <li>
                                     <a <if condition="empty($m['childs'])">href="{:U($m['moduleUrl'])}"</if>>
-                                        <div class="left_icon1" style="background: url('__IMG__/cishoo/{$m.iconPath}.png') no-repeat center 100%;"></div>{$m.moduleName}
+                                        <div class="left_icon1" style="background: url('__IMG__/cishoo/{$m.iconPath}.png') no-repeat center 100%;"></div>
+                                    <font>{$m.moduleName}</font>
                                     <if condition="!empty($m['childs'])">
                                             <span class="fa " style=""></span>
                                         </if>
