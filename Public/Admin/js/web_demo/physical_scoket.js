@@ -21,6 +21,15 @@ _socketCharts.heartRateOption = {
     bottom: '2%',
     containLabel: true
   },
+  // dataZoom: {
+  //   type: 'slider',
+  //   xAxisIndex: 0,
+  //   filterMode: 'none',
+  //   zoomLock: true,
+  //   show: true,
+  //   startValue: _socketCharts.heartRateTime.length - 10
+  //   //endValue: _socketCharts.breatheXAxisData.length
+  // },
   xAxis: [
     {
       type: 'category',
@@ -93,15 +102,19 @@ _socketCharts.heartRateOption = {
           'rgba(255, 204, 0, 1)',
           'rgba(255, 102, 0, 1)'
         ]
-        if (params.value <= 19 || params.value > 140) {
-          return colorList[2]
-        } else if (
-          (params.value >= 20 && params.value <= 59) ||
-          (params.value >= 101 && params.value <= 140)
-        ) {
-          return colorList[1]
-        } else {
+        if (params.value == 2) {
           return colorList[0]
+        } else {
+          if (params.value <= 19 || params.value > 140) {
+            return colorList[2]
+          } else if (
+            (params.value >= 20 && params.value <= 59) ||
+            (params.value >= 101 && params.value <= 140)
+          ) {
+            return colorList[1]
+          } else {
+            return colorList[0]
+          }
         }
       }
     }
@@ -120,6 +133,16 @@ _socketCharts.breatheOption = {
     bottom: '2%',
     containLabel: true
   },
+  // dataZoom: {
+  //   type: 'inside',
+  //   xAxisIndex: 0,
+  //   filterMode: 'none',
+  //   zoomLock: true,
+  //   show: true,
+  //   startValue:
+  //     _socketCharts.breatheXAxisData[_socketCharts.breatheXAxisData.length - 10]
+  //   //endValue: _socketCharts.breatheXAxisData.length
+  // },
   legend: {
     data: ['']
   },
@@ -194,16 +217,20 @@ _socketCharts.breatheOption = {
           'rgba(255, 204, 0, 1)',
           'rgba(255, 102, 0, 1)'
         ]
-        if (params.value <= 11 || params.value > 25) {
-          return colorList[2]
-        } else if (
-          (params.value >= 12 && params.value <= 15) ||
-          (params.value >= 21 && params.value <= 24)
-        ) {
-          // console.log(params.value)
-          return colorList[1]
-        } else {
+        if (params.value == 1) {
           return colorList[0]
+        } else {
+          if (params.value <= 11 || params.value > 25) {
+            return colorList[2]
+          } else if (
+            (params.value >= 12 && params.value <= 15) ||
+            (params.value >= 21 && params.value <= 24)
+          ) {
+            // console.log(params.value)
+            return colorList[1]
+          } else {
+            return colorList[0]
+          }
         }
       }
     }
@@ -212,13 +239,12 @@ _socketCharts.breatheOption = {
 
 socket.on('/push/cishuo/' + DEVICE_CODE, function(res) {
   console.log(res)
-
   var res = JSON.parse(res)
 
   heartRateStatus(_socketCharts.heartRateStatus, _socketCharts.heartRateCurrent)
 
   breatheStatus(_socketCharts.breatheStatus, _socketCharts.breatheCurrent)
-  if (res.breathing == 0) res.breathing = 2
+  if (res.breathing == 0) res.breathing = 1
 
   if (res.heartRate == 0) res.heartRate = 2
 
@@ -237,11 +263,12 @@ socket.on('/push/cishuo/' + DEVICE_CODE, function(res) {
       time.shift()
     }
   }
+
   function heartRateStatus(status, current) {
     if (res.heartRate == 0) {
       current.attr('class', '')
       status.attr('class', '')
-      status.text('-')
+      status.text('无数据')
       current.text('-')
     } else {
       if (res.heartRate <= 19 || res.heartRate > 140) {
@@ -275,7 +302,7 @@ socket.on('/push/cishuo/' + DEVICE_CODE, function(res) {
     if (res.breathing == 0) {
       current.attr('class', '')
       status.attr('class', '')
-      status.text('-')
+      status.text('无数据')
       current.text('-')
     } else {
       if (res.breathing <= 11 || res.breathing > 25) {
