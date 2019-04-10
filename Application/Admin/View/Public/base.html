@@ -35,6 +35,7 @@
     <div class="main_container">
         <input id="vc_psd" type="hidden" value="{$psd}" />
         <input id="vc_username" type="hidden" value="{$zxNum}" />
+        <input id="host" type="hidden" value="{$host}" />
         <!--left-->
         <div class="col-md-3 wsh_left left_col">
             <div class="left_col scroll-view">
@@ -274,13 +275,13 @@
                         <div class="x_content">
                             <ul id="webImTab" class="nav nav-tabs bar_tabs">
                                 <li class="active">
-                                    <a data-src='basic_information' href="#basic_information" id="home-tab">基本信息</a>
+                                    <a data-src='basic_information' href="javascript:;" id="home-tab">基本信息</a>
                                 </li>
                                 <li>
-                                    <a data-src='physical_sign_data' href="#physical_sign_data" id="profile-tab">体征数据</a>
+                                    <a data-src='physical_sign_data' href="javascript:;" id="profile-tab">体征数据</a>
                                 </li>
                                 <li>
-                                    <a data-src='health_data' href="#health_data" id="profile-tab2">健康数据</a>
+                                    <a data-src='health_data' href="javascript:;" id="profile-tab2">健康数据</a>
                                 </li>
                             </ul>
                         </div><!--/Application/Admin/View/Public/basic_information.html-->
@@ -627,11 +628,12 @@
 //                $(this).hide();
 //            }
 //        }
-        if($('#h_userType').val()!=3 && $('#h_userType').val()!=0){
+        //if($('#h_userType').val()!=3 && $('#h_userType').val()!=0){
             if($(this).children('a').text().indexOf('当前报警记录')>=0){
                 $(this).hide();
             }
-        }
+        //}
+
     });
 
 

@@ -61,7 +61,7 @@
                                 <td class=" ">{$list['peopleGnder']==0?男:女}</td>
                                 <td class=" ">{$list.peopleAge}</td>
                                 <td class=" ">{$list.drugName}</td>
-                                <td class=" ">{$list.dose}{$list.doseUnit}</td>
+                                <td class=" ">{$list.dose}{$doseUnit[$list['doseUnit']]}</td>
                                 <volist name="list['triggerTimes']" id="ttimes" offset="0" length="2">
                                     <td>
                                         {$ttimes}

@@ -33,6 +33,7 @@ class AdminController extends Controller
         $orgAgent = $this->orgAgent();
         $degree = $orgAgent['degree'];
         $this->assign('h_degree',$degree);
+        $this->assign('host',HOST);
         $url = C('INTERFACR_API')['get_user'];
         $userinfo = session('user_auth');
         $User = http($url, ['userName' => $userinfo['userName']], 'GET');

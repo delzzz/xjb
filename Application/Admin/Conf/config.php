@@ -7,7 +7,7 @@
 // | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.thinkphp.cn>
 // +----------------------------------------------------------------------
 
-define('HOST', '192.168.1.250:8080');
+define('HOST', '192.168.1.244:8080');
 /**
  * 前台配置文件
  * 所有除开系统级别的前台配置
@@ -318,6 +318,13 @@ return array(
         ['name' => '急救设施'],
         ['name' => '拥有坐席']
     ],
+    'DOSE_UNIT' => [
+        '粒',
+        '片',
+        '袋',
+        '颗',
+        '瓶'
+    ],
 
     /*接口配置*/
     'INTERFACR_API' => array(
@@ -423,6 +430,7 @@ return array(
 
         'health_report_info'=>'http://'.HOST.'/service/health/report/basic/data/get',//健康报告老人基础信息
         'heart_or_breath'=>'http://'.HOST.'/service/sign/data/querySignStatistics',//心率/呼吸查询
+        'five_heart_or_breath'=>'http://'.HOST.'/service/doctor/five/sign',//心率/呼吸查询
         'blood_oxygen'=>'http://'.HOST.'/service/health/bloodOxygen/latest/days/get',//血氧
         'blood_pressure'=>'http://'.HOST.'/service/health/bloodPressure/latest/days/get',//血压
         'blood_glucose'=> 'http://'.HOST.'/service/health/bloodGlucose/latest/days/get',//血糖

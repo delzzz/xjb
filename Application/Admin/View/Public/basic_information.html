@@ -300,8 +300,9 @@
             $('.basic_information .healthInfo .hearing').text(health['hearing']);
             $('.basic_information .healthInfo .chronicDisease').text(health['chronicDisease']);
             $('.basic_information .healthInfo .textarea').val(health['medicineInstruction']);
-            $('.basic_information .warningMessage .alarmTime').text(alarm['alarmTime']);
-            var alarmType = ['SOS紧急警报', '呼叫报警'];
+            $('.basic_information .warningMessage .alarmTime').text(formatDate(alarm['alarmTime']));
+
+            var alarmType = ['SOS紧急警报','呼叫报警','呼吸急促','呼吸缓慢','心率过快','心率缓慢'];
             $('.basic_information .warningMessage .alarmType').text(alarmType[alarm['alarmType']]);
             var processResult = ['已经通知当地医疗结构', '已经通知亲属、本人', '误触发', '设备损坏', '其他'];
             $('.basic_information .warningMessage .processResult').text(processResult[alarm['processResult']]);
@@ -310,5 +311,46 @@
     });
 
 
+
+
+     function formatDate(unixTime, isFull=true, timeZone, isCheckTime=true) {
+         if (typeof (timeZone) == 'number') {
+             unixTime = parseInt(unixTime) + parseInt(timeZone) * 60 * 60;
+         }
+         var time = new Date(unixTime);
+         var ymdhis = "";
+
+         if (isCheckTime === true) {
+             ymdhis += time.getUTCFullYear() + "-";
+             ymdhis += formatDateCheckTime((time.getUTCMonth() + 1)) + "-";
+             ymdhis += formatDateCheckTime(time.getUTCDate());
+             if (isFull === true) {
+                 ymdhis += " " + formatDateCheckTime(time.getUTCHours()) + ":";
+                 ymdhis += formatDateCheckTime(time.getUTCMinutes()) + ":";
+                 ymdhis += formatDateCheckTime(time.getUTCSeconds());
+
+             }
+         } else {
+             ymdhis += time.getUTCFullYear() + "-";
+             ymdhis += (time.getUTCMonth() + 1) + "-";
+             ymdhis += time.getUTCDate();
+             if (isFull === true) {
+                 ymdhis += " " + time.getUTCHours() + ":";
+                 ymdhis += time.getUTCMinutes() + ":";
+                 ymdhis += time.getUTCSeconds();
+             }
+         }
+
+         return ymdhis;
+     }
+
+     /*
+      * 时间戳转换日期之检测对象是否小于10
+      */
+     function formatDateCheckTime(i) {
+         if (i < 10)
+         { i = "0" + i }
+         return i
+     }
 </script>
 </html>

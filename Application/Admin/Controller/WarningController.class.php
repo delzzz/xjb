@@ -23,7 +23,7 @@ class WarningController extends AdminController
         $base_url = $this->getUrl('warning_history') . '?pageNo=' . $pageNo . '&pageSize=' . $pageSize;
         $history_list = $this->lists($base_url, $request);
         int_to_string($history_list['itemList'], ['alarmType' => C('ALARM_TYPE'), 'processResult' => C('PROCESS_RESULT_TYPE')]);
-        if (!empty($response['processResult'])) {
+        if (strlen($response['processResult']) > 0 && $response['processResult'] !== '') {
             $processResultAttr = explode(',', $response['processResult']);
             foreach ($process_result_type as $key => &$value) {
                 foreach ($processResultAttr as $val) {
@@ -47,8 +47,8 @@ class WarningController extends AdminController
         $this->meta_title = "历史报警";
         $pageNo = I('get.p', 1);
         $status = I('status');
-        $url = $this->getUrl('warning_list') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE') . '&id=' . $this->__get('orgId') . '&type=' . $this->__get('userType');
-        if (I('alarmType') == -1 || I('alarmType')=='') {
+        $url = $this->getUrl('warning_list') . '?pageNo=' . $pageNo . '&pageSize=' . C('PAGE_SIZE');
+        if (I('alarmType') == -1 || I('alarmType') == '') {
             $param = json_encode(['status' => $status]);
         } else {
             $param = json_encode(['status' => $status, 'alarmType' => I('alarmType')]);
@@ -82,7 +82,7 @@ class WarningController extends AdminController
         $base_url = $this->getUrl('warning_history') . '?pageNo=' . $pageNo . '&pageSize=' . $pageSize;
         $history_list = $this->lists($base_url, $request);
         int_to_string($history_list['itemList'], ['alarmType' => C('ALARM_TYPE'), 'processResult' => C('PROCESS_RESULT_TYPE')]);
-        if (!empty($response['processResult'])) {
+        if (strlen($response['processResult']) > 0 && $response['processResult'] !== '') {
             $processResultAttr = explode(',', $response['processResult']);
             foreach ($process_result_type as $key => &$value) {
                 foreach ($processResultAttr as $val) {
@@ -122,7 +122,7 @@ class WarningController extends AdminController
     //未处理警报
     function undealtAlarm()
     {
-        $url = $this->getUrl('warning_list') . '?id=' . $this->__get('orgId') . '&type=' . $this->__get('userType');
+        $url = $this->getUrl('warning_list');
         $param = json_encode(['status' => 0]);
         $list = $this->lists($url, $param);
         echo $list['totalCount'];

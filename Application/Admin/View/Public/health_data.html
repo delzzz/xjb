@@ -66,8 +66,8 @@
       </p>
     </div>
     <ul class='legend'>
-      <li>餐前</li>
-      <li>餐后</li>
+      <li>餐前（mmol/L）</li>
+      <li>餐后（mmol/L）</li>
     </ul>
   </div>
   <div id="bloodGlucose" class="chart"></div>
@@ -84,7 +84,7 @@
     <div class="current">
       <p>7天平均数据 ： </p>
       血氧饱和度：
-      <span></span>
+      <span></span>%
       <strong></strong>
     </div>
   </div>
@@ -177,7 +177,7 @@
       },
       success: function (res) {
         res = JSON.parse(res)
-        var time = res.dateList|['']
+        var time = res.dateList||['']
         var data = res.dataValueList
         _setOptions.bo(time, data)
         _setStatus2.bo(res.averageDataValue)
@@ -202,7 +202,7 @@
         res = JSON.parse(res)
         var highList = res.dataInValueList
         var lowList = res.dataOutValueList
-        var time = res.dateList|['']
+        var time = res.dateList||['']
         _setOptions.bp(time, highList, lowList)
         _setStatus2.bp(res.averageDataInValue, res.averageDataOutValue)
       }

@@ -80,6 +80,7 @@ if (userType == 3) {
         onRinging: function (caller) {
           //console.log('onRinging::', 'caller:', caller);
           var re = caller.match(/_(\S*)@/)[1]
+          re = re.toUpperCase()
           console.log(re)
           localStorage.setItem('DEVICE_CODE', re)
           $.ajax({
@@ -208,19 +209,27 @@ var _demoElement = {
   tabs: $('#webImTab >li'),
   iframe: $('.webImWrap .iframe')
 }
-function loadIframe() {
-  // $(_demoElement.tabs).each(function() {
-  //   $(this).removeClass('active')
-  // })
-
-  // var f = $(`[data-src = ${location.hash.replace(/#/, '')}]`)[0].parentElement
-  // $(f).addClass('active')
-  _demoElement.iframe.attr(
-    'src',
-      '/Admin/Public/'+_demoElement.tabsActive[0].dataset.src + '.html'
-  )
+// function loadIframe() {
+//   // $(_demoElement.tabs).each(function() {
+//   //   $(this).removeClass('active')
+//   // })
+//
+//   // var f = $(`[data-src = ${location.hash.replace(/#/, '')}]`)[0].parentElement
+//   // $(f).addClass('active')
+//   _demoElement.iframe.attr(
+//     'src',
+//       '/Admin/Public/'+_demoElement.tabsActive[0].dataset.src + '.html'
+//   )
 }
-
+function loadIframe() {
+  var tabs = document.querySelectorAll('#webImTab >li')
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].className = ''
+  }
+  tabs[0].className = 'active'
+  var tabsActive = document.querySelector('#webImTab >li.active>a')
+  _demoElement.iframe.attr('src',  '/Admin/Public/'+tabsActive.dataset.src + '.html')
+}
 _initIframe()
 function _initIframe() {
   for (let i = 0; i < _demoElement.tabs.length; i++) {

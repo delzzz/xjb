@@ -87,7 +87,6 @@ class UserbasicfileController extends AdminController
             }
             $hobby = substr($hobby, 0, strlen($hobby) - 1);
         }
-        //dump($hobby);exit();
         $peopleDetail = [
             'hobby' => $hobby,
             'hobbyOtherDesc' => $param['hobbyOtherDesc'],
@@ -179,7 +178,7 @@ class UserbasicfileController extends AdminController
             $response = http($url, null, 'GET');
             $this->assign('peopleBasic', $response['peopleBasic']);
             $this->assign('peopleDetail', $response['peopleDetail']);
-            if (!empty($response['peopleDetail']['hobby'])) {
+            if (strlen($response['peopleDetail']['hobby']) >0 && $response['peopleDetail']['hobby']!=='') {
                 $hobby_attr = explode(';', $response['peopleDetail']['hobby']);
                 foreach ($hobby as $key => &$value) {
                     foreach ($hobby_attr as $val) {

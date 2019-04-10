@@ -30,7 +30,6 @@ class PublicController extends \Think\Controller
             if (!check_verify($verify)) {
                 $this->error('验证码输入错误！');
             }
-
             $url = C('INTERFACR_API')['get_user'];
             $User = http($url, ['userName' => $username], 'GET');
             if($User['userStatus']==1)

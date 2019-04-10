@@ -48,9 +48,9 @@
                                 <tr class="even pointer text-center">
                                     <td class="column-title">{$l.peopleName}</td>
                                     <td class="column-title ">{$l.device_str}</td>
-                                    <td class="column-title ">{$l.dataBreathValue}</td>
-                                    <td class="column-title ">{$l.dataHeartbeatValue}</td>
-                                    <td class="column-title "></td>
+                                    <td class="column-title ">{$l.dataBreathValue}次/分</td>
+                                    <td class="column-title ">{$l.dataHeartbeatValue}次/分</td>
+                                    <td class="column-title ">{$sleepValue[$l['dataSleepValue']]}</td>
                                     <td class="column-title ">{:time_format($l['measureTime']/1000,'Y-m-d')}</td>
                                     <td class="pointer ">
                                         <a class="lay" data-toggle="modal" data-id="{$l.peopleId}"

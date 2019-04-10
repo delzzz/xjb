@@ -24,6 +24,7 @@ class HealthController extends AdminController
                 $val['device_str'] .= $value . ';';
             }
         }
+        $this->assign('sleepValue',C('DATASLEEPVALUE'));
         $this->assign('list', $list['itemList']);
         $this->display();
     }
@@ -65,6 +66,7 @@ class HealthController extends AdminController
     function medication()
     {
         $this->meta_title = '健康管理-用药提醒列表';
+        $this->assign('doseUnit',C('DOSE_UNIT'));
         //后台端0/坐席端1
         if($_SESSION['onethink_admin']['user_auth']['userType']==3){
             $this->zuoxi_medication();

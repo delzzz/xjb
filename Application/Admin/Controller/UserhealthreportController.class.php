@@ -21,6 +21,8 @@ class UserhealthreportController extends AdminController
         }
         $this->assign('name', $name);
         $this->assign('list', $response['itemList']);
+        $this->assign('bType',C('BLOOD_TYPE'));
+        $this->assign('sleepValue',C('DATASLEEPVALUE'));
         $this->display();
     }
 
@@ -44,6 +46,7 @@ class UserhealthreportController extends AdminController
             $latestBMI['measureTime'] = date('Y年m月d日',$latestBMI['measureTime']/1000);
         }
         $this->assign('latestBMI', $latestBMI);
+        $this->assign('bType',C('BLOOD_TYPE'));
         $this->display();
     }
 
@@ -71,6 +74,20 @@ class UserhealthreportController extends AdminController
             $param['status'] = $_GET['status'];//1心率2呼吸
             $param['historyData'] = $_GET['historyData'];
             $url = $this->getUrl('heart_or_breath');
+            $res = http_post_json($url,json_encode($param));
+            echo json_encode($res);
+            exit();
+        }
+    }
+
+    //五分钟获取心率/呼吸数据
+    function getFiveHeartOrBreath()
+    {
+        if (isset($_GET['peopleId'])) {
+            //$param['peopleId'] = $_GET['peopleId'];
+            $param['peopleId'] = 44;
+            $param['status'] = $_GET['status'];//1心率2呼吸
+            $url = $this->getUrl('five_heart_or_breath');
             $res = http_post_json($url,json_encode($param));
             echo json_encode($res);
             exit();

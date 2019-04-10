@@ -143,13 +143,13 @@
                     <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12">过敏史:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" disabled placeholder="" value="{$health['chronicDisease']}">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$health['allergy']}">
                         </div>
                     </div>
                     <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12">血 型:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" disabled placeholder="" value="{$health['bloodType']}">
+                            <input type="text" class="form-control" disabled placeholder="" value="{$bType[$health['bloodType']]}">
                         </div>
                     </div>
                     <div class="form-horizontal form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -392,7 +392,7 @@
                         <div class="current">
                             <p>7天平均数据 ： </p>
                             血氧饱和度：
-                            <span></span>
+                            <span></span>%
                             <strong></strong>
                         </div>
                     </div>
@@ -610,7 +610,7 @@
                     var sleepInfo = res['sleepInfo']
                     $('#score').text(res.score)
                     $('#status').text(res.status)
-                    $('#sleepTime').text(res.sleepTime)
+                    $('#sleepTime').text(formatTime(res.sleepTime))
                     if (queryType > 0) {
                         var time = _getSleepDate(sleepInfo);
                         var deep = _getSleepDuration(sleepInfo, 'seepSleep')
@@ -619,16 +619,32 @@
                         _charts.sleepChart.setOption(_charts.beforeSleep(time, deep, simple, wake))
                     }
                     else {
-                        $('#fallAsleepLength').text(res.fallAsleepLength)
+                        $('#fallAsleepLength').text(formatTime(res.fallAsleepLength))
                         $('#fallAsleepTime').text(res.fallAsleepTime)
-                        $('#deepSleepTime').text(res.deepSleepTime)
-                        $('#shallowSleep').text(res.shallowSleep)
+                        $('#deepSleepTime').text(formatTime(res.deepSleepTime))
+                        $('#shallowSleep').text(formatTime(res.shallowSleep))
                         $('#soberNo').text(res.soberNo)
                         $('#actionNo').text(res.actionNo)
                         _charts.sleepChart.setOption(_charts.sleep(sleepInfo))
                     }
                 }
             });
+        }
+
+        function formatTime(longTime) {
+            //转化为 日+小时+分+秒
+            var time = parseFloat(longTime);
+            if (time != null && time != "") {
+                if (time < 60) {
+                    var m = time;
+                    time = m + '分钟';
+                } else if (time >= 60 && time < 3600) {
+                    var h = parseInt(time / 60);
+                    var m = parseInt(time % 60);
+                    time = h + "小时" + m + "分";
+                }
+            }
+            return time;
         }
     </script>
 </block>

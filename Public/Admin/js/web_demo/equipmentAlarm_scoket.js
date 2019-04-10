@@ -1,6 +1,6 @@
 'use strict'
 
-var socket = io.connect('http://192.168.1.245:877')
+var socket = io.connect('https://push.yewu.cishoo.com/')
 //var socket = io.connect('http://192.168.1.107:3001')
 
 socket.on('/push/cishuo/DEVICE_ALARM', function(res) {

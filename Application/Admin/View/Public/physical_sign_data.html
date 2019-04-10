@@ -22,7 +22,7 @@
         <p class="current">当前实时心率：
           <span></span> 次/分
         </p>
-        <p class="status">心率频率：
+        <p class="status">心跳频率：
           <span></span>
         </p>
       </div>
@@ -35,7 +35,7 @@
           <strong>今日平均心率：</strong>
           <span></span> 次/分
         </p>
-        <p class="status">心率频率：
+        <p class="status">心跳频率：
           <span></span>
         </p>
         <select class="select">
@@ -70,7 +70,7 @@
           <strong>今日平均呼吸：</strong>
           <span></span> 次/分
         </p>
-        <p class="status">心率频率：
+        <p class="status">呼吸频率：
           <span></span>
         </p>
         <select class="select">
@@ -136,7 +136,7 @@
 </body>
 <script src="__VENDOR__/jquery/dist/jquery.min.js"></script>
 <script src="__JS__/web_demo/physical_sign_data.js"></script>
-<script src="__JS__/web_demo/physical_scoket.js"></script>
+<script src="__JS__/web_demo/physical.js"></script>
 <script>
    var peopleId = localStorage.getItem('peopleId');
   setHeartorBreath(1,0)
@@ -213,7 +213,7 @@
         var sleepInfo = res['sleepInfo']
         $('#score').text(res.score)
         $('#status').text(res.status)
-        $('#sleepTime').text(res.sleepTime)
+        $('#sleepTime').text(formatTime(res.sleepTime))
         if (queryType > 0) {
           var time = _getSleepDate(sleepInfo);
           var deep = _getSleepDuration(sleepInfo, 'seepSleep')
@@ -222,17 +222,33 @@
           _charts.sleepChart.setOption(_charts.beforeSleep(time, deep, simple, wake))
         }
         else {
-          $('#fallAsleepLength').text(res.fallAsleepLength)
+          $('#fallAsleepLength').text(formatTime(res.fallAsleepLength))
           $('#fallAsleepTime').text(res.fallAsleepTime)
-          $('#deepSleepTime').text(res.deepSleepTime)
-          $('#shallowSleep').text(res.shallowSleep)
+          $('#deepSleepTime').text(formatTime(res.deepSleepTime))
+          $('#shallowSleep').text(formatTime(res.shallowSleep))
           $('#soberNo').text(res.soberNo)
           $('#actionNo').text(res.actionNo)
-          console.log(_charts)
           _charts.sleepChart.setOption(_charts.sleep(sleepInfo))
         }
       }
     });
   }
+
+   function formatTime(longTime) {
+     //转化为 日+小时+分+秒
+     var time = parseFloat(longTime);
+     if (time != null && time != "") {
+       if (time < 60) {
+         var m = time;
+         time = m + '分钟';
+       } else if (time >= 60 && time < 3600) {
+         var h = parseInt(time / 60);
+         var m = parseInt(time % 60);
+         time = h + "小时" + m + "分";
+       }
+     }
+     return time;
+   }
+
 </script>
 </html>

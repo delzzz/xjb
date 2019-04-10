@@ -2,7 +2,7 @@
 var DEVICE_CODE = localStorage.getItem('DEVICE_CODE')
 //DEVICE_CODE = 'N1705JY25874E'
 //var socket = io.connect('http://127.0.0.1:3001')
-var socket = io.connect('http://192.168.1.245:877')
+var socket = io.connect('https://push.yewu.cishoo.com/')
 var _socketCharts = {}
 _socketCharts.max = 10
 _socketCharts.heartRateXAxisData = [0, 0, 0, 0, 0, 0, 0, 0, 0]

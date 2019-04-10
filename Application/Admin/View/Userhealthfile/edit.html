@@ -149,7 +149,7 @@
                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12 clear">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">录入时间:</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input readonly  id="entryTime" name="entryTime" value="<?php if($basic['entryTime']==''){
+                                    <input style="display: -webkit-inline-box;line-height: 129%;" readonly  id="entryTime" name="entryTime" value="<?php if($basic['entryTime']==''){
                                     echo $currentTime;
                                     }else{
                                     echo date('Y-m-d',$basic['entryTime']/1000);
@@ -304,7 +304,7 @@
                                         <tbody>
                                         <tr>
                                             <td>收缩压数值</td>
-                                            <td>{$pressure.dataInValue}</td>
+                                            <td>{$pressure.dataInValue} mmHg</td>
                                             <!--有多少条数据就横跨多少行-->
                                             <td class="pressureText" style="vertical-align: middle">
                                                 偏高
@@ -312,7 +312,7 @@
                                         </tr>
                                         <tr>
                                             <td>舒张压数值</td>
-                                            <td>{$pressure.dataOutValue}</td>
+                                            <td>{$pressure.dataOutValue} mmHg</td>
                                             <td class="pressureText" style="vertical-align: middle">
                                                 偏高
                                             </td>
@@ -431,7 +431,7 @@
                                         <tbody>
                                         <tr>
                                             <td>血氧饱和度</td>
-                                            <td>{$oxygen.dataValue}</td>
+                                            <td>{$oxygen.dataValue}%</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -813,7 +813,7 @@
                     <h4 class="modal-title" id="myModalLabel4">血氧</h4>
                     <br>
                     <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">血氧饱和度:</label>
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12 text-right">血氧饱和度（%）:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <input name="dataValue" value="{$oxygen.dataValue}" type="text" class="form-control" placeholder="">
                         </div>

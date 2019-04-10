@@ -33,30 +33,27 @@
                             <table class="table table-striped jambo_table bulk_action">
                                 <thead>
                                 <tr class="headings">
-                                    <th>
-                                        <input type="checkbox" class="flat check-all">
-                                    </th>
                                     <th class="column-title">姓名</th>
                                     <th class="column-title">编号</th>
                                     <th class="column-title">出生年月</th>
                                     <th class="column-title">性别</th>
                                     <th class="column-title">年龄</th>
-                                    <th class="column-title">心率</th>
-                                    <th class="column-title">呼吸</th>
+                                    <th class="column-title">心率(次/分)</th>
+                                    <th class="column-title">呼吸(次/分)</th>
                                     <th class="column-title">睡眠</th>
-                                    <th class="column-title">血糖</th>
+                                    <th class="column-title">血糖（mmol/L）</th>
                                     <th class="column-title">血型</th>
-                                    <th class="column-title">血压</th>
+                                    <th class="column-title">血压(mmHg)</th>
                                     <th class="column-title">操作</th>
                                 </tr>
                                 </thead>
                                 <volist name="list" id="list">
                                     <a href="http://www.baidu.com">
                                         <tr class="even pointer">
-                                            <td class="a-center ">
-                                                <input type="checkbox" name="noticeId[]" value="{$list.peopleId}"
-                                                       class="flat ids">
-                                            </td>
+                                            <!--<td class="a-center ">-->
+                                                <!--<input type="checkbox" name="noticeId[]" value="{$list.peopleId}"-->
+                                                       <!--class="flat ids">-->
+                                            <!--</td>-->
                                             <td>{$list.name}</td>
                                             <td>{$list.peopleIdentifier}</td>
                                             <td>{$list.birthDate}</td>
@@ -64,9 +61,9 @@
                                             <td>{$list.age}</td>
                                             <td>{$list.hertbeat}</td>
                                             <td>{$list.breath}</td>
-                                            <td>{$list.sleep}</td>
+                                            <td>{$sleepValue[$list['sleep']]}</td>
                                             <td>{$list.bloodGlucose}</td>
-                                            <td>{$list.bloodType}</td>
+                                            <td>{$bType[$list['bloodType']]}</td>
                                             <td>{$list.outBloodPressure}-{$list.inBloodPressure}</td>
                                             <td><a href="{:U('detail',['id'=>$list['peopleId']])}">查看</a></td>
                                         </tr>
